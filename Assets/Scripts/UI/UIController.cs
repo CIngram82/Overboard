@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -33,6 +34,14 @@ namespace Controllers.UI
         {
             Debug.LogWarning("Quit");
             Application.Quit();
+        }
+
+        public static void SetAllActive(List<GameObject> objectArray, bool state)
+        {
+            foreach (GameObject objects in objectArray)
+            {
+                objects.SetActive(state);
+            }
         }
 
 #if UNITY_EDITOR
