@@ -5,14 +5,20 @@ using UnityEngine;
 public class PlayerMovement : MonoBehaviour
 {
     public LayerMask groundLayer;
-    Rigidbody rig;
+
     [SerializeField] float jumpForce;
     [SerializeField] float speed;
+    // Why have the 2 below as public they are not used in any other script.
     public float moveHorizontal;
-   public  float moveVertical;
+    public float moveVertical;
+
+    // What are the below 3 used for?
+    // If not needed please remove them. 
+    Rigidbody rig;
     float yMovement;
     bool canJump;
-   [SerializeField] Animator camAnim;
+
+    [SerializeField] Animator camAnim;
 
     void Start()
     {
@@ -28,7 +34,7 @@ public class PlayerMovement : MonoBehaviour
 
         Vector3 movement = new Vector3(moveHorizontal, 0.0f, moveVertical) * speed * Time.deltaTime;
         transform.Translate(movement, Space.Self);
-
+        /*
         if (moveHorizontal != 0 || moveVertical != 0)
         {
             camAnim.SetBool("isWalking", true);
@@ -37,8 +43,9 @@ public class PlayerMovement : MonoBehaviour
         {
             camAnim.SetBool("isWalking", false);
         }
+        */
+        // This can be cleaned up into 1 line of code.
 
+        camAnim.SetBool("isWalking", moveHorizontal != 0 || moveVertical != 0);
     }
-
-
 }
