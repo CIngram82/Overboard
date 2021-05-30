@@ -8,9 +8,9 @@ public class Door : MonoBehaviour
     private void OnTriggerStay(Collider other)
     {
 
-        if (Input.GetMouseButtonDown(0) && other.gameObject.CompareTag("Player") && GrabObject.collectablesList.Contains(key))
+        if (Input.GetMouseButton(0) && other.gameObject.CompareTag("Player") && GrabObject.collectablesList.Contains(key))
         {
-            GrabObject.collectablesList.Clear();  // So it can be reused for finding cogs, or ay other collectable item without the extra uneeded baggage.
+            GrabObject.collectablesList.Clear();  // assuming you left the key in the door
             gameObject.SetActive(false); // placeholder for door opening
         }
 
