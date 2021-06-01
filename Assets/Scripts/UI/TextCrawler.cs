@@ -14,7 +14,6 @@ namespace Controllers.UI
         WaitForSeconds transitionDelay;
         RectTransform textCrawler;
 
-
         IEnumerator TextCrawlerVert()
         {
             float scrollPos = 0.0f;
@@ -45,8 +44,3 @@ namespace Controllers.UI
         }
     }
 }
-
-
-
-
-
