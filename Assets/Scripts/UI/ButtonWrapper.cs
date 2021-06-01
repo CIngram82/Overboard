@@ -17,8 +17,3 @@ namespace UnityEngine.UI.Ext
         }
     }
 }
-
-
-
-
-
