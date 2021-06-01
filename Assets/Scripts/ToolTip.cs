@@ -6,7 +6,6 @@ public class Tooltip : MonoBehaviour
     [SerializeField] TextMeshProUGUI tooltipText;
     GameObject tooltip;
 
-
     public void EnableTooltip(string text)
     {
         tooltipText.text = text;

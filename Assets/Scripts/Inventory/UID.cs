@@ -6,7 +6,6 @@ public class UID
 
     public string ID { get; private set; }
 
-
     public UID(params string[] arguments)
     {
         UpdateID(arguments);
@@ -29,8 +28,3 @@ public class UID
         ID = sb.ToString();
     }
 }
-
-
-
-
-

@@ -14,7 +14,10 @@ public class DropHandler : MonoBehaviour, IDropHandler
             return null;
         }
     }
-
+    /// <summary>
+    /// When an Game object is droped on this. If this drop handler has no object add that GO as a child.
+    /// </summary>
+    /// <param name="eventData"></param>
     public void OnDrop(PointerEventData eventData)
     {
         if (!Item)
@@ -24,8 +27,3 @@ public class DropHandler : MonoBehaviour, IDropHandler
         }
     }
 }
-
-
-
-
-

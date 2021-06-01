@@ -27,7 +27,6 @@ namespace UnityEngine.UI.Ext
         public bool fixX;
         public bool fixY;
 
-
         public override void CalculateLayoutInputHorizontal()
         {
             base.CalculateLayoutInputHorizontal();

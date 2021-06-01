@@ -7,8 +7,3 @@ public class WorldItemAttribute: PropertyAttribute
 
     }
 }
-
-
-
-
-

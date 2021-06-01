@@ -15,7 +15,6 @@ namespace SaveSystem
         static string FolderPath = string.Concat(Application.persistentDataPath, "/saves/");
         static SaveFileType fileType = SaveFileType.txt;
 
-
         public static void Save<T>(T saveObject, string key, string folder = "")
         {
             Directory.CreateDirectory(FolderPath);
@@ -54,9 +53,4 @@ namespace SaveSystem
             Directory.CreateDirectory(path);
         }
     }
-
 }
-
-
-
-

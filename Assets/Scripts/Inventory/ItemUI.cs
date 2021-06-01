@@ -5,7 +5,7 @@ using TMPro;
 public class ItemUI : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 {
     [SerializeField] TextMeshProUGUI _itemNameText;
-    
+
     public Item Item { get; private set; }
 
 
@@ -25,8 +25,3 @@ public class ItemUI : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
         GameEvents.On_Tool_Tip_Deactivated();
     }
 }
-
-
-
-
-

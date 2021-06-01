@@ -8,7 +8,6 @@ public class DragHandler : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndD
     Vector3 startPos;
     Transform startParent;
 
-
     public void OnBeginDrag(PointerEventData eventData)
     {
         Item = gameObject;
@@ -40,8 +39,3 @@ namespace UnityEngine.EventSystems
         void HasChanged();
     }
 }
-
-
-
-
-

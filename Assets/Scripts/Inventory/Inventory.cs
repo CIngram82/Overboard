@@ -27,14 +27,14 @@ public class Inventory : MonoBehaviour, ISavable
     public void RemoveItem(Item item)
     {
         Items.Remove(item);
-        // TODO: add drop item feature.
+        // TODO: add drop item feature if needed.
         GameEvents.On_Inventory_Item_Removed(item);
         Debug.Log("Item removed.");
     }
     public void RemoveItemAt(int index)
     {
         Items.RemoveAt(index);
-        // TODO: add drop item feature.
+        // TODO: add drop item feature if needed.
         //GameEvents.On_Inventory_Item_Removed(item);
         Debug.Log("Item removed.");
     }
@@ -78,7 +78,3 @@ public class Inventory : MonoBehaviour, ISavable
         Load();
     }
 }
-
-
-
-

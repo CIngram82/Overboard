@@ -44,8 +44,3 @@ public class CollectibleItemSet : MonoBehaviour, ISavable
         Load();
     }
 }
-
-
-
-
-

@@ -7,7 +7,6 @@ public class InventoryUI : MonoBehaviour
 
     public List<ItemUI> UIItems { get; private set; } = new List<ItemUI>();
 
-
     void AddUIItem(Item item)
     {
         ItemUI uiItemInstance = Instantiate(_uiItem, transform);
@@ -50,8 +49,3 @@ public class InventoryUI : MonoBehaviour
         UnsubscribeFromEvents();
     }
 }
-
-
-
-
-
