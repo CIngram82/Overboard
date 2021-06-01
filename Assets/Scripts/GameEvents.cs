@@ -7,6 +7,7 @@ public class GameEvents : MonoBehaviour
     public static Action<string> ToolTipActivated;
     public static Action ToolTipDeactivated;
     public static Action<Item> InventoryItemAdded;
+    public static Action<Item> InventoryItemRemoved;
     public static Action LoadInitiated;
     public static Action SaveInitiated;
     #endregion
@@ -24,6 +25,10 @@ public class GameEvents : MonoBehaviour
     public static void On_Inventory_Item_Added(Item item)
     {
         InventoryItemAdded?.Invoke(item);
+    }
+    public static void On_Inventory_Item_Removed(Item item)
+    {
+        InventoryItemRemoved?.Invoke(item);
     }
 
     public static void On_Load_Initiated()

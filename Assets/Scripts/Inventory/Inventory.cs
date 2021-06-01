@@ -5,8 +5,9 @@ using SaveSystem;
 public class Inventory : MonoBehaviour, ISavable
 {
     [SerializeField] string _saveKey = "Inventory";
-
     public string SaveKey { get => _saveKey; private set => _saveKey = value; }
+
+    public int Capacity { get; } = 6;
     public List<Item> Items { get; private set; } = new List<Item>();
 
 
@@ -22,6 +23,20 @@ public class Inventory : MonoBehaviour, ISavable
         {
             AddItem(item);
         }
+    }
+    public void RemoveItem(Item item)
+    {
+        Items.Remove(item);
+        // TODO: add drop item feature.
+        GameEvents.On_Inventory_Item_Removed(item);
+        Debug.Log("Item removed.");
+    }
+    public void RemoveItemAt(int index)
+    {
+        Items.RemoveAt(index);
+        // TODO: add drop item feature.
+        //GameEvents.On_Inventory_Item_Removed(item);
+        Debug.Log("Item removed.");
     }
 
     public void Save()

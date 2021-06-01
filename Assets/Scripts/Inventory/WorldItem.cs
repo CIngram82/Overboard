@@ -2,7 +2,7 @@
 
 public class WorldItem : MonoBehaviour
 {
-    [WorldItem] 
+    [WorldItem]
     [SerializeField] string _itemName;
     [SerializeField] CollectibleItemSet _collectibleItemSet;
     [SerializeField] ItemDatabase _itemDatabase;
@@ -18,14 +18,24 @@ public class WorldItem : MonoBehaviour
             Destroy(gameObject);
     }
 
-    void OnTriggerEnter(Collider other)
+    public void PickUpItem(Collider collider)
     {
-        if (other.TryGetComponent(out Inventory inventory))
+        if (collider.TryGetComponent(out Inventory inventory))
         {
+            if (inventory.Items.Count >= inventory.Capacity)
+            {
+                Debug.Log("Inventory is full.");
+                return;
+            }
             _collectibleItemSet.CollectedItems.Add(uniqueID.ID);
             inventory.AddItem(Item);
             Destroy(gameObject);
         }
+    }
+
+    void OnTriggerEnter(Collider other)
+    {
+        PickUpItem(other);
     }
 
     void Start()

@@ -9,6 +9,8 @@ public class WorldItemDrawer : PropertyDrawer
 
     public override void OnGUI(Rect position, SerializedProperty property, GUIContent label)
     {
+        if (property.serializedObject.FindProperty("_itemDatabase").objectReferenceValue == null)
+            return;
         SerializedObject databaseSO = new SerializedObject(property.serializedObject.FindProperty("_itemDatabase").objectReferenceValue);
         SerializedProperty listProp = databaseSO.FindProperty("_items");
 
