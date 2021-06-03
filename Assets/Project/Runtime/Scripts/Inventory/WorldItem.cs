@@ -18,26 +18,28 @@ public class WorldItem : MonoBehaviour
             Destroy(gameObject);
     }
 
-    public void PickUpItem(Collider collider)
+    public void PickUpItem(GameObject item)
     {
-        if (collider.TryGetComponent(out Inventory inventory))
+        if (item.TryGetComponent(out Inventory inventory))
         {
             if (inventory.Items.Count >= inventory.Capacity)
             {
                 Debug.Log("Inventory is full.");
                 return;
             }
-            _collectibleItemSet.CollectedItems.Add(uniqueID.ID);
+            inventory.CollectedWorldItems.CollectedItems.Add(uniqueID.ID);
             inventory.AddItem(Item);
             Destroy(gameObject);
         }
     }
 
+/*
     void OnTriggerEnter(Collider other)
     {
-        PickUpItem(other);
+        PickUpItem(other.gameObject);
     }
-
+*/
+   
     void Start()
     {
         Item = _itemDatabase.GetItem(_itemName);

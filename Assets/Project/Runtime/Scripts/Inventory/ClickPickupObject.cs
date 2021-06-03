@@ -1,9 +1,7 @@
-using System.Collections.Generic;
 using UnityEngine;
 
 public class ClickPickupObject : MonoBehaviour
 {
-    public static List<GameObject> collectablesList = new List<GameObject>();
     [Header("RayCasting")]
     [SerializeField] LayerMask collectables;
     [SerializeField] float maxDistance = 50.0f;
@@ -25,12 +23,14 @@ public class ClickPickupObject : MonoBehaviour
 
     private void Update()
     {
-        if (debuggingOn) DrawRay();
+#if UNITY_EDITOR
+        if (debuggingOn) DrawRay(); 
+#endif
         if (Input.GetMouseButtonDown(0))
         {
             if (Physics.Raycast(transform.position, transform.forward, out RaycastHit rayHit, maxDistance, collectables))
             {
-                collectablesList.Add(rayHit.transform.gameObject);
+                rayHit.transform.gameObject.GetComponent<WorldItem>().PickUpItem(gameObject);
                 rayHit.transform.gameObject.SetActive(false);
             }
         }
