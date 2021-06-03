@@ -11,6 +11,7 @@ public class PlayerMovement : MonoBehaviour
     Rigidbody rig;
     [SerializeField] Animator camAnim;
 
+    
     void Start()
     {
         speed = 100;
@@ -26,4 +27,5 @@ public class PlayerMovement : MonoBehaviour
         rig.velocity = movement * speed * Time.deltaTime;
         camAnim.SetBool("isWalking", moveHorizontal != 0 || moveVertical != 0);
     }
+
 }
