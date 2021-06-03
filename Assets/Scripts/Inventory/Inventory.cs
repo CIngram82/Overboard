@@ -2,79 +2,83 @@ using System.Collections.Generic;
 using UnityEngine;
 using SaveSystem;
 
-public class Inventory : MonoBehaviour, ISavable
+namespace Inventory
 {
-    [SerializeField] string _saveKey = "Inventory";
-    public string SaveKey { get => _saveKey; private set => _saveKey = value; }
-
-    public int Capacity { get; } = 6;
-    public List<Item> Items { get; private set; } = new List<Item>();
-
-
-    public void AddItem(Item item)
+    public class Inventory : MonoBehaviour, ISavable
     {
-        Items.Add(item);
-        GameEvents.On_Inventory_Item_Added(item);
-        Debug.Log("Item added.");
-    }
-    public void AddItems(List<Item> items)
-    {
-        foreach (Item item in items)
+        [SerializeField] string _saveKey = "Inventory";
+        public string SaveKey { get => _saveKey; private set => _saveKey = value; }
+
+        public int Capacity { get; } = 6;
+        public List<Item> Items { get; private set; } = new List<Item>();
+
+
+        public void AddItem(Item item)
         {
-            AddItem(item);
+            Items.Add(item);
+            GameEvents.On_Inventory_Item_Added(item);
+            Debug.Log("Item added.");
         }
-    }
-    public void RemoveItem(Item item)
-    {
-        Items.Remove(item);
-        // TODO: add drop item feature if needed.
-        GameEvents.On_Inventory_Item_Removed(item);
-        Debug.Log("Item removed.");
-    }
-    public void RemoveItemAt(int index)
-    {
-        Items.RemoveAt(index);
-        // TODO: add drop item feature if needed.
-        //GameEvents.On_Inventory_Item_Removed(item);
-        Debug.Log("Item removed.");
-    }
-
-    public void Save()
-    {
-        SaveLoad.Save(Items, SaveKey);
-    }
-    public void Load()
-    {
-        if (!SaveLoad.SaveExists(SaveKey))
+        public void AddItems(List<Item> items)
         {
-            Debug.LogWarning($"No save of {SaveKey} to load.");
-            return;
+            foreach (Item item in items)
+            {
+                AddItem(item);
+            }
+        }
+        public void RemoveItem(Item item)
+        {
+            Items.Remove(item);
+            // TODO: add drop item feature if needed.
+            GameEvents.On_Inventory_Item_Removed(item);
+            Debug.Log("Item removed.");
+        }
+        public void RemoveItemAt(int index)
+        {
+            Items.RemoveAt(index);
+            // TODO: add drop item feature if needed.
+            //GameEvents.On_Inventory_Item_Removed(item);
+            Debug.Log("Item removed.");
         }
 
-        AddItems(SaveLoad.Load<List<Item>>(SaveKey));
-    }
+        public void Save()
+        {
+            SaveLoad.Save(Items, SaveKey);
+        }
+        public void Load()
+        {
+            if (!SaveLoad.SaveExists(SaveKey))
+            {
+                Debug.LogWarning($"No save of {SaveKey} to load.");
+                return;
+            }
 
-    public void SubscribeToEvents()
-    {
-        GameEvents.SaveInitiated += Save;
-        GameEvents.LoadInitiated += Load;
-    }
-    public void UnsubscribeFromEvents()
-    {
-        GameEvents.SaveInitiated -= Save;
-        GameEvents.LoadInitiated -= Load;
-    }
+            AddItems(SaveLoad.Load<List<Item>>(SaveKey));
+        }
 
-    private void OnEnable()
-    {
-        SubscribeToEvents();
-    }
-    private void OnDisable()
-    {
-        UnsubscribeFromEvents();
-    }
-    private void Awake()
-    {
-        Load();
-    }
+        public void SubToEvents(bool subscribe)
+        {
+            GameEvents.SaveInitiated -= Save;
+            GameEvents.LoadInitiated -= Load;
+
+            if (subscribe)
+            {
+                GameEvents.SaveInitiated += Save;
+                GameEvents.LoadInitiated += Load;
+            }
+        }
+
+        private void OnEnable()
+        {
+            SubToEvents(true);
+        }
+        private void OnDisable()
+        {
+            SubToEvents(false);
+        }
+        private void Awake()
+        {
+            Load();
+        }
+    } 
 }
