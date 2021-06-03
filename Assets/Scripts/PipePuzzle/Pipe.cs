@@ -15,6 +15,8 @@ namespace PipePuzzle
         private float rotationDirection = 0;
 
         [SerializeField]
+        private bool canTurn = true;
+        [SerializeField]
         private Sprite emptySprite, filledSprite;
         private SpriteRenderer mySpriteRenderer;
 
@@ -36,18 +38,20 @@ namespace PipePuzzle
             }
         }
 
-
         private void OnMouseDown()
         {
-            RotatePipe();
+            if (canTurn)
+            {
+                RotatePipe();
+            }
         }
         public void RotatePipe()
         {
             // set the new direction the image will turn to.
             rotationDirection += 90;
-            if (rotationDirection == 360) 
+            if (rotationDirection == 360)
             {
-                rotationDirection = 0; 
+                rotationDirection = 0;
             }
             // update the exit values to match the image. 
             var temp = exits[0];
