@@ -1,21 +1,25 @@
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 using SaveSystem;
+using SaveSystem.Data;
+using Inventory.Collectable;
 
 namespace Inventory
 {
-    public class Inventory : MonoBehaviour, ISavable
+    public class Inventory : MonoBehaviour
     {
-        [SerializeField] string _saveKey = "Inventory";
-        public string SaveKey { get => _saveKey; private set => _saveKey = value; }
+        List<Item> _items;
+        CollectibleItemSet _collectibleItemSet;
 
         public int Capacity { get; } = 6;
-        public List<Item> Items { get; private set; } = new List<Item>();
+        public List<Item> Items => _items; 
+        public CollectibleItemSet CollectibleItemSet => _collectibleItemSet; 
 
 
         public void AddItem(Item item)
         {
-            Items.Add(item);
+            _items.Add(item);
             GameEvents.On_Inventory_Item_Added(item);
             Debug.Log("Item added.");
         }
@@ -41,30 +45,33 @@ namespace Inventory
             Debug.Log("Item removed.");
         }
 
-        public void Save()
+        void SaveData()
         {
-            SaveLoad.Save(Items, SaveKey);
-        }
-        public void Load()
-        {
-            if (!SaveLoad.SaveExists(SaveKey))
+            SaveDataManager.Save.InventoryData = new InventoryData()
             {
-                Debug.LogWarning($"No save of {SaveKey} to load.");
-                return;
-            }
-
-            AddItems(SaveLoad.Load<List<Item>>(SaveKey));
+                Items = _items,
+                CollectibleItemSet = _collectibleItemSet,
+            };
+        }
+        void LoadData()
+        {
+            InventoryData data = SaveDataManager.Save.InventoryData;
+            _collectibleItemSet = data.CollectibleItemSet;
+            AddItems(data.Items);
         }
 
-        public void SubToEvents(bool subscribe)
+        void On_SaveData_Loaded() => LoadData();
+        void On_SaveData_PreSave() => SaveData();
+
+        void SubToEvents(bool subscribe)
         {
-            GameEvents.SaveInitiated -= Save;
-            GameEvents.LoadInitiated -= Load;
+            SaveDataManager.SaveDataLoaded += On_SaveData_Loaded;
+            SaveDataManager.DataSavedPrepared += On_SaveData_PreSave;
 
             if (subscribe)
             {
-                GameEvents.SaveInitiated += Save;
-                GameEvents.LoadInitiated += Load;
+                SaveDataManager.SaveDataLoaded += On_SaveData_Loaded;
+                SaveDataManager.DataSavedPrepared += On_SaveData_PreSave;
             }
         }
 
@@ -78,7 +85,8 @@ namespace Inventory
         }
         private void Awake()
         {
-            Load();
+            if (SaveDataManager.IsDataLoaded)
+                On_SaveData_Loaded();
         }
-    } 
+    }
 }

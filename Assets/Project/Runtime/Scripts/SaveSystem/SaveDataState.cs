@@ -1,7 +1,7 @@
 namespace SaveSystem.Data
 {
     [System.Serializable]
-    public class SaveStateData
+    public class SaveDataState
     {
         // Player Data
         public PlayerData PlayerData;

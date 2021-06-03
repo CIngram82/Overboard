@@ -35,11 +35,6 @@ namespace Inventory.Collectable
             }
         }
 
-        void OnTriggerEnter(Collider other)
-        {
-            PickUpItem(other);
-        }
-
         void Start()
         {
             Item = _itemDatabase.GetItem(_itemName);

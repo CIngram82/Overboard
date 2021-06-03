@@ -2,15 +2,14 @@ using System.Collections.Generic;
 
 namespace Inventory.Collectable
 {
+    [System.Serializable]
     public class CollectibleItemSet
     {
-        public string SaveKey { get; private set; }
-        public HashSet<string> CollectedItems { get; private set; } = new HashSet<string>();
+        public HashSet<string> CollectedItems { get; private set; }
 
 
-        public CollectibleItemSet(string saveKey)
+        public CollectibleItemSet()
         {
-            SaveKey = saveKey;
             CollectedItems = new HashSet<string>();
         }
     } 
