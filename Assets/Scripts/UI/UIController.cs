@@ -1,47 +1,57 @@
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class UIController : MonoBehaviour
+namespace Controllers.UI
 {
-    public void OnLoadScene(int index)
+    public class UIController : MonoBehaviour
     {
-        SceneManager.LoadScene(index);
-    }
-    public void OnHelp()
-    {
-        SceneManager.LoadScene("Scene_Help");
-    }
-    public void OnCredits()
-    {
-        SceneManager.LoadScene("Scene_Credits");
-    }
-    public void OnMenu()
-    {
-        SceneManager.LoadScene("Scene_MainMenu");
-    }
-    public void OnReset()
-    {
-        Debug.LogWarning("Reset");
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
-    }
-    public void OnQuit()
-    {
-        Debug.LogWarning("Quit");
-        Application.Quit();
-    }
+        public static void OnLoadScene(int index)
+        {
+            SceneManager.LoadScene(index);
+        }
+        public static void OnHelp()
+        {
+            Debug.LogWarning("Scene_Help");
+            SceneManager.LoadScene("Scene_Help");
+        }
+        public static void OnCredits()
+        {
+            Debug.LogWarning("Loading Scene_Credits");
+            SceneManager.LoadScene("Scene_Credits");
+        }
+        public static void OnMenu()
+        {
+            Debug.LogWarning("Loading Scene_MainMenu");
+            SceneManager.LoadScene("Scene_MainMenu");
+        }
+        public static void OnReset()
+        {
+            Debug.LogWarning("Reset");
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        }
+        public static void OnQuit()
+        {
+            Debug.LogWarning("Quit");
+            Application.Quit();
+        }
+
+        public static void SetAllActive(List<GameObject> objectArray, bool state)
+        {
+            foreach (GameObject objects in objectArray)
+            {
+                objects.SetActive(state);
+            }
+        }
 
 #if UNITY_EDITOR
-    void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.R))
+        void Update()
         {
-            OnReset();
+            if (Input.GetKeyDown(KeyCode.R))
+            {
+                OnReset();
+            }
         }
-    }
 #endif
+    }
 }
-
-
-
-
-

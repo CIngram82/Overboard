@@ -12,6 +12,9 @@ namespace UnityEngine.UI.Ext
         Height,
     }
 
+    /* REFACTOR: add setting to drive layout by cell size.
+     * Split to functions.
+     */
     public class FlexibleGridLayoutGroup : LayoutGroup
     {
         public Vector2 cellSize;
@@ -23,7 +26,6 @@ namespace UnityEngine.UI.Ext
         public int columns;
         public bool fixX;
         public bool fixY;
-
 
         public override void CalculateLayoutInputHorizontal()
         {
