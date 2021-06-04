@@ -1,6 +1,5 @@
 using System;
 using System.IO;
-using System.Runtime.Serialization;
 using System.Runtime.Serialization.Formatters.Binary;
 using UnityEngine;
 
@@ -16,7 +15,7 @@ namespace SaveSystem
     public class SaveLoad
     {
         public static string SAVE_PATH = string.Concat(Application.persistentDataPath, "/saves/");
-        static SaveFileType File_Type = SaveFileType.txt;
+        SaveFileType File_Type = SaveFileType.txt;
 
         /// <summary>
         /// Saves serialized data to file.

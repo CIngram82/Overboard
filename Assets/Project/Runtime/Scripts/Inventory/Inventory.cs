@@ -1,7 +1,5 @@
-using System;
 using System.Collections.Generic;
 using UnityEngine;
-using SaveSystem;
 using SaveSystem.Data;
 using Inventory.Collectable;
 
@@ -10,7 +8,7 @@ namespace Inventory
     public class Inventory : MonoBehaviour
     {
         List<Item> _items;
-        CollectibleItemSet _collectibleItemSet;
+        CollectibleItemSet _collectedWorldItems;
 
         public int Capacity { get; } = 6;
         public List<Item> Items => _items; 
@@ -50,13 +48,13 @@ namespace Inventory
             SaveDataManager.Save.InventoryData = new InventoryData()
             {
                 Items = _items,
-                CollectibleItemSet = _collectibleItemSet,
+                CollectibleItemSet = _collectedWorldItems,
             };
         }
         void LoadData()
         {
             InventoryData data = SaveDataManager.Save.InventoryData;
-            _collectibleItemSet = data.CollectibleItemSet;
+            _collectedWorldItems = data.CollectibleItemSet;
             AddItems(data.Items);
         }
 
