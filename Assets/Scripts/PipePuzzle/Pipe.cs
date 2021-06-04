@@ -6,6 +6,25 @@ namespace PipePuzzle
 {
     public class Pipe : MonoBehaviour
     {
+        private Grid<Pipe> grid;
+        public int X { get; private set; }
+        public int Y { get; private set; }
+
+        public int gCost;
+        public int hCost;
+        public int fCost;
+
+        public Pipe previousNode;
+        public Pipe(Grid<Pipe> grid, int x, int y)
+        {
+            this.grid = grid;
+            this.X = x;
+            this.Y = y;
+        }
+        public void CalculateFCost()
+        {
+            fCost = gCost + hCost;
+        }
 
         // Set exits in inspector 1 for exit 0 for no exit.
         [Header("N,E,S,W; 1 open 0 close")]
