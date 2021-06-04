@@ -2,25 +2,39 @@
 
 namespace Inventory.Collectable
 {
-    public class WorldItem : MonoBehaviour
+    public public class WorldItem: MonoBehaviour
     {
-        [WorldItem]
-        [SerializeField] string _itemName;
-        [SerializeField] CollectibleItemSet _collectibleItemSet;
-        [SerializeField] ItemDatabase _itemDatabase;
+        
+    [WorldItem]
+    [SerializeField] string _itemName;
+    [SerializeField] ItemDatabase _itemDatabase;
 
-        UID uniqueID;
+    UID uniqueID;
+    CollectibleItemSet _itemSet;
 
-        public Item Item { get; private set; }
-
-
-        void CheckCollection()
+    public Item Item { get; private set; }
+    public CollectibleItemSet CollectibleItems
+    {
+        get
         {
-            if (_collectibleItemSet.CollectedItems.Contains(uniqueID.ID))
-                Destroy(gameObject);
+            if (_itemSet == null)
+            {
+                _itemSet = FindObjectOfType<Inventory>().CollectedWorldItems;
+            }
+            return _itemSet;
         }
+    }
 
-        public void PickUpItem(Collider collider)
+
+    void CheckCollection()
+    {
+        if (CollectibleItems.CollectedItems.Contains(uniqueID.ID))
+            Destroy(gameObject);
+    }
+
+    public void PickUpItem(GameObject item)
+    {
+        if (item.TryGetComponent(out Inventory inventory))
         {
             if (collider.TryGetComponent(out Inventory inventory))
             {
@@ -29,15 +43,21 @@ namespace Inventory.Collectable
                     Debug.Log("Inventory is full.");
                     return;
                 }
-                _collectibleItemSet.CollectedItems.Add(uniqueID.ID);
-                inventory.AddItem(Item);
-                Destroy(gameObject);
-            }
+            inventory.CollectedWorldItems.CollectedItems.Add(uniqueID.ID);
+            inventory.AddItem(Item);
+            Destroy(gameObject);
         }
 
-        void Start()
+    /*
+        void OnTriggerEnter(Collider other)
         {
-            Item = _itemDatabase.GetItem(_itemName);
+            PickUpItem(other.gameObject);
+        }
+    */
+
+    void Start()
+    {
+        Item = _itemDatabase.GetItem(_itemName);
 
             uniqueID = new UID(name, transform.position.sqrMagnitude.ToString(), transform.GetSiblingIndex().ToString());
             CheckCollection();

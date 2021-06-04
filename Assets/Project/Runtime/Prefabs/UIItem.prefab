@@ -144,10 +144,10 @@ GameObject:
   m_Component:
   - component: {fileID: 8621607983265699332}
   - component: {fileID: 7493676017554626475}
+  - component: {fileID: 4094714327008067782}
   - component: {fileID: 5152730674936076989}
   - component: {fileID: 1056604522875000326}
   - component: {fileID: 8121164601866524596}
-  - component: {fileID: 4094714327008067782}
   m_Layer: 5
   m_Name: UIItem
   m_TagString: Untagged
@@ -188,6 +188,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _label: {fileID: 7482888958211232895}
+--- !u!114 &4094714327008067782
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2133903325564095779}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6178c5c4a43ed3147885f1ad4efa47a7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _itemNameText: {fileID: 7482888958211232895}
 --- !u!222 &5152730674936076989
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -270,16 +283,3 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls: []
---- !u!114 &4094714327008067782
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2133903325564095779}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6178c5c4a43ed3147885f1ad4efa47a7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _itemNameText: {fileID: 7482888958211232895}

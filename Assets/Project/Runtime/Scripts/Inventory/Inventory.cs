@@ -14,7 +14,7 @@ namespace Inventory
 
         public int Capacity { get; } = 6;
         public List<Item> Items => _items; 
-        public CollectibleItemSet CollectibleItemSet => _collectibleItemSet; 
+        public CollectibleItemSet CollectedWorldItems => _collectedWorldItems; 
 
 
         public void AddItem(Item item)
