@@ -29,7 +29,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4448749213606424679}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.01, y: 1.28, z: 0.11}
+  m_LocalPosition: {x: 0, y: 1, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4448749213885339779}
@@ -217,9 +217,9 @@ MonoBehaviour:
   collectables:
     serializedVersion: 2
     m_Bits: 1024
-  maxDistance: 50
+  maxDistance: 1.75
   debuggingOn: 1
-  rayColor: {r: 0, g: 1, b: 0, a: 1}
+  rayColor: {r: 0.9874805, g: 1, b: 0, a: 1}
 --- !u!114 &6804013863574086150
 MonoBehaviour:
   m_ObjectHideFlags: 0

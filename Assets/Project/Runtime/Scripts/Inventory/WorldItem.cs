@@ -4,17 +4,28 @@ public class WorldItem : MonoBehaviour
 {
     [WorldItem]
     [SerializeField] string _itemName;
-    [SerializeField] CollectibleItemSet _collectibleItemSet;
     [SerializeField] ItemDatabase _itemDatabase;
 
     UID uniqueID;
+    CollectibleItemSet _itemSet;
 
     public Item Item { get; private set; }
+    public CollectibleItemSet CollectibleItems
+    {
+        get
+        {
+            if (_itemSet == null)
+            {
+                _itemSet = FindObjectOfType<Inventory>().CollectedWorldItems;
+            }
+            return _itemSet;
+        }
+    }
 
 
     void CheckCollection()
     {
-        if (_collectibleItemSet.CollectedItems.Contains(uniqueID.ID))
+        if (CollectibleItems.CollectedItems.Contains(uniqueID.ID))
             Destroy(gameObject);
     }
 
@@ -33,13 +44,13 @@ public class WorldItem : MonoBehaviour
         }
     }
 
-/*
-    void OnTriggerEnter(Collider other)
-    {
-        PickUpItem(other.gameObject);
-    }
-*/
-   
+    /*
+        void OnTriggerEnter(Collider other)
+        {
+            PickUpItem(other.gameObject);
+        }
+    */
+
     void Start()
     {
         Item = _itemDatabase.GetItem(_itemName);

@@ -9,6 +9,9 @@ public class ClickPickupObject : MonoBehaviour
     [SerializeField] bool debuggingOn = true;
     [SerializeField] Color rayColor = Color.green;
 
+    Camera _rayCamera;
+    Ray _ray;
+
 
     public void ToggleCursorLockMode()
     {
@@ -17,25 +20,30 @@ public class ClickPickupObject : MonoBehaviour
 
     public void DrawRay()
     {
-        Vector3 forward = transform.TransformDirection(Vector3.forward) * maxDistance;
-        Debug.DrawRay(transform.position, forward, rayColor);
+        _ray = _rayCamera.ScreenPointToRay(Input.mousePosition);
+        Debug.DrawRay(_ray.origin, _ray.direction * maxDistance, rayColor);
+        //Debug.LogWarning($"_ray.origin: {_ray.origin}\n_ray.direction: {_ray.direction}");
     }
 
     private void Update()
     {
 #if UNITY_EDITOR
-        if (debuggingOn) DrawRay(); 
+        if (debuggingOn) DrawRay();
 #endif
         if (Input.GetMouseButtonDown(0))
         {
-            if (Physics.Raycast(transform.position, transform.forward, out RaycastHit rayHit, maxDistance, collectables))
+            _ray = _rayCamera.ScreenPointToRay(Input.mousePosition);
+            if (Physics.Raycast(_ray, out RaycastHit rayHit, maxDistance, collectables))
             {
-                rayHit.transform.gameObject.GetComponent<WorldItem>().PickUpItem(gameObject);
+                rayHit.transform.gameObject.GetComponentInParent<WorldItem>().PickUpItem(gameObject);
                 rayHit.transform.gameObject.SetActive(false);
             }
         }
     }
-
+    private void Awake()
+    {
+        _rayCamera = GetComponentInChildren<Camera>();
+    }
     private void Start()
     {
         // this needs to be changed on the camera script when I update that branch and taken out of this one,

@@ -10,7 +10,7 @@ public class Inventory : MonoBehaviour, ISavable
 
     public int Capacity { get; } = 6;
     public List<Item> Items { get; private set; } = new List<Item>();
-    public CollectibleItemSet CollectedWorldItems => _collectedWorldItems;
+    public CollectibleItemSet CollectedWorldItems => _collectedWorldItems = new CollectibleItemSet();
 
 
     public void AddItem(Item item)
