@@ -4,24 +4,24 @@ using UnityEngine;
 
 public class CameraController : MonoBehaviour
 {
+    [SerializeField] Transform player;
+
     Vector3 offset;
     float rotSpeed = 1;
     float mouseX;
     float mouseY;
-    bool hideMouse;
-    [SerializeField] Transform player;
+
 
     private void Start()
     {
-        hideMouse = true;
         Cursor.visible = false;
         Cursor.lockState = CursorLockMode.Locked;
     }
-
     private void LateUpdate()
     {
         CameraControls();
     }
+
     void CameraControls()
     {
         mouseX += Input.GetAxis("Mouse X") * rotSpeed;
@@ -31,12 +31,13 @@ public class CameraController : MonoBehaviour
         
         if (Input.GetMouseButtonDown(1))
         {
-            Cursor.visible = hideMouse;
-            Cursor.lockState = CursorLockMode.None;
-            hideMouse = !hideMouse;
+            Cursor.visible = !Cursor.visible;
+            ToggleCursorLockMode();
         }
     }
 
-
-
+    public void ToggleCursorLockMode()
+    {
+        Cursor.lockState = (Cursor.lockState != CursorLockMode.Confined) ? CursorLockMode.Confined : CursorLockMode.Locked;
+    }
 }

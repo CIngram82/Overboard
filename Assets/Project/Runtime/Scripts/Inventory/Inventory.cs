@@ -6,9 +6,11 @@ public class Inventory : MonoBehaviour, ISavable
 {
     [SerializeField] string _saveKey = "Inventory";
     public string SaveKey { get => _saveKey; private set => _saveKey = value; }
+    CollectibleItemSet _collectedWorldItems;
 
     public int Capacity { get; } = 6;
     public List<Item> Items { get; private set; } = new List<Item>();
+    public CollectibleItemSet CollectedWorldItems => _collectedWorldItems = new CollectibleItemSet();
 
 
     public void AddItem(Item item)
