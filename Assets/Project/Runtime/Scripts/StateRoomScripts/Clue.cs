@@ -12,7 +12,7 @@ public class Clue : MonoBehaviour
     private void OnDisable()
     {
         GrabObject.collectablesList.Remove(gameObject); // this is here for now assuming the paper is being put back down. Can be taken out to be left for use in inventory until puzzle ends if needed.
-        paperPanel.SetActive(true);
         clueText.text = Message;
+        paperPanel.SetActive(true);       
     }
 }

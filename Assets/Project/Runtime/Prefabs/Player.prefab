@@ -14,6 +14,8 @@ GameObject:
   - component: {fileID: 4448749213606424675}
   - component: {fileID: 4448749213606424674}
   - component: {fileID: 2761834734623359416}
+  - component: {fileID: 1636897502}
+  - component: {fileID: 159403427}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -150,6 +152,42 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &1636897502
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4448749213606424679}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7d23ca4bcc998ff45be8bf2ef7fff9be, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  metalLayer:
+    serializedVersion: 2
+    m_Bits: 128
+  woodLayer:
+    serializedVersion: 2
+    m_Bits: 64
+  carpetLayer:
+    serializedVersion: 2
+    m_Bits: 256
+--- !u!114 &159403427
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4448749213606424679}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 13e14893289e4b5489d8e5d75df6dd8b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  collectables:
+    serializedVersion: 2
+    m_Bits: 512
 --- !u!1 &4448749213885339780
 GameObject:
   m_ObjectHideFlags: 0
@@ -168,7 +206,7 @@ GameObject:
   - component: {fileID: 4448749213885339783}
   m_Layer: 0
   m_Name: Player
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -216,7 +254,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   collectables:
     serializedVersion: 2
-    m_Bits: 1024
+    m_Bits: 512
   maxDistance: 1.75
   debuggingOn: 1
   rayColor: {r: 0.9874805, g: 1, b: 0, a: 1}
