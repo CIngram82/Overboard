@@ -15,12 +15,7 @@ namespace PipePuzzle
         public int fCost;
 
         public Pipe previousNode;
-        public Pipe(Grid<Pipe> grid, int x, int y)
-        {
-            this.grid = grid;
-            this.X = x;
-            this.Y = y;
-        }
+
         public void CalculateFCost()
         {
             fCost = gCost + hCost;

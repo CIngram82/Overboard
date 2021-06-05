@@ -3,7 +3,7 @@ using UnityEngine;
 namespace PipePuzzle
 {
     [System.Serializable]
-    public class PipePuzzle : MonoBehaviour
+    public class PipePuzzle 
     {
         private int _width = 5;
         private int _height = 5;

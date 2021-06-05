@@ -17,7 +17,7 @@ namespace PipePuzzle
 
         public Pathfinding(int width, int height)
         {
-            grid = new Grid<Pipe>(width, height, 10f, Vector3.zero, (Grid<Pipe> g, int x, int y) => new Pipe(g, x, y));
+            grid = new Grid<Pipe>(width, height, 10f, Vector3.zero );
         }
 
         private List<Pipe> FindPath(int startX, int startY, int endX, int endY)

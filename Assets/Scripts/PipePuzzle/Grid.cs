@@ -1,9 +1,11 @@
 using System;
+using System.Collections.Generic;
 using UnityEngine;
 
 namespace PipePuzzle
 {
-    public class Grid<T>
+    [System.Serializable]
+    public class Grid<Pipe>
     {
 
         public event EventHandler<OnGridValueChangedEventArgs> OnGridValueChanged;
@@ -17,23 +19,16 @@ namespace PipePuzzle
         private int height;
         private float cellSize;
         private Vector3 originPos;
-        private T[,] gridArray;
+        public Pipe[,] gridArray;
 
-        public Grid(int width, int height, float cellSize, Vector3 originPos, Func<Grid<T>,int,int,T> createGridObject)
+        public Grid(int width, int height, float cellSize, Vector3 originPos)
         {
             this.width = width;
             this.height = height;
             this.cellSize = cellSize;
             this.originPos = originPos;
-            this.gridArray = new T[width, height];
+            this.gridArray = new Pipe[width, height];
 
-            for(int x = 0; x < gridArray.GetLength(0); x++)
-            {
-                for (int y = 0; y < gridArray.GetLength(1); y++)
-                {
-                    gridArray[x, y] = createGridObject(this,x,y);
-                }
-            }
         }
         public int Height
         {
@@ -61,7 +56,7 @@ namespace PipePuzzle
             return posXY;
         }
 
-        public void SetValue(int x, int y, T value)
+        public void SetValue(int x, int y, Pipe value)
         {
             if (x >= 0 && x < width && y >= 0 && y < height)
             {
@@ -75,13 +70,13 @@ namespace PipePuzzle
             if (OnGridValueChanged != null) OnGridValueChanged(this, new OnGridValueChangedEventArgs { x = x, y = y });
         }
 
-        public void SetValue(Vector3 worldPosition, T value)
+        public void SetValue(Vector3 worldPosition, Pipe value)
         {
             Vector2Int posXY = GetXY(worldPosition);
             SetValue(posXY.x, posXY.y, value);
         }
 
-        public T GetObject(int x, int y)
+        public Pipe GetObject(int x, int y)
         {
             if (x >= 0 && x < width && y >= 0 && y < height)
             {
@@ -93,7 +88,7 @@ namespace PipePuzzle
             }
         }
 
-        public T GetObject(Vector3 worldPosition)
+        public Pipe GetObject(Vector3 worldPosition)
         {
             Vector2Int posXY = GetXY(worldPosition);
             return GetObject(posXY.x, posXY.y);
