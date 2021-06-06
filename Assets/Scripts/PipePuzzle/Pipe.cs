@@ -26,6 +26,7 @@ namespace PipePuzzle
         public int[] exits;
         [SerializeField]
         private float rotationSpeed = 0.1f;
+        [SerializeField]
         private float rotationDirection = 0;
 
         [SerializeField]

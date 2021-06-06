@@ -26,9 +26,9 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1505925374273602297}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: -0.1}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.0125, y: 0.0125, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -96,8 +96,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8d0b4964cb9743047b768c8becf12917, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gCost: 0
+  hCost: 0
+  fCost: 0
+  previousNode: {fileID: 0}
   exits: 00000000000000000000000000000000
   rotationSpeed: 0.1
+  canTurn: 0
   emptySprite: {fileID: 21300000, guid: 5e42385cb084d204ba28e5a34606ea39, type: 3}
   filledSprite: {fileID: 21300000, guid: 5e42385cb084d204ba28e5a34606ea39, type: 3}
   north: {fileID: 0}

@@ -33,7 +33,7 @@ namespace PipePuzzle
             SetUpGrid();
             SetUpPuzzle();
             MakeNeighbors();
-            //Shuffle();
+            Shuffle();
             pathfinding = new Pathfinding(puzzle);
             power = puzzle.gridArray[6, 6];
             firstOutput = puzzle.gridArray[0,6];
@@ -121,7 +121,7 @@ namespace PipePuzzle
             {
                 foreach (Pipe pipe in pathOne)
                 {
-                    Debug.Log($"{pipe.name} at {pipe.X},{pipe.Y}");
+                    pipe.gameObject.GetComponent<SpriteRenderer>().color = Color.red;
                 }
             }
 
