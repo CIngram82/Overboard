@@ -10,10 +10,16 @@ namespace PipePuzzle
         public bool firstOutputPowered;
         public bool secondOutputPowered;
         public bool thirdOutputPowered;
-        public bool forthOutputPowered;
 
-        public Grid<Pipe> puzzle;
+        public Pipe power;
+        public Pipe firstOutput;
+        public Pipe secondOutput;
+        public Pipe thirdOutput;
+
+        public PFGrid<Pipe> puzzle;
         private List<Pipe> allPipes;
+
+        private Pathfinding pathfinding;
 
         // Start is called before the first frame update
         void Start()
@@ -21,23 +27,28 @@ namespace PipePuzzle
             firstOutputPowered = false;
             secondOutputPowered = false;
             thirdOutputPowered = false;
-            forthOutputPowered = false;
+
 
             allPipes = new List<Pipe>( FindObjectsOfType<Pipe>() );
             SetUpGrid();
             SetUpPuzzle();
             MakeNeighbors();
-            Shuffle();
-
+            //Shuffle();
+            pathfinding = new Pathfinding(puzzle);
+            power = puzzle.gridArray[6, 6];
+            firstOutput = puzzle.gridArray[0,6];
+            CheckConnections();
         }
-
 
         private void SetUpPuzzle()
         {
             foreach (var item in allPipes)
             {
-                int x = (int)item.transform.position.x;
-                int y = (int)item.transform.position.y;
+                int x = (int)item.transform.localPosition.x;
+                int y = (int)item.transform.localPosition.y;
+                item.GetComponent<Pipe>().X = x;
+                item.GetComponent<Pipe>().Y = y;
+
                 puzzle.gridArray[x, y] = item.GetComponent<Pipe>();
             }
         }
@@ -48,24 +59,24 @@ namespace PipePuzzle
             Vector2 pos = new Vector2(0, 0);
             foreach (var pipe in allPipes)
             {
-                if (pipe.transform.position.x > size.x)
+                if (pipe.transform.localPosition.x > size.x)
                 {
-                    size.x = pipe.transform.position.x;
+                    size.x = pipe.transform.localPosition.x;
                 }
-                if (pipe.transform.position.y > size.y)
+                if (pipe.transform.localPosition.y > size.y)
                 {
-                    size.y = pipe.transform.position.y;
+                    size.y = pipe.transform.localPosition.y;
                 }
-                if (pipe.transform.position.x < pos.x)
+                if (pipe.transform.localPosition.x < pos.x)
                 {
-                    pos.x = pipe.transform.position.x;
+                    pos.x = pipe.transform.localPosition.x;
                 }
-                if (pipe.transform.position.y < pos.y)
+                if (pipe.transform.localPosition.y < pos.y)
                 {
-                    pos.y = pipe.transform.position.y;
+                    pos.y = pipe.transform.localPosition.y;
                 }
             }
-            puzzle = new Grid<Pipe>((int)size.x, (int)size.y, allPipes[0].transform.localScale.x, pos);
+            puzzle = new PFGrid<Pipe>((int)size.x+1, (int)size.y+1, pos);
         }
 
         private void MakeNeighbors()
@@ -99,6 +110,21 @@ namespace PipePuzzle
             }
         }
 
-        
+        public void CheckConnections()
+        {
+            List<Pipe> pathOne = pathfinding.FindPath( power.X, power.Y, firstOutput.X, firstOutput.Y);
+            if (null == pathOne)
+            {
+                Debug.Log("No path found!");
+            }
+            else
+            {
+                foreach (Pipe pipe in pathOne)
+                {
+                    Debug.Log($"{pipe.name} at {pipe.X},{pipe.Y}");
+                }
+            }
+
+        }
     }
 }

@@ -10,17 +10,17 @@ namespace PipePuzzle
         // The files Pathfinding, pathNode are both used for A* check the wiki for more details. 
 
         private const int MOVE_COST = 10;
-        private Grid<Pipe> grid;
+        private PFGrid<Pipe> grid;
         private List<Pipe> openList;
         private List<Pipe> closedList;
 
 
-        public Pathfinding(int width, int height)
+        public Pathfinding(PFGrid<Pipe> puzzle)
         {
-            grid = new Grid<Pipe>(width, height, 10f, Vector3.zero );
+            grid = puzzle;
         }
 
-        private List<Pipe> FindPath(int startX, int startY, int endX, int endY)
+        public List<Pipe> FindPath(int startX, int startY, int endX, int endY)
         {
             // set up the open and closed lists used for tracking nodes as we search
             Pipe startNode = grid.GetObject(startX, startY);
@@ -107,10 +107,6 @@ namespace PipePuzzle
                 if (currentNode.exits[3] == 1 && other.exits[1] == 1)
                 neighborHood.Add(other);
             }
-
-
-
-
             return neighborHood;
         }
         private Pipe GetNode(int x, int y)

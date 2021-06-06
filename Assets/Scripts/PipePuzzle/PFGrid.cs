@@ -5,7 +5,7 @@ using UnityEngine;
 namespace PipePuzzle
 {
     [System.Serializable]
-    public class Grid<Pipe>
+    public class PFGrid<Pipe>
     {
 
         public event EventHandler<OnGridValueChangedEventArgs> OnGridValueChanged;
@@ -17,15 +17,13 @@ namespace PipePuzzle
 
         private int width;
         private int height;
-        private float cellSize;
         private Vector3 originPos;
         public Pipe[,] gridArray;
 
-        public Grid(int width, int height, float cellSize, Vector3 originPos)
+        public PFGrid(int width, int height, Vector3 originPos)
         {
             this.width = width;
             this.height = height;
-            this.cellSize = cellSize;
             this.originPos = originPos;
             this.gridArray = new Pipe[width, height];
 
@@ -38,20 +36,16 @@ namespace PipePuzzle
         {
             get { return width; }
         }
-        public float CellSize
-        {
-            get { return cellSize; }
-        }
         private Vector3 GetWorldPosition(int x, int y)
         {
-            return new Vector3(x, y) * cellSize + originPos;
+            return new Vector3(x, y) + originPos;
         }
 
         private Vector2Int GetXY(Vector3 worldPosition)
         {
             Vector2Int posXY = new Vector2Int();
-            posXY.x = Mathf.FloorToInt((worldPosition.x - originPos.x)/ cellSize);
-            posXY.y = Mathf.FloorToInt((worldPosition.y - originPos.y)/ cellSize);
+            posXY.x = Mathf.FloorToInt((worldPosition.x - originPos.x));
+            posXY.y = Mathf.FloorToInt((worldPosition.y - originPos.y));
 
             return posXY;
         }

@@ -6,9 +6,9 @@ namespace PipePuzzle
 {
     public class Pipe : MonoBehaviour
     {
-        private Grid<Pipe> grid;
-        public int X { get; private set; }
-        public int Y { get; private set; }
+        private PFGrid<Pipe> grid;
+        public int X { get;  set; }
+        public int Y { get;  set; }
 
         public int gCost;
         public int hCost;
@@ -54,13 +54,12 @@ namespace PipePuzzle
 
         private void OnMouseDown()
         {
-            if (canTurn)
-            {
-                RotatePipe();
-            }
+            RotatePipe();
+            pipeGM.CheckConnections();
         }
         public void RotatePipe()
         {
+            if (!canTurn) return;
             // set the new direction the image will turn to.
             rotationDirection += 90;
             if (rotationDirection == 360)
