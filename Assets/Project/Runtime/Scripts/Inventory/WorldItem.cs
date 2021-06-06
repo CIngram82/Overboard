@@ -1,66 +1,64 @@
 ﻿using UnityEngine;
 
-public class WorldItem : MonoBehaviour
+namespace Inventory.Collectable
 {
-    [WorldItem]
-    [SerializeField] string _itemName;
-    [SerializeField] ItemDatabase _itemDatabase;
-
-    UID uniqueID;
-    CollectibleItemSet _itemSet;
-
-    public Item Item { get; private set; }
-    public CollectibleItemSet CollectibleItems
+    public class WorldItem : MonoBehaviour
     {
-        get
+        [WorldItem]
+        [SerializeField] string _itemName;
+        [SerializeField] ItemDatabase _itemDatabase;
+
+        UID uniqueID;
+        CollectibleItemSet _itemSet;
+
+        public Item Item { get; private set; }
+        public CollectibleItemSet CollectibleItems
         {
-            if (_itemSet == null)
+            get
             {
-                _itemSet = FindObjectOfType<Inventory>().CollectedWorldItems;
+                if (_itemSet == null)
+                {
+                    _itemSet = FindObjectOfType<Inventory>().CollectedWorldItems;
+                }
+                return _itemSet;
             }
-            return _itemSet;
         }
-    }
 
 
-    void CheckCollection()
-    {
-        if (CollectibleItems.CollectedItems.Contains(uniqueID.ID))
-            Destroy(gameObject);
-    }
-
-    public void PickUpItem(GameObject item)
-    {
-        if (item.TryGetComponent(out Inventory inventory))
+        void CheckCollection()
         {
-            if (inventory.Items.Count >= inventory.Capacity)
+            if (CollectibleItems.CollectedItems.Contains(uniqueID.ID))
+                Destroy(gameObject);
+        }
+
+        public void PickUpItem(GameObject item)
+        {
+            if (item.TryGetComponent(out Inventory inventory))
             {
-                Debug.Log("Inventory is full.");
-                return;
+                if (inventory.Items.Count >= inventory.Capacity)
+                {
+                    Debug.Log("Inventory is full.");
+                    return;
+                }
+                inventory.CollectedWorldItems.CollectedItems.Add(uniqueID.ID);
+                inventory.AddItem(Item);
+                Destroy(gameObject);
             }
-            inventory.CollectedWorldItems.CollectedItems.Add(uniqueID.ID);
-            inventory.AddItem(Item);
-            Destroy(gameObject);
         }
-    }
 
-    /*
-        void OnTriggerEnter(Collider other)
+        /*
+            void OnTriggerEnter(Collider other)
+            {
+                PickUpItem(other.gameObject);
+            }
+        */
+
+        void Start()
         {
-            PickUpItem(other.gameObject);
+            Item = _itemDatabase.GetItem(_itemName);
+
+            uniqueID = new UID(name, transform.position.sqrMagnitude.ToString(), transform.GetSiblingIndex().ToString());
+            CheckCollection();
         }
-    */
-
-    void Start()
-    {
-        Item = _itemDatabase.GetItem(_itemName);
-
-        uniqueID = new UID(name, transform.position.sqrMagnitude.ToString(), transform.GetSiblingIndex().ToString());
-        CheckCollection();
     }
 }
-
-
-
-
-
