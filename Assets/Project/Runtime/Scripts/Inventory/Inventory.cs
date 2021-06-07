@@ -1,82 +1,90 @@
 using System.Collections.Generic;
 using UnityEngine;
-using SaveSystem;
+using SaveSystem.Data;
+using Inventory.Collectable;
 
-public class Inventory : MonoBehaviour, ISavable
+namespace Inventory
 {
-    [SerializeField] string _saveKey = "Inventory";
-    public string SaveKey { get => _saveKey; private set => _saveKey = value; }
-    CollectibleItemSet _collectedWorldItems;
-
-    public int Capacity { get; } = 6;
-    public List<Item> Items { get; private set; } = new List<Item>();
-    public CollectibleItemSet CollectedWorldItems => _collectedWorldItems = new CollectibleItemSet();
-
-
-    public void AddItem(Item item)
+    public class Inventory : MonoBehaviour
     {
-        Items.Add(item);
-        GameEvents.On_Inventory_Item_Added(item);
-        Debug.Log("Item added.");
-    }
-    public void AddItems(List<Item> items)
-    {
-        foreach (Item item in items)
+        List<Item> _items;
+        CollectibleItemSet _collectedWorldItems;
+
+        public int Capacity { get; } = 6;
+        public List<Item> Items => _items; 
+        public CollectibleItemSet CollectedWorldItems => _collectedWorldItems; 
+
+
+        public void AddItem(Item item)
         {
-            AddItem(item);
+            _items.Add(item);
+            GameEvents.On_Inventory_Item_Added(item);
+            Debug.Log("Item added.");
         }
-    }
-    public void RemoveItem(Item item)
-    {
-        Items.Remove(item);
-        // TODO: add drop item feature if needed.
-        GameEvents.On_Inventory_Item_Removed(item);
-        Debug.Log("Item removed.");
-    }
-    public void RemoveItemAt(int index)
-    {
-        Items.RemoveAt(index);
-        // TODO: add drop item feature if needed.
-        //GameEvents.On_Inventory_Item_Removed(item);
-        Debug.Log("Item removed.");
-    }
-
-    public void Save()
-    {
-        SaveLoad.Save(Items, SaveKey);
-    }
-    public void Load()
-    {
-        if (!SaveLoad.SaveExists(SaveKey))
+        public void AddItems(List<Item> items)
         {
-            Debug.LogWarning($"No save of {SaveKey} to load.");
-            return;
+            foreach (Item item in items)
+            {
+                AddItem(item);
+            }
+        }
+        public void RemoveItem(Item item)
+        {
+            Items.Remove(item);
+            // TODO: add drop item feature if needed.
+            GameEvents.On_Inventory_Item_Removed(item);
+            Debug.Log("Item removed.");
+        }
+        public void RemoveItemAt(int index)
+        {
+            Items.RemoveAt(index);
+            // TODO: add drop item feature if needed.
+            //GameEvents.On_Inventory_Item_Removed(item);
+            Debug.Log("Item removed.");
         }
 
-        AddItems(SaveLoad.Load<List<Item>>(SaveKey));
-    }
+        void SaveData()
+        {
+            SaveDataManager.Save.InventoryData = new InventoryData()
+            {
+                Items = _items,
+                CollectibleItemSet = _collectedWorldItems,
+            };
+        }
+        void LoadData()
+        {
+            InventoryData data = SaveDataManager.Save.InventoryData;
+            _collectedWorldItems = data.CollectibleItemSet;
+            AddItems(data.Items);
+        }
 
-    public void SubscribeToEvents()
-    {
-        GameEvents.SaveInitiated += Save;
-        GameEvents.LoadInitiated += Load;
-    }
-    public void UnsubscribeFromEvents()
-    {
-        GameEvents.SaveInitiated -= Save;
-        GameEvents.LoadInitiated -= Load;
-    }
+        void On_SaveData_Loaded() => LoadData();
+        void On_SaveData_PreSave() => SaveData();
 
-    private void OnEnable()
-    {
-        SubscribeToEvents();
-    }
-    private void OnDisable()
-    {
-        UnsubscribeFromEvents();
-    }
-    private void Awake()
-    {
-        Load();
+        void SubToEvents(bool subscribe)
+        {
+            SaveDataManager.SaveDataLoaded += On_SaveData_Loaded;
+            SaveDataManager.DataSavedPrepared += On_SaveData_PreSave;
+
+            if (subscribe)
+            {
+                SaveDataManager.SaveDataLoaded += On_SaveData_Loaded;
+                SaveDataManager.DataSavedPrepared += On_SaveData_PreSave;
+            }
+        }
+
+        private void OnEnable()
+        {
+            SubToEvents(true);
+        }
+        private void OnDisable()
+        {
+            SubToEvents(false);
+        }
+        private void Awake()
+        {
+            if (SaveDataManager.IsDataLoaded)
+                On_SaveData_Loaded();
+        }
     }
 }

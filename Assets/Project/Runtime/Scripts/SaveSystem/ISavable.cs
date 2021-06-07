@@ -6,9 +6,8 @@ namespace SaveSystem
 
         void Save();
         void Load();
-        void SubscribeToEvents();
-        void UnsubscribeFromEvents();
-    } 
+        void SubToEvents(bool subscribe);
+    }
 }
 
 
