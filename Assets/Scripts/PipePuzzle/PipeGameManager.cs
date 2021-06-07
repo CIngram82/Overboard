@@ -11,6 +11,7 @@ namespace PipePuzzle
         public bool secondOutputPowered;
         public bool thirdOutputPowered;
 
+        public bool isComplete;
         public Pipe power;
         public Pipe firstOutput;
         public Pipe secondOutput;
@@ -27,7 +28,7 @@ namespace PipePuzzle
             firstOutputPowered = false;
             secondOutputPowered = false;
             thirdOutputPowered = false;
-
+            isComplete = false;
 
             allPipes = new List<Pipe>( FindObjectsOfType<Pipe>() );
             SetUpGrid();
@@ -123,6 +124,7 @@ namespace PipePuzzle
                 {
                     pipe.gameObject.GetComponent<SpriteRenderer>().color = Color.red;
                 }
+                isComplete = true;
             }
 
         }

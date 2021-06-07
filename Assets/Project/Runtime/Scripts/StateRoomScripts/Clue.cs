@@ -13,6 +13,9 @@ public class Clue : MonoBehaviour
     {
         GrabObject.collectablesList.Remove(gameObject); // this is here for now assuming the paper is being put back down. Can be taken out to be left for use in inventory until puzzle ends if needed.
         clueText.text = Message;
-        paperPanel.SetActive(true);       
+        if (paperPanel != null)
+        {
+            paperPanel.SetActive(true);
+        }
     }
 }
