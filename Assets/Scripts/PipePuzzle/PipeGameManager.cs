@@ -126,7 +126,6 @@ namespace PipePuzzle
                 }
                 isComplete = true;
             }
-
         }
     }
 }

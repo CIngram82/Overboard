@@ -63,8 +63,8 @@ namespace Inventory
 
         void SubToEvents(bool subscribe)
         {
-            SaveDataManager.SaveDataLoaded += On_SaveData_Loaded;
-            SaveDataManager.DataSavedPrepared += On_SaveData_PreSave;
+            SaveDataManager.SaveDataLoaded -= On_SaveData_Loaded;
+            SaveDataManager.DataSavedPrepared -= On_SaveData_PreSave;
 
             if (subscribe)
             {

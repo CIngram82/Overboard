@@ -7,5 +7,11 @@ namespace SaveSystem.Data
         public PlayerData PlayerData;
         // Inventory Data
         public InventoryData InventoryData;
+
+        public SaveDataState()
+        {
+            PlayerData = new PlayerData();
+            InventoryData = new InventoryData();
+        }
     }
 }
