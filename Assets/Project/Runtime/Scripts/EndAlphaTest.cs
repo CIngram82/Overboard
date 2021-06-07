@@ -6,10 +6,10 @@ public class EndAlphaTest : MonoBehaviour
 {
 
    [SerializeField] GameObject endpanel;
-    // Start is called before the first frame update
-    private void OnCollisionExit(Collision collision)
+
+    private void OnTriggerExit(Collider col)
     {
-        if(collision.gameObject.CompareTag("Player"))
+        if(col.gameObject.CompareTag("Player"))
         {
             endpanel.SetActive(true);
             Time.timeScale = 0;

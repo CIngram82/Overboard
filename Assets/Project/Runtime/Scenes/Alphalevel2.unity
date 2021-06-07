@@ -1171,7 +1171,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: db4b6b0424dfe894c906ff99990b4563, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  endpanel: {fileID: 0}
+  endpanel: {fileID: 269455585}
 --- !u!65 &201319386
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1183,8 +1183,8 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 9.345056, y: 1, z: 11.097324}
-  m_Center: {x: 0.6501651, y: 0, z: -1.6664486}
+  m_Size: {x: 13.472978, y: 3.428814, z: 11.097324}
+  m_Center: {x: 2.714126, y: 0.34839153, z: -1.6664486}
 --- !u!4 &201319387
 Transform:
   m_ObjectHideFlags: 0
@@ -1566,7 +1566,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &269455586
 RectTransform:
   m_ObjectHideFlags: 0
@@ -5878,6 +5878,10 @@ PrefabInstance:
       propertyPath: m_LocalPosition.y
       value: 1.2800016
       objectReference: {fileID: 0}
+    - target: {fileID: 4448749213885339778, guid: 60fd4002636c38e44a2ed3fa46590125, type: 3}
+      propertyPath: speed
+      value: 200
+      objectReference: {fileID: 0}
     - target: {fileID: 4448749213885339779, guid: 60fd4002636c38e44a2ed3fa46590125, type: 3}
       propertyPath: m_RootOrder
       value: 6
@@ -5892,7 +5896,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4448749213885339779, guid: 60fd4002636c38e44a2ed3fa46590125, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -59.27
+      value: -61.22
       objectReference: {fileID: 0}
     - target: {fileID: 4448749213885339779, guid: 60fd4002636c38e44a2ed3fa46590125, type: 3}
       propertyPath: m_LocalRotation.w
