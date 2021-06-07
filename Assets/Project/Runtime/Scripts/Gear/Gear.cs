@@ -4,21 +4,35 @@ using UnityEngine;
 
 public class Gear : MonoBehaviour
 {
-    int _size;
-    int _speed;
+    [SerializeField] bool _isPowered;
+    [SerializeField] float _radius;
+    [SerializeField] float _speed;
+    [Range(-1,1)]
+    [SerializeField] int _direction = 1;
+
+    public bool IsPowered { get => _isPowered; set => _isPowered = value; }
+    public float Radius => _radius;
+    public float Speed => _speed;
+    public int Direction { get => _direction; set => _direction = value; }
 
 
-#region Mono
+    void RotateGear()
+    {
+        transform.Rotate(Vector3.down, _speed * Time.deltaTime);
+    }
+
+    #region Mono
     void Update()
     {
-        
+        if (IsPowered)
+            RotateGear();
     }
 
     void Start()
     {
-        
+
     }
-#endregion
+    #endregion
 }
 
 

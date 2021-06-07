@@ -7,53 +7,60 @@ public class GearSocket : MonoBehaviour
     [Serializable]
     public struct Connection
     {
-        [SerializeField] GameObject _from;
-        [SerializeField] GameObject _to;
+        [SerializeField] GearSocket _from;
+        [SerializeField] GearSocket _to;
         [SerializeField] float _distance;
 
-        public GameObject From => _from;
-        public GameObject To => _to;
+        public GearSocket From => _from;
+        public GearSocket To => _to;
         public float Distance => _distance;
-        
-        public Connection(GameObject to, GameObject from, float distance)
+
+        public Connection(GearSocket from, GearSocket to, float distance)
         {
             _from = from;
             _to = to;
             _distance = distance;
         }
     }
-  
-    [SerializeField]
-    public List<Connection> Connections;
 
-    public GameObject Gear
+    public List<Connection> Connections;
+    public Gear Gear
     {
         get
         {
             if (transform.childCount > 0)
             {
-                return transform.GetChild(0).gameObject;
+                return GetComponentInChildren<Gear>();
             }
             return null;
         }
-        set 
+        set
         {
-            
+
         }
     }
 
 
-    #region Mono
-    void Update()
+    void PowerNextGear()
     {
-        
+        foreach (var socket in Connections)
+        {
+            // if current is powered and next socket has a gear.
+            if (Gear.IsPowered && socket.To.Gear)
+            {
+                // if gears fit together
+                if ((socket.To.Gear.Radius + Gear.Radius) == socket.Distance)
+                {
+                    socket.To.Gear.IsPowered = true;
+                    socket.To.Gear.Direction = Gear.Direction * -1;
+                }
+            }
+            else
+            {
+                socket.To.Gear.IsPowered = false;
+            }
+        }
     }
-
-    void Start()
-    {
-        
-    }
-#endregion
 }
 
 
