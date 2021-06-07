@@ -6,6 +6,8 @@ public class GearsController : MonoBehaviour
 {
     [SerializeField] GearSocket _startGear;
     [SerializeField] GearSocket _endGear;
+    [SerializeField] List<Gear> _gears;
+    [SerializeField] List<GearSocket> _gearSocket;
     bool _isSolved = false;
 
     public Gear StartGear => _startGear.Gear;
@@ -17,22 +19,35 @@ public class GearsController : MonoBehaviour
         return _isSolved = EndGear.IsPowered;
     }
 
-    #region Mono
-    void Update()
-    {
+    void On_Object_Received() => _startGear.PowerNextGear();
 
+    void SubToEvents(bool subscribe)
+    {
+        DropObjectHandler.ObjectReceived -= On_Object_Received;
+
+        if (subscribe)
+        {
+            DropObjectHandler.ObjectReceived += On_Object_Received;
+        }
     }
 
+    void OnEnable()
+    {
+        SubToEvents(true);
+    }
+    void OnDisable()
+    {
+        SubToEvents(false);
+    }
     void Start()
     {
-
+        On_Object_Received();
     }
     private void Awake()
     {
         StartGear.gameObject.GetComponent<DragObjectHandler>().enabled = false;
         EndGear.gameObject.GetComponent<DragObjectHandler>().enabled = false;
     }
-    #endregion
 }
 
 

@@ -43,7 +43,7 @@ public class GearSocket : MonoBehaviour
     }
 
 
-    void PowerNextGear()
+    public void PowerNextGear()
     {
         foreach (var socket in Connections)
         {
@@ -55,6 +55,8 @@ public class GearSocket : MonoBehaviour
                 {
                     socket.To.Gear.IsPowered = true;
                     socket.To.Gear.Direction = Gear.Direction * -1;
+                    if (socket.Distance != 0)
+                        socket.To.PowerNextGear();
                 }
             }
             else
@@ -65,30 +67,7 @@ public class GearSocket : MonoBehaviour
         }
     }
 
-    void On_Object_Received() => PowerNextGear();
-
-    void SubToEvents(bool subscribe)
-    {
-        DropObjectHandler.ObjectReceived -= On_Object_Received;
-
-        if (subscribe)
-        {
-            DropObjectHandler.ObjectReceived += On_Object_Received;
-        }
-    }
-
-    void OnEnable()
-    {
-        SubToEvents(true);
-    }
-    void OnDisable()
-    {
-        SubToEvents(false);
-    }
-    void Start()
-    {
-        PowerNextGear();
-    }
+ 
 }
 
 

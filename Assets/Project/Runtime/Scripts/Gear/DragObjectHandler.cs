@@ -9,7 +9,7 @@ public class DragObjectHandler : MonoBehaviour
 
     bool isDragged = false;
     float _zCoordOffsetDrag = -3.5f;
-    float _zCoordOffsetDrop = 0.0f;
+    float _zCoordOffsetDrop = -1.5f;
     Vector3 startPosMouse;
     Vector3 startPosObject;
 
