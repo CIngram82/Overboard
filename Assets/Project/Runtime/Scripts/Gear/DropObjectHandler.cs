@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class DropObjectHandler : MonoBehaviour
@@ -18,16 +16,42 @@ public class DropObjectHandler : MonoBehaviour
 
     [SerializeField] float snapTolerance = 0.5f;
 
-    void OnDrop()
+    void OnDrop(DragObjectHandler dragObject)
     {
         if (!Slot)  // if slot is empty
         {
+            float distance = Vector3.Distance(dragObject.transform.position, transform.position);
 
+            Debug.LogError($"{name} distance: {distance}");
+
+            if (distance <= snapTolerance)
+            {
+                dragObject.transform.SetParent(transform);
+                dragObject.transform.localPosition = Vector3.zero;
+            }
+        }
+        else
+        {
+            //dragObject.transform.localPosition = Vector3.zero;
         }
     }
+
+    void SubToEvents(bool subscribe)
+    {
+        DragObjectHandler.DragEnded -= OnDrop;
+
+        if (subscribe)
+        {
+            DragObjectHandler.DragEnded += OnDrop;
+        }
+    }
+
+    void OnEnable()
+    {
+        SubToEvents(true);
+    }
+    void OnDisable()
+    {
+        SubToEvents(false);
+    }
 }
-
-
-
-
-

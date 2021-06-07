@@ -1,23 +1,19 @@
-using System.Collections;
-using System.Collections.Generic;
+using System;
 using UnityEngine;
 
 
 public class DragObjectHandler : MonoBehaviour
 {
-    public delegate void OnDragEndDelegate(DragObjectHandler dragObject);
-    public OnDragEndDelegate OnDragEndCallback;
-
-    float _zCoordOffsetUp = -3.5f;
-    float _zCoordOffsetDown = -0.5f;
-
+    public static Action<DragObjectHandler> DragEnded;
+    static Camera main;
 
     bool isDragged = false;
+    float _zCoordOffsetDrag = -3.5f;
+    float _zCoordOffsetDrop = 0.0f;
     Vector3 startPosMouse;
     Vector3 startPosObject;
 
 
-    static Camera main;
 
 
     Vector3 GetMouseAsWorldPoint()
@@ -30,23 +26,26 @@ public class DragObjectHandler : MonoBehaviour
     void OnMouseDown()
     {
         isDragged = true;
+        transform.parent = null;
 
-        startPosObject = transform.localPosition;
-        startPosObject.z = _zCoordOffsetUp;
+        startPosMouse = GetMouseAsWorldPoint();
+        startPosObject = transform.position;
+        startPosObject.z = _zCoordOffsetDrag;
     }
 
     void OnMouseDrag()
     {
         if (isDragged)
         {
-            transform.localPosition = startPosObject + GetMouseAsWorldPoint() - startPosMouse;
+            transform.position = startPosObject + GetMouseAsWorldPoint() - startPosMouse;
         }
     }
 
     void OnMouseUp()
     {
         isDragged = false;
-        OnDragEndCallback(this);
+        transform.position = new Vector3(transform.position.x, transform.position.y, _zCoordOffsetDrop);
+        DragEnded?.Invoke(this);
     }
 
     void Awake()
