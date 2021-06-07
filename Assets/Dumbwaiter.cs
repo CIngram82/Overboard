@@ -5,9 +5,8 @@ using UnityEngine.SceneManagement;
 
 public class Dumbwaiter : MonoBehaviour
 {
-    PipePuzzle.PipeGameManager pipePuzzle;
-    Door door;
-   
+    [SerializeField] PipePuzzle.PipeGameManager pipePuzzle;
+  
     private void OnTriggerEnter(Collider other)
     {
         if(isComplete())
@@ -22,7 +21,7 @@ public class Dumbwaiter : MonoBehaviour
 
     bool isComplete()
     {
-        if(pipePuzzle.isComplete && door.isComplete)
+        if(pipePuzzle.isComplete)
         {
             return true;
         }

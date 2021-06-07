@@ -2304,7 +2304,7 @@ CapsuleCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 163703522}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   m_Radius: 0.5000001
   m_Height: 2
@@ -3387,7 +3387,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4448749213885339779, guid: 60fd4002636c38e44a2ed3fa46590125, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -12.57
+      value: -11.281
       objectReference: {fileID: 0}
     - target: {fileID: 4448749213885339779, guid: 60fd4002636c38e44a2ed3fa46590125, type: 3}
       propertyPath: m_LocalPosition.y
@@ -3395,7 +3395,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4448749213885339779, guid: 60fd4002636c38e44a2ed3fa46590125, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 81.89
+      value: 81.263
       objectReference: {fileID: 0}
     - target: {fileID: 4448749213885339779, guid: 60fd4002636c38e44a2ed3fa46590125, type: 3}
       propertyPath: m_LocalRotation.w
@@ -3451,7 +3451,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4448749213885339782, guid: 60fd4002636c38e44a2ed3fa46590125, type: 3}
       propertyPath: m_IsTrigger
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4448749213885339783, guid: 60fd4002636c38e44a2ed3fa46590125, type: 3}
       propertyPath: m_Constraints
@@ -5886,7 +5886,6 @@ GameObject:
   - component: {fileID: 504713931}
   - component: {fileID: 504713930}
   - component: {fileID: 504713935}
-  - component: {fileID: 504713934}
   - component: {fileID: 504713933}
   m_Layer: 0
   m_Name: Dumbwaiter
@@ -5984,18 +5983,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e068d2548673d7e4e93cdcdb2ed2e7f5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &504713934
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 504713928}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 359f663eb02e61b4787c733436faf5e7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+  pipePuzzle: {fileID: 592466371}
 --- !u!65 &504713935
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -7329,6 +7317,17 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d1e4aee9390781f408c444c2bca14239, type: 3}
+--- !u!114 &592466371 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5847816301636505943, guid: d1e4aee9390781f408c444c2bca14239, type: 3}
+  m_PrefabInstance: {fileID: 592466370}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 41cce228d7462a44ebb92443cc83b077, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &595073244
 GameObject:
   m_ObjectHideFlags: 0
@@ -23647,6 +23646,49 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1609121318}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1 &1615220343
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1615220345}
+  - component: {fileID: 1615220344}
+  m_Layer: 0
+  m_Name: SaveDataManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1615220344
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1615220343}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b0b50f1b15c393c4391d7e74201ae7dd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!4 &1615220345
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1615220343}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -12.57, y: 3.532, z: 81.89}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 12
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1619884366
 GameObject:
   m_ObjectHideFlags: 0
@@ -27490,6 +27532,11 @@ PrefabInstance:
     - target: {fileID: 7512983323620685002, guid: 8f73c49f02989a74eaa10636ccc0ae6c, type: 3}
       propertyPath: m_Center.z
       value: 0.11079801
+      objectReference: {fileID: 0}
+    - target: {fileID: 7512983323620685005, guid: 8f73c49f02989a74eaa10636ccc0ae6c, type: 3}
+      propertyPath: Message
+      value: 'TestClue: Find all 3 cubes and interact with the box on the chair to
+        get key.Door opens when key is picked up.'
       objectReference: {fileID: 0}
     - target: {fileID: 7512983323620685005, guid: 8f73c49f02989a74eaa10636ccc0ae6c, type: 3}
       propertyPath: clueText
