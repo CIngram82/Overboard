@@ -26,6 +26,7 @@ namespace SaveSystem.Data
                 Debug.LogWarning("Multiple instances of SaveDataManager");
                 Destroy(this);
             }
+            LoadData();
         }
 
         public static void LoadData()
@@ -89,6 +90,11 @@ namespace SaveSystem.Data
 
             SaveDataLoaded?.Invoke();
             SaveData();
+        }
+
+        public void ClearSaves()
+        {
+            SaveLoad.DeleteAllSaveFilesIn("");
         }
     }
 }

@@ -49,7 +49,7 @@ namespace PipePuzzle
         {
             if (transform.rotation.eulerAngles.z != rotationDirection)
             {
-                transform.rotation = Quaternion.Lerp(transform.rotation, Quaternion.Euler(0f, 0f, rotationDirection), rotationSpeed);
+                transform.rotation = Quaternion.Lerp(transform.rotation, Quaternion.Euler(transform.rotation.x, transform.rotation.y, rotationDirection), rotationSpeed);
             }
         }
 

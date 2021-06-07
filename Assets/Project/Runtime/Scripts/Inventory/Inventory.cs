@@ -11,7 +11,7 @@ namespace Inventory
         CollectibleItemSet _collectedWorldItems;
 
         public int Capacity { get; } = 6;
-        public List<Item> Items => _items; 
+        public List<Item> Items { get => _items; private set => _items = value; } 
         public CollectibleItemSet CollectedWorldItems => _collectedWorldItems; 
 
 
@@ -55,7 +55,7 @@ namespace Inventory
         {
             InventoryData data = SaveDataManager.Save.InventoryData;
             _collectedWorldItems = data.CollectibleItemSet;
-            AddItems(data.Items);
+            Items = data.Items;
         }
 
         void On_SaveData_Loaded() => LoadData();
