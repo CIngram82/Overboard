@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class GearsController : MonoBehaviour
 {
+    bool _isSolved = false;
+
 
 #region Mono
     void Update()
