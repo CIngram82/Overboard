@@ -7,7 +7,7 @@ public class Gear : MonoBehaviour
     [SerializeField] bool _isPowered;
     [SerializeField] float _radius;
     [SerializeField] float _speed;
-    [Range(-1,1)]
+    [Range(-1, 1)]
     [SerializeField] int _direction = 1;
 
     public bool IsPowered { get => _isPowered; set => _isPowered = value; }
@@ -18,7 +18,7 @@ public class Gear : MonoBehaviour
 
     void RotateGear()
     {
-        transform.Rotate(Vector3.down, _speed * Time.deltaTime);
+        transform.Rotate(Vector3.down, _speed * Direction * Time.deltaTime);
     }
 
     #region Mono

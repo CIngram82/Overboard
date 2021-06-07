@@ -1,7 +1,10 @@
+using System;
 using UnityEngine;
 
 public class DropObjectHandler : MonoBehaviour
 {
+    public static Action ObjectReceived;
+
     public GameObject Slot
     {
         get
@@ -28,11 +31,8 @@ public class DropObjectHandler : MonoBehaviour
             {
                 dragObject.transform.SetParent(transform);
                 dragObject.transform.localPosition = Vector3.zero;
+                ObjectReceived?.Invoke();
             }
-        }
-        else
-        {
-            //dragObject.transform.localPosition = Vector3.zero;
         }
     }
 

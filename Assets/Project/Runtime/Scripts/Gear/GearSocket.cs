@@ -23,20 +23,22 @@ public class GearSocket : MonoBehaviour
         }
     }
 
+    Gear _gear;
+
     public List<Connection> Connections;
     public Gear Gear
     {
         get
         {
-            if (transform.childCount > 0)
+            if (!_gear)
             {
-                return GetComponentInChildren<Gear>();
+                if (transform.childCount > 0)
+                {
+                    return _gear = GetComponentInChildren<Gear>();
+                }
+                return null;
             }
-            return null;
-        }
-        set
-        {
-
+            return _gear;
         }
     }
 
@@ -46,7 +48,7 @@ public class GearSocket : MonoBehaviour
         foreach (var socket in Connections)
         {
             // if current is powered and next socket has a gear.
-            if (Gear.IsPowered && socket.To.Gear)
+            if (Gear.IsPowered && socket.To.Gear != null)
             {
                 // if gears fit together
                 if ((socket.To.Gear.Radius + Gear.Radius) == socket.Distance)
@@ -56,10 +58,36 @@ public class GearSocket : MonoBehaviour
                 }
             }
             else
+            if (socket.To.Gear != null)
             {
                 socket.To.Gear.IsPowered = false;
             }
         }
+    }
+
+    void On_Object_Received() => PowerNextGear();
+
+    void SubToEvents(bool subscribe)
+    {
+        DropObjectHandler.ObjectReceived -= On_Object_Received;
+
+        if (subscribe)
+        {
+            DropObjectHandler.ObjectReceived += On_Object_Received;
+        }
+    }
+
+    void OnEnable()
+    {
+        SubToEvents(true);
+    }
+    void OnDisable()
+    {
+        SubToEvents(false);
+    }
+    void Start()
+    {
+        PowerNextGear();
     }
 }
 

@@ -14,8 +14,6 @@ public class DragObjectHandler : MonoBehaviour
     Vector3 startPosObject;
 
 
-
-
     Vector3 GetMouseAsWorldPoint()
     {
         Vector3 mousePoint = Input.mousePosition;
