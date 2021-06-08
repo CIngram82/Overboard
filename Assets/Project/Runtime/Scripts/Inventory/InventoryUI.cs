@@ -29,23 +29,24 @@ public class InventoryUI : MonoBehaviour
         Debug.Log("Item Removed from UI.");
     }
 
-    public void SubscribeToEvents()
-    {
-        GameEvents.InventoryItemAdded += AddUIItem;
-        GameEvents.InventoryItemRemoved += RemoveUIItem;
-    }
-    public void UnsubscribeFromEvents()
+    void SubToEvents(bool subscribe)
     {
         GameEvents.InventoryItemAdded -= AddUIItem;
         GameEvents.InventoryItemRemoved -= RemoveUIItem;
+
+        if (subscribe)
+        {
+            GameEvents.InventoryItemAdded += AddUIItem;
+            GameEvents.InventoryItemRemoved += RemoveUIItem;
+        }
     }
 
     private void OnEnable()
     {
-        SubscribeToEvents();
+        SubToEvents(true);
     }
     private void OnDisable()
     {
-        UnsubscribeFromEvents();
+        SubToEvents(false);
     }
 }
