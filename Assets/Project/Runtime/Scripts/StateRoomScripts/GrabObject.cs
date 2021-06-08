@@ -6,7 +6,7 @@ public class GrabObject : MonoBehaviour
 {
     public static List<GameObject> collectablesList = new List<GameObject>();
     [SerializeField] LayerMask collectables;
-
+    /*
     private void Update()
     {
         RaycastHit rayHit;
@@ -17,4 +17,5 @@ public class GrabObject : MonoBehaviour
         }
        
     }
+    */
 }

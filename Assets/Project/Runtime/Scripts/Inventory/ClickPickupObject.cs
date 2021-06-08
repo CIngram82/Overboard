@@ -37,6 +37,7 @@ public class ClickPickupObject : MonoBehaviour
             if (Physics.Raycast(_ray, out RaycastHit rayHit, maxDistance, collectables))
             {
                 rayHit.transform.gameObject.GetComponentInParent<WorldItem>().PickUpItem(gameObject);
+                GrabObject.collectablesList.Add(rayHit.transform.gameObject);// this only takes the gameObject of the maguffin within the prefab not the entire prefab as that would require restructuring of the world item prefab to include the layer at base.
                 //rayHit.transform.gameObject.SetActive(false);
             }
         }
