@@ -21,21 +21,33 @@ public class Gear : MonoBehaviour
         transform.Rotate(Vector3.down, _speed * Direction * Time.deltaTime);
     }
 
-    #region Mono
+    void On_Drag_Started(GameObject gear)
+    {
+        gear.GetComponent<Gear>().IsPowered = false;
+    }
+
+    void SubToEvents(bool subscribe)
+    {
+        DragObjectHandler doh = GetComponent<DragObjectHandler>();
+        doh.ObjectPickedUp -= On_Drag_Started;
+
+        if (subscribe)
+        {
+            doh.ObjectPickedUp += On_Drag_Started;
+        }
+    }
+
+    void OnEnable()
+    {
+        SubToEvents(true);
+    }
+    void OnDisable()
+    {
+        SubToEvents(false);
+    }
     void Update()
     {
         if (IsPowered)
             RotateGear();
     }
-
-    void Start()
-    {
-
-    }
-    #endregion
 }
-
-
-
-
-
