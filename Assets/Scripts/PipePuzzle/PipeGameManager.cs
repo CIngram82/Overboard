@@ -34,7 +34,7 @@ namespace PipePuzzle
             SetUpGrid();
             SetUpPuzzle();
             MakeNeighbors();
-            Shuffle();
+            //Shuffle();
             pathfinding = new Pathfinding(puzzle);
             power = puzzle.gridArray[6, 6];
             firstOutput = puzzle.gridArray[0,6];
