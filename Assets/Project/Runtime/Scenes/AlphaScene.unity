@@ -3871,6 +3871,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1095113192, guid: 60fd4002636c38e44a2ed3fa46590125, type: 3}
+      propertyPath: maxDistance
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 1848039833, guid: 60fd4002636c38e44a2ed3fa46590125, type: 3}
       propertyPath: m_UpdateMethod
       value: 2
@@ -4112,7 +4116,7 @@ PrefabInstance:
     - target: {fileID: 3579662724299281212, guid: 921b55244af39594a91eb4ce2081f1f8, type: 3}
       propertyPath: camPointer
       value: 
-      objectReference: {fileID: 945207758}
+      objectReference: {fileID: 0}
     - target: {fileID: 3579662724299281213, guid: 921b55244af39594a91eb4ce2081f1f8, type: 3}
       propertyPath: m_Name
       value: CameraTrigger
@@ -12530,101 +12534,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4475519462937414106, guid: eefe68bbb9a635a439f3a5f5a99c843d, type: 3}
   m_PrefabInstance: {fileID: 4475519462097707843}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &945207758
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 945207759}
-  - component: {fileID: 945207762}
-  - component: {fileID: 945207761}
-  - component: {fileID: 945207760}
-  m_Layer: 0
-  m_Name: Pointer
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &945207759
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 945207758}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0, y: 0, z: 0.128}
-  m_LocalScale: {x: 0.0008, y: 0.0008, z: 0.0008}
-  m_Children: []
-  m_Father: {fileID: 1451527959}
-  m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!135 &945207760
-SphereCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 945207758}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 0
-  serializedVersion: 2
-  m_Radius: 0.5
-  m_Center: {x: 0, y: 0, z: 0}
---- !u!23 &945207761
-MeshRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 945207758}
-  m_Enabled: 1
-  m_CastShadows: 1
-  m_ReceiveShadows: 1
-  m_DynamicOccludee: 1
-  m_MotionVectors: 1
-  m_LightProbeUsage: 1
-  m_ReflectionProbeUsage: 1
-  m_RayTracingMode: 2
-  m_RayTraceProcedural: 0
-  m_RenderingLayerMask: 1
-  m_RendererPriority: 0
-  m_Materials:
-  - {fileID: 2100000, guid: 67a713afd2202e5438d1d3759f1afacf, type: 2}
-  m_StaticBatchInfo:
-    firstSubMesh: 0
-    subMeshCount: 0
-  m_StaticBatchRoot: {fileID: 0}
-  m_ProbeAnchor: {fileID: 0}
-  m_LightProbeVolumeOverride: {fileID: 0}
-  m_ScaleInLightmap: 1
-  m_ReceiveGI: 1
-  m_PreserveUVs: 0
-  m_IgnoreNormalsForChartDetection: 0
-  m_ImportantGI: 0
-  m_StitchLightmapSeams: 1
-  m_SelectedEditorRenderState: 3
-  m_MinimumChartSize: 4
-  m_AutoUVMaxDistance: 0.5
-  m_AutoUVMaxAngle: 89
-  m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
-  m_SortingOrder: 0
-  m_AdditionalVertexStreams: {fileID: 0}
---- !u!33 &945207762
-MeshFilter:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 945207758}
-  m_Mesh: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
 --- !u!1 &947986026
 GameObject:
   m_ObjectHideFlags: 0
@@ -15787,10 +15696,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1831523891}
     m_Modifications:
-    - target: {fileID: 1849073877, guid: b766f9395862dbd4e960262493ea2ae6, type: 3}
-      propertyPath: clues.Array.data[0]
-      value: 
-      objectReference: {fileID: 2133171765}
     - target: {fileID: 5281781498842053072, guid: b766f9395862dbd4e960262493ea2ae6, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -15878,10 +15783,6 @@ PrefabInstance:
     - target: {fileID: 5281781498842053075, guid: b766f9395862dbd4e960262493ea2ae6, type: 3}
       propertyPath: m_Name
       value: CluePanel
-      objectReference: {fileID: 0}
-    - target: {fileID: 5281781498842053075, guid: b766f9395862dbd4e960262493ea2ae6, type: 3}
-      propertyPath: m_IsActive
-      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b766f9395862dbd4e960262493ea2ae6, type: 3}
@@ -18837,41 +18738,6 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1248784245}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
---- !u!1 &1250205658 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 4448749213885339780, guid: 60fd4002636c38e44a2ed3fa46590125, type: 3}
-  m_PrefabInstance: {fileID: 256475025}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &1250205659
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1250205658}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c3224be045f03ee46838f52b784c056e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &1250205666
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1250205658}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f63cf5612ca78a34788de29603444802, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  collectables:
-    serializedVersion: 2
-    m_Bits: 512
-  maxDistance: 50
-  debuggingOn: 1
-  rayColor: {r: 0, g: 1, b: 0, a: 1}
 --- !u!1 &1251296786
 GameObject:
   m_ObjectHideFlags: 0
@@ -22694,42 +22560,17 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1451378500}
   m_Mesh: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
---- !u!1 &1451527950 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 4448749213606424679, guid: 60fd4002636c38e44a2ed3fa46590125, type: 3}
-  m_PrefabInstance: {fileID: 256475025}
-  m_PrefabAsset: {fileID: 0}
 --- !u!114 &1451527954 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 1848039832, guid: 60fd4002636c38e44a2ed3fa46590125, type: 3}
   m_PrefabInstance: {fileID: 256475025}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1451527950}
+  m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 45e653bab7fb20e499bda25e1b646fea, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!4 &1451527959 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 4448749213606424672, guid: 60fd4002636c38e44a2ed3fa46590125, type: 3}
-  m_PrefabInstance: {fileID: 256475025}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &1451527960
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1451527950}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 13e14893289e4b5489d8e5d75df6dd8b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  collectables:
-    serializedVersion: 2
-    m_Bits: 512
 --- !u!1 &1456264149
 GameObject:
   m_ObjectHideFlags: 0
@@ -28957,21 +28798,9 @@ PrefabInstance:
       propertyPath: m_Name
       value: PaperClue
       objectReference: {fileID: 0}
-    - target: {fileID: 7512983323620685000, guid: 8f73c49f02989a74eaa10636ccc0ae6c, type: 3}
-      propertyPath: m_Layer
-      value: 9
-      objectReference: {fileID: 0}
     - target: {fileID: 7512983323620685001, guid: 8f73c49f02989a74eaa10636ccc0ae6c, type: 3}
       propertyPath: m_RootOrder
       value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 7512983323620685001, guid: 8f73c49f02989a74eaa10636ccc0ae6c, type: 3}
-      propertyPath: m_LocalScale.x
-      value: 0.6700001
-      objectReference: {fileID: 0}
-    - target: {fileID: 7512983323620685001, guid: 8f73c49f02989a74eaa10636ccc0ae6c, type: 3}
-      propertyPath: m_LocalScale.z
-      value: 0.48808098
       objectReference: {fileID: 0}
     - target: {fileID: 7512983323620685001, guid: 8f73c49f02989a74eaa10636ccc0ae6c, type: 3}
       propertyPath: m_LocalPosition.x
@@ -29012,35 +28841,6 @@ PrefabInstance:
     - target: {fileID: 7512983323620685001, guid: 8f73c49f02989a74eaa10636ccc0ae6c, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7512983323620685002, guid: 8f73c49f02989a74eaa10636ccc0ae6c, type: 3}
-      propertyPath: m_Size.x
-      value: 2.0823662
-      objectReference: {fileID: 0}
-    - target: {fileID: 7512983323620685002, guid: 8f73c49f02989a74eaa10636ccc0ae6c, type: 3}
-      propertyPath: m_Size.y
-      value: 14.675455
-      objectReference: {fileID: 0}
-    - target: {fileID: 7512983323620685002, guid: 8f73c49f02989a74eaa10636ccc0ae6c, type: 3}
-      propertyPath: m_Size.z
-      value: 2.45548
-      objectReference: {fileID: 0}
-    - target: {fileID: 7512983323620685002, guid: 8f73c49f02989a74eaa10636ccc0ae6c, type: 3}
-      propertyPath: m_Center.x
-      value: -0.27617425
-      objectReference: {fileID: 0}
-    - target: {fileID: 7512983323620685002, guid: 8f73c49f02989a74eaa10636ccc0ae6c, type: 3}
-      propertyPath: m_Center.y
-      value: -6.837728
-      objectReference: {fileID: 0}
-    - target: {fileID: 7512983323620685002, guid: 8f73c49f02989a74eaa10636ccc0ae6c, type: 3}
-      propertyPath: m_Center.z
-      value: 0.11079801
-      objectReference: {fileID: 0}
-    - target: {fileID: 7512983323620685005, guid: 8f73c49f02989a74eaa10636ccc0ae6c, type: 3}
-      propertyPath: Message
-      value: 'TestClue: Find all 3 cubes and interact with the box on the chair to
-        get key.Door opens when key is picked up.'
       objectReference: {fileID: 0}
     - target: {fileID: 7512983323620685005, guid: 8f73c49f02989a74eaa10636ccc0ae6c, type: 3}
       propertyPath: clueText
@@ -31387,17 +31187,6 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2132490784}
   m_Mesh: {fileID: 10206, guid: 0000000000000000e000000000000000, type: 0}
---- !u!114 &2133171765 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 7512983323620685005, guid: 8f73c49f02989a74eaa10636ccc0ae6c, type: 3}
-  m_PrefabInstance: {fileID: 1925765560}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9df7e4c754d324944b2b87067a14a0fb, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1001 &2136876166
 PrefabInstance:
   m_ObjectHideFlags: 0

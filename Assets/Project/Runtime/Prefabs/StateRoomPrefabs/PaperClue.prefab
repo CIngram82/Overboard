@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 7512983323620685003}
   - component: {fileID: 7512983323620685002}
   - component: {fileID: 7512983323620685005}
-  m_Layer: 10
+  m_Layer: 0
   m_Name: PaperClue
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -29,7 +29,7 @@ Transform:
   m_GameObject: {fileID: 7512983323620685000}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0.531, z: 0.356}
-  m_LocalScale: {x: 0.67, y: -0.03, z: 0.11}
+  m_LocalScale: {x: 0.6700001, y: -0.03, z: 0.48808098}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -94,8 +94,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1, y: 7.954275, z: 2.4554806}
-  m_Center: {x: 0, y: -3.4771376, z: 0.110798016}
+  m_Size: {x: 2.0823662, y: 14.675455, z: 2.45548}
+  m_Center: {x: -0.27617425, y: -6.837728, z: 0.11079801}
 --- !u!114 &7512983323620685005
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -108,6 +108,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9df7e4c754d324944b2b87067a14a0fb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Message: This is  clue1 . This is also placeholder Text.
+  Message: 'TestClue: Find all 3 cubes and interact with the box on the chair to
+    get key.Door opens when key is picked up.'
   clueText: {fileID: 0}
   paperPanel: {fileID: 0}

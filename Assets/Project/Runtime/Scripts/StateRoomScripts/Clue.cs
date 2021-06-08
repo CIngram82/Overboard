@@ -9,13 +9,16 @@ public class Clue : MonoBehaviour
     [SerializeField] TextMeshProUGUI clueText;
     [SerializeField] GameObject paperPanel;
 
-    private void OnDisable()
+
+    void OnMouseEnter()
     {
-        GrabObject.collectablesList.Remove(gameObject); // this is here for now assuming the paper is being put back down. Can be taken out to be left for use in inventory until puzzle ends if needed.
         clueText.text = Message;
-        if (paperPanel != null)
-        {
-            paperPanel.SetActive(true);
-        }
+        paperPanel.SetActive(true);
     }
+
+    void OnMouseExit()
+    {
+        paperPanel.SetActive(false);
+    }
+
 }

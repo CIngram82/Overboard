@@ -37,6 +37,6 @@ public class CameraController : MonoBehaviour
 
     public void ToggleCursorLockMode()
     {
-        Cursor.lockState = (Cursor.lockState != CursorLockMode.Confined) ? CursorLockMode.Confined : CursorLockMode.Locked;
+        Cursor.lockState = (Cursor.lockState != CursorLockMode.Locked) ? CursorLockMode.Locked : CursorLockMode.Confined;
     }
 }
