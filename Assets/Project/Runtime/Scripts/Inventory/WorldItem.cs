@@ -40,6 +40,7 @@ namespace Inventory.Collectable
                     Debug.Log("Inventory is full.");
                     return;
                 }
+                    Debug.Log("Item Pickup.");
                 inventory.CollectedWorldItems.CollectedItems.Add(uniqueID.ID);
                 inventory.AddItem(Item);
                 Destroy(gameObject);

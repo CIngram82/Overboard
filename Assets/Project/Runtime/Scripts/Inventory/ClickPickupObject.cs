@@ -37,7 +37,7 @@ public class ClickPickupObject : MonoBehaviour
             if (Physics.Raycast(_ray, out RaycastHit rayHit, maxDistance, collectables))
             {
                 rayHit.transform.gameObject.GetComponentInParent<WorldItem>().PickUpItem(gameObject);
-                rayHit.transform.gameObject.SetActive(false);
+                //rayHit.transform.gameObject.SetActive(false);
             }
         }
     }
