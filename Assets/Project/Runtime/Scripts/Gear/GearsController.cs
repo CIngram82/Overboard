@@ -1,5 +1,5 @@
-using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class GearsController : MonoBehaviour
@@ -19,15 +19,26 @@ public class GearsController : MonoBehaviour
         return _isSolved = EndGear.IsPowered;
     }
 
-    void On_Object_Received() => _startGear.PowerNextGear();
+    void On_Drag(GameObject dragObject)
+    {
+        List<Gear> poweredGears = _startGear.PowerNextGear();
+        poweredGears.Add(StartGear);
+        var unPoweredGears = _gears.Where(ps => poweredGears.All(gs => gs != ps));
+        foreach (var gear in unPoweredGears)
+        {
+            gear.IsPowered = false;
+        }
+    }
 
     void SubToEvents(bool subscribe)
     {
-        DropObjectHandler.ObjectReceived -= On_Object_Received;
+        DragObjectHandler.DragStarted -= On_Drag;
+        DragObjectHandler.DragEnded -= On_Drag;
 
         if (subscribe)
         {
-            DropObjectHandler.ObjectReceived += On_Object_Received;
+            DragObjectHandler.DragStarted += On_Drag;
+            DragObjectHandler.DragEnded += On_Drag;
         }
     }
 
@@ -41,7 +52,7 @@ public class GearsController : MonoBehaviour
     }
     void Start()
     {
-        On_Object_Received();
+        On_Drag(default);
     }
     private void Awake()
     {
