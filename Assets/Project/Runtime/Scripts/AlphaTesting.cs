@@ -22,4 +22,9 @@ public class AlphaTesting : MonoBehaviour
     {
         Application.Quit();
     }
+
+    public void Reset()
+    {
+        SceneManager.LoadScene("AlphaScene");
+    }
 }

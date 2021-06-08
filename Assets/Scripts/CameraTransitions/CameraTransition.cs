@@ -6,6 +6,7 @@ using UnityEngine.UI;
 using TMPro;
 public class CameraTransition : MonoBehaviour
 {
+    [SerializeField] GameObject camPointer;
     [SerializeField] CinemachineVirtualCamera mainCam;
     [SerializeField] CinemachineVirtualCamera gearCam;
     bool isMain;
@@ -37,12 +38,19 @@ public class CameraTransition : MonoBehaviour
             Debug.Log(gearCam.Priority);
             mainCam.Priority = 1;
             isMain = false;
+            Cursor.visible = true;
+            Cursor.lockState = CursorLockMode.Confined;
+            camPointer.SetActive(false);
         }
         else
         {
+           
             gearCam.Priority = 1;
             mainCam.Priority = 2;
             isMain = true;
+            Cursor.visible = false;
+            Cursor.lockState = CursorLockMode.Locked;
+            camPointer.SetActive(true);
         }
     }
 
