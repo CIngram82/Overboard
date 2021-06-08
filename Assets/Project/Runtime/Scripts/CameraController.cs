@@ -6,7 +6,6 @@ public class CameraController : MonoBehaviour
 {
     [SerializeField] Transform player;
 
-    Vector3 offset;
     float rotSpeed = 1;
     float mouseX;
     float mouseY;

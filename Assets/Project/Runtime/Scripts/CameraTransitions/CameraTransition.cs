@@ -8,30 +8,25 @@ public class CameraTransition : MonoBehaviour
 {
     [SerializeField] CinemachineVirtualCamera mainCam;
     [SerializeField] CinemachineVirtualCamera gearCam;
-    int keyClick;
     bool isMain;
+    bool atGears;
 
     private void Start()
     {
-        keyClick = 0;
         isMain = true;
     }
 
+
     private void OnTriggerStay(Collider other)
     {
-        if (other.gameObject.CompareTag("Player") && Input.GetKey(KeyCode.E) && keyClick == 0)
+        if (other.gameObject.CompareTag("Player") && Input.GetKey(KeyCode.E))
         {
-            keyClick++;
             SwitchCameras();
-            isMain = !isMain;
             Debug.Log("E is pressed");
         }
-        else if (Input.GetKey(KeyCode.E) && keyClick >= 1)
-        {
-            keyClick = 0;
-            SwitchCameras();
-        }
+
     }
+
 
     void SwitchCameras()
     {

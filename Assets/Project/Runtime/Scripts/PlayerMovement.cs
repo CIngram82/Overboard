@@ -14,7 +14,6 @@ public class PlayerMovement : MonoBehaviour
     
     void Start()
     {
-        speed = 100;
         rig = GetComponent<Rigidbody>();
     }
 

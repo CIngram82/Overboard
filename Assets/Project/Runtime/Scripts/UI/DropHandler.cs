@@ -23,7 +23,7 @@ public class DropHandler : MonoBehaviour, IDropHandler
     {
         if (!Slot)
         {
-            DragHandler.Item.transform.SetParent(transform);
+            DragHandler.DraggedItem.transform.SetParent(transform);
             ExecuteEvents.ExecuteHierarchy<IHasChanged>(gameObject, null, (x, y) => x.HasChanged());
         }
     }
