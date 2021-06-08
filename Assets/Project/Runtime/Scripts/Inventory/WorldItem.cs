@@ -28,7 +28,8 @@ namespace Inventory.Collectable
         void CheckCollection()
         {
             if (CollectibleItems.CollectedItems.Contains(uniqueID.ID))
-                Destroy(gameObject);
+                //Destroy(gameObject);
+                gameObject.SetActive(false);
         }
 
         public void PickUpItem(GameObject item)
@@ -43,7 +44,8 @@ namespace Inventory.Collectable
                     Debug.Log("Item Pickup.");
                 inventory.CollectedWorldItems.CollectedItems.Add(uniqueID.ID);
                 inventory.AddItem(Item);
-                Destroy(gameObject);
+                // Destroy(gameObject);
+                gameObject.SetActive(false);
             }
         }
 
