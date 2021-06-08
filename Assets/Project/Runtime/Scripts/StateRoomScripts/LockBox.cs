@@ -26,7 +26,7 @@ public class LockBox : MonoBehaviour
         {
             if (!GrabObject.collectablesList.Contains(collectables))
             {
-                Debug.Log( collectables.name + "This isnt in the collectionsList");
+               // Debug.Log( collectables.name + "This isnt in the collectionsList");
                 return false;
             }
 
