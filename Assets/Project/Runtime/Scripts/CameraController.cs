@@ -13,7 +13,7 @@ public class CameraController : MonoBehaviour
 
     private void Start()
     {
-        Cursor.visible = false;
+       // Cursor.visible = false;
         Cursor.lockState = CursorLockMode.Locked;
     }
     private void LateUpdate()
@@ -30,7 +30,7 @@ public class CameraController : MonoBehaviour
         
         if (Input.GetMouseButtonDown(1))
         {
-            Cursor.visible = !Cursor.visible;
+           // Cursor.visible = !Cursor.visible;
             ToggleCursorLockMode();
         }
     }

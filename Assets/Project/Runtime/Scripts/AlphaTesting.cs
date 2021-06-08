@@ -5,12 +5,18 @@ using UnityEngine.SceneManagement;
 
 public class AlphaTesting : MonoBehaviour
 {
-
+    Scene currentScene;
 
     private void Start()
     {
-        Cursor.visible = true;
-        Cursor.lockState = CursorLockMode.None;
+        currentScene = SceneManager.GetActiveScene();
+        Debug.Log(currentScene.name);
+        if(currentScene.name == "CutScene")
+        {
+            Cursor.visible = true;
+            Cursor.lockState = CursorLockMode.None;
+        }
+ 
     }
 
     public void OnClickOK()
