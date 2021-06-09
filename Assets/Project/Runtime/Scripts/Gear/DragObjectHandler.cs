@@ -1,6 +1,7 @@
 using System;
 using UnityEngine;
 
+
 public class DragObjectHandler : MonoBehaviour
 {
     public Action<GameObject> ObjectPickedUp;
@@ -10,13 +11,15 @@ public class DragObjectHandler : MonoBehaviour
 
     bool isDragged = false;
     float _zCoordOffsetDrag = -3.5f;
-    float _zCoordOffsetDrop = 0.0f;
+    float _zCoordOffsetDrop = -1.5f;
     Vector3 startPosMouse;
     Vector3 startPosObject;
+
 
     Vector3 GetMouseAsWorldPoint()
     {
         Vector3 mousePoint = Input.mousePosition;
+
         return main.ScreenToWorldPoint(mousePoint);
     }
 
