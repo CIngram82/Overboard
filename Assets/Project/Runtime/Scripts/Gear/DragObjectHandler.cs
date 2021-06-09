@@ -4,12 +4,14 @@ using UnityEngine;
 
 public class DragObjectHandler : MonoBehaviour
 {
-    public static Action<DragObjectHandler> DragEnded;
+    public Action<GameObject> ObjectPickedUp;
+    public static Action<GameObject> DragStarted;
+    public static Action<GameObject> DragEnded;
     static Camera main;
 
     bool isDragged = false;
     float _zCoordOffsetDrag = -3.5f;
-    float _zCoordOffsetDrop = 0.0f;
+    float _zCoordOffsetDrop = -1.5f;
     Vector3 startPosMouse;
     Vector3 startPosObject;
 
@@ -23,6 +25,8 @@ public class DragObjectHandler : MonoBehaviour
 
     void OnMouseDown()
     {
+        ObjectPickedUp?.Invoke(gameObject);
+        DragStarted?.Invoke(gameObject);
         isDragged = true;
         transform.parent = null;
 
@@ -43,7 +47,7 @@ public class DragObjectHandler : MonoBehaviour
     {
         isDragged = false;
         transform.position = new Vector3(transform.position.x, transform.position.y, _zCoordOffsetDrop);
-        DragEnded?.Invoke(this);
+        DragEnded?.Invoke(gameObject);
     }
 
     void Awake()

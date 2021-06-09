@@ -25,69 +25,46 @@ public class GearSocket : MonoBehaviour
 
     Gear _gear;
 
-    public List<Connection> Connections;
+    public List<Connection> ConnectionsFrom;
+    public List<Connection> ConnectionsTo;
     public Gear Gear
     {
         get
         {
-            if (!_gear)
+            if (transform.childCount > 0)
             {
-                if (transform.childCount > 0)
-                {
+                if (!_gear)
                     return _gear = GetComponentInChildren<Gear>();
-                }
-                return null;
+                else
+                    return _gear;
             }
-            return _gear;
+            return _gear = null;
         }
     }
 
 
-    void PowerNextGear()
+    public List<Gear> PowerNextGear()
     {
-        foreach (var socket in Connections)
+        List<Gear> poweredSockets = new List<Gear>();
+        foreach (var socket in ConnectionsTo)
         {
             // if current is powered and next socket has a gear.
-            if (Gear.IsPowered && socket.To.Gear != null)
-            {
-                // if gears fit together
-                if ((socket.To.Gear.Radius + Gear.Radius) == socket.Distance)
-                {
-                    socket.To.Gear.IsPowered = true;
-                    socket.To.Gear.Direction = Gear.Direction * -1;
-                }
-            }
-            else
             if (socket.To.Gear != null)
-            {
-                socket.To.Gear.IsPowered = false;
-            }
+                if (Gear.IsPowered)
+                {
+                    // if gears fit together
+                    if ((socket.To.Gear.Radius + Gear.Radius) == socket.Distance)
+                    {
+                        socket.To.Gear.IsPowered = true;
+                        socket.To.Gear.Direction = Gear.Direction * -1;
+                        poweredSockets.Add(socket.To.Gear);
+                        if (socket.Distance != 0)
+                            poweredSockets.AddRange(socket.To.PowerNextGear());
+                    }
+                    //socket.To.Gear.IsPowered = false;
+                }
         }
-    }
-
-    void On_Object_Received() => PowerNextGear();
-
-    void SubToEvents(bool subscribe)
-    {
-        DropObjectHandler.ObjectReceived -= On_Object_Received;
-
-        if (subscribe)
-        {
-            DropObjectHandler.ObjectReceived += On_Object_Received;
-        }
-    }
-
-    void OnEnable()
-    {
-        SubToEvents(true);
-    }
-    void OnDisable()
-    {
-        SubToEvents(false);
-    }
-    void Start()
-    {
-        PowerNextGear();
+        return poweredSockets;
     }
 }
 
