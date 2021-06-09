@@ -19,11 +19,13 @@ public class DropObjectHandler : MonoBehaviour
 
     [SerializeField] float snapTolerance = 0.5f;
 
-    void OnDrop(GameObject dragObject)
+    void OnDrop(DragObjectHandler dragObject)
     {
         if (!Slot)  // if slot is empty
         {
             float distance = Vector3.Distance(dragObject.transform.position, transform.position);
+
+            Debug.LogError($"{name} distance: {distance}");
 
             if (distance <= snapTolerance)
             {
