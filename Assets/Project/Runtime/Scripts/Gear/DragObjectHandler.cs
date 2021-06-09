@@ -1,7 +1,6 @@
 using System;
 using UnityEngine;
 
-
 public class DragObjectHandler : MonoBehaviour
 {
     public static Action<DragObjectHandler> DragEnded;
@@ -13,11 +12,9 @@ public class DragObjectHandler : MonoBehaviour
     Vector3 startPosMouse;
     Vector3 startPosObject;
 
-
     Vector3 GetMouseAsWorldPoint()
     {
         Vector3 mousePoint = Input.mousePosition;
-
         return main.ScreenToWorldPoint(mousePoint);
     }
 

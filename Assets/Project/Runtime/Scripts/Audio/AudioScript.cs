@@ -1,4 +1,3 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -6,21 +5,25 @@ public class AudioScript : MonoBehaviour
 {
     AudioSource thisAudio;
     [SerializeField] List<AudioClip> soundEffects = new List<AudioClip>();
-    [SerializeField] List<AudioClip> playerFootsteps = new List<AudioClip>();
-
+    [SerializeField] List<AudioClip> woodFootsteps = new List<AudioClip>();
+    [SerializeField] List<AudioClip> carpetFootsteps = new List<AudioClip>();
+    [SerializeField] List<AudioClip> metalFootsteps = new List<AudioClip>();
+    [SerializeField] float pitchMax = 1.2f;
+    [SerializeField] float pitchMin = 0.8f;
     void Start()
     {
         thisAudio = gameObject.GetComponent<AudioSource>();
     }
 
-    void Update()
+    private void PlayClip(AudioClip clip)
     {
-        
+        thisAudio.pitch = Random.Range(pitchMin, pitchMax);
+        thisAudio.PlayOneShot(clip);
     }
 
     public void PlaySoundEffect(int clipIndex)
     {
-        thisAudio.PlayOneShot(soundEffects[clipIndex]);
+        PlayClip(soundEffects[clipIndex]);
     }
 
     public void StopAudio()
@@ -30,18 +33,14 @@ public class AudioScript : MonoBehaviour
 
     public void PlayCarpetFootsteps()
     {
-        thisAudio.PlayOneShot(playerFootsteps[Random.Range(0, 3)]);
+        PlayClip(carpetFootsteps[Random.Range(0, carpetFootsteps.Count)]);
     }
     public void PlayWoodFootsteps()
     {
-        thisAudio.PlayOneShot(playerFootsteps[Random.Range(3, 6)]);
+        PlayClip(woodFootsteps[Random.Range(0, woodFootsteps.Count)]);
     }
     public void PlayMetalFootsteps()
     {
-        thisAudio.PlayOneShot(playerFootsteps[Random.Range(6, 9)]);
+        PlayClip(metalFootsteps[Random.Range(0, metalFootsteps.Count)]);
     }
-
-   
-
-    
 }
