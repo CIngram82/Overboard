@@ -1,7 +1,6 @@
 using System;
 using UnityEngine;
 
-
 public class DragObjectHandler : MonoBehaviour
 {
     public Action<GameObject> ObjectPickedUp;
@@ -9,9 +8,9 @@ public class DragObjectHandler : MonoBehaviour
     public static Action<GameObject> DragEnded;
     static Camera main;
 
+    [SerializeField] float _zCoordOffsetDrag = -3.5f;
+    [SerializeField] float _zCoordOffsetDrop = -1.5f;
     bool isDragged = false;
-    float _zCoordOffsetDrag = -3.5f;
-    float _zCoordOffsetDrop = -1.5f;
     Vector3 startPosMouse;
     Vector3 startPosObject;
 

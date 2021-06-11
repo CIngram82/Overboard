@@ -54,7 +54,7 @@ public class GearsController : MonoBehaviour
     {
         On_Drag(default);
     }
-    private void Awake()
+    void Awake()
     {
         StartGear.gameObject.GetComponent<DragObjectHandler>().enabled = false;
         EndGear.gameObject.GetComponent<DragObjectHandler>().enabled = false;
