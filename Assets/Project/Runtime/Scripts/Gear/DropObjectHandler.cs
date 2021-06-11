@@ -5,6 +5,7 @@ public class DropObjectHandler : MonoBehaviour
 {
     public static Action ObjectReceived;
 
+    [SerializeField] float snapTolerance = 0.5f;
     public GameObject Slot
     {
         get
@@ -17,7 +18,6 @@ public class DropObjectHandler : MonoBehaviour
         }
     }
 
-    [SerializeField] float snapTolerance = 0.5f;
 
     void OnDrop(GameObject dragObject)
     {
