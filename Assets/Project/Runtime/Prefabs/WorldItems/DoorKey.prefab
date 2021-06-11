@@ -55,9 +55,21 @@ PrefabInstance:
       propertyPath: _itemName
       value: DoorKey
       objectReference: {fileID: 0}
+    - target: {fileID: 388268536248601361, guid: a576f1fa220bd18459551648ac1f3b35, type: 3}
+      propertyPath: _itemDatabase
+      value: 
+      objectReference: {fileID: 11400000, guid: 1c3093bb43bbc1549ab9b7e4cba9d29d, type: 2}
     - target: {fileID: 388268536248601366, guid: a576f1fa220bd18459551648ac1f3b35, type: 3}
       propertyPath: m_Name
       value: DoorKey
+      objectReference: {fileID: 0}
+    - target: {fileID: 388268536248601366, guid: a576f1fa220bd18459551648ac1f3b35, type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 7664541312035993033, guid: a576f1fa220bd18459551648ac1f3b35, type: 3}
+      propertyPath: m_Layer
+      value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 7664541312035993033, guid: a576f1fa220bd18459551648ac1f3b35, type: 3}
       propertyPath: m_IsActive
@@ -77,6 +89,18 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 3647966364661976578}
     m_Modifications:
+    - target: {fileID: 903543005948749073, guid: 18b08de07e8e72f41b3204222d3b99dd, type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 3362810095078393100, guid: 18b08de07e8e72f41b3204222d3b99dd, type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 3924121303335786443, guid: 18b08de07e8e72f41b3204222d3b99dd, type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
     - target: {fileID: 7219441637226664712, guid: 18b08de07e8e72f41b3204222d3b99dd, type: 3}
       propertyPath: m_IsTrigger
       value: 1
@@ -84,6 +108,10 @@ PrefabInstance:
     - target: {fileID: 7219441637226664713, guid: 18b08de07e8e72f41b3204222d3b99dd, type: 3}
       propertyPath: m_Name
       value: Key
+      objectReference: {fileID: 0}
+    - target: {fileID: 7219441637226664713, guid: 18b08de07e8e72f41b3204222d3b99dd, type: 3}
+      propertyPath: m_Layer
+      value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 7219441637226664713, guid: 18b08de07e8e72f41b3204222d3b99dd, type: 3}
       propertyPath: m_IsActive
