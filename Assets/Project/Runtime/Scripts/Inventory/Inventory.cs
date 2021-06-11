@@ -9,10 +9,12 @@ namespace Inventory
     {
         List<Item> _items;
         CollectibleItemSet _collectedWorldItems;
+        CollectibleItemSet _collectedClues;
 
         public int Capacity { get; } = 6;
-        public List<Item> Items { get => _items; private set => _items = value; } 
-        public CollectibleItemSet CollectedWorldItems => _collectedWorldItems; 
+        public List<Item> Items { get => _items; private set => _items = value; }
+        public CollectibleItemSet CollectedWorldItems => _collectedWorldItems;
+        public CollectibleItemSet CollectedClues => _collectedClues;
 
 
         public void AddItem(Item item)
@@ -32,14 +34,6 @@ namespace Inventory
         {
             Items.Remove(item);
             // TODO: add drop item feature if needed.
-            GameEvents.On_Inventory_Item_Removed(item);
-            Debug.Log("Item removed.");
-        }
-        public void RemoveItemAt(int index)
-        {
-            Items.RemoveAt(index);
-            // TODO: add drop item feature if needed.
-            //GameEvents.On_Inventory_Item_Removed(item);
             Debug.Log("Item removed.");
         }
 
@@ -58,16 +52,19 @@ namespace Inventory
             Items = data.Items;
         }
 
+        void On_Remove_Item(Item item) => RemoveItem(item);
         void On_SaveData_Loaded() => LoadData();
         void On_SaveData_PreSave() => SaveData();
 
         void SubToEvents(bool subscribe)
         {
+            GameEvents.InventoryItemRemoved -= On_Remove_Item;
             SaveDataManager.SaveDataLoaded -= On_SaveData_Loaded;
             SaveDataManager.DataSavedPrepared -= On_SaveData_PreSave;
 
             if (subscribe)
             {
+                GameEvents.InventoryItemRemoved += On_Remove_Item;
                 SaveDataManager.SaveDataLoaded += On_SaveData_Loaded;
                 SaveDataManager.DataSavedPrepared += On_SaveData_PreSave;
             }
