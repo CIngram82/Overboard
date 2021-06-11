@@ -3919,6 +3919,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
+    - target: {fileID: 4448749213885339783, guid: 60fd4002636c38e44a2ed3fa46590125, type: 3}
+      propertyPath: m_UseGravity
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 60fd4002636c38e44a2ed3fa46590125, type: 3}
 --- !u!1 &260098229
@@ -10015,9 +10019,10 @@ GameObject:
   - component: {fileID: 742133166}
   - component: {fileID: 742133165}
   - component: {fileID: 742133164}
+  - component: {fileID: 742133168}
   m_Layer: 0
   m_Name: Water
-  m_TagString: Untagged
+  m_TagString: Water
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -10099,6 +10104,19 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 1, y: 0, z: -1}
+--- !u!65 &742133168
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 742133163}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 10, y: 0.0000006568043, z: 6.8860183}
+  m_Center: {x: -2.2949607e-11, y: -0.000019440147, z: -1.5570018}
 --- !u!1 &754857832
 GameObject:
   m_ObjectHideFlags: 0
