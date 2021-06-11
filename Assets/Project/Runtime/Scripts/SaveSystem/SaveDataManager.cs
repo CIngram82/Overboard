@@ -10,14 +10,19 @@ namespace SaveSystem.Data
         public static event Action SaveDataLoaded;
 
         static SaveDataManager _instance;
-        static string SAVE_PATH;
-        const string FILENAME = "save.dat";
+        static string fileName = "save";
+        static int currentSave = 1;
+        static SaveFileType fileType = SaveFileType.dat;
 
+        int saveCount = 1;
+
+        public static string SAVE_PATH => $"{Application.persistentDataPath}/saves/";
+        public static string FileName => $"{fileName}_{currentSave:00}.{fileType}";
         public static SaveDataState Save { get; private set; }
         public static bool IsDataLoaded { get; private set; } = false;
 
 
-        private void Awake()
+        void Awake()
         {
             if (_instance == null)
                 _instance = this;
@@ -29,11 +34,11 @@ namespace SaveSystem.Data
             LoadData();
         }
 
-        public static void LoadData()
+        public void LoadData()
         {
-            SaveDataState _deserializeSave = SaveLoad.Load<SaveDataState>(FILENAME);
-            if (File.Exists(SaveLoad.SAVE_PATH))
+            if (File.Exists(SAVE_PATH))
             {
+                SaveDataState _deserializeSave = SaveLoad.Load<SaveDataState>(SAVE_PATH, FileName);
                 if (_deserializeSave.Equals(default(SaveDataState)))
                 {
                     Debug.LogError("Failed to load save file.");
@@ -41,60 +46,72 @@ namespace SaveSystem.Data
                 }
                 else
                 {
-                    Debug.LogWarning("Save file was loaded.");
-
+                    Debug.Log("Save file was loaded.");
                     Save = _deserializeSave;
                 }
             }
             else
             {
-                Debug.LogError("Save file not found.");
+                Debug.LogWarning("Save file not found.");
                 CreateNewSaveFile();
             }
-
             IsDataLoaded = true;
 
             SaveDataLoaded?.Invoke();
         }
 
-        public static void SaveData()
+        public void SaveData()
         {
             DataSavedPrepared?.Invoke();
+            SaveLoad.Save(Save, SAVE_PATH, FileName);
 
-            SaveLoad.Save(Save, FILENAME);
-
-            Debug.Log("Saved Data to persistentDataPath.");
+            Debug.Log($"Saved Data to {SAVE_PATH}/{FileName}.");
         }
 
-        private void BackupSave()
+        void BackupSave()
         {
-            string backupFilename;
+            string backupFileName;
+            string backupSavePath;
             int backupIndex = 1;
 
             do
             {
-                backupFilename = Application.persistentDataPath + $"/SaveBackup{backupIndex}.dat";
+                backupSavePath = $"{Application.persistentDataPath}/SaveBackups/";
+                backupFileName = $"{FileName}_{backupIndex:00}.bak";
+
                 backupIndex++;
-            } while (File.Exists(backupFilename));
+            } while (File.Exists(backupFileName));
 
-            SaveLoad.Save(Save, backupFilename);
+            SaveLoad.Save(Save, backupSavePath, backupFileName);
 
-            Debug.Log($"Backed up current save to {backupFilename}");
+            Debug.Log($"Backed up current save to {backupSavePath}{backupFileName}");
         }
 
-        private static void CreateNewSaveFile()
+
+        public void SelectSave(int saveNumber)
+        {
+            currentSave = saveNumber;
+            LoadData();
+        }
+
+        void CreateNewSaveFile()
         {
             Debug.LogWarning("No valid Save file found; creating a new save.");
 
             Save = new SaveDataState();
-
             SaveDataLoaded?.Invoke();
             SaveData();
+
+            saveCount++;
         }
 
-        public void ClearSaves()
+        public void ClearSave()
         {
-            SaveLoad.DeleteAllSaveFilesIn("");
+            SaveLoad.DeleteSave($"{SAVE_PATH}{FileName}");
+        }
+        public void ClearAllSaves()
+        {
+            SaveLoad.DeleteAllSaveFilesIn(SAVE_PATH);
         }
     }
 }

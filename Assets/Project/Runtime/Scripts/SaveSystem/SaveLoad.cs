@@ -14,9 +14,6 @@ namespace SaveSystem
 
     public class SaveLoad
     {
-        public static string SAVE_PATH = string.Concat(Application.persistentDataPath, "/saves/");
-        SaveFileType File_Type = SaveFileType.txt;
-
         /// <summary>
         /// Saves serialized data to file.
         /// </summary>
@@ -45,10 +42,6 @@ namespace SaveSystem
         /// <typeparam name="T"></typeparam>
         /// <param name="saveObject">Serializable object to save.</param>
         /// <param name="fileName">Name of save file.</param>
-        public static void Save<T>(T saveObject, string fileName)
-        {
-            Save(saveObject, SAVE_PATH, fileName);
-        }
 
         /// <summary>
         /// Loads serialized data from file.
@@ -68,16 +61,6 @@ namespace SaveSystem
                 return (T)formatter.Deserialize(fileStream);
             }
         }
-        /// <summary>
-        /// Loads serialized data from file at persistentDataPath/save.
-        /// </summary>
-        /// <typeparam name="T"></typeparam>
-        /// <param name="fileName">Name of save file.</param>
-        /// <returns>Saved serialized object or default if file not found.</returns>
-        public static T Load<T>(string fileName)
-        {
-            return Load<T>(SAVE_PATH, fileName);
-        }
 
         public static bool SaveExists(string path, string fileName)
         {
@@ -85,9 +68,13 @@ namespace SaveSystem
             return File.Exists(file);
         }
 
-        public static void DeleteAllSaveFilesIn(string location)
+        public static void DeleteSave(string path)
         {
-            string path = string.Concat(SAVE_PATH, location);
+            File.Delete(path);
+        }
+
+        public static void DeleteAllSaveFilesIn(string path)
+        {
             DirectoryInfo directory = new DirectoryInfo(path);
             directory.Delete(true);
             Directory.CreateDirectory(path);
