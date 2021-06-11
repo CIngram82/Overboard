@@ -23,7 +23,7 @@ namespace Inventory
             GameEvents.On_Inventory_Item_Added(item);
             Debug.Log("Item added.");
         }
-        public void AddItems(List<Item> items)
+        public void AddAllItems(List<Item> items)
         {
             foreach (Item item in items)
             {
@@ -35,6 +35,13 @@ namespace Inventory
             Items.Remove(item);
             // TODO: add drop item feature if needed.
             Debug.Log("Item removed.");
+        }
+        public void RemoveAllItems(List<Item> items)
+        {
+            foreach (Item item in items)
+            {
+                RemoveItem(item);
+            }
         }
 
         void SaveData()
