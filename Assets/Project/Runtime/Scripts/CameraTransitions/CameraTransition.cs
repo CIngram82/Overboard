@@ -5,11 +5,14 @@ public class CameraTransition : MonoBehaviour
 {
     [SerializeField] GameObject camPointer;
     [SerializeField] CinemachineVirtualCamera mainCam;
-    [SerializeField] CinemachineVirtualCamera gearCam;
+    [SerializeField] CinemachineVirtualCamera transitionCamera;
+    [SerializeField] int startingPriority;
+  
     bool isMain;
 
     private void Start()
     {
+        startingPriority = transitionCamera.Priority;
         isMain = true;
     }
 
@@ -25,8 +28,8 @@ public class CameraTransition : MonoBehaviour
     {
         if (isMain)
         {
-            gearCam.Priority = 2;
-            mainCam.Priority = 1;
+            transitionCamera.Priority = 2;
+            mainCam.Priority = startingPriority;
             isMain = false;
             Cursor.visible = true;
             Cursor.lockState = CursorLockMode.Confined;
@@ -34,7 +37,7 @@ public class CameraTransition : MonoBehaviour
         }
         else
         {
-            gearCam.Priority = 1;
+            transitionCamera.Priority = startingPriority;
             mainCam.Priority = 2;
             isMain = true;
             Cursor.visible = false;
