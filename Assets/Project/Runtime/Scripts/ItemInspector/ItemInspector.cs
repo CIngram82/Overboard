@@ -13,12 +13,17 @@ public class ItemInspector : MonoBehaviour
 
     Vector3 position;
     Vector3 zoom;
+    Vector3 camPos;
 
+    private void OnEnable()
+    {
+        gameObject.transform.position = InspectCamera.transform.position;          
+    }
 
     void OnMouseScroll()
     {
         var zoomAmount = Input.mouseScrollDelta.y;
-        zoom = InspectCamera.transform.position;
+        zoom = gameObject.transform.position;
 
         if (zoomAmount > 0.0f)
         {
@@ -28,8 +33,8 @@ public class ItemInspector : MonoBehaviour
         {
             zoom.z -= zoomSpeed * Time.deltaTime;
         }
-        zoom.z = Mathf.Clamp(zoom.z, -5.0f, -2.0f);
-        InspectCamera.transform.position = zoom;
+        zoom.z = Mathf.Clamp(zoom.z,-5.0f,-2.0f);
+        gameObject.transform.position = zoom;
     }
     void OnMouseDown()
     {
