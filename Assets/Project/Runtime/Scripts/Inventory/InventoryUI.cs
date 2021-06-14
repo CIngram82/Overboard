@@ -7,6 +7,7 @@ public class InventoryUI : MonoBehaviour
 
     public List<ItemUI> UIItems { get; private set; } = new List<ItemUI>();
 
+
     void AddUIItem(Item item)
     {
         ItemUI uiItemInstance = Instantiate(_uiItem, transform);
@@ -19,25 +20,21 @@ public class InventoryUI : MonoBehaviour
         ItemUI uIItem = UIItems.Find(x => x.Item.Name == item.Name);
         UIItems.Remove(uIItem);
         Destroy(uIItem.gameObject);
-        Debug.Log("Item Removed from UI.");
+        Debug.Log("Item removed from UI.");
     }
-    void RemoveUIItemAt(int index)
-    {
-        ItemUI uIItem = UIItems[index];
-        UIItems.Remove(uIItem);
-        Destroy(uIItem.gameObject);
-        Debug.Log("Item Removed from UI.");
-    }
+
+    void On_Add_Item(Item item) => AddUIItem(item);
+    void On_Remove_Item(Item item) => RemoveUIItem(item);
 
     void SubToEvents(bool subscribe)
     {
-        GameEvents.InventoryItemAdded -= AddUIItem;
-        GameEvents.InventoryItemRemoved -= RemoveUIItem;
+        GameEvents.InventoryItemAdded -= On_Add_Item;
+        GameEvents.InventoryItemRemoved -= On_Remove_Item;
 
         if (subscribe)
         {
-            GameEvents.InventoryItemAdded += AddUIItem;
-            GameEvents.InventoryItemRemoved += RemoveUIItem;
+            GameEvents.InventoryItemAdded += On_Add_Item;
+            GameEvents.InventoryItemRemoved += On_Remove_Item;
         }
     }
 
