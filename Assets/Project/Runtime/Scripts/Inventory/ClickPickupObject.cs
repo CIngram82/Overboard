@@ -23,10 +23,9 @@ public class ClickPickupObject : MonoBehaviour
     {
         _ray = _rayCamera.ScreenPointToRay(Input.mousePosition);
         Debug.DrawRay(_ray.origin, _ray.direction * maxDistance, rayColor);
-        //Debug.LogWarning($"_ray.origin: {_ray.origin}\n_ray.direction: {_ray.direction}");
     }
 
-    private void Update()
+    void Update()
     {
 #if UNITY_EDITOR
         if (debuggingOn) DrawRay();
@@ -36,17 +35,16 @@ public class ClickPickupObject : MonoBehaviour
             _ray = _rayCamera.ScreenPointToRay(Input.mousePosition);
             if (Physics.Raycast(_ray, out RaycastHit rayHit, maxDistance, collectables))
             {
-                GrabObject.collectablesList.Add(rayHit.transform.gameObject);// this only takes the gameObject of the maguffin within the prefab not the entire prefab as that would require restructuring of the world item prefab to include the layer at base.
-                                                                             //rayHit.transform.gameObject.SetActive(false);
+                // WorldItem is on root parent containing gameObject of hit collider. 
                 rayHit.transform.gameObject.GetComponentInParent<WorldItem>().PickUpItem(gameObject);
             }
         }
     }
-    private void Awake()
+    void Awake()
     {
         _rayCamera = GetComponentInChildren<Camera>();
     }
-    private void Start()
+    void Start()
     {
         // this needs to be changed on the camera script when I update that branch and taken out of this one,
         // but the cursor leaving the screen was causing a lot of issues with double monitor.
