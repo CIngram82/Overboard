@@ -5,6 +5,7 @@ using TMPro;
 
 public class Clue : MonoBehaviour
 {
+    [TextArea]
     [SerializeField] string Message;
     [SerializeField] TextMeshProUGUI clueText;
     [SerializeField] GameObject paperPanel;
