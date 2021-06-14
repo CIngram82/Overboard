@@ -6,16 +6,9 @@ namespace PipePuzzle
 {
     public class PipeGameManager : MonoBehaviour
     {
-
-        public bool firstOutputPowered;
-        public bool secondOutputPowered;
-        public bool thirdOutputPowered;
-
         public bool isComplete;
-        public Pipe power;
-        public Pipe firstOutput;
-        public Pipe secondOutput;
-        public Pipe thirdOutput;
+        [SerializeField]private Pipe power;
+        [SerializeField]private Pipe firstOutput;
 
         public PFGrid<Pipe> puzzle;
         private List<Pipe> allPipes;
@@ -25,19 +18,14 @@ namespace PipePuzzle
         // Start is called before the first frame update
         void Start()
         {
-            firstOutputPowered = false;
-            secondOutputPowered = false;
-            thirdOutputPowered = false;
             isComplete = false;
 
             allPipes = new List<Pipe>( FindObjectsOfType<Pipe>() );
             SetUpGrid();
             SetUpPuzzle();
             MakeNeighbors();
-            //Shuffle();
+            Shuffle();
             pathfinding = new Pathfinding(puzzle);
-            power = puzzle.gridArray[6, 6];
-            firstOutput = puzzle.gridArray[0,6];
             CheckConnections();
         }
 
@@ -113,10 +101,14 @@ namespace PipePuzzle
 
         public void CheckConnections()
         {
-            List<Pipe> pathOne = pathfinding.FindPath( power.X, power.Y, firstOutput.X, firstOutput.Y);
+            List<Pipe> pathOne = pathfinding.FindPath(power.X, power.Y, firstOutput.X, firstOutput.Y);
             if (null == pathOne)
             {
-                Debug.Log("No path found!");
+                foreach (var pipe in puzzle.gridArray)
+                {
+                    pipe.gameObject.GetComponent<SpriteRenderer>().color = Color.white;
+                }
+                isComplete = false;
             }
             else
             {
