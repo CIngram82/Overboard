@@ -31,6 +31,7 @@ public class CameraTransition : MonoBehaviour
             Cursor.visible = true;
             Cursor.lockState = CursorLockMode.Confined;
             camPointer.SetActive(false);
+            PlayerMovement.canMove = false;
         }
         else
         {
@@ -40,6 +41,7 @@ public class CameraTransition : MonoBehaviour
             Cursor.visible = false;
             Cursor.lockState = CursorLockMode.Locked;
             camPointer.SetActive(true);
+            PlayerMovement.canMove = true;
         }
     }
 }
