@@ -30,7 +30,6 @@ public class AudioScript : MonoBehaviour
     {
         thisAudio.Stop();
     }
-
     public void PlayCarpetFootsteps()
     {
         PlayClip(carpetFootsteps[Random.Range(0, carpetFootsteps.Count)]);
