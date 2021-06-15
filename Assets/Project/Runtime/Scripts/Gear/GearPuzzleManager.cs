@@ -2,21 +2,23 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
-public class GearsController : MonoBehaviour
+public class GearPuzzleManager : MonoBehaviour
 {
+    public static System.Action<bool> PuzzleCompleted;
+
     [SerializeField] GearSocket _startGear;
     [SerializeField] GearSocket _endGear;
     [SerializeField] List<Gear> _gears;
     [SerializeField] List<GearSocket> _gearSocket;
-    bool _isSolved = false;
 
+    //public bool IsSolved { get; private set; }
     public Gear StartGear => _startGear.Gear;
     public Gear EndGear => _startGear.Gear;
 
 
-    public bool CheckedPuzzleState()
+    public void CheckedCompletion()
     {
-        return _isSolved = EndGear.IsPowered;
+        PuzzleCompleted?.Invoke(EndGear.IsPowered);
     }
 
     void On_Drag(GameObject dragObject)
@@ -28,6 +30,7 @@ public class GearsController : MonoBehaviour
         {
             gear.IsPowered = false;
         }
+        CheckedCompletion();
     }
 
     void SubToEvents(bool subscribe)
