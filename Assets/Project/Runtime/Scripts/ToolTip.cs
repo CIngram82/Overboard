@@ -21,8 +21,8 @@ public class Tooltip : MonoBehaviour
     {
         tooltip = transform.GetChild(0).gameObject;
         DisableTooltip();
-        GameEvents.ToolTipActivated += EnableTooltip;
-        GameEvents.ToolTipDeactivated += DisableTooltip;
+        EventsManager.ToolTipActivated += EnableTooltip;
+        EventsManager.ToolTipDeactivated += DisableTooltip;
     }
     private void Update()
     {

@@ -14,7 +14,7 @@ public class ItemUI : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 
     public void OnClickRemove()
     {
-        GameEvents.On_Inventory_Item_Removed(Item);
+        EventsManager.On_Inventory_Item_Removed(Item);
     }
 
     public void Setup(Item item)
@@ -28,10 +28,10 @@ public class ItemUI : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 
     public void OnPointerEnter(PointerEventData eventData)
     {
-        GameEvents.On_Tool_Tip_Activated(Item.Description);
+        EventsManager.On_Tool_Tip_Activated(Item.Description);
     }
     public void OnPointerExit(PointerEventData eventData)
     {
-        GameEvents.On_Tool_Tip_Deactivated();
+        EventsManager.On_Tool_Tip_Deactivated();
     }
 }

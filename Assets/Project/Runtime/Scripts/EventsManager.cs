@@ -2,7 +2,7 @@ using System;
 using UnityEngine;
 using Inventory.Database;
 
-public class GameEvents : MonoBehaviour
+public class EventsManager : MonoBehaviour
 {
     #region Event Actions
     public static Action<string> ToolTipActivated;

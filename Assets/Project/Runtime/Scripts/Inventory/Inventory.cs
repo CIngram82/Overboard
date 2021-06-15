@@ -23,7 +23,7 @@ namespace Inventory
         public void AddItem(Item item)
         {
             _items.Add(item);
-            GameEvents.On_Inventory_Item_Added(item);
+            EventsManager.On_Inventory_Item_Added(item);
             Debug.Log($"Item {item.Name} added.");
         }
         public void AddAllItems(List<Item> items)
