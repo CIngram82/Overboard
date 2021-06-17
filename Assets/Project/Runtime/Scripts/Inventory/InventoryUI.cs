@@ -1,16 +1,17 @@
 using System.Collections.Generic;
 using UnityEngine;
+using Inventory.Database;
 
 public class InventoryUI : MonoBehaviour
 {
-    [SerializeField] ItemUI _uiItem;
+    [SerializeField] ItemUI _uiItemPrefab;
 
     public List<ItemUI> UIItems { get; private set; } = new List<ItemUI>();
 
 
     void AddUIItem(Item item)
     {
-        ItemUI uiItemInstance = Instantiate(_uiItem, transform);
+        ItemUI uiItemInstance = Instantiate(_uiItemPrefab, transform);
         uiItemInstance.Setup(item);
         UIItems.Add(uiItemInstance);
         Debug.Log("Item added to UI.");
@@ -38,11 +39,11 @@ public class InventoryUI : MonoBehaviour
         }
     }
 
-    private void OnEnable()
+    void OnEnable()
     {
         SubToEvents(true);
     }
-    private void OnDisable()
+    void OnDisable()
     {
         SubToEvents(false);
     }

@@ -2,6 +2,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using SaveSystem.Data;
 using Inventory.Collectable;
+using Inventory.Database;
 
 namespace Inventory
 {
@@ -9,11 +10,13 @@ namespace Inventory
     {
         List<Item> _items;
         CollectibleItemSet _collectedWorldItems;
+        List<Clue> _clues;
         CollectibleItemSet _collectedClues;
 
         public int Capacity { get; } = 6;
         public List<Item> Items { get => _items; private set => _items = value; }
         public CollectibleItemSet CollectedWorldItems => _collectedWorldItems;
+        public List<Clue> Clues { get => _clues; private set => _clues = value; }
         public CollectibleItemSet CollectedClues => _collectedClues;
 
 
@@ -33,6 +36,7 @@ namespace Inventory
         public void RemoveItem(Item item)
         {
             Items.Remove(item);
+            EventsManager.On_Inventory_Item_Removed(item);
             // TODO: add drop item feature if needed.
             Debug.Log($"Item {item.Name} removed.");
         }
@@ -43,49 +47,75 @@ namespace Inventory
                 RemoveItem(item);
             }
         }
+       
+        public void AddClue(Clue clue)
+        {
+            _clues.Add(clue);
+            EventsManager.On_Inventory_Clue_Added(clue);
+            Debug.Log($"Clue {clue.Name} added.");
+        }
+        public void AddAllClues(List<Clue> items)
+        {
+            foreach (Clue clue in items)
+            {
+                AddClue(clue);
+            }
+        }
+        public void RemoveItem(Clue clue)
+        {
+            Clues.Remove(clue);
+            EventsManager.On_Inventory_Clue_Removed(clue);
+            Debug.Log($"Clue {clue.Name} removed.");
+        }
+        public void RemoveAllClues(List<Clue> items)
+        {
+            foreach (Clue clue in items)
+            {
+                RemoveItem(clue);
+            }
+        }
 
         void SaveData()
         {
-            SaveDataManager.Save.InventoryData = new InventoryData()
-            {
-                Items = _items,
-                CollectibleItemSet = _collectedWorldItems,
-            };
+            InventoryData data = SaveDataManager.Save.InventoryData;
+            data.CollectibleWorldItems = _collectedWorldItems;
+            data.Items = _items;
+            data.CollectibleClues = _collectedClues;
+            data.Clues = _clues;
         }
         void LoadData()
         {
             InventoryData data = SaveDataManager.Save.InventoryData;
-            _collectedWorldItems = data.CollectibleItemSet;
-            Items = data.Items;
+            _collectedWorldItems = data.CollectibleWorldItems;
+            AddAllItems(data.Items);
+            _collectedClues = data.CollectibleClues;
+            AddAllClues(data.Clues);
         }
 
-        void On_Remove_Item(Item item) => RemoveItem(item);
         void On_SaveData_Loaded() => LoadData();
         void On_SaveData_PreSave() => SaveData();
 
         void SubToEvents(bool subscribe)
         {
-            GameEvents.InventoryItemRemoved -= On_Remove_Item;
             SaveDataManager.SaveDataLoaded -= On_SaveData_Loaded;
             SaveDataManager.DataSavedPrepared -= On_SaveData_PreSave;
 
             if (subscribe)
             {
-                GameEvents.InventoryItemRemoved += On_Remove_Item;
                 SaveDataManager.SaveDataLoaded += On_SaveData_Loaded;
                 SaveDataManager.DataSavedPrepared += On_SaveData_PreSave;
             }
         }
 
-        private void OnEnable()
+        void OnEnable()
         {
             SubToEvents(true);
         }
-        private void OnDisable()
+        void OnDisable()
         {
             SubToEvents(false);
         }
-        private void Awake()
+        void Awake()
         {
             if (SaveDataManager.IsDataLoaded)
                 On_SaveData_Loaded();

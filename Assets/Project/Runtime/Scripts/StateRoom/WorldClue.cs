@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 
-public class Clue : MonoBehaviour
+public class WorldClue : MonoBehaviour
 {
     [SerializeField] string Message;
     [SerializeField] TextMeshProUGUI clueText;

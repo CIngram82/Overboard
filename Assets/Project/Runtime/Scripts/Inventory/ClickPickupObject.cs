@@ -4,7 +4,8 @@ using Inventory.Collectable;
 public class ClickPickupObject : MonoBehaviour
 {
     [Header("RayCasting")]
-    [SerializeField] LayerMask collectables;
+    [SerializeField] LayerMask items;
+    [SerializeField] LayerMask clues;
     [SerializeField] float maxDistance = 50.0f;
     [Header("Debugging")]
     [SerializeField] bool debuggingOn = true;
@@ -32,8 +33,15 @@ public class ClickPickupObject : MonoBehaviour
 #endif
         if (Input.GetMouseButtonDown(0))
         {
+            RaycastHit rayHit;
             _ray = _rayCamera.ScreenPointToRay(Input.mousePosition);
-            if (Physics.Raycast(_ray, out RaycastHit rayHit, maxDistance, collectables))
+            if (Physics.Raycast(_ray, out rayHit, maxDistance, items))
+            {
+                // WorldItem is on root parent containing gameObject of hit collider. 
+                rayHit.transform.gameObject.GetComponentInParent<WorldItem>().PickUpItem(gameObject);
+            }
+            else
+            if (Physics.Raycast(_ray, out rayHit, maxDistance, clues))
             {
                 // WorldItem is on root parent containing gameObject of hit collider. 
                 rayHit.transform.gameObject.GetComponentInParent<WorldItem>().PickUpItem(gameObject);
