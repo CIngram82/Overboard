@@ -2,73 +2,70 @@ using System;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class GearSocket : MonoBehaviour
+namespace GearPuzzle
 {
-    [Serializable]
-    public struct Connection
+    public class GearSocket : MonoBehaviour
     {
-        [SerializeField] GearSocket _from;
-        [SerializeField] GearSocket _to;
-        [SerializeField] float _distance;
-
-        public GearSocket From => _from;
-        public GearSocket To => _to;
-        public float Distance => _distance;
-
-        public Connection(GearSocket from, GearSocket to, float distance)
+        [Serializable]
+        public struct Connection
         {
-            _from = from;
-            _to = to;
-            _distance = distance;
-        }
-    }
+            [SerializeField] GearSocket _from;
+            [SerializeField] GearSocket _to;
+            [SerializeField] float _distance;
 
-    Gear _gear;
+            public GearSocket From => _from;
+            public GearSocket To => _to;
+            public float Distance => _distance;
 
-    public List<Connection> ConnectionsFrom;
-    public List<Connection> ConnectionsTo;
-    public Gear Gear
-    {
-        get
-        {
-            if (transform.childCount > 0)
+            public Connection(GearSocket from, GearSocket to, float distance)
             {
-                if (!_gear)
-                    return _gear = GetComponentInChildren<Gear>();
-                else
-                    return _gear;
+                _from = from;
+                _to = to;
+                _distance = distance;
             }
-            return _gear = null;
         }
-    }
 
+        Gear _gear;
 
-    public List<Gear> PowerNextGear()
-    {
-        List<Gear> poweredSockets = new List<Gear>();
-        foreach (var socket in ConnectionsTo)
+        public List<Connection> ConnectionsFrom;
+        public List<Connection> ConnectionsTo;
+        public Gear Gear
         {
-            // if current is powered and next socket has a gear.
-            if (socket.To.Gear != null)
-                if (Gear.IsPowered)
+            get
+            {
+                if (transform.childCount > 0)
                 {
-                    // if gears fit together
-                    if ((socket.To.Gear.Radius + Gear.Radius) == socket.Distance)
-                    {
-                        socket.To.Gear.IsPowered = true;
-                        socket.To.Gear.Direction = Gear.Direction * -1;
-                        poweredSockets.Add(socket.To.Gear);
-                        if (socket.Distance != 0)
-                            poweredSockets.AddRange(socket.To.PowerNextGear());
-                    }
-                    //socket.To.Gear.IsPowered = false;
+                    if (!_gear)
+                        return _gear = GetComponentInChildren<Gear>();
+                    else
+                        return _gear;
                 }
+                return _gear = null;
+            }
         }
-        return poweredSockets;
+
+
+        public List<Gear> PowerNextGear()
+        {
+            List<Gear> poweredSockets = new List<Gear>();
+            foreach (var socket in ConnectionsTo)
+            {
+                // if current is powered and next socket has a gear.
+                if (socket.To.Gear != null)
+                    if (Gear.IsPowered)
+                    {
+                        // if gears fit together
+                        if ((socket.To.Gear.Radius + Gear.Radius) == socket.Distance)
+                        {
+                            socket.To.Gear.IsPowered = true;
+                            socket.To.Gear.Direction = Gear.Direction * -1;
+                            poweredSockets.Add(socket.To.Gear);
+                            if (socket.Distance != 0)
+                                poweredSockets.AddRange(socket.To.PowerNextGear());
+                        }
+                    }
+            }
+            return poweredSockets;
+        }
     }
 }
-
-
-
-
-
