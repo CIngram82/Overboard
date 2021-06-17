@@ -8,7 +8,7 @@ public class ClueUI : MonoBehaviour
 {
     public Action<Clue> ClueHintLoaded;
 
-    [SerializeField] TextMeshProUGUI _clueName;
+    [SerializeField] TextMeshProUGUI _clueNameTMP;
 
     public Clue Clue { get; private set; }
     public Button ItemButton { get; private set; }
@@ -25,7 +25,7 @@ public class ClueUI : MonoBehaviour
         ItemButton = GetComponent<Button>();
         ItemButton.onClick.AddListener(OnClickLoadClue);
 
-        _clueName.text = clue.Name;
+        _clueNameTMP.text = clue.Name;
         Debug.Log(Clue.Hint);
     }
 }

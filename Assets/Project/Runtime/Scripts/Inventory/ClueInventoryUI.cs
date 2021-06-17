@@ -7,7 +7,6 @@ using TMPro;
 public class ClueInventoryUI : MonoBehaviour
 {
     [SerializeField] ClueUI _uiCluePrefab;
-    [SerializeField] GameObject _pagePanel;
     [SerializeField] TextMeshProUGUI _clueNameTMP;
     [SerializeField] TextMeshProUGUI _ClueHintTMP;
 
