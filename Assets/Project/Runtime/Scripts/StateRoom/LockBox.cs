@@ -11,7 +11,7 @@ public class LockBox : MonoBehaviour
     private void OnTriggerStay(Collider other)
     {
        
-        if (Input.GetMouseButton(0) && other.gameObject.CompareTag("Player") && checkCollections() == true)
+        if (Input.GetMouseButton(0) && other.gameObject.CompareTag("Player") && checkCollections())
         {
             GrabObject.collectablesList.Clear(); // you probably wouldn't hold these items after use. 
             key.SetActive(true);

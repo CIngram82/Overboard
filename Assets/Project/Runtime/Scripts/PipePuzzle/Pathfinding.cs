@@ -9,11 +9,10 @@ namespace PipePuzzle
         // A* pathfinding https://en.wikipedia.org/wiki/A*_search_algorithm
         // The files Pathfinding, pathNode are both used for A* check the wiki for more details. 
 
-        private const int MOVE_COST = 10;
+        private const int MOVE_COST = 1;
         private PFGrid<Pipe> grid;
         private List<Pipe> openList;
         private List<Pipe> closedList;
-
 
         public Pathfinding(PFGrid<Pipe> puzzle)
         {
@@ -135,11 +134,6 @@ namespace PipePuzzle
             return MOVE_COST * (dx * dy);
         }
 
-        /// <summary>
-        /// Loops over a list of PathNodes and finds the one with the lowest F cost. 
-        /// </summary>
-        /// <param name="pathNodes">A list of pathNodes</param>
-        /// <returns>the PathNode with the lowest F cost</returns>
         private Pipe GetLowestFCostNode(List<Pipe> pathNodes)
         {
             Pipe lowestF = pathNodes[0];

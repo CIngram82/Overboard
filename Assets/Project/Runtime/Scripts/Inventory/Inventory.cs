@@ -9,19 +9,21 @@ namespace Inventory
     {
         List<Item> _items;
         CollectibleItemSet _collectedWorldItems;
+        CollectibleItemSet _collectedClues;
 
         public int Capacity { get; } = 6;
-        public List<Item> Items { get => _items; private set => _items = value; } 
-        public CollectibleItemSet CollectedWorldItems => _collectedWorldItems; 
+        public List<Item> Items { get => _items; private set => _items = value; }
+        public CollectibleItemSet CollectedWorldItems => _collectedWorldItems;
+        public CollectibleItemSet CollectedClues => _collectedClues;
 
 
         public void AddItem(Item item)
         {
             _items.Add(item);
             GameEvents.On_Inventory_Item_Added(item);
-            Debug.Log("Item added.");
+            Debug.Log($"Item {item.Name} added.");
         }
-        public void AddItems(List<Item> items)
+        public void AddAllItems(List<Item> items)
         {
             foreach (Item item in items)
             {
@@ -32,15 +34,14 @@ namespace Inventory
         {
             Items.Remove(item);
             // TODO: add drop item feature if needed.
-            GameEvents.On_Inventory_Item_Removed(item);
-            Debug.Log("Item removed.");
+            Debug.Log($"Item {item.Name} removed.");
         }
-        public void RemoveItemAt(int index)
+        public void RemoveAllItems(List<Item> items)
         {
-            Items.RemoveAt(index);
-            // TODO: add drop item feature if needed.
-            //GameEvents.On_Inventory_Item_Removed(item);
-            Debug.Log("Item removed.");
+            foreach (Item item in items)
+            {
+                RemoveItem(item);
+            }
         }
 
         void SaveData()
@@ -58,16 +59,19 @@ namespace Inventory
             Items = data.Items;
         }
 
+        void On_Remove_Item(Item item) => RemoveItem(item);
         void On_SaveData_Loaded() => LoadData();
         void On_SaveData_PreSave() => SaveData();
 
         void SubToEvents(bool subscribe)
         {
+            GameEvents.InventoryItemRemoved -= On_Remove_Item;
             SaveDataManager.SaveDataLoaded -= On_SaveData_Loaded;
             SaveDataManager.DataSavedPrepared -= On_SaveData_PreSave;
 
             if (subscribe)
             {
+                GameEvents.InventoryItemRemoved += On_Remove_Item;
                 SaveDataManager.SaveDataLoaded += On_SaveData_Loaded;
                 SaveDataManager.DataSavedPrepared += On_SaveData_PreSave;
             }
