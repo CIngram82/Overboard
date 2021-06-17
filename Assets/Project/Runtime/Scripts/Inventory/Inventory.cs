@@ -20,7 +20,7 @@ namespace Inventory
         public void AddItem(Item item)
         {
             _items.Add(item);
-            GameEvents.On_Inventory_Item_Added(item);
+            EventsManager.On_Inventory_Item_Added(item);
             Debug.Log($"Item {item.Name} added.");
         }
         public void AddAllItems(List<Item> items)
@@ -65,13 +65,13 @@ namespace Inventory
 
         void SubToEvents(bool subscribe)
         {
-            GameEvents.InventoryItemRemoved -= On_Remove_Item;
+            EventsManager.InventoryItemRemoved -= On_Remove_Item;
             SaveDataManager.SaveDataLoaded -= On_SaveData_Loaded;
             SaveDataManager.DataSavedPrepared -= On_SaveData_PreSave;
 
             if (subscribe)
             {
-                GameEvents.InventoryItemRemoved += On_Remove_Item;
+                EventsManager.InventoryItemRemoved += On_Remove_Item;
                 SaveDataManager.SaveDataLoaded += On_SaveData_Loaded;
                 SaveDataManager.DataSavedPrepared += On_SaveData_PreSave;
             }

@@ -1,15 +1,11 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class Dumbwaiter : MonoBehaviour
 {
-    [SerializeField] PipePuzzle.PipeGameManager pipePuzzle;
-  
-    private void OnTriggerEnter(Collider other)
+    void OnTriggerEnter(Collider other)
     {
-        if(isComplete())
+        if(IsComplete())
         {
             SceneManager.LoadScene("CutScene");
         }
@@ -19,15 +15,9 @@ public class Dumbwaiter : MonoBehaviour
         }
     }
 
-    bool isComplete()
+    bool IsComplete()
     {
-        if(pipePuzzle.isComplete)
-        {
-            return true;
-        }
-        else
-        {
-            return false;
-        }
+        return (GameManager.Instance.PipePuzzleCompleted &&
+                GameManager.Instance.GearPuzzleCompleted);
     }
 }

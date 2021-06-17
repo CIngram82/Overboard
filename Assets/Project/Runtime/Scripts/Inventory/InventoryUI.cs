@@ -28,13 +28,13 @@ public class InventoryUI : MonoBehaviour
 
     void SubToEvents(bool subscribe)
     {
-        GameEvents.InventoryItemAdded -= On_Add_Item;
-        GameEvents.InventoryItemRemoved -= On_Remove_Item;
+        EventsManager.InventoryItemAdded -= On_Add_Item;
+        EventsManager.InventoryItemRemoved -= On_Remove_Item;
 
         if (subscribe)
         {
-            GameEvents.InventoryItemAdded += On_Add_Item;
-            GameEvents.InventoryItemRemoved += On_Remove_Item;
+            EventsManager.InventoryItemAdded += On_Add_Item;
+            EventsManager.InventoryItemRemoved += On_Remove_Item;
         }
     }
 
