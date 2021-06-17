@@ -12,8 +12,7 @@ public class ButtonWrapperEditor : Editor
         get
         {
             if (m_target != null) return m_target;
-            m_target = (ButtonWrapper)target;
-            return m_target;
+            return m_target = (ButtonWrapper)target;
         }
     }
 

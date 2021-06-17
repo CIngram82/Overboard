@@ -5,6 +5,7 @@ using TMPro;
 
 public class WorldClue : MonoBehaviour
 {
+    [TextArea]
     [SerializeField] string Message;
     [SerializeField] TextMeshProUGUI clueText;
     [SerializeField] GameObject paperPanel;
