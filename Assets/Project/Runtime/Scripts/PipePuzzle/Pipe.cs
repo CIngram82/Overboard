@@ -6,10 +6,10 @@ namespace PipePuzzle
 {
     public class Pipe : MonoBehaviour
     {
-        private PFGrid<Pipe> grid;
         public int X { get;  set; }
         public int Y { get;  set; }
 
+        #region pathfinding
         public int gCost;
         public int hCost;
         public int fCost;
@@ -21,6 +21,9 @@ namespace PipePuzzle
             fCost = gCost + hCost;
         }
 
+        #endregion
+
+
         // Set exits in inspector 1 for exit 0 for no exit.
         [Header("N,E,S,W; 1 open 0 close")]
         public int[] exits;
@@ -31,18 +34,13 @@ namespace PipePuzzle
 
         [SerializeField]
         private bool canTurn = true;
-        [SerializeField]
-        private Sprite emptySprite, filledSprite;
-        private SpriteRenderer mySpriteRenderer;
 
         private PipeGameManager pipeGM;
         [HideInInspector]
         public Pipe north, south, east, west;
         private void Start()
         {
-            mySpriteRenderer = GetComponent<SpriteRenderer>();
             pipeGM = FindObjectOfType<PipeGameManager>();
-
         }
 
         private void Update()
