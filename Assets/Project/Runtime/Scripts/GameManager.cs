@@ -7,7 +7,7 @@ public class GameManager : MonoBehaviour
 
     public bool GearPuzzleCompleted;
     public bool PipePuzzleCompleted;
-    float waterlevel;
+    public float WaterLevel;
 
 
     void SaveData()
@@ -24,7 +24,7 @@ public class GameManager : MonoBehaviour
         GameData data = SaveDataManager.Save.GameData;
         GearPuzzleCompleted = data.IsGearsCompleted;
         PipePuzzleCompleted = data.IsPipesCompleted;
-        waterlevel = data.WaterLevel;
+        WaterLevel = data.WaterLevel;
     }
 
     void On_SaveData_Loaded() => LoadData();
@@ -40,15 +40,15 @@ public class GameManager : MonoBehaviour
 
     void SubToEvents(bool subscribe)
     {
-        GearPuzzleManager.PuzzleCompleted -= On_Gear_Puzzle_Completed;
-        //PipeGameManager.PuzzleCompleted -= On_Pipe_Puzzle_Completed;
+        GearPuzzle.GearPuzzleManager.PuzzleCompleted -= On_Gear_Puzzle_Completed;
+        PipePuzzle.PipeGameManager.PuzzleCompleted -= On_Pipe_Puzzle_Completed;
         SaveDataManager.SaveDataLoaded -= On_SaveData_Loaded;
         SaveDataManager.DataSavedPrepared -= On_SaveData_PreSave;
 
         if (subscribe)
         {
-            GearPuzzleManager.PuzzleCompleted += On_Gear_Puzzle_Completed;
-            //PipeGameManager.PuzzleCompleted += On_Pipe_Puzzle_Completed;
+            GearPuzzle.GearPuzzleManager.PuzzleCompleted += On_Gear_Puzzle_Completed;
+            PipePuzzle.PipeGameManager.PuzzleCompleted += On_Pipe_Puzzle_Completed;
             SaveDataManager.SaveDataLoaded += On_SaveData_Loaded;
             SaveDataManager.DataSavedPrepared += On_SaveData_PreSave;
         }
@@ -74,8 +74,3 @@ public class GameManager : MonoBehaviour
         }
     }
 }
-
-
-
-
-
