@@ -4,7 +4,7 @@ using Inventory.Database;
 
 public class LockableObject : MonoBehaviour
 {
-    [WorldItem]
+    [DatabaseItem]
     [SerializeField] List<string> _keys;
     [SerializeField] ItemDatabase _itemDatabase;
     [SerializeField] bool _isUnlocked = false;

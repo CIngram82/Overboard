@@ -5,9 +5,9 @@ namespace Inventory.Collectable
 {
     public class WorldItem : MonoBehaviour
     {
-        [WorldItem]
+        [DatabaseItem]
         [SerializeField] string _itemName;
-        [SerializeField] ItemDatabase _itemDatabase;
+        [SerializeField] ItemDatabase _database;
 
         UID uniqueID;
         CollectibleItemSet _itemSet;
@@ -59,7 +59,7 @@ namespace Inventory.Collectable
 
         void Start()
         {
-            Item = _itemDatabase.GetInventoryItem(_itemName);
+            Item = _database.GetInventoryItem(_itemName);
 
             uniqueID = new UID(name, transform.position.sqrMagnitude.ToString(), transform.GetSiblingIndex().ToString());
             CheckCollection();

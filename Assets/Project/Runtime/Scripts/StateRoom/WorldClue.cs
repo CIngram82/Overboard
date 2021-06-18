@@ -2,24 +2,58 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using Inventory.Database;
 
-public class WorldClue : MonoBehaviour
+namespace Inventory.Collectable
 {
-    [TextArea]
-    [SerializeField] string Message;
-    [SerializeField] TextMeshProUGUI clueText;
-    [SerializeField] GameObject paperPanel;
-
-
-    void OnMouseEnter()
+    public class WorldClue : MonoBehaviour
     {
-        clueText.text = Message;
-        paperPanel.SetActive(true);
-    }
+        [DatabaseItem]
+        [SerializeField] string _clueName;
+        [SerializeField] ClueDatabase _database;
 
-    void OnMouseExit()
-    {
-        paperPanel.SetActive(false);
-    }
+        UID uniqueID;
+        CollectibleItemSet _itemSet;
 
+        public Clue Clue { get; private set; }
+        public CollectibleItemSet CollectibleClues
+        {
+            get
+            {
+                if (_itemSet == null)
+                {
+                    _itemSet = FindObjectOfType<Inventory>().CollectedWorldClues;
+                }
+                return _itemSet;
+            }
+        }
+
+
+        void CheckCollection()
+        {
+            if (CollectibleClues.CollectedItems.Contains(uniqueID.ID))
+                //Destroy(gameObject);
+                gameObject.SetActive(false);
+        }
+
+
+
+        [TextArea]
+        [SerializeField] string Message;
+        [SerializeField] TextMeshProUGUI clueText;
+        [SerializeField] GameObject paperPanel;
+
+
+        void OnMouseEnter()
+        {
+            clueText.text = Message;
+            paperPanel.SetActive(true);
+        }
+
+        void OnMouseExit()
+        {
+            paperPanel.SetActive(false);
+        }
+
+    } 
 }

@@ -11,13 +11,13 @@ namespace Inventory
         List<Item> _items;
         CollectibleItemSet _collectedWorldItems;
         List<Clue> _clues;
-        CollectibleItemSet _collectedClues;
+        CollectibleItemSet _collectedWorldClues;
 
         public int Capacity { get; } = 6;
         public List<Item> Items { get => _items; private set => _items = value; }
         public CollectibleItemSet CollectedWorldItems => _collectedWorldItems;
         public List<Clue> Clues { get => _clues; private set => _clues = value; }
-        public CollectibleItemSet CollectedClues => _collectedClues;
+        public CollectibleItemSet CollectedWorldClues => _collectedWorldClues;
 
 
         public void AddItem(Item item)
@@ -80,7 +80,7 @@ namespace Inventory
             InventoryData data = SaveDataManager.Save.InventoryData;
             data.CollectibleWorldItems = _collectedWorldItems;
             data.Items = _items;
-            data.CollectibleClues = _collectedClues;
+            data.CollectibleClues = _collectedWorldClues;
             data.Clues = _clues;
         }
         void LoadData()
@@ -88,7 +88,7 @@ namespace Inventory
             InventoryData data = SaveDataManager.Save.InventoryData;
             _collectedWorldItems = data.CollectibleWorldItems;
             AddAllItems(data.Items);
-            _collectedClues = data.CollectibleClues;
+            _collectedWorldClues = data.CollectibleClues;
             AddAllClues(data.Clues);
         }
 

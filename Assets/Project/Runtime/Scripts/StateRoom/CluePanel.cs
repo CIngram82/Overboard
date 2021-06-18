@@ -5,6 +5,6 @@ using Inventory.Database;
 
 public class CluePanel : MonoBehaviour
 {
-   [SerializeField] List<WorldClue> clues = new List<WorldClue>();
+   [SerializeField] List<Clue> clues = new List<Clue>();
    
 }
