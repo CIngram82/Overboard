@@ -8,6 +8,7 @@ namespace GearPuzzle
     {
         public static System.Action<bool> PuzzleCompleted;
 
+        [SerializeField] Transform _gearsParent;
         [SerializeField] GearSocket _startGear;
         [SerializeField] GearSocket _endGear;
         [SerializeField] List<Gear> _gears;
@@ -63,6 +64,7 @@ namespace GearPuzzle
         {
             StartGear.gameObject.GetComponent<DragObjectHandler>().Enabled = false;
             EndGear.gameObject.GetComponent<DragObjectHandler>().Enabled = false;
+            DragObjectHandler.Parent = _gearsParent;
         }
     } 
 }

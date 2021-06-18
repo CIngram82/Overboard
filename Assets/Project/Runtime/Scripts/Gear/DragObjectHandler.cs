@@ -17,6 +17,8 @@ public class DragObjectHandler : MonoBehaviour
     Vector3 startPosMouse;
     Vector3 startPosObject;
 
+    public static Transform Parent { get; set; }
+
 
     Vector3 GetMouseAsWorldPoint()
     {
@@ -32,7 +34,7 @@ public class DragObjectHandler : MonoBehaviour
         ObjectPickedUp?.Invoke(gameObject);
         DragStarted?.Invoke(gameObject);
         isDragged = true;
-        transform.parent = null;
+        transform.parent = Parent;
 
         startPosMouse = GetMouseAsWorldPoint();
         startPosObject = transform.position;
