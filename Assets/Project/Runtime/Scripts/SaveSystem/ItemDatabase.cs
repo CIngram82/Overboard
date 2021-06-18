@@ -2,7 +2,7 @@ using UnityEngine;
 
 namespace Inventory.Database
 {
-    [CreateAssetMenu(fileName = "ItemDatabase", menuName = "Create Item Database")]
+    [CreateAssetMenu(fileName = "ItemDatabase", menuName = "Create Database/Item Database")]
     [System.Serializable]
     public class ItemDatabase : InventoryDatabase<Item>
     {
