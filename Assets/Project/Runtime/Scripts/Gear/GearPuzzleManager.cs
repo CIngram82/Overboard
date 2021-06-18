@@ -61,8 +61,8 @@ namespace GearPuzzle
         }
         void Awake()
         {
-            StartGear.gameObject.GetComponent<DragObjectHandler>().enabled = false;
-            EndGear.gameObject.GetComponent<DragObjectHandler>().enabled = false;
+            StartGear.gameObject.GetComponent<DragObjectHandler>().Enabled = false;
+            EndGear.gameObject.GetComponent<DragObjectHandler>().Enabled = false;
         }
     } 
 }
