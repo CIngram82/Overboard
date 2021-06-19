@@ -17,7 +17,8 @@ public class ItemInspector : MonoBehaviour
 
     private void OnEnable()
     {
-        gameObject.transform.position = InspectCamera.transform.position;          
+        gameObject.transform.position = InspectCamera.transform.position;
+        camPos = InspectCamera.transform.position;
     }
 
     void OnMouseScroll()
@@ -33,7 +34,7 @@ public class ItemInspector : MonoBehaviour
         {
             zoom.z -= zoomSpeed * Time.deltaTime;
         }
-        zoom.z = Mathf.Clamp(zoom.z,-5.0f,-2.0f);
+        zoom.z = Mathf.Clamp(zoom.z, camPos.z + 1.5f, camPos.z + 2.5f);
         gameObject.transform.position = zoom;
     }
     void OnMouseDown()
