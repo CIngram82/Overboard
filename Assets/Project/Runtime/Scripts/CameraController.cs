@@ -32,7 +32,7 @@ public class CameraController : MonoBehaviour
         
         if (Input.GetMouseButtonDown(1))
         {
-            ToggleCursorLockMode();
+            SetCursorLockMode(!Cursor.visible);
         }
     }
 
@@ -45,9 +45,9 @@ public class CameraController : MonoBehaviour
     /// Toggles Cursor.lockState between Locked and Confined
     /// and sets Cursor.visible true if not locked.
     /// </summary>
-    public static void ToggleCursorLockMode()
+    public static void SetCursorLockMode(bool state)
     {
-        Cursor.lockState = (Cursor.lockState != CursorLockMode.Locked) ? CursorLockMode.Locked : CursorLockMode.Confined;
-        Cursor.visible = (Cursor.lockState != CursorLockMode.Locked);
+        Cursor.lockState = state ? CursorLockMode.Confined : CursorLockMode.Locked;
+        Cursor.visible = state;
     }
 }

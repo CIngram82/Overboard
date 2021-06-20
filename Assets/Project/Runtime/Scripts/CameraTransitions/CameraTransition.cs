@@ -31,8 +31,9 @@ public class CameraTransition : MonoBehaviour
             transitionCamera.Priority = 2;
             mainCam.Priority = startingPriority;
             isMain = false;
-            Cursor.visible = true;
-            Cursor.lockState = CursorLockMode.Confined;
+            //Cursor.visible = true;
+            //Cursor.lockState = CursorLockMode.Confined;
+            CameraController.SetCursorLockMode(true);
             camPointer.SetActive(false);
             PlayerMovement.canMove = false;
         }
@@ -41,8 +42,9 @@ public class CameraTransition : MonoBehaviour
             transitionCamera.Priority = startingPriority;
             mainCam.Priority = 2;
             isMain = true;
-            Cursor.visible = false;
-            Cursor.lockState = CursorLockMode.Locked;
+            //Cursor.visible = false;
+            //Cursor.lockState = CursorLockMode.Locked;
+            CameraController.SetCursorLockMode(false);
             camPointer.SetActive(true);
             PlayerMovement.canMove = true;
         }

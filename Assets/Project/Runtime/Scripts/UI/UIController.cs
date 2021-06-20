@@ -58,6 +58,7 @@ namespace Controllers.UI
             else
             if (Input.GetKeyDown(KeyCode.Alpha0))
             {
+                CameraController.SetCursorLockMode(isJournalOpen);
                 isJournalOpen = !isJournalOpen;
                 EventsManager.On_Journal_Open(isJournalOpen);
             }
