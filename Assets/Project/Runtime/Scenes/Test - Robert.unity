@@ -223,14 +223,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 1095113192, guid: 60fd4002636c38e44a2ed3fa46590125, type: 3}
-      propertyPath: clues.m_Bits
-      value: 1024
-      objectReference: {fileID: 0}
-    - target: {fileID: 1095113192, guid: 60fd4002636c38e44a2ed3fa46590125, type: 3}
-      propertyPath: items.m_Bits
-      value: 512
-      objectReference: {fileID: 0}
     - target: {fileID: 4448749213885339779, guid: 60fd4002636c38e44a2ed3fa46590125, type: 3}
       propertyPath: m_RootOrder
       value: 7
@@ -279,12 +271,7 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player (1)
       objectReference: {fileID: 0}
-    - target: {fileID: 4448749213885339780, guid: 60fd4002636c38e44a2ed3fa46590125, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
-    m_RemovedComponents:
-    - {fileID: 5639232072303089437, guid: 60fd4002636c38e44a2ed3fa46590125, type: 3}
+    m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 60fd4002636c38e44a2ed3fa46590125, type: 3}
 --- !u!4 &417435568 stripped
 Transform:
@@ -441,8 +428,17 @@ PrefabInstance:
       propertyPath: m_Name
       value: AudioController
       objectReference: {fileID: 0}
+    - target: {fileID: 5503163256357117320, guid: 503b671574f43764bb250a2ea554454d, type: 3}
+      propertyPath: m_RootOrder
+      value: 2
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 503b671574f43764bb250a2ea554454d, type: 3}
+--- !u!4 &851628782 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 5503163256357117320, guid: 503b671574f43764bb250a2ea554454d, type: 3}
+  m_PrefabInstance: {fileID: 851628781}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &906053858 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3528191677962648881, guid: 1fa959df4fdee554da1db377eccb06db, type: 3}
@@ -812,11 +808,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4f4d5a2fab9e6e746aa5c22e9efa3d5c, type: 3}
---- !u!4 &1807652931 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 5409853349106945497, guid: 503b671574f43764bb250a2ea554454d, type: 3}
-  m_PrefabInstance: {fileID: 851628781}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1834590628
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -968,7 +959,7 @@ Transform:
   m_Children:
   - {fileID: 906053858}
   - {fileID: 973612799}
-  - {fileID: 1807652931}
+  - {fileID: 851628782}
   - {fileID: 417435568}
   - {fileID: 977001749}
   - {fileID: 285874774}
