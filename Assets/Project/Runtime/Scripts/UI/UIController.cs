@@ -66,7 +66,7 @@ namespace Controllers.UI
                 EventsManager.On_Journal_Open(isJournalOpen);
             }
             else
-            if (Input.GetKeyDown(KeyCode.L))
+            if (Input.GetKeyDown(KeyCode.Period))
             {
                 SaveDataManager.Instance.ClearSaves();
                 Debug.LogWarning($"Deleting all saves");
