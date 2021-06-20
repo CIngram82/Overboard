@@ -127,8 +127,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4448749213606424679}
-  m_LocalRotation: {x: -0, y: -0.32485104, z: -0, w: 0.94576526}
-  m_LocalPosition: {x: 0.009953339, y: 0.8100014, z: 0.11005642}
+  m_LocalRotation: {x: -0.03953606, y: 0.91479135, z: -0.0932984, w: -0.3910105}
+  m_LocalPosition: {x: -66.50921, y: 0.9379997, z: -43.138153}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4471335935705405157}
@@ -453,10 +453,10 @@ CapsuleCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  m_Radius: 0.650425
-  m_Height: 5.3951693
+  m_Radius: 0.42496717
+  m_Height: 3.8156796
   m_Direction: 1
-  m_Center: {x: -0.15042818, y: -1.697576, z: -0.00000005946068}
+  m_Center: {x: 0.22815266, y: -0.90781975, z: -0.15312365}
 --- !u!54 &4448749213885339783
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -465,9 +465,9 @@ Rigidbody:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4448749213885339780}
   serializedVersion: 2
-  m_Mass: 1
+  m_Mass: 2
   m_Drag: 2
-  m_AngularDrag: 1
+  m_AngularDrag: 2
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
@@ -485,7 +485,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 43eb8d2d17bd08940b24ef300569ce4d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 400
+  speedMax: 0
   camAnim: {fileID: 2761834734623359416}
   camControl: {fileID: 4448749213606424674}
 --- !u!114 &1095113192
