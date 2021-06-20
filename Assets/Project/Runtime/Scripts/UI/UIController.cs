@@ -12,17 +12,20 @@ namespace Controllers.UI
 
         public static void OnLoadScene(int index)
         {
-            SceneManager.LoadScene(index);
+            // SceneManager.LoadScene(index);
+            AudioScript.audioscript.PlaySoundButton(index);
         }
         public static void OnHelp()
         {
             Debug.LogWarning("Scene_Help");
-            SceneManager.LoadScene("Scene_Help");
+            // SceneManager.LoadScene("Scene_Help");
+            OnLoadScene(1);
         }
         public static void OnCredits()
         {
             Debug.LogWarning("Loading Scene_Credits");
-            SceneManager.LoadScene("Scene_Credits");
+            //SceneManager.LoadScene("Scene_Credits");
+            OnLoadScene(2);
         }
         public static void OnMenu()
         {
@@ -72,3 +75,4 @@ namespace Controllers.UI
 #endif
     }
 }
+

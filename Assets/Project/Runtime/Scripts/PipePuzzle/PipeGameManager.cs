@@ -6,6 +6,8 @@ namespace PipePuzzle
 {
     public class PipeGameManager : MonoBehaviour
     {
+        public static System.Action<bool> PuzzleCompleted;
+        
         public bool isComplete;
         [SerializeField]private Pipe power;
         [SerializeField]private Pipe firstOutput;
