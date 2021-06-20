@@ -33,9 +33,9 @@ namespace Inventory.Collectable
                 gameObject.SetActive(false);
         }
 
-        public void PickUpItem(GameObject item)
+        public void PickUpItem(GameObject player)
         {
-            if (item.TryGetComponent(out Inventory inventory))
+            if (player.TryGetComponent(out Inventory inventory))
             {
                 if (inventory.Items.Count >= inventory.Capacity)
                 {

@@ -9,7 +9,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5081374148157319651}
-  - component: {fileID: 5081374148157319650}
   - component: {fileID: 5081374148157319655}
   - component: {fileID: 5081374148157319648}
   - component: {fileID: 5081374148157319649}
@@ -39,19 +38,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: -319.99997, y: 150}
   m_Pivot: {x: 0.5, y: 0}
---- !u!114 &5081374148157319650
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5081374148157319676}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 301e1e4f24ef6174c92aff64f5cce3ef, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _uiItem: {fileID: 4094714327008067782, guid: fbe8c771542c6c146b18a976fa3b0d47, type: 3}
 --- !u!222 &5081374148157319655
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -123,6 +109,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5081374148782694407}
+  - component: {fileID: 4758968665014672404}
   m_Layer: 5
   m_Name: Screen - Inventory
   m_TagString: Untagged
@@ -150,3 +137,18 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &4758968665014672404
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5081374148782694400}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 301e1e4f24ef6174c92aff64f5cce3ef, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _uiItemPrefab: {fileID: 4094714327008067782, guid: fbe8c771542c6c146b18a976fa3b0d47, type: 3}
+  _uiItemsParent: {fileID: 5081374148157319651}
+  _uiItems: []

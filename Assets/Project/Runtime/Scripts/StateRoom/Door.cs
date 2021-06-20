@@ -6,6 +6,7 @@ public class Door : MonoBehaviour
 {
     [SerializeField] GameObject key;
     public bool isComplete = false;
+    /*
     private void OnTriggerStay(Collider other)
     {
 
@@ -16,6 +17,6 @@ public class Door : MonoBehaviour
             gameObject.SetActive(false); // placeholder for door opening
             
         }
-
     }
+    */
 }

@@ -1,22 +1,18 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class CameraController : MonoBehaviour
 {
-    [SerializeField] Transform player;
-
     float rotSpeed = 1;
     float mouseX;
     float mouseY;
 
 
-    private void Start()
+    void Start()
     {
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
     }
-    private void LateUpdate()
+    void LateUpdate()
     {
         if (PlayerMovement.canMove)
         {
@@ -27,7 +23,6 @@ public class CameraController : MonoBehaviour
             Debug.Log(PlayerMovement.canMove);
         }
     }
-
 
     void CameraControls()
     {
@@ -41,12 +36,18 @@ public class CameraController : MonoBehaviour
         }
     }
 
-    public void Rotate()
+    public Quaternion Rotate()
     {
-        player.rotation = Quaternion.Euler(0, mouseX, 0);
+        return Quaternion.Euler(0, mouseX, 0);
     }
-    public void ToggleCursorLockMode()
+
+    /// <summary>
+    /// Toggles Cursor.lockState between Locked and Confined
+    /// and sets Cursor.visible true if not locked.
+    /// </summary>
+    public static void ToggleCursorLockMode()
     {
         Cursor.lockState = (Cursor.lockState != CursorLockMode.Locked) ? CursorLockMode.Locked : CursorLockMode.Confined;
+        Cursor.visible = (Cursor.lockState != CursorLockMode.Locked);
     }
 }

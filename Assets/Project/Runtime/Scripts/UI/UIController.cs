@@ -1,11 +1,15 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using SaveSystem.Data;
 
 namespace Controllers.UI
 {
     public class UIController : MonoBehaviour
     {
+        bool isJournalOpen = false;
+
+
         public static void OnLoadScene(int index)
         {
             SceneManager.LoadScene(index);
@@ -50,6 +54,18 @@ namespace Controllers.UI
             if (Input.GetKeyDown(KeyCode.R))
             {
                 OnReset();
+            }
+            else
+            if (Input.GetKeyDown(KeyCode.Alpha0))
+            {
+                isJournalOpen = !isJournalOpen;
+                EventsManager.On_Journal_Open(isJournalOpen);
+            }
+            else
+            if (Input.GetKeyDown(KeyCode.L))
+            {
+                SaveDataManager.Instance.ClearSaves();
+                Debug.LogWarning($"Deleting all saves");
             }
         }
 #endif

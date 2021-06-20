@@ -7,6 +7,7 @@ public class EventsManager : MonoBehaviour
     #region Event Actions
     public static Action<string> ToolTipActivated;
     public static Action ToolTipDeactivated;
+    public static Action<bool> JournalOpened;
     public static Action<Item> InventoryItemAdded;
     public static Action<Item> InventoryItemRemoved;
     public static Action<Clue> InventoryClueAdded;
@@ -21,6 +22,11 @@ public class EventsManager : MonoBehaviour
     public static void On_Tool_Tip_Deactivated()
     {
         ToolTipDeactivated?.Invoke();
+    }
+    
+    public static void On_Journal_Open(bool open)
+    {
+        JournalOpened?.Invoke(open);
     }
 
     public static void On_Inventory_Item_Added(Item item)

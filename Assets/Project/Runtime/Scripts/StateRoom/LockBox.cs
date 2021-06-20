@@ -7,7 +7,7 @@ public class LockBox : MonoBehaviour
     [SerializeField] GameObject key;
     [SerializeField] List<GameObject> collectablesRequired = new List<GameObject>();
    
-
+    /*
     private void OnTriggerStay(Collider other)
     {
        
@@ -34,5 +34,5 @@ public class LockBox : MonoBehaviour
         return true;
 
     }
-
+    */
 }

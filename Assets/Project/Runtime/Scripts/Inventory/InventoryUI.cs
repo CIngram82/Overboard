@@ -5,13 +5,15 @@ using Inventory.Database;
 public class InventoryUI : MonoBehaviour
 {
     [SerializeField] ItemUI _uiItemPrefab;
+    [SerializeField] Transform _uiItemsParent;
+    [SerializeField] List<ItemUI> _uiItems;
 
-    public List<ItemUI> UIItems { get; private set; } = new List<ItemUI>();
+    public List<ItemUI> UIItems { get => _uiItems; private set => _uiItems = value; }
 
 
     void AddUIItem(Item item)
     {
-        ItemUI uiItemInstance = Instantiate(_uiItemPrefab, transform);
+        ItemUI uiItemInstance = Instantiate(_uiItemPrefab, _uiItemsParent);
         uiItemInstance.Setup(item);
         UIItems.Add(uiItemInstance);
         Debug.Log("Item added to UI.");
@@ -46,5 +48,9 @@ public class InventoryUI : MonoBehaviour
     void OnDisable()
     {
         SubToEvents(false);
+    }
+    void Start()
+    {
+        Inventory.Inventory.RemoveAllUIChildren(_uiItemsParent);
     }
 }

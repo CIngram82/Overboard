@@ -47,7 +47,7 @@ namespace Inventory
                 RemoveItem(item);
             }
         }
-       
+
         public void AddClue(Clue clue)
         {
             _clues.Add(clue);
@@ -74,21 +74,30 @@ namespace Inventory
                 RemoveItem(clue);
             }
         }
+        public static void RemoveAllUIChildren(Transform parent)
+        {
+            foreach (Transform item in parent)
+            {
+                Destroy(item.gameObject);
+            }
+        }
 
         void SaveData()
         {
             InventoryData data = SaveDataManager.Save.InventoryData;
             data.CollectibleWorldItems = _collectedWorldItems;
             data.Items = _items;
-            data.CollectibleClues = _collectedWorldClues;
+            data.CollectibleWorldClues = _collectedWorldClues;
             data.Clues = _clues;
         }
         void LoadData()
         {
             InventoryData data = SaveDataManager.Save.InventoryData;
             _collectedWorldItems = data.CollectibleWorldItems;
+            Items = new List<Item>();
             AddAllItems(data.Items);
-            _collectedWorldClues = data.CollectibleClues;
+            _collectedWorldClues = data.CollectibleWorldClues;
+            Clues = new List<Clue>();
             AddAllClues(data.Clues);
         }
 

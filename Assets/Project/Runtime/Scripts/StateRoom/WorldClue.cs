@@ -1,7 +1,4 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using TMPro;
 using Inventory.Database;
 
 namespace Inventory.Collectable
@@ -13,18 +10,18 @@ namespace Inventory.Collectable
         [SerializeField] ClueDatabase _database;
 
         UID uniqueID;
-        CollectibleItemSet _itemSet;
+        CollectibleItemSet _clueSet;
 
         public Clue Clue { get; private set; }
         public CollectibleItemSet CollectibleClues
         {
             get
             {
-                if (_itemSet == null)
+                if (_clueSet == null)
                 {
-                    _itemSet = FindObjectOfType<Inventory>().CollectedWorldClues;
+                    _clueSet = FindObjectOfType<Inventory>().CollectedWorldClues;
                 }
-                return _itemSet;
+                return _clueSet;
             }
         }
 
@@ -36,8 +33,31 @@ namespace Inventory.Collectable
                 gameObject.SetActive(false);
         }
 
+        public void PickUpClue(GameObject player)
+        {
+            if (player.TryGetComponent(out Inventory inventory))
+            {
+                //if (inventory.Items.Count >= inventory.Capacity)
+                //{
+                //    Debug.Log("Inventory is full.");
+                //    return;
+                //}
 
+                inventory.CollectedWorldItems.CollectedItems.Add(uniqueID.ID);
+                inventory.AddClue(Clue);
+                // Destroy(gameObject);
+                gameObject.SetActive(false);
+            }
+        }
 
+        void Start()
+        {
+            Clue = _database.GetInventoryItem(_clueName);
+
+            uniqueID = new UID(name, transform.position.sqrMagnitude.ToString(), transform.GetSiblingIndex().ToString());
+            CheckCollection();
+        }
+        /*
         [TextArea]
         [SerializeField] string Message;
         [SerializeField] TextMeshProUGUI clueText;
@@ -54,6 +74,6 @@ namespace Inventory.Collectable
         {
             paperPanel.SetActive(false);
         }
-
+        */
     } 
 }

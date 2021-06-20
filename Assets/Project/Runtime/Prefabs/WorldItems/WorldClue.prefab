@@ -9,9 +9,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 388268536248601360}
-  - component: {fileID: 388268536248601361}
-  m_Layer: 9
-  m_Name: WorldItem
+  - component: {fileID: -4716040724694414916}
+  m_Layer: 10
+  m_Name: WorldClue
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -32,7 +32,7 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &388268536248601361
+--- !u!114 &-4716040724694414916
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -41,11 +41,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 388268536248601366}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 44b57b826c2ac10419dce0452e0488be, type: 3}
+  m_Script: {fileID: 11500000, guid: 9df7e4c754d324944b2b87067a14a0fb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _itemName: 
-  _database: {fileID: 11400000, guid: 1c3093bb43bbc1549ab9b7e4cba9d29d, type: 2}
+  _clueName: 
+  _database: {fileID: 11400000, guid: a5fd4d54de94a1c4e8e4702f12a2cf01, type: 2}
 --- !u!1 &7664541312035993033
 GameObject:
   m_ObjectHideFlags: 0
@@ -59,7 +59,7 @@ GameObject:
   - component: {fileID: 2851355559367968330}
   - component: {fileID: 599248847449762141}
   - component: {fileID: 7714096816321553875}
-  m_Layer: 9
+  m_Layer: 10
   m_Name: Model
   m_TagString: Untagged
   m_Icon: {fileID: 0}

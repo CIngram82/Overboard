@@ -108,11 +108,10 @@ GameObject:
   - component: {fileID: 4448749213606424678}
   - component: {fileID: 4448749213606424675}
   - component: {fileID: 4448749213606424674}
+  - component: {fileID: 407760961}
   - component: {fileID: 2761834734623359416}
   - component: {fileID: 1848039832}
   - component: {fileID: 1848039833}
-  - component: {fileID: 407760961}
-  - component: {fileID: 5639232072303089437}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -232,6 +231,27 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 4448749213885339779}
+--- !u!114 &407760961
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4448749213606424679}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7d23ca4bcc998ff45be8bf2ef7fff9be, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  metalLayer:
+    serializedVersion: 2
+    m_Bits: 128
+  woodLayer:
+    serializedVersion: 2
+    m_Bits: 64
+  carpetLayer:
+    serializedVersion: 2
+    m_Bits: 256
 --- !u!95 &2761834734623359416
 Animator:
   serializedVersion: 3
@@ -320,42 +340,6 @@ MonoBehaviour:
   m_CameraActivatedEvent:
     m_PersistentCalls:
       m_Calls: []
---- !u!114 &407760961
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4448749213606424679}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7d23ca4bcc998ff45be8bf2ef7fff9be, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  metalLayer:
-    serializedVersion: 2
-    m_Bits: 128
-  woodLayer:
-    serializedVersion: 2
-    m_Bits: 64
-  carpetLayer:
-    serializedVersion: 2
-    m_Bits: 256
---- !u!114 &5639232072303089437
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4448749213606424679}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 13e14893289e4b5489d8e5d75df6dd8b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  collectables:
-    serializedVersion: 2
-    m_Bits: 512
 --- !u!1 &4448749213885339780
 GameObject:
   m_ObjectHideFlags: 0
@@ -485,7 +469,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 43eb8d2d17bd08940b24ef300569ce4d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 400
+  speedMax: 0
   camAnim: {fileID: 2761834734623359416}
   camControl: {fileID: 4448749213606424674}
 --- !u!114 &1095113192
@@ -500,9 +484,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f63cf5612ca78a34788de29603444802, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  collectables:
+  items:
     serializedVersion: 2
-    m_Bits: 512
+    m_Bits: 0
+  clues:
+    serializedVersion: 2
+    m_Bits: 0
   maxDistance: 10
   debuggingOn: 1
   rayColor: {r: 0, g: 1, b: 0, a: 1}

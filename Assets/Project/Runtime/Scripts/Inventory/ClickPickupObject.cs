@@ -44,7 +44,7 @@ public class ClickPickupObject : MonoBehaviour
             if (Physics.Raycast(_ray, out rayHit, maxDistance, clues))
             {
                 // WorldItem is on root parent containing gameObject of hit collider. 
-                rayHit.transform.gameObject.GetComponentInParent<WorldItem>().PickUpItem(gameObject);
+                rayHit.transform.gameObject.GetComponentInParent<WorldClue>().PickUpClue(gameObject);
             }
         }
     }

@@ -10,14 +10,14 @@ namespace SaveSystem.Data
         public List<Item> Items;
         public List<Clue> Clues;
         public CollectibleItemSet CollectibleWorldItems;
-        public CollectibleItemSet CollectibleClues;
+        public CollectibleItemSet CollectibleWorldClues;
 
         public InventoryData()
         {
             Items = new List<Item>();
             Clues = new List<Clue>();
             CollectibleWorldItems = new CollectibleItemSet();
-            CollectibleClues = new CollectibleItemSet();
+            CollectibleWorldClues = new CollectibleItemSet();
         }
     }
 }
