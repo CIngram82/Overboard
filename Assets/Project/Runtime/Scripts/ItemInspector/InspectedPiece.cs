@@ -1,6 +1,5 @@
- using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
+using Inventory.Collectable;
 
 public class InspectedPiece : MonoBehaviour
 {
@@ -8,9 +7,9 @@ public class InspectedPiece : MonoBehaviour
     [SerializeField] LayerMask checkedLayer;
     [SerializeField] GameObject keyPiece;
     [SerializeField] float offset;
- 
 
-    private void Update()
+
+    void Update()
     {
         RaycastHit rayHit;
         Ray ray = cam.ScreenPointToRay(Input.mousePosition);
@@ -18,28 +17,21 @@ public class InspectedPiece : MonoBehaviour
 
         if (Physics.Raycast(ray, out rayHit, dist + offset, checkedLayer) && Input.GetMouseButtonDown(0)) // either inspector layer or key layer should be used for this.
         {
-
             if (rayHit.collider.gameObject == gameObject)
             {
-         
                 if (gameObject == keyPiece)
                 {
                     Debug.Log("Hit");
-                    GrabObject.collectablesList.Add(gameObject);
-                    keyPiece.SetActive(false);
+                    rayHit.transform.gameObject.GetComponentInParent<WorldItem>().PickUpItem(gameObject);
+                    //GrabObject.collectablesList.Add(gameObject);
+                    //keyPiece.SetActive(false);
                 }
                 else
                 {
                     keyPiece.SetActive(true);
                     gameObject.SetActive(false);
                 }
-             
             }
-
         }
     }
-
-    
-
 }
-

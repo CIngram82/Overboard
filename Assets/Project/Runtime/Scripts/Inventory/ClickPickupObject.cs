@@ -15,11 +15,6 @@ public class ClickPickupObject : MonoBehaviour
     Ray _ray;
 
 
-    public void ToggleCursorLockMode()
-    {
-        Cursor.lockState = (Cursor.lockState != CursorLockMode.Confined) ? CursorLockMode.Confined : CursorLockMode.Locked;
-    }
-
     public void DrawRay()
     {
         _ray = _rayCamera.ScreenPointToRay(Input.mousePosition);
@@ -51,11 +46,5 @@ public class ClickPickupObject : MonoBehaviour
     void Awake()
     {
         _rayCamera = GetComponentInChildren<Camera>();
-    }
-    void Start()
-    {
-        // this needs to be changed on the camera script when I update that branch and taken out of this one,
-        // but the cursor leaving the screen was causing a lot of issues with double monitor.
-        ToggleCursorLockMode();
     }
 }
