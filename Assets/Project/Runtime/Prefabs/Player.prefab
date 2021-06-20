@@ -230,7 +230,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 748ee878209b22647a3dbf8f24253c13, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player: {fileID: 4448749213885339779}
 --- !u!114 &407760961
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -486,10 +485,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   items:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 512
   clues:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 1024
   maxDistance: 10
   debuggingOn: 1
   rayColor: {r: 0, g: 1, b: 0, a: 1}
