@@ -8,7 +8,7 @@ public class LockableObject : MonoBehaviour
     [SerializeField] List<string> _keys;
     [SerializeField] ItemDatabase _database;
     [SerializeField] bool _isUnlocked = false;
-
+    [SerializeField] Animator anim;
     public bool IsUnlocked { get => _isUnlocked; private set => _isUnlocked = value; }
 
 
@@ -36,6 +36,7 @@ public class LockableObject : MonoBehaviour
                 Debug.Log("Object unlocked.");
 
                 inventory.RemoveAllItems(_keys.ConvertAll(key => _database.GetInventoryItem(key)));
+                anim.SetBool("isUnlocked",true);
             }
             else
             {
