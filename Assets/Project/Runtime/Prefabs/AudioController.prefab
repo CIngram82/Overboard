@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &5409853349106945499
+--- !u!1 &5503163256357117317
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,9 +8,9 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 5409853349106945497}
-  - component: {fileID: 5409853349106945498}
-  - component: {fileID: 5409853349106945503}
+  - component: {fileID: 5503163256357117320}
+  - component: {fileID: 5503163256357117319}
+  - component: {fileID: 5503163256357117318}
   m_Layer: 0
   m_Name: AudioController
   m_TagString: Untagged
@@ -18,27 +18,27 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &5409853349106945497
+--- !u!4 &5503163256357117320
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5409853349106945499}
+  m_GameObject: {fileID: 5503163256357117317}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: -0.990944, y: 0.30792046, z: -1.1263466}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &5409853349106945498
+--- !u!114 &5503163256357117319
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5409853349106945499}
+  m_GameObject: {fileID: 5503163256357117317}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 0465e6d17cd7ccf449d18b7ea707b823, type: 3}
@@ -59,23 +59,35 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 29f0931476e312144adb5f3ce6b0130a, type: 3}
   - {fileID: 8300000, guid: e8b4572e26ad0764d9d0592f0e2a16da, type: 3}
   carpetFootsteps:
+  - {fileID: 8300000, guid: e46e047e2a515ee4ea2bb6f4ab5afac0, type: 3}
   - {fileID: 8300000, guid: ff22d17e3028f9a478db2bb49adfd879, type: 3}
   - {fileID: 8300000, guid: 6175b92db13cb964a94f8ab8e1fb3a67, type: 3}
-  - {fileID: 8300000, guid: e46e047e2a515ee4ea2bb6f4ab5afac0, type: 3}
   metalFootsteps:
   - {fileID: 8300000, guid: 3ef69374069f13c468cc7da1d946db63, type: 3}
   - {fileID: 8300000, guid: 8c29b99a129f89843a5678a0afe3de12, type: 3}
   - {fileID: 8300000, guid: 8c13d2e2027920342b52418b72ca8071, type: 3}
   - {fileID: 8300000, guid: c2b30ff36af8ab249be80c41c0bdc45f, type: 3}
+  waterFootsteps:
+  - {fileID: 8300000, guid: e70db7b5ad498b249bb34351d12ca20f, type: 3}
+  - {fileID: 8300000, guid: 7f8cdf6d6e47a1843b76f1d0ed307ee9, type: 3}
+  - {fileID: 8300000, guid: 2ca325e87b90ac14592fdca66c29569e, type: 3}
   pitchMax: 1.2
   pitchMin: 0.8
---- !u!82 &5409853349106945503
+  randomSounds:
+  - {fileID: 8300000, guid: 5ab0d35584cc7cf46ae875ed2be1fb4a, type: 3}
+  - {fileID: 8300000, guid: b9f840e1d68b45b4392f6f70b02c2ee5, type: 3}
+  - {fileID: 8300000, guid: 9dbd653a81d8d4546a4a790360e4f9c5, type: 3}
+  - {fileID: 8300000, guid: 3190330216ae7e047ae8ec57f090cbcf, type: 3}
+  minWaitBetweenPlays: 1
+  maxWaitBetweenPlays: 5
+  waitTimeCountdown: -1
+--- !u!82 &5503163256357117318
 AudioSource:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5409853349106945499}
+  m_GameObject: {fileID: 5503163256357117317}
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}

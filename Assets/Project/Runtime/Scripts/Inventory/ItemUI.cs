@@ -1,7 +1,8 @@
 using UnityEngine;
 using UnityEngine.EventSystems;
-using TMPro;
 using UnityEngine.UI;
+using TMPro;
+using Inventory.Database;
 
 public class ItemUI : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 {

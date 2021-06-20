@@ -1,13 +1,14 @@
 using System.Collections.Generic;
 using UnityEngine;
+using Inventory.Database;
 
 public class LockableObject : MonoBehaviour
 {
-    [WorldItem]
+    [DatabaseItem]
     [SerializeField] List<string> _keys;
-    [SerializeField] ItemDatabase _itemDatabase;
+    [SerializeField] ItemDatabase _database;
     [SerializeField] bool _isUnlocked = false;
-
+    [SerializeField] Animator anim;
     public bool IsUnlocked { get => _isUnlocked; private set => _isUnlocked = value; }
 
 
@@ -27,14 +28,15 @@ public class LockableObject : MonoBehaviour
         {
             // checks if player Inventory and if player has all keys for locked object.
             if (collider.gameObject.TryGetComponent(out Inventory.Inventory inventory) &&
-                HasAllKeys(inventory.Items, _keys.ConvertAll(key => _itemDatabase.GetItem(key))))
+                HasAllKeys(inventory.Items, _keys.ConvertAll(key => _database.GetInventoryItem(key))))
             {
                 // Unlock object
                 IsUnlocked = true;
                 gameObject.SetActive(false);    // Call unlock animation
                 Debug.Log("Object unlocked.");
 
-                inventory.RemoveAllItems(_keys.ConvertAll(key => _itemDatabase.GetItem(key)));
+                inventory.RemoveAllItems(_keys.ConvertAll(key => _database.GetInventoryItem(key)));
+                anim.SetBool("isUnlocked",true);
             }
             else
             {

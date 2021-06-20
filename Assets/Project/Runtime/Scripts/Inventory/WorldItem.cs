@@ -1,12 +1,13 @@
 ﻿using UnityEngine;
+using Inventory.Database;
 
 namespace Inventory.Collectable
 {
     public class WorldItem : MonoBehaviour
     {
-        [WorldItem]
+        [DatabaseItem]
         [SerializeField] string _itemName;
-        [SerializeField] ItemDatabase _itemDatabase;
+        [SerializeField] ItemDatabase _database;
 
         UID uniqueID;
         CollectibleItemSet _itemSet;
@@ -32,16 +33,16 @@ namespace Inventory.Collectable
                 gameObject.SetActive(false);
         }
 
-        public void PickUpItem(GameObject item)
+        public void PickUpItem(GameObject player)
         {
-            if (item.TryGetComponent(out Inventory inventory))
+            if (player.TryGetComponent(out Inventory inventory))
             {
                 if (inventory.Items.Count >= inventory.Capacity)
                 {
                     Debug.Log("Inventory is full.");
                     return;
                 }
-                Debug.Log("Item Pickup.");
+
                 inventory.CollectedWorldItems.CollectedItems.Add(uniqueID.ID);
                 inventory.AddItem(Item);
                 // Destroy(gameObject);
@@ -58,7 +59,7 @@ namespace Inventory.Collectable
 
         void Start()
         {
-            Item = _itemDatabase.GetItem(_itemName);
+            Item = _database.GetInventoryItem(_itemName);
 
             uniqueID = new UID(name, transform.position.sqrMagnitude.ToString(), transform.GetSiblingIndex().ToString());
             CheckCollection();

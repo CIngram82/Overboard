@@ -1,54 +1,32 @@
-using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
-[CreateAssetMenu(fileName = "ItemDatabase", menuName = "Create Item Database")]
-[System.Serializable]
-public class ItemDatabase : ScriptableObject
+namespace Inventory.Database
 {
-    [SerializeField] List<Item> _items;
-    
-    public List<Item> Items { get => _items; }
-
-
-    public Item GetItem(string itemName)
+    [CreateAssetMenu(fileName = "ItemDatabase", menuName = "Create Database/Item Database")]
+    [System.Serializable]
+    public class ItemDatabase : InventoryDatabase<Item>
     {
-        return Items.Find(x => x.Name == itemName);
-    }
-    public Item GetItem(int itemIndex)
-    {
-        return Items[itemIndex];
-    }
-}
 
-[System.Serializable]
-public class Item
-{
-    [SerializeField] int _id;
-    [SerializeField] string _name;
-    [TextArea(5, 10)]
-    [SerializeField] string _description;
-
-    public int ID
-    {
-        get => _id;
-        private set => _id = value;
-    }
-    public string Name
-    {
-        get => _name;
-        private set => _name = value;
-    }
-    public string Description 
-    { 
-        get => _description; 
-        private set => _description = value;
     }
 
-
-    public Item(int id, string name, string description)
+    [System.Serializable]
+    public class Item : InventoryItem
     {
-        ID = id;
-        Name = name;
-        Description = description;
-    }
+        [SerializeField] Image _image;
+        [TextArea(5, 10)]
+        [SerializeField] string _description;
+
+        public Image Image { get => _image; private set => _image = value; }
+        public string Description { get => _description; private set => _description = value; }
+
+
+        public Item(int id, string name, string description, Image image)
+        {
+            ID = id;
+            Name = name;
+            Description = description;
+            Image = image;
+        }
+    } 
 }

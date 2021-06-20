@@ -13,6 +13,7 @@ namespace SaveSystem.Data
         static string SAVE_PATH;
         const string FILENAME = "save.dat";
 
+        public static SaveDataManager Instance => _instance;
         public static SaveDataState Save { get; private set; }
         public static bool IsDataLoaded { get; private set; } = false;
 
