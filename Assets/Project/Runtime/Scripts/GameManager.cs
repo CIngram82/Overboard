@@ -32,10 +32,12 @@ public class GameManager : MonoBehaviour
     void On_Gear_Puzzle_Completed(bool isCompleted)
     {
         GearPuzzleCompleted = isCompleted;
+        SaveDataManager.Instance.On_Save_Data();
     }
     void On_Pipe_Puzzle_Completed(bool isCompleted)
     {
         PipePuzzleCompleted = isCompleted;
+        SaveDataManager.Instance.On_Save_Data();
     }
 
     void SubToEvents(bool subscribe)

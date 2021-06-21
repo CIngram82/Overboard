@@ -35,7 +35,7 @@ namespace SaveSystem.Data
             LoadData();
         }
 
-        public void LoadData()
+        void LoadData()
         {
             if (File.Exists(SAVE_PATH))
             {
@@ -61,13 +61,16 @@ namespace SaveSystem.Data
             SaveDataLoaded?.Invoke();
         }
 
-        public void SaveData()
+        void SaveData()
         {
             DataSavedPrepared?.Invoke();
             SaveLoad.Save(Save, SAVE_PATH, FileName);
 
             Debug.Log($"Saved Data to {SAVE_PATH}/{FileName}.");
         }
+
+        public void On_Load_Data() => LoadData();
+        public void On_Save_Data() => SaveData();
 
         void BackupSave()
         {
