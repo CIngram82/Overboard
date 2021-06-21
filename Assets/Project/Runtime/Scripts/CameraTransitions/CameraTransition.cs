@@ -1,5 +1,6 @@
 using UnityEngine;
 using Cinemachine;
+using TMPro;
 
 public class CameraTransition : MonoBehaviour
 {
@@ -7,6 +8,7 @@ public class CameraTransition : MonoBehaviour
     [SerializeField] CinemachineVirtualCamera mainCam;
     [SerializeField] CinemachineVirtualCamera transitionCamera;
     [SerializeField] int startingPriority;
+    [SerializeField] TextMeshPro playerPrompt;
 
     bool isMain;
 
@@ -16,12 +18,23 @@ public class CameraTransition : MonoBehaviour
         isMain = true;
     }
 
+    private void OnTriggerEnter(Collider other)
+    {
+        playerPrompt.text = "Press E to toggle camera";
+    }
+
     private void OnTriggerStay(Collider other)
     {
+        
         if (other.gameObject.CompareTag("Player") && Input.GetKey(KeyCode.E))
         {
             SwitchCameras();
         }
+    }
+
+    private void OnTriggerExit(Collider other)
+    {
+        playerPrompt.text = " ";
     }
 
     void SwitchCameras()
