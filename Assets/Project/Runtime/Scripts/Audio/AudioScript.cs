@@ -15,8 +15,8 @@ public class AudioScript : MonoBehaviour
     [SerializeField] float pitchMax = 1.2f;
     [SerializeField] float pitchMin = 0.8f;
     public List<AudioClip> randomSounds = new List<AudioClip>();
-    public float minWaitBetweenPlays = 1f;
-    public float maxWaitBetweenPlays = 5f;
+    public float minWaitBetweenPlays = 25f;
+    public float maxWaitBetweenPlays = 45f;
     public float waitTimeCountdown = -1f;
 
     void Start()
