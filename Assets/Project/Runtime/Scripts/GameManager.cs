@@ -27,8 +27,6 @@ public class GameManager : MonoBehaviour
         WaterLevel = data.WaterLevel;
     }
 
-    void On_SaveData_Loaded() => LoadData();
-    void On_SaveData_PreSave() => SaveData();
     void On_Gear_Puzzle_Completed(bool isCompleted)
     {
         GearPuzzleCompleted = isCompleted;
@@ -39,6 +37,8 @@ public class GameManager : MonoBehaviour
         PipePuzzleCompleted = isCompleted;
         SaveDataManager.Instance.On_Save_Data();
     }
+    void On_SaveData_Loaded() => LoadData();
+    void On_SaveData_PreSave() => SaveData();
 
     void SubToEvents(bool subscribe)
     {
