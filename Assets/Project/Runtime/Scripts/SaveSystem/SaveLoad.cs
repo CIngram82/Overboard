@@ -75,8 +75,8 @@ namespace SaveSystem
 
         public static void DeleteAllSaveFilesIn(string path)
         {
-            string path = string.Concat(SAVE_PATH, location);
             Debug.LogWarning($"Deleting all saves in {path}");
+            // TODO: Add confirmation
             DirectoryInfo directory = new DirectoryInfo(path);
             directory.Delete(true);
             Directory.CreateDirectory(path);

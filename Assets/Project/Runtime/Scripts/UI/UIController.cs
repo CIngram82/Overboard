@@ -68,7 +68,7 @@ namespace Controllers.UI
             else
             if (Input.GetKeyDown(KeyCode.Period))
             {
-                SaveDataManager.Instance.ClearSaves();
+                SaveDataManager.Instance.ClearAllSaves();
                 Debug.LogWarning($"Deleting all saves");
             }
         }
