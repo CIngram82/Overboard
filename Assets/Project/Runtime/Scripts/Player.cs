@@ -6,15 +6,15 @@ public class Player : MonoBehaviour
 
     void SaveData()
     {
-        SaveDataManager.Save.PlayerData = new PlayerData(transform);
+        //SaveDataManager.Save.PlayerData = new PlayerData(transform);
     }
     void LoadData()
     {
         PlayerData data = SaveDataManager.Save.PlayerData;
-        if (data.Transform != null)
-            return;
-        transform.position = data.Transform.position;
-        transform.rotation = data.Transform.rotation;
+        //if (data.Position == Vector3.zero)
+        //    return;
+        //transform.position = data.Position;
+        //transform.rotation = data.Rotation;
     }
 
     void On_SaveData_Loaded() => LoadData();

@@ -5,12 +5,15 @@ namespace SaveSystem.Data
     [System.Serializable]
     public class PlayerData
     {
-        public Transform Transform;
-
+        /*
+        public Vector3 Position;
+        public Quaternion Rotation;
         public PlayerData(Transform transform)
         {
-            Transform = transform;
+            Position = transform.position;
+            Rotation = transform.rotation;
         }
+        */
         public PlayerData()
         {
         }
