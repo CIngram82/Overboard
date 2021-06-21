@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEditor;
 
-[CustomPropertyDrawer(typeof(WorldItemAttribute))]
+[CustomPropertyDrawer(typeof(DatabaseItemAttribute))]
 public class WorldItemDrawer : PropertyDrawer
 {
     int _choiceIndex = -1;
@@ -9,9 +9,9 @@ public class WorldItemDrawer : PropertyDrawer
 
     public override void OnGUI(Rect position, SerializedProperty property, GUIContent label)
     {
-        if (property.serializedObject.FindProperty("_itemDatabase").objectReferenceValue == null)
+        if (property.serializedObject.FindProperty("_database").objectReferenceValue == null)
             return;
-        SerializedObject databaseSO = new SerializedObject(property.serializedObject.FindProperty("_itemDatabase").objectReferenceValue);
+        SerializedObject databaseSO = new SerializedObject(property.serializedObject.FindProperty("_database").objectReferenceValue);
         SerializedProperty listProp = databaseSO.FindProperty("_items");
 
         string[] _choices = new string[listProp.arraySize];

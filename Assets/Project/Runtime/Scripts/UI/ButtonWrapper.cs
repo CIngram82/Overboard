@@ -11,8 +11,7 @@ namespace UnityEngine.UI.Ext
             get
             {
                 if (_label != null) return _label;
-                _label = GetComponentInChildren<TextMeshProUGUI>();
-                return _label;
+                return _label = GetComponentInChildren<TextMeshProUGUI>();
             }
         }
     }

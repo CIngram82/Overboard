@@ -1,15 +1,19 @@
 using System.Collections.Generic;
 using UnityEngine;
+using Inventory.Database;
 
 public class InventoryUI : MonoBehaviour
 {
-    [SerializeField] ItemUI _uiItem;
+    [SerializeField] ItemUI _uiItemPrefab;
+    [SerializeField] Transform _uiItemsParent;
+    [SerializeField] List<ItemUI> _uiItems;
 
-    public List<ItemUI> UIItems { get; private set; } = new List<ItemUI>();
+    public List<ItemUI> UIItems { get => _uiItems; private set => _uiItems = value; }
+
 
     void AddUIItem(Item item)
     {
-        ItemUI uiItemInstance = Instantiate(_uiItem, transform);
+        ItemUI uiItemInstance = Instantiate(_uiItemPrefab, _uiItemsParent);
         uiItemInstance.Setup(item);
         UIItems.Add(uiItemInstance);
         Debug.Log("Item added to UI.");
@@ -19,34 +23,34 @@ public class InventoryUI : MonoBehaviour
         ItemUI uIItem = UIItems.Find(x => x.Item.Name == item.Name);
         UIItems.Remove(uIItem);
         Destroy(uIItem.gameObject);
-        Debug.Log("Item Removed from UI.");
+        Debug.Log("Item removed from UI.");
     }
-    void RemoveUIItemAt(int index)
-    {
-        ItemUI uIItem = UIItems[index];
-        UIItems.Remove(uIItem);
-        Destroy(uIItem.gameObject);
-        Debug.Log("Item Removed from UI.");
-    }
+
+    void On_Add_Item(Item item) => AddUIItem(item);
+    void On_Remove_Item(Item item) => RemoveUIItem(item);
 
     void SubToEvents(bool subscribe)
     {
-        GameEvents.InventoryItemAdded -= AddUIItem;
-        GameEvents.InventoryItemRemoved -= RemoveUIItem;
+        EventsManager.InventoryItemAdded -= On_Add_Item;
+        EventsManager.InventoryItemRemoved -= On_Remove_Item;
 
         if (subscribe)
         {
-            GameEvents.InventoryItemAdded += AddUIItem;
-            GameEvents.InventoryItemRemoved += RemoveUIItem;
+            EventsManager.InventoryItemAdded += On_Add_Item;
+            EventsManager.InventoryItemRemoved += On_Remove_Item;
         }
     }
 
-    private void OnEnable()
+    void OnEnable()
     {
         SubToEvents(true);
     }
-    private void OnDisable()
+    void OnDisable()
     {
         SubToEvents(false);
+    }
+    void Start()
+    {
+        Inventory.Inventory.RemoveAllUIChildren(_uiItemsParent);
     }
 }

@@ -2,6 +2,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using SaveSystem.Data;
 using Inventory.Collectable;
+using Inventory.Database;
 
 namespace Inventory
 {
@@ -9,19 +10,23 @@ namespace Inventory
     {
         List<Item> _items;
         CollectibleItemSet _collectedWorldItems;
+        List<Clue> _clues;
+        CollectibleItemSet _collectedWorldClues;
 
         public int Capacity { get; } = 6;
-        public List<Item> Items { get => _items; private set => _items = value; } 
-        public CollectibleItemSet CollectedWorldItems => _collectedWorldItems; 
+        public List<Item> Items { get => _items; private set => _items = value; }
+        public CollectibleItemSet CollectedWorldItems => _collectedWorldItems;
+        public List<Clue> Clues { get => _clues; private set => _clues = value; }
+        public CollectibleItemSet CollectedWorldClues => _collectedWorldClues;
 
 
         public void AddItem(Item item)
         {
             _items.Add(item);
-            GameEvents.On_Inventory_Item_Added(item);
-            Debug.Log("Item added.");
+            EventsManager.On_Inventory_Item_Added(item);
+            Debug.Log($"Item {item.Name} added.");
         }
-        public void AddItems(List<Item> items)
+        public void AddAllItems(List<Item> items)
         {
             foreach (Item item in items)
             {
@@ -31,31 +36,69 @@ namespace Inventory
         public void RemoveItem(Item item)
         {
             Items.Remove(item);
+            EventsManager.On_Inventory_Item_Removed(item);
             // TODO: add drop item feature if needed.
-            GameEvents.On_Inventory_Item_Removed(item);
-            Debug.Log("Item removed.");
+            Debug.Log($"Item {item.Name} removed.");
         }
-        public void RemoveItemAt(int index)
+        public void RemoveAllItems(List<Item> items)
         {
-            Items.RemoveAt(index);
-            // TODO: add drop item feature if needed.
-            //GameEvents.On_Inventory_Item_Removed(item);
-            Debug.Log("Item removed.");
+            foreach (Item item in items)
+            {
+                RemoveItem(item);
+            }
+        }
+
+        public void AddClue(Clue clue)
+        {
+            _clues.Add(clue);
+            EventsManager.On_Inventory_Clue_Added(clue);
+            Debug.Log($"Clue {clue.Name} added.");
+        }
+        public void AddAllClues(List<Clue> items)
+        {
+            foreach (Clue clue in items)
+            {
+                AddClue(clue);
+            }
+        }
+        public void RemoveItem(Clue clue)
+        {
+            Clues.Remove(clue);
+            EventsManager.On_Inventory_Clue_Removed(clue);
+            Debug.Log($"Clue {clue.Name} removed.");
+        }
+        public void RemoveAllClues(List<Clue> items)
+        {
+            foreach (Clue clue in items)
+            {
+                RemoveItem(clue);
+            }
+        }
+        public static void RemoveAllUIChildren(Transform parent)
+        {
+            foreach (Transform item in parent)
+            {
+                Destroy(item.gameObject);
+            }
         }
 
         void SaveData()
         {
-            SaveDataManager.Save.InventoryData = new InventoryData()
-            {
-                Items = _items,
-                CollectibleItemSet = _collectedWorldItems,
-            };
+            InventoryData data = SaveDataManager.Save.InventoryData;
+            data.CollectibleWorldItems = _collectedWorldItems;
+            data.Items = _items;
+            data.CollectibleWorldClues = _collectedWorldClues;
+            data.Clues = _clues;
         }
         void LoadData()
         {
             InventoryData data = SaveDataManager.Save.InventoryData;
-            _collectedWorldItems = data.CollectibleItemSet;
-            Items = data.Items;
+            _collectedWorldItems = data.CollectibleWorldItems;
+            Items = new List<Item>();
+            AddAllItems(data.Items);
+            _collectedWorldClues = data.CollectibleWorldClues;
+            Clues = new List<Clue>();
+            AddAllClues(data.Clues);
         }
 
         void On_SaveData_Loaded() => LoadData();
@@ -73,15 +116,15 @@ namespace Inventory
             }
         }
 
-        private void OnEnable()
+        void OnEnable()
         {
             SubToEvents(true);
         }
-        private void OnDisable()
+        void OnDisable()
         {
             SubToEvents(false);
         }
-        private void Awake()
+        void Awake()
         {
             if (SaveDataManager.IsDataLoaded)
                 On_SaveData_Loaded();

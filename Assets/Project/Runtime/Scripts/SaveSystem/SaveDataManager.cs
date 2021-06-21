@@ -18,6 +18,7 @@ namespace SaveSystem.Data
 
         public static string SAVE_PATH => $"{Application.persistentDataPath}/saves/";
         public static string FileName => $"{fileName}_{currentSave:00}.{fileType}";
+        public static SaveDataManager Instance => _instance;
         public static SaveDataState Save { get; private set; }
         public static bool IsDataLoaded { get; private set; } = false;
 

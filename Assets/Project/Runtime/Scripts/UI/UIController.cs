@@ -1,24 +1,31 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using SaveSystem.Data;
 
 namespace Controllers.UI
 {
     public class UIController : MonoBehaviour
     {
+        bool isJournalOpen = false;
+
+
         public static void OnLoadScene(int index)
         {
-            SceneManager.LoadScene(index);
+            // SceneManager.LoadScene(index);
+            AudioScript.audioscript.PlaySoundButton(index);
         }
         public static void OnHelp()
         {
             Debug.LogWarning("Scene_Help");
-            SceneManager.LoadScene("Scene_Help");
+            // SceneManager.LoadScene("Scene_Help");
+            OnLoadScene(1);
         }
         public static void OnCredits()
         {
             Debug.LogWarning("Loading Scene_Credits");
-            SceneManager.LoadScene("Scene_Credits");
+            //SceneManager.LoadScene("Scene_Credits");
+            OnLoadScene(2);
         }
         public static void OnMenu()
         {
@@ -51,7 +58,21 @@ namespace Controllers.UI
             {
                 OnReset();
             }
+            else
+            if (Input.GetKeyDown(KeyCode.Alpha0))
+            {
+                CameraController.SetCursorLockMode(isJournalOpen);
+                isJournalOpen = !isJournalOpen;
+                EventsManager.On_Journal_Open(isJournalOpen);
+            }
+            else
+            if (Input.GetKeyDown(KeyCode.Period))
+            {
+                SaveDataManager.Instance.ClearSaves();
+                Debug.LogWarning($"Deleting all saves");
+            }
         }
 #endif
     }
 }
+

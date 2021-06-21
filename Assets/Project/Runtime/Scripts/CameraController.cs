@@ -1,24 +1,27 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class CameraController : MonoBehaviour
 {
-    [SerializeField] Transform player;
-
     float rotSpeed = 1;
     float mouseX;
     float mouseY;
 
 
-    private void Start()
+    void Start()
     {
-       // Cursor.visible = false;
         Cursor.lockState = CursorLockMode.Locked;
+        Cursor.visible = false;
     }
-    private void LateUpdate()
+    void LateUpdate()
     {
-        CameraControls();
+        if (PlayerMovement.canMove)
+        {
+            CameraControls();
+        }
+        else
+        {
+            Debug.Log(PlayerMovement.canMove);
+        }
     }
 
     void CameraControls()
@@ -26,17 +29,25 @@ public class CameraController : MonoBehaviour
         mouseX += Input.GetAxis("Mouse X") * rotSpeed;
         mouseY -= Input.GetAxis("Mouse Y") * rotSpeed;
         gameObject.transform.rotation = Quaternion.Euler(Mathf.Clamp(mouseY * rotSpeed, -30f, 40f), mouseX, 0);
-        player.rotation = Quaternion.Euler(0, mouseX, 0);
         
         if (Input.GetMouseButtonDown(1))
         {
-           // Cursor.visible = !Cursor.visible;
-            ToggleCursorLockMode();
+            SetCursorLockMode(!Cursor.visible);
         }
     }
 
-    public void ToggleCursorLockMode()
+    public Quaternion Rotate()
     {
-        Cursor.lockState = (Cursor.lockState != CursorLockMode.Locked) ? CursorLockMode.Locked : CursorLockMode.Confined;
+        return Quaternion.Euler(0, mouseX, 0);
+    }
+
+    /// <summary>
+    /// Toggles Cursor.lockState between Locked and Confined
+    /// and sets Cursor.visible true if not locked.
+    /// </summary>
+    public static void SetCursorLockMode(bool state)
+    {
+        Cursor.lockState = state ? CursorLockMode.Confined : CursorLockMode.Locked;
+        Cursor.visible = state;
     }
 }

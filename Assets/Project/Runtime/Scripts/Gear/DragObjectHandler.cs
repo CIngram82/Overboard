@@ -8,11 +8,16 @@ public class DragObjectHandler : MonoBehaviour
     public static Action<GameObject> DragEnded;
     static Camera main;
 
+    public bool Enabled = true;
+    [Space]
     [SerializeField] float _zCoordOffsetDrag = -3.5f;
     [SerializeField] float _zCoordOffsetDrop = -1.5f;
+    
     bool isDragged = false;
     Vector3 startPosMouse;
     Vector3 startPosObject;
+
+    public static Transform Parent { get; set; }
 
 
     Vector3 GetMouseAsWorldPoint()
@@ -24,10 +29,12 @@ public class DragObjectHandler : MonoBehaviour
 
     void OnMouseDown()
     {
+        if (!Enabled) return;
+
         ObjectPickedUp?.Invoke(gameObject);
         DragStarted?.Invoke(gameObject);
         isDragged = true;
-        transform.parent = null;
+        transform.parent = Parent;
 
         startPosMouse = GetMouseAsWorldPoint();
         startPosObject = transform.position;
@@ -36,6 +43,8 @@ public class DragObjectHandler : MonoBehaviour
 
     void OnMouseDrag()
     {
+        if (!Enabled) return;
+
         if (isDragged)
         {
             transform.position = startPosObject + GetMouseAsWorldPoint() - startPosMouse;
@@ -44,6 +53,8 @@ public class DragObjectHandler : MonoBehaviour
 
     void OnMouseUp()
     {
+        if (!Enabled) return;
+
         isDragged = false;
         transform.position = new Vector3(transform.position.x, transform.position.y, _zCoordOffsetDrop);
         DragEnded?.Invoke(gameObject);

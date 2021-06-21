@@ -2,52 +2,55 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Gear : MonoBehaviour
+namespace GearPuzzle
 {
-    [SerializeField] bool _isPowered;
-    [SerializeField] float _radius;
-    [SerializeField] float _speed;
-    [Range(-1, 1)]
-    [SerializeField] int _direction = 1;
-
-    public bool IsPowered { get => _isPowered; set => _isPowered = value; }
-    public float Radius => _radius;
-    public float Speed => _speed;
-    public int Direction { get => _direction; set => _direction = value; }
-
-
-    void RotateGear()
+    public class Gear : MonoBehaviour
     {
-        transform.Rotate(Vector3.down, _speed * Direction * Time.deltaTime);
-    }
+        [SerializeField] bool _isPowered;
+        [SerializeField] float _radius;
+        [SerializeField] float _speed;
+        [Range(-1, 1)]
+        [SerializeField] int _direction = 1;
 
-    void On_Drag_Started(GameObject gear)
-    {
-        gear.GetComponent<Gear>().IsPowered = false;
-    }
+        public bool IsPowered { get => _isPowered; set => _isPowered = value; }
+        public float Radius => _radius;
+        public float Speed => _speed;
+        public int Direction { get => _direction; set => _direction = value; }
 
-    void SubToEvents(bool subscribe)
-    {
-        DragObjectHandler doh = GetComponent<DragObjectHandler>();
-        doh.ObjectPickedUp -= On_Drag_Started;
 
-        if (subscribe)
+        void RotateGear()
         {
-            doh.ObjectPickedUp += On_Drag_Started;
+            transform.Rotate(Vector3.down, _speed * Direction * Time.deltaTime);
         }
-    }
 
-    void OnEnable()
-    {
-        SubToEvents(true);
-    }
-    void OnDisable()
-    {
-        SubToEvents(false);
-    }
-    void Update()
-    {
-        if (IsPowered)
-            RotateGear();
+        void On_Drag_Started(GameObject gear)
+        {
+            gear.GetComponent<Gear>().IsPowered = false;
+        }
+
+        void SubToEvents(bool subscribe)
+        {
+            DragObjectHandler doh = GetComponent<DragObjectHandler>();
+            doh.ObjectPickedUp -= On_Drag_Started;
+
+            if (subscribe)
+            {
+                doh.ObjectPickedUp += On_Drag_Started;
+            }
+        }
+
+        void OnEnable()
+        {
+            SubToEvents(true);
+        }
+        void OnDisable()
+        {
+            SubToEvents(false);
+        }
+        void Update()
+        {
+            if (IsPowered)
+                RotateGear();
+        }
     }
 }

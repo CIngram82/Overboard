@@ -1,5 +1,4 @@
 using System;
-using System.Collections.Generic;
 using UnityEngine;
 
 namespace PipePuzzle
@@ -7,7 +6,6 @@ namespace PipePuzzle
     [System.Serializable]
     public class PFGrid<Pipe>
     {
-
         public event EventHandler<OnGridValueChangedEventArgs> OnGridValueChanged;
         public class OnGridValueChangedEventArgs : EventArgs
         {
@@ -26,7 +24,6 @@ namespace PipePuzzle
             this.height = height;
             this.originPos = originPos;
             this.gridArray = new Pipe[width, height];
-
         }
         public int Height
         {
@@ -36,18 +33,14 @@ namespace PipePuzzle
         {
             get { return width; }
         }
-        private Vector3 GetWorldPosition(int x, int y)
-        {
-            return new Vector3(x, y) + originPos;
-        }
 
         private Vector2Int GetXY(Vector3 worldPosition)
         {
-            Vector2Int posXY = new Vector2Int();
-            posXY.x = Mathf.FloorToInt((worldPosition.x - originPos.x));
-            posXY.y = Mathf.FloorToInt((worldPosition.y - originPos.y));
-
-            return posXY;
+            return new Vector2Int
+            {
+                x = Mathf.FloorToInt(worldPosition.x - originPos.x),
+                y = Mathf.FloorToInt(worldPosition.y - originPos.y)
+            };
         }
 
         public void SetValue(int x, int y, Pipe value)
@@ -56,12 +49,12 @@ namespace PipePuzzle
             {
                 gridArray[x, y] = value;
             }
-            if (OnGridValueChanged != null) OnGridValueChanged(this, new OnGridValueChangedEventArgs { x = x, y = y });
+            OnGridValueChanged?.Invoke(this, new OnGridValueChangedEventArgs { x = x, y = y });
         }
 
         public void TriggerGridObjectChanged(int x, int y)
         {
-            if (OnGridValueChanged != null) OnGridValueChanged(this, new OnGridValueChangedEventArgs { x = x, y = y });
+            OnGridValueChanged?.Invoke(this, new OnGridValueChangedEventArgs { x = x, y = y });
         }
 
         public void SetValue(Vector3 worldPosition, Pipe value)

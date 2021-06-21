@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using Inventory.Collectable;
+using Inventory.Database;
 
 namespace SaveSystem.Data
 {
@@ -7,13 +8,16 @@ namespace SaveSystem.Data
     public class InventoryData
     {
         public List<Item> Items;
-        public CollectibleItemSet CollectibleItemSet;
-
+        public List<Clue> Clues;
+        public CollectibleItemSet CollectibleWorldItems;
+        public CollectibleItemSet CollectibleWorldClues;
 
         public InventoryData()
         {
             Items = new List<Item>();
-            CollectibleItemSet = new CollectibleItemSet();
+            Clues = new List<Clue>();
+            CollectibleWorldItems = new CollectibleItemSet();
+            CollectibleWorldClues = new CollectibleItemSet();
         }
     }
 }
