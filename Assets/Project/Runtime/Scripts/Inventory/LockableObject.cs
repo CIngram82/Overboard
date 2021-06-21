@@ -32,6 +32,7 @@ public class LockableObject : MonoBehaviour
             {
                 // Unlock object
                 IsUnlocked = true;
+                anim.SetBool("isUnlocked", true);
                 gameObject.SetActive(false);    // Call unlock animation
                 Debug.Log("Object unlocked.");
 
