@@ -4,12 +4,17 @@ using UnityEngine;
 
 public class LockBox : MonoBehaviour
 {
-    [SerializeField] GameObject key;
+    [SerializeField] GameObject doorKey;
+    [SerializeField] GameObject animKey;
 
+    public void InsertKey()
+    {
+        animKey.SetActive(true);
+    }
  
    public void Unlock()
-    {
-        key.SetActive(true);
-    }
+   {
+        doorKey.SetActive(true);
+   }
 
 }
