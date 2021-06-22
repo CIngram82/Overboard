@@ -92,7 +92,7 @@ public class AudioScript : MonoBehaviour
     IEnumerator PlayandLoad(int index)
     {
         PlayClip(soundEffects[13]);
-        yield return new WaitForSeconds(2f);
+        yield return new WaitForSeconds(0.2f);
 
         SceneManager.LoadScene(index);
     }
