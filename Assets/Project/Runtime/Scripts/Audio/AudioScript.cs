@@ -3,10 +3,23 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
+
 public class AudioScript : MonoBehaviour
 {
     public static AudioSource thisAudio;
-    public static AudioScript audioscript;
+    public static AudioScript Instance {
+        get
+        {
+            if(_instance == null)
+            {
+                _instance = GameObject.FindObjectOfType<AudioScript>();
+            }
+            return _instance;
+        }
+    }
+
+            
+    private static AudioScript _instance;
     public List<AudioClip> soundEffects = new List<AudioClip>();
     [SerializeField] List<AudioClip> woodFootsteps = new List<AudioClip>();
     [SerializeField] List<AudioClip> carpetFootsteps = new List<AudioClip>();
@@ -19,10 +32,14 @@ public class AudioScript : MonoBehaviour
     public float maxWaitBetweenPlays = 45f;
     public float waitTimeCountdown = -1f;
 
+    private void Awake()
+    {
+
+        DontDestroyOnLoad(gameObject);
+    }
     void Start()
     {
         thisAudio = gameObject.GetComponent<AudioSource>();
-        audioscript = this;
     }
 
     private void Update()

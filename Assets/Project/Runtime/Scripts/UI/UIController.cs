@@ -13,8 +13,8 @@ namespace Controllers.UI
 
         public static void OnLoadScene(int index)
         {
-            // SceneManager.LoadScene(index);
-            AudioScript.audioscript.PlaySoundButton(index);
+            //SceneManager.LoadScene(index);
+            AudioScript.Instance.PlaySoundButton(index);
         }
         public static void OnHelp()
         {
