@@ -9,12 +9,11 @@ public class ItemInspector : MonoBehaviour
     [Min(1)] [SerializeField] float rotationSpeed = 1.0f;
     [Min(10)] [SerializeField] float zoomSpeed = 10.0f;
     [Header("Object")]
-    //[SerializeField] GameObject inspectedObject;
     bool isInspecting;
     Vector3 position;
     Vector3 zoom;
     Vector3 camPos;
-   Transform parentTransform;
+    Transform parentTransform;
     private void Start()
     {
         parentTransform = gameObject.transform.parent;
@@ -23,7 +22,7 @@ public class ItemInspector : MonoBehaviour
 
     public void SetItemPosition()
     {
-        camPos = InspectCamera.transform.parent.position;
+        camPos = InspectCamera.transform.position + InspectCamera.transform.forward;
         parentTransform.position = camPos;
         isInspecting = true;
     }
@@ -31,7 +30,7 @@ public class ItemInspector : MonoBehaviour
     void OnMouseScroll()
     {
         var zoomAmount = Input.mouseScrollDelta.y;
-        zoom =parentTransform.position;
+        zoom = parentTransform.position;
 
         if (zoomAmount > 0.0f)
         {
@@ -41,7 +40,7 @@ public class ItemInspector : MonoBehaviour
         {
             zoom.z -= zoomSpeed * Time.deltaTime;
         }
-        zoom.z = Mathf.Clamp(zoom.z, camPos.z + 1.5f, camPos.z + 2.5f);
+        zoom.z = Mathf.Clamp(zoom.z, camPos.z - 1.5f, camPos.z + 2.5f);
        parentTransform.position = zoom;
     }
     void OnMouseDown()

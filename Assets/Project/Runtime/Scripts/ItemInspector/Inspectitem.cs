@@ -11,7 +11,7 @@ public class InspectItem : MonoBehaviour
 
     ItemInspector inspector;
     GameObject inspectedObject;
-    bool isInspecting;
+   public static bool isInspecting;
 
 
     private void Start()

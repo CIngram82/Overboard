@@ -27,7 +27,7 @@ public class ClickPickupObject : MonoBehaviour
 #if UNITY_EDITOR
         if (debuggingOn) DrawRay();
 #endif
-        if (Input.GetMouseButtonDown(0))
+        if (Input.GetMouseButtonDown(0) && !InspectItem.isInspecting)
         {
             RaycastHit rayHit;
             _ray = _rayCamera.ScreenPointToRay(Input.mousePosition);
