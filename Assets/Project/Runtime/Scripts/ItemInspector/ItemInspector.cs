@@ -40,7 +40,7 @@ public class ItemInspector : MonoBehaviour
         {
             zoom.z -= zoomSpeed * Time.deltaTime;
         }
-        zoom.z = Mathf.Clamp(zoom.z, camPos.z - 1.5f, camPos.z + 2.5f);
+        zoom.z = Mathf.Clamp(zoom.z, camPos.z - 1f, camPos.z + 2.5f);
        parentTransform.position = zoom;
     }
     void OnMouseDown()
@@ -52,7 +52,7 @@ public class ItemInspector : MonoBehaviour
         var deltaPosition = Input.mousePosition - position;
 
         var axis = Quaternion.AngleAxis(-90.0f, Vector3.forward) * deltaPosition;
-        parentTransform.rotation = Quaternion.AngleAxis(deltaPosition.magnitude * rotationSpeed, axis) * parentTransform.rotation;
+        gameObject.transform.rotation = Quaternion.AngleAxis(deltaPosition.magnitude * rotationSpeed, axis) * gameObject.transform.rotation;
         position = Input.mousePosition;
     }
 

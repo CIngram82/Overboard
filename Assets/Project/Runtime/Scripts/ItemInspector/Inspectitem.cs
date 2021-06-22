@@ -20,26 +20,30 @@ public class InspectItem : MonoBehaviour
     }
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Alpha1))
+        if(!isInspecting)
         {
-            Debug.Log("1 pressed");
-            Inspect(ClickPickupObject.collectedItems, 0);
+            if (Input.GetKeyDown(KeyCode.Alpha1))
+            {
+                Debug.Log("1 pressed");
+                Inspect(ClickPickupObject.collectedItems, 0);
+            }
+            else if (Input.GetKeyDown(KeyCode.Alpha2))
+            {
+                Debug.Log("2 pressed");
+                Inspect(ClickPickupObject.collectedItems, 1);
+            }
+            else if (Input.GetKeyDown(KeyCode.Alpha3))
+            {
+                Debug.Log("3 pressed");
+                Inspect(ClickPickupObject.collectedItems, 2);
+            }
+            else if (Input.GetKeyDown(KeyCode.Alpha6))
+            {
+                Debug.Log("6 pressed");
+                EventsManager.On_Journal_Opened(true);    // TODO: create a global bool in a controller
+            }
         }
-        else if (Input.GetKeyDown(KeyCode.Alpha2))
-        {
-            Debug.Log("2 pressed");
-            Inspect(ClickPickupObject.collectedItems, 1);
-        }
-        else if (Input.GetKeyDown(KeyCode.Alpha3))
-        {
-            Debug.Log("3 pressed");
-            Inspect(ClickPickupObject.collectedItems, 2);
-        }
-        else if (Input.GetKeyDown(KeyCode.Alpha6))
-        {
-            Debug.Log("6 pressed");
-            EventsManager.On_Journal_Opened(true);    // TODO: create a global bool in a controller
-        }
+    
     }
 
     void Inspect(List<GameObject> List, int index)

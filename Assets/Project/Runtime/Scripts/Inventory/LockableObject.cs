@@ -24,7 +24,7 @@ public class LockableObject : MonoBehaviour
 
     void OnTriggerStay(Collider collider)
     {
-        if (Input.GetMouseButtonDown(0))
+        if (Input.GetMouseButton(0))
         {
             // checks if player Inventory and if player has all keys for locked object.
             if (collider.gameObject.TryGetComponent(out Inventory.Inventory inventory) &&
