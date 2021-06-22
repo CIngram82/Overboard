@@ -11,7 +11,7 @@ public class Player : MonoBehaviour
     void LoadData()
     {
         PlayerData data = SaveDataManager.Save.PlayerData;
-        if (data.Position.Get() == Vector3.zero)
+        if (data == null)
             return;
         transform.position = data.Position.Get();
         transform.rotation = data.Rotation.Get();

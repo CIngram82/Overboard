@@ -11,13 +11,10 @@ namespace SaveSystem.Data
 
         public PlayerData(Transform transform)
         {
-            Position.Set(transform.position);
-            Rotation.Set(transform.rotation);
+            Position = new SerialVector3(transform.position);
+            Rotation = new SerialQuaternion(transform.rotation);
         }
         /**/
-        public PlayerData()
-        {
-        }
     }
 
     [System.Serializable]
@@ -25,7 +22,7 @@ namespace SaveSystem.Data
     {
         public float x, y, z;
 
-        public void Set(Vector3 vector)
+        public SerialVector3(Vector3 vector)
         {
             x = vector.x;
             y = vector.y;
@@ -41,7 +38,7 @@ namespace SaveSystem.Data
     {
         public float x, y, z, w;
 
-        public void Set(Quaternion quaternion)
+        public SerialQuaternion(Quaternion quaternion)
         {
             x = quaternion.x;
             y = quaternion.y;

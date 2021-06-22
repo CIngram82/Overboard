@@ -37,23 +37,23 @@ namespace SaveSystem.Data
 
         void LoadData()
         {
-            if (File.Exists(SAVE_PATH))
+            if (File.Exists(SAVE_PATH + FileName))
             {
                 SaveDataState _deserializeSave = SaveLoad.Load<SaveDataState>(SAVE_PATH, FileName);
                 if (_deserializeSave.Equals(default(SaveDataState)))
                 {
-                    Debug.LogError("Failed to load save file.");
+                    Debug.LogError($"Failed to load save file {fileName}.");
                     CreateNewSaveFile();
                 }
                 else
                 {
-                    Debug.Log("Save file was loaded.");
+                    Debug.Log($"Save file {fileName} was loaded.");
                     Save = _deserializeSave;
                 }
             }
             else
             {
-                Debug.LogWarning("Save file not found.");
+                Debug.LogWarning($"Save file {fileName} not found.");
                 CreateNewSaveFile();
             }
             IsDataLoaded = true;
@@ -66,7 +66,7 @@ namespace SaveSystem.Data
             DataSavedPrepared?.Invoke();
             SaveLoad.Save(Save, SAVE_PATH, FileName);
 
-            Debug.Log($"Saved Data to {SAVE_PATH}/{FileName}.");
+            Debug.Log($"Saved Data to {SAVE_PATH}{FileName}.");
         }
 
         public void On_Load_Data() => LoadData();
@@ -92,10 +92,11 @@ namespace SaveSystem.Data
         }
 
 
-        public void SelectSave(int saveNumber)
+        public void SelectSave(int saveNumber, bool load = false)
         {
             currentSave = saveNumber;
-            LoadData();
+            if (load)
+                LoadData();
         }
 
         void CreateNewSaveFile()

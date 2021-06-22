@@ -3,14 +3,16 @@ using System.Collections.Generic;
 using UnityEngine;
 using Cinemachine;
 
-public class Inspectitem : MonoBehaviour
+public class InspectItem : MonoBehaviour
 {
     [SerializeField] GameObject camPointer;
     [SerializeField] CinemachineVirtualCamera mainCam;
     [SerializeField] GameObject backOutButton;
+
     ItemInspector inspector;
     GameObject inspectedObject;
     bool isInspecting;
+
 
     private void Start()
     {
@@ -18,38 +20,31 @@ public class Inspectitem : MonoBehaviour
     }
     void Update()
     {
-
-        if (Input.GetKeyUp("1"))
+        if (Input.GetKeyDown(KeyCode.Alpha1))
         {
             Debug.Log("1 pressed");
             Inspect(ClickPickupObject.collectedItems, 0);
         }
-
-        if (Input.GetKeyUp("2"))
+        else if (Input.GetKeyDown(KeyCode.Alpha2))
         {
             Debug.Log("2 pressed");
             Inspect(ClickPickupObject.collectedItems, 1);
         }
-
-        if (Input.GetKeyUp("3"))
+        else if (Input.GetKeyDown(KeyCode.Alpha3))
         {
             Debug.Log("3 pressed");
             Inspect(ClickPickupObject.collectedItems, 2);
         }
-
-        if (Input.GetKeyUp("6"))
+        else if (Input.GetKeyDown(KeyCode.Alpha6))
         {
             Debug.Log("6 pressed");
-          //note functionality?
+            EventsManager.On_Journal_Opened(true);    // TODO: create a global bool in a controller
         }
-
-
     }
 
     void Inspect(List<GameObject> List, int index)
     {
-        
-        if(List[index] != null)
+        if (List[index] != null)
         {
             backOutButton.SetActive(true);
             isInspecting = true;
@@ -59,24 +54,13 @@ public class Inspectitem : MonoBehaviour
             inspector.SetItemPosition();
             SwitchCameras();
         }
- 
     }
-
 
     void SwitchCameras()
     {
-        if (isInspecting)
-        {
-            CameraController.SetCursorLockMode(true);
-            camPointer.SetActive(false);
-            PlayerMovement.canMove = false;
-        }
-        else
-        {
-            CameraController.SetCursorLockMode(false);
-            camPointer.SetActive(true);
-            PlayerMovement.canMove = true;
-        }
+        CameraController.SetCursorLockMode(isInspecting);
+        camPointer.SetActive(!isInspecting);
+        PlayerMovement.canMove = !isInspecting;
     }
 
     public void BackOut()

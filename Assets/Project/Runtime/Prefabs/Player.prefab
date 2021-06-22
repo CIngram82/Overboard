@@ -355,6 +355,7 @@ GameObject:
   - component: {fileID: 4448749213885339778}
   - component: {fileID: 1095113192}
   - component: {fileID: 1095113193}
+  - component: {fileID: 8827842336098037144}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -502,6 +503,20 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c3224be045f03ee46838f52b784c056e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _itemDatabase: {fileID: 11400000, guid: 1c3093bb43bbc1549ab9b7e4cba9d29d, type: 2}
+  _clueDatabase: {fileID: 11400000, guid: a5fd4d54de94a1c4e8e4702f12a2cf01, type: 2}
+--- !u!114 &8827842336098037144
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4448749213885339780}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a37506f8007efd347835eed9da9c153b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &7609720636920960495
