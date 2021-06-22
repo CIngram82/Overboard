@@ -1,9 +1,12 @@
+using System;
 using UnityEngine;
 using Cinemachine;
 using TMPro;
 
 public class CameraTransition : MonoBehaviour
 {
+    public Action<GameObject> CameraEntered;
+
     [SerializeField] GameObject camPointer;
     [SerializeField] CinemachineVirtualCamera mainCam;
     [SerializeField] CinemachineVirtualCamera transitionCamera;
@@ -29,6 +32,7 @@ public class CameraTransition : MonoBehaviour
         if (other.gameObject.CompareTag("Player") && Input.GetKey(KeyCode.E))
         {
             SwitchCameras();
+            CameraEntered?.Invoke(other.gameObject);
         }
     }
 

@@ -18,6 +18,7 @@ namespace Inventory
         CollectibleItemSet _collectedWorldClues;
 
 
+        public ItemDatabase ItemDatabase => _itemDatabase;
         public int Capacity { get; } = 6;
         public List<Item> Items { get => _items; private set => _items = value; }
         public CollectibleItemSet CollectedWorldItems => _collectedWorldItems;

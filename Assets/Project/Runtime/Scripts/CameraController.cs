@@ -20,7 +20,7 @@ public class CameraController : MonoBehaviour
         }
         else
         {
-            Debug.Log(PlayerMovement.canMove);
+            //Debug.Log(PlayerMovement.canMove);
         }
     }
 
