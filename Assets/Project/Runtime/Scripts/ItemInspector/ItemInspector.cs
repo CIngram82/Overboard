@@ -9,22 +9,27 @@ public class ItemInspector : MonoBehaviour
     [Min(1)] [SerializeField] float rotationSpeed = 1.0f;
     [Min(10)] [SerializeField] float zoomSpeed = 10.0f;
     [Header("Object")]
-    [SerializeField] GameObject inspectedObject;
-
+    //[SerializeField] GameObject inspectedObject;
+    bool isInspecting;
     Vector3 position;
     Vector3 zoom;
     Vector3 camPos;
-
-    private void OnEnable()
+    private void Start()
     {
-        gameObject.transform.position = InspectCamera.transform.position;
-        camPos = InspectCamera.transform.position;
+        isInspecting = false;
+    }
+
+    public void SetItemPosition()
+    {
+        camPos = InspectCamera.transform.parent.position;
+        gameObject.transform.parent.position = camPos;
+        isInspecting = true;
     }
 
     void OnMouseScroll()
     {
         var zoomAmount = Input.mouseScrollDelta.y;
-        zoom = gameObject.transform.position;
+        zoom = gameObject.transform.parent.position;
 
         if (zoomAmount > 0.0f)
         {
@@ -35,7 +40,7 @@ public class ItemInspector : MonoBehaviour
             zoom.z -= zoomSpeed * Time.deltaTime;
         }
         zoom.z = Mathf.Clamp(zoom.z, camPos.z + 1.5f, camPos.z + 2.5f);
-        gameObject.transform.position = zoom;
+        gameObject.transform.parent.position = zoom;
     }
     void OnMouseDown()
     {
@@ -46,13 +51,17 @@ public class ItemInspector : MonoBehaviour
         var deltaPosition = Input.mousePosition - position;
 
         var axis = Quaternion.AngleAxis(-90.0f, Vector3.forward) * deltaPosition;
-        inspectedObject.transform.rotation = Quaternion.AngleAxis(deltaPosition.magnitude * rotationSpeed, axis) * inspectedObject.transform.rotation;
+        gameObject.transform.parent.rotation = Quaternion.AngleAxis(deltaPosition.magnitude * rotationSpeed, axis) * gameObject.transform.parent.rotation;
         position = Input.mousePosition;
     }
 
     void Update()
     {
-        OnMouseScroll();
+        if(isInspecting)
+        {
+            OnMouseScroll();
+        }
+
     }
 }
 

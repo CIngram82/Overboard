@@ -1,5 +1,6 @@
 using UnityEngine;
 using Inventory.Collectable;
+using System.Collections.Generic;
 
 public class ClickPickupObject : MonoBehaviour
 {
@@ -10,7 +11,7 @@ public class ClickPickupObject : MonoBehaviour
     [Header("Debugging")]
     [SerializeField] bool debuggingOn = true;
     [SerializeField] Color rayColor = Color.green;
-
+    public static List<GameObject> collectedItems = new List<GameObject>();
     Camera _rayCamera;
     Ray _ray;
 
@@ -34,6 +35,7 @@ public class ClickPickupObject : MonoBehaviour
             {
                 // WorldItem is on root parent containing gameObject of hit collider. 
                 rayHit.transform.gameObject.GetComponentInParent<WorldItem>().PickUpItem(gameObject);
+                collectedItems.Add(rayHit.collider.gameObject);
             }
             else
             if (Physics.Raycast(_ray, out rayHit, maxDistance, clues))
