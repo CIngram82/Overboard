@@ -10,6 +10,7 @@ public class PauseController : MonoBehaviour
     public void On_Game_Paused(bool paused)
     {
         //Time.timeScale = paused ? 0 : 1;
+        PlayerMovement.canMove = !PlayerMovement.canMove;
 
         _pausePanel.SetActive(!_pausePanel.activeSelf);
         CameraController.SetCursorLockMode(paused);
