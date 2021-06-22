@@ -77,7 +77,7 @@ namespace Controllers.UI
             }
         }
 
-#if UNITY_EDITOR
+//#if UNITY_EDITOR
         void Update()
         {
             if (Input.GetKeyDown(KeyCode.R))
@@ -101,7 +101,7 @@ namespace Controllers.UI
                 OnPause(_isPaused);
             }
         }
-#endif
+//#endif
     }
 }
 
