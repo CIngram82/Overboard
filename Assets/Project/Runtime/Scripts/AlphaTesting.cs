@@ -21,7 +21,7 @@ public class AlphaTesting : MonoBehaviour
 
     public void OnClickOK()
     {
-        SceneManager.LoadScene("Alphalevel2");
+        SceneManager.LoadScene("BetaLevel2");
     }
 
     public void OnClickQuit()

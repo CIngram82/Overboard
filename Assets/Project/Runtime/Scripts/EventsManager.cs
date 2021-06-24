@@ -8,6 +8,7 @@ public class EventsManager : MonoBehaviour
     public static Action<string> ToolTipActivated;
     public static Action ToolTipDeactivated;
     public static Action<bool> JournalOpened;
+    public static Action<bool> GamePaused;
     public static Action<Item> InventoryItemAdded;
     public static Action<Item> InventoryItemRemoved;
     public static Action<Clue> InventoryClueAdded;
@@ -23,10 +24,14 @@ public class EventsManager : MonoBehaviour
     {
         ToolTipDeactivated?.Invoke();
     }
-    
-    public static void On_Journal_Open(bool open)
+
+    public static void On_Journal_Opened(bool open)
     {
         JournalOpened?.Invoke(open);
+    }
+    public static void On_Game_Paused(bool paused)
+    {
+        GamePaused?.Invoke(paused);
     }
 
     public static void On_Inventory_Item_Added(Item item)

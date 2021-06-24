@@ -2805,7 +2805,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 729760ede09ba9e478646f2a4e3f1fd8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  key: {fileID: 304117993}
+  doorKey: {fileID: 0}
+  animKey: {fileID: 0}
 --- !u!95 &175962845
 Animator:
   serializedVersion: 3
@@ -3784,6 +3785,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1848039832, guid: 60fd4002636c38e44a2ed3fa46590125, type: 3}
+      propertyPath: m_Priority
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 4448749213885339779, guid: 60fd4002636c38e44a2ed3fa46590125, type: 3}
       propertyPath: m_RootOrder
       value: 3
@@ -4407,11 +4412,6 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 290913731}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
---- !u!1 &304117993 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 3647966364661976580, guid: cabcc53ed5a07274e8aae95e1e2d23a2, type: 3}
-  m_PrefabInstance: {fileID: 1550894048}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &304117994 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3647966364661976578, guid: cabcc53ed5a07274e8aae95e1e2d23a2, type: 3}

@@ -7,13 +7,14 @@ namespace Controllers.UI
 {
     public class UIController : MonoBehaviour
     {
-        bool isJournalOpen = false;
+        bool _isJournalOpen = false;
+        bool _isPaused = false;
 
 
         public static void OnLoadScene(int index)
         {
-            // SceneManager.LoadScene(index);
-            AudioScript.audioscript.PlaySoundButton(index);
+            //SceneManager.LoadScene(index);
+            AudioScript.Instance.PlaySoundButton(index);
         }
         public static void OnHelp()
         {
@@ -42,6 +43,31 @@ namespace Controllers.UI
             Debug.LogWarning("Quit");
             Application.Quit();
         }
+        public static void OnFullReset()
+        {
+            SaveDataManager.Instance.ClearAllSaves();
+            Debug.LogWarning($"Deleting all saves");
+            OnReset();
+        }
+        public static void OnSave()
+        {
+            SaveDataManager.Instance.On_Save_Data();
+        }
+        public static void OnLoadSave(int save)
+        {
+            SaveDataManager.Instance.SelectSave(save);
+        }
+
+        public void OnJournalOpen(bool isJournalOpen)
+        {
+            CameraController.SetCursorLockMode(isJournalOpen);
+            EventsManager.On_Journal_Opened(isJournalOpen);
+        }
+        void OnPause(bool isPaused)
+        {
+            Debug.Log("Paused");
+            EventsManager.On_Game_Paused(isPaused);
+        }
 
         public static void SetAllActive(List<GameObject> objectArray, bool state)
         {
@@ -51,7 +77,7 @@ namespace Controllers.UI
             }
         }
 
-#if UNITY_EDITOR
+//#if UNITY_EDITOR
         void Update()
         {
             if (Input.GetKeyDown(KeyCode.R))
@@ -61,18 +87,21 @@ namespace Controllers.UI
             else
             if (Input.GetKeyDown(KeyCode.Alpha0))
             {
-                CameraController.SetCursorLockMode(isJournalOpen);
-                isJournalOpen = !isJournalOpen;
-                EventsManager.On_Journal_Open(isJournalOpen);
+                _isJournalOpen = !_isJournalOpen;
+                OnJournalOpen(_isJournalOpen);
             }
             else
             if (Input.GetKeyDown(KeyCode.Period))
             {
-                SaveDataManager.Instance.ClearAllSaves();
-                Debug.LogWarning($"Deleting all saves");
+                OnFullReset();
+            }
+            if (Input.GetKeyDown(KeyCode.Escape))
+            {
+                _isPaused = !_isPaused;
+                OnPause(_isPaused);
             }
         }
-#endif
+//#endif
     }
 }
 

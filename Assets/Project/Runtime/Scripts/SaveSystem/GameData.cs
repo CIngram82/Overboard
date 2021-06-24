@@ -7,7 +7,6 @@ namespace SaveSystem.Data
         public bool IsPipesCompleted;
         public float WaterLevel;
 
-
         public GameData()
         {
             IsGearsCompleted = false;

@@ -13,16 +13,16 @@ public class InventoryUI : MonoBehaviour
 
     void AddUIItem(Item item)
     {
-        ItemUI uiItemInstance = Instantiate(_uiItemPrefab, _uiItemsParent);
-        uiItemInstance.Setup(item);
-        UIItems.Add(uiItemInstance);
-        Debug.Log("Item added to UI.");
+        ItemUI itemUI = Instantiate(_uiItemPrefab, _uiItemsParent);
+        itemUI.Setup(item);
+        UIItems.Add(itemUI);
+        Debug.Log($"Item added {itemUI.Item.Name} to UI.");
     }
     void RemoveUIItem(Item item)
     {
-        ItemUI uIItem = UIItems.Find(x => x.Item.Name == item.Name);
-        UIItems.Remove(uIItem);
-        Destroy(uIItem.gameObject);
+        ItemUI itemUI = UIItems.Find(x => x.Item.Name == item.Name);
+        UIItems.Remove(itemUI);
+        Destroy(itemUI.gameObject);
         Debug.Log("Item removed from UI.");
     }
 

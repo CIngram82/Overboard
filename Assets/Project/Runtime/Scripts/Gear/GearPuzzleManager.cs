@@ -8,6 +8,9 @@ namespace GearPuzzle
     {
         public static System.Action<bool> PuzzleCompleted;
 
+        [SerializeField] CameraTransition _cameraTransition;
+        [SerializeField] GameObject _missingGear;
+
         [SerializeField] Transform _gearsParent;
         [SerializeField] GearSocket _startGear;
         [SerializeField] GearSocket _endGear;
@@ -36,15 +39,26 @@ namespace GearPuzzle
             CheckedCompletion();
         }
 
+        void On_Game_Enter(GameObject player)
+        {
+            if (player.TryGetComponent(out Inventory.Inventory inventory))
+            {
+                if (inventory.Items.Contains(inventory.ItemDatabase.GetInventoryItem("Gear")))
+                    _missingGear.SetActive(true);
+            }
+        }
+
         void SubToEvents(bool subscribe)
         {
             DragObjectHandler.DragStarted -= On_Drag;
             DragObjectHandler.DragEnded -= On_Drag;
+            _cameraTransition.CameraEntered -= On_Game_Enter;
 
             if (subscribe)
             {
                 DragObjectHandler.DragStarted += On_Drag;
                 DragObjectHandler.DragEnded += On_Drag;
+                _cameraTransition.CameraEntered += On_Game_Enter;
             }
         }
 
@@ -66,5 +80,5 @@ namespace GearPuzzle
             EndGear.gameObject.GetComponent<DragObjectHandler>().Enabled = false;
             DragObjectHandler.Parent = _gearsParent;
         }
-    } 
+    }
 }

@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using SaveSystem.Data;
 using Inventory.Collectable;
@@ -8,11 +9,16 @@ namespace Inventory
 {
     public class Inventory : MonoBehaviour
     {
+        [SerializeField] ItemDatabase _itemDatabase;
+        [SerializeField] ClueDatabase _clueDatabase;
+
         List<Item> _items;
         CollectibleItemSet _collectedWorldItems;
         List<Clue> _clues;
         CollectibleItemSet _collectedWorldClues;
 
+
+        public ItemDatabase ItemDatabase => _itemDatabase;
         public int Capacity { get; } = 6;
         public List<Item> Items { get => _items; private set => _items = value; }
         public CollectibleItemSet CollectedWorldItems => _collectedWorldItems;
@@ -23,8 +29,8 @@ namespace Inventory
         public void AddItem(Item item)
         {
             _items.Add(item);
-            EventsManager.On_Inventory_Item_Added(item);
             Debug.Log($"Item {item.Name} added.");
+            EventsManager.On_Inventory_Item_Added(item);
         }
         public void AddAllItems(List<Item> items)
         {
@@ -86,7 +92,8 @@ namespace Inventory
         {
             InventoryData data = SaveDataManager.Save.InventoryData;
             data.CollectibleWorldItems = _collectedWorldItems;
-            data.Items = _items;
+            data.Items = _items.Select(item => item.Name).ToList();
+
             data.CollectibleWorldClues = _collectedWorldClues;
             data.Clues = _clues;
         }
@@ -95,7 +102,7 @@ namespace Inventory
             InventoryData data = SaveDataManager.Save.InventoryData;
             _collectedWorldItems = data.CollectibleWorldItems;
             Items = new List<Item>();
-            AddAllItems(data.Items);
+            AddAllItems(data.GetItems(_itemDatabase));
             _collectedWorldClues = data.CollectibleWorldClues;
             Clues = new List<Clue>();
             AddAllClues(data.Clues);
