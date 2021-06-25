@@ -9,22 +9,28 @@ public class ItemInspector : MonoBehaviour
     [Min(1)] [SerializeField] float rotationSpeed = 1.0f;
     [Min(10)] [SerializeField] float zoomSpeed = 10.0f;
     [Header("Object")]
-    [SerializeField] GameObject inspectedObject;
-
+    bool isInspecting;
     Vector3 position;
     Vector3 zoom;
     Vector3 camPos;
-
-    private void OnEnable()
+    Transform parentTransform;
+    private void Start()
     {
-        gameObject.transform.position = InspectCamera.transform.position;
-        camPos = InspectCamera.transform.position;
+        parentTransform = gameObject.transform.parent;
+        isInspecting = false;
+    }
+
+    public void SetItemPosition()
+    {
+        camPos = InspectCamera.transform.position + InspectCamera.transform.forward;
+        parentTransform.position = camPos;
+        isInspecting = true;
     }
 
     void OnMouseScroll()
     {
         var zoomAmount = Input.mouseScrollDelta.y;
-        zoom = gameObject.transform.position;
+        zoom = parentTransform.position;
 
         if (zoomAmount > 0.0f)
         {
@@ -34,8 +40,8 @@ public class ItemInspector : MonoBehaviour
         {
             zoom.z -= zoomSpeed * Time.deltaTime;
         }
-        zoom.z = Mathf.Clamp(zoom.z, camPos.z + 1.5f, camPos.z + 2.5f);
-        gameObject.transform.position = zoom;
+        zoom.z = Mathf.Clamp(zoom.z, camPos.z - 1f, camPos.z + 2.5f);
+       parentTransform.position = zoom;
     }
     void OnMouseDown()
     {
@@ -46,13 +52,17 @@ public class ItemInspector : MonoBehaviour
         var deltaPosition = Input.mousePosition - position;
 
         var axis = Quaternion.AngleAxis(-90.0f, Vector3.forward) * deltaPosition;
-        inspectedObject.transform.rotation = Quaternion.AngleAxis(deltaPosition.magnitude * rotationSpeed, axis) * inspectedObject.transform.rotation;
+        gameObject.transform.rotation = Quaternion.AngleAxis(deltaPosition.magnitude * rotationSpeed, axis) * gameObject.transform.rotation;
         position = Input.mousePosition;
     }
 
     void Update()
     {
-        OnMouseScroll();
+        if(isInspecting)
+        {
+            OnMouseScroll();
+        }
+
     }
 }
 

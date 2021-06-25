@@ -1,12 +1,17 @@
+using System;
 using UnityEngine;
 using Cinemachine;
+using TMPro;
 
 public class CameraTransition : MonoBehaviour
 {
+    public Action<GameObject> CameraEntered;
+
     [SerializeField] GameObject camPointer;
     [SerializeField] CinemachineVirtualCamera mainCam;
     [SerializeField] CinemachineVirtualCamera transitionCamera;
     [SerializeField] int startingPriority;
+    [SerializeField] TextMeshPro playerPrompt;
 
     bool isMain;
 
@@ -16,12 +21,24 @@ public class CameraTransition : MonoBehaviour
         isMain = true;
     }
 
+    private void OnTriggerEnter(Collider other)
+    {
+        playerPrompt.text = "Press E to toggle camera";
+    }
+
     private void OnTriggerStay(Collider other)
     {
+        
         if (other.gameObject.CompareTag("Player") && Input.GetKey(KeyCode.E))
         {
             SwitchCameras();
+            CameraEntered?.Invoke(other.gameObject);
         }
+    }
+
+    private void OnTriggerExit(Collider other)
+    {
+        playerPrompt.text = " ";
     }
 
     void SwitchCameras()
@@ -31,8 +48,6 @@ public class CameraTransition : MonoBehaviour
             transitionCamera.Priority = 2;
             mainCam.Priority = startingPriority;
             isMain = false;
-            //Cursor.visible = true;
-            //Cursor.lockState = CursorLockMode.Confined;
             CameraController.SetCursorLockMode(true);
             camPointer.SetActive(false);
             PlayerMovement.canMove = false;
@@ -42,8 +57,6 @@ public class CameraTransition : MonoBehaviour
             transitionCamera.Priority = startingPriority;
             mainCam.Priority = 2;
             isMain = true;
-            //Cursor.visible = false;
-            //Cursor.lockState = CursorLockMode.Locked;
             CameraController.SetCursorLockMode(false);
             camPointer.SetActive(true);
             PlayerMovement.canMove = true;

@@ -26,8 +26,6 @@ public class GameManager : MonoBehaviour
         FindObjectOfType<WaterLevel>().SetWaterLevel(data.WaterLevel);
     }
 
-    void On_SaveData_Loaded() => LoadData();
-    void On_SaveData_PreSave() => SaveData();
     void On_Gear_Puzzle_Completed(bool isCompleted)
     {
         if(isCompleted && !gearFirstCompleation)
@@ -36,7 +34,10 @@ public class GameManager : MonoBehaviour
             FindObjectOfType<WaterLevel>().TriggerWaterRise();
         }
         GearPuzzleCompleted = isCompleted;
-        
+        if (isCompleted)
+        {
+            SaveDataManager.Instance.On_Save_Data();
+        }
     }
     void On_Pipe_Puzzle_Completed(bool isCompleted)
     {
@@ -46,7 +47,13 @@ public class GameManager : MonoBehaviour
             FindObjectOfType<WaterLevel>().TriggerWaterRise();
         }
         PipePuzzleCompleted = isCompleted;
+        if (isCompleted)
+        {
+            SaveDataManager.Instance.On_Save_Data();
+        }
     }
+    void On_SaveData_Loaded() => LoadData();
+    void On_SaveData_PreSave() => SaveData();
 
     void SubToEvents(bool subscribe)
     {

@@ -20,7 +20,7 @@ namespace GearPuzzle
 
         void RotateGear()
         {
-            transform.Rotate(Vector3.down, _speed * Direction * Time.deltaTime);
+            transform.Rotate(Vector3.forward, _speed * Direction * Time.deltaTime);
         }
 
         void On_Drag_Started(GameObject gear)

@@ -26,8 +26,8 @@ namespace SaveSystem
             if (!Directory.Exists(path))
                 Directory.CreateDirectory(path);
             else
-            if (File.Exists(path + "/" + fileName))
-                File.Delete(path + "/" + fileName);
+            if (File.Exists(path + fileName))
+                File.Delete(path + fileName);
 
             // Construct a BinaryFormatter and use it to serialize the data to the stream.
             BinaryFormatter formatter = new BinaryFormatter();
@@ -36,13 +36,7 @@ namespace SaveSystem
                 formatter.Serialize(fileStream, saveObject);
             }
         }
-        /// <summary>
-        /// Saves serialized data to file at persistentDataPath/save.
-        /// </summary>
-        /// <typeparam name="T"></typeparam>
-        /// <param name="saveObject">Serializable object to save.</param>
-        /// <param name="fileName">Name of save file.</param>
-
+        
         /// <summary>
         /// Loads serialized data from file.
         /// </summary>
@@ -52,7 +46,7 @@ namespace SaveSystem
         /// <returns>Saved serialized object or default if file not found.</returns>
         public static T Load<T>(string path, string fileName)
         {
-            if (!File.Exists(path + "/" + fileName))
+            if (!File.Exists(path + fileName))
                 return default(T);
             BinaryFormatter formatter = new BinaryFormatter();
             // Open the file containing the data that you want to deserialize.
@@ -64,13 +58,13 @@ namespace SaveSystem
 
         public static bool SaveExists(string path, string fileName)
         {
-            string file = string.Concat(path, "/", fileName);
+            string file = path + fileName;
             return File.Exists(file);
         }
 
-        public static void DeleteSave(string path)
+        public static void DeleteSave(string filePath)
         {
-            File.Delete(path);
+            File.Delete(filePath);
         }
 
         public static void DeleteAllSaveFilesIn(string path)

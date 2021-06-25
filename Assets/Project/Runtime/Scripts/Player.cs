@@ -1,23 +1,20 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using SaveSystem.Data;
 
 public class Player : MonoBehaviour
 {
 
-
     void SaveData()
     {
-        SaveDataManager.Save.PlayerData = new PlayerData()
-        {
-
-        };
+        SaveDataManager.Save.PlayerData = new PlayerData(transform);
     }
     void LoadData()
     {
         PlayerData data = SaveDataManager.Save.PlayerData;
-
+        if (data == null)
+            return;
+        transform.position = data.Position.Get();
+        transform.rotation = data.Rotation.Get();
     }
 
     void On_SaveData_Loaded() => LoadData();

@@ -125,6 +125,7 @@ namespace PipePuzzle
                     pipe.gameObject.GetComponent<SpriteRenderer>().color = Color.red;
                 }
                 isComplete = true;
+                PuzzleCompleted?.Invoke(isComplete);
             }
         }
     }

@@ -19,7 +19,8 @@ public class ClueInventoryUI : MonoBehaviour
 
     void OpenJournal(bool isOpen)
     {
-        _journal.SetActive(isOpen);
+        // Hard coded toggle for now, need global bool
+        _journal.SetActive(!_journal.activeSelf);
     }
 
     void LoadClue(Clue clue)
