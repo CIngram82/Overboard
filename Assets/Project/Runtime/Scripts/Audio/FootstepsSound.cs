@@ -5,6 +5,7 @@ public class FootstepsSound : MonoBehaviour
     public LayerMask metalLayer;
     public LayerMask woodLayer;
     public LayerMask carpetLayer;
+    public LayerMask waterLayer;
     AudioScript audioScript;
 
     void Start()
@@ -24,12 +25,12 @@ public class FootstepsSound : MonoBehaviour
             audioScript.PlayCarpetFootsteps();
             return;
         }
-        else if (Physics.Raycast(transform.position, Vector3.down, 4, woodLayer))
+        else if (Physics.Raycast(transform.position, Vector3.down, 8, woodLayer))
         {
             audioScript.PlayWoodFootsteps();
-            return;
+            
         }
-        else
+        else if (Physics.Raycast(transform.position, Vector3.down, 8, waterLayer))
         {
             audioScript.PlayWaterFootsteps();
         }

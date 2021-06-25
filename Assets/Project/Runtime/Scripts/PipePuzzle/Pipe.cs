@@ -54,10 +54,13 @@ namespace PipePuzzle
         private void OnMouseDown()
         {
             RotatePipe();
+            AudioScript._instance.PlaySoundEffect("Metal Slide");
             pipeGM.CheckConnections();
         }
         public void RotatePipe()
         {
+            
+
             if (!canTurn) return;
             // set the new direction the image will turn to.
             rotationDirection += 90;

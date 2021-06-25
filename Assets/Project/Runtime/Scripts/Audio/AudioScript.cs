@@ -27,6 +27,7 @@ public class AudioScript : MonoBehaviour
     [SerializeField] List<AudioClip> carpetFootsteps = new List<AudioClip>();
     [SerializeField] List<AudioClip> metalFootsteps = new List<AudioClip>();
     [SerializeField] List<AudioClip> waterFootsteps = new List<AudioClip>();
+    Dictionary<string, AudioClip> sounds = new Dictionary<string, AudioClip>();
     public AudioClip menuButton;
     public AudioClip titleTheme;
     public List<AudioClip> randomSounds = new List<AudioClip>();
@@ -49,6 +50,10 @@ public class AudioScript : MonoBehaviour
         
     }
 
+    private void Start()
+    {
+        CreateKeys();
+    }
 
 
     public void PlayClip(AudioClip clip)
@@ -57,9 +62,17 @@ public class AudioScript : MonoBehaviour
         thisAudio.PlayOneShot(clip);
     }
 
-    public void PlaySoundEffect(int clipIndex)
+    public void PlaySoundEffect(string soundName)
     {
-        PlayClip(soundEffects[clipIndex]);
+        //PlayClip(soundEffects[clipIndex]);
+        if (sounds.ContainsKey(soundName))
+        {
+            thisAudio.PlayOneShot(sounds[soundName]);
+        }
+        else
+        {
+            Debug.Log("Sound " + soundName + " does not exist in sound lookup");
+        }
     }
 
     public void StopAudio()
@@ -100,14 +113,37 @@ public class AudioScript : MonoBehaviour
             Debug.Log("Playing again " + GetScene().name + " " + thisAudio.isPlaying);
             PlayClip(titleTheme);
         }
-        else if (GetScene().name == "BetaLevel1")
-        {
-            thisAudio.Stop();
-        }
+        
         else
         {
             Debug.Log("Audio else fallthrough");
         }
     }
+
+   void CreateKeys()
+   {
+        foreach(AudioClip clip in soundEffects)
+        {
+            sounds.Add(clip.name, clip);
+            Debug.Log(clip.name);
+        }
+   }
+  
+    public void PlayItemSound(string itemName)
+    {
+        switch (itemName)
+        {
+            case "Safekey1": 
+                PlaySoundEffect("Lighter Click");
+                break;
+            case "Safekey2":
+                PlaySoundEffect("Drawer");
+                break;
+            case "Safekey3":
+                PlaySoundEffect("Pen Click");
+                break;
+        }
+    }
+
 }
 

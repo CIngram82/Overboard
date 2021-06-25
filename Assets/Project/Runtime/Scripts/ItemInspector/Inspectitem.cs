@@ -11,7 +11,7 @@ public class InspectItem : MonoBehaviour
 
     ItemInspector inspector;
     GameObject inspectedObject;
-   public static bool isInspecting;
+    public static bool isInspecting;
 
 
     private void Start()
@@ -57,6 +57,7 @@ public class InspectItem : MonoBehaviour
             inspector = List[index].GetComponent<ItemInspector>();
             inspector.SetItemPosition();
             SwitchCameras();
+            AudioScript._instance.PlayItemSound(inspectedObject.name);
         }
     }
 
@@ -69,8 +70,8 @@ public class InspectItem : MonoBehaviour
 
     public void BackOut()
     {
-        inspectedObject.SetActive(false);
         isInspecting = false;
+        inspectedObject.SetActive(false);
         SwitchCameras();
         backOutButton.SetActive(false);
     }

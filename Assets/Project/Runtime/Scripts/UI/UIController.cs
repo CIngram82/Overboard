@@ -17,8 +17,10 @@ namespace Controllers.UI
         }
         public static void OnLoadScene(int index)
         {
-            SceneManager.LoadScene(index);
+            AudioScript._instance.StopAudio();
             AudioScript._instance.PlayClip(AudioScript._instance.menuButton);
+            SceneManager.LoadScene(index);
+           // AudioScript._instance.PlayClip(AudioScript._instance.menuButton);            
         }
         public static void OnHelp()
         {
@@ -34,7 +36,7 @@ namespace Controllers.UI
         public static void OnMenu()
         {
             Debug.LogWarning("Loading Scene_MainMenu");
-            AudioScript._instance.PlayClip(AudioScript._instance.menuButton);
+           // AudioScript._instance.PlayClip(AudioScript._instance.menuButton);
             SceneManager.LoadScene("Scene_MainMenu");
         }
         public static void OnReset()
