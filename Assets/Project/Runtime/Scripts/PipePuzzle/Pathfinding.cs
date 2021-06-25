@@ -9,7 +9,6 @@ namespace PipePuzzle
         // A* pathfinding https://en.wikipedia.org/wiki/A*_search_algorithm
         // The files Pathfinding, pathNode are both used for A* check the wiki for more details. 
 
-        private const int MOVE_COST = 1;
         private PFGrid<Pipe> grid;
         private List<Pipe> openList;
         private List<Pipe> closedList;
@@ -131,7 +130,7 @@ namespace PipePuzzle
         {
             int dx = Mathf.Abs(a.X - b.X);
             int dy = Mathf.Abs(a.Y - b.Y);
-            return MOVE_COST * (dx * dy);
+            return  (dx * dy);
         }
 
         private Pipe GetLowestFCostNode(List<Pipe> pathNodes)

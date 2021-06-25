@@ -26,9 +26,13 @@ namespace PipePuzzle
             SetUpGrid();
             SetUpPuzzle();
             MakeNeighbors();
-            Shuffle();
             pathfinding = new Pathfinding(puzzle);
-            CheckConnections();
+            do
+            {
+                Shuffle();
+                CheckConnections();
+            }
+            while (isComplete);
         }
 
         private void SetUpPuzzle()
@@ -108,6 +112,7 @@ namespace PipePuzzle
             {
                 foreach (var pipe in puzzle.gridArray)
                 {
+                    // Replace with changing out sprites or object for empty pipe 
                     pipe.gameObject.GetComponent<SpriteRenderer>().color = Color.white;
                 }
                 isComplete = false;
@@ -116,6 +121,7 @@ namespace PipePuzzle
             {
                 foreach (Pipe pipe in pathOne)
                 {
+                    // Replace with changing out sprites or object for full pipe 
                     pipe.gameObject.GetComponent<SpriteRenderer>().color = Color.red;
                 }
                 isComplete = true;
