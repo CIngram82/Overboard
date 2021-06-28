@@ -31,7 +31,7 @@ namespace GearPuzzle
         {
             List<Gear> poweredGears = _startGear.PowerNextGear();
             poweredGears.Add(StartGear);
-            var unPoweredGears = _gears.Where(ps => poweredGears.All(gs => gs != ps));
+            var unPoweredGears = _gears.Where(ps => poweredGears.All(gs => gs != ps)); // searching all gears inside gearsList and checking for unpowered gears and storing them in the Unpowered collection
             foreach (var gear in unPoweredGears)
             {
                 gear.IsPowered = false;

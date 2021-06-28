@@ -23,7 +23,7 @@ public class ClickPickupObject : MonoBehaviour
         Debug.DrawRay(_ray.origin, _rayCamera.transform.forward * maxDistance, Color.red);
     }
 
-    void FixedUpdate()
+    void LateUpdate()
     {
 #if UNITY_EDITOR
         if (debuggingOn) DrawRay();
