@@ -9,8 +9,7 @@ public class CameraController : MonoBehaviour
 
     void Start()
     {
-        Cursor.lockState = CursorLockMode.Locked;
-        Cursor.visible = false;
+        SetCursorLockMode(false);
     }
     void LateUpdate()
     {
@@ -29,14 +28,18 @@ public class CameraController : MonoBehaviour
         mouseX += Input.GetAxis("Mouse X") * rotSpeed;
         mouseY -= Input.GetAxis("Mouse Y") * rotSpeed;
         gameObject.transform.rotation = Quaternion.Euler(Mathf.Clamp(mouseY * rotSpeed, -30f, 40f), mouseX, 0);
-        
+
         if (Input.GetMouseButtonDown(1))
         {
             SetCursorLockMode(!Cursor.visible);
         }
     }
 
-    public Quaternion Rotate()
+    public void SetCameraRotation(Vector3 rotation)
+    {
+        transform.localEulerAngles = rotation;
+    }
+    public Quaternion RotatePlayer()
     {
         return Quaternion.Euler(0, mouseX, 0);
     }

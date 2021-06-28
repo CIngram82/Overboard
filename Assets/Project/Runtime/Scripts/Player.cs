@@ -3,6 +3,10 @@ using SaveSystem.Data;
 
 public class Player : MonoBehaviour
 {
+    Camera _playerCamera;
+
+    public static Camera Camera;
+
 
     void SaveData()
     {
@@ -14,7 +18,7 @@ public class Player : MonoBehaviour
         if (data == null)
             return;
         transform.position = data.Position.Get();
-        transform.rotation = data.Rotation.Get();
+        transform.eulerAngles = data.Rotation.Get();
     }
 
     void On_SaveData_Loaded() => LoadData();
@@ -44,6 +48,7 @@ public class Player : MonoBehaviour
     {
         if (SaveDataManager.IsDataLoaded)
             On_SaveData_Loaded();
+        Camera = _playerCamera ? _playerCamera : Camera.main;
     }
 }
 
