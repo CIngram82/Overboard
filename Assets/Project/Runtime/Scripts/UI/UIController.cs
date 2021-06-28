@@ -95,7 +95,7 @@ namespace Controllers.UI
             {
                 OnFullReset();
             }
-            if (Input.GetKeyDown(KeyCode.Escape))
+            if (Input.GetKeyDown(KeyCode.Space))
             {
                 _isPaused = !_isPaused;
                 OnPause(_isPaused);
