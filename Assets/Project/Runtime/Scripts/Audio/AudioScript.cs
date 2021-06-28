@@ -110,12 +110,17 @@ public class AudioScript : MonoBehaviour
     {
         if (GetScene().name == "Scene_MainMenu" && !thisAudio.isPlaying)
         {
+            StopAllCoroutines();
             Debug.Log("Playing again " + GetScene().name + " " + thisAudio.isPlaying);
             PlayClip(titleTheme);
         }
-        
+        else if (GetScene().name == "BetaLevel1" && !thisAudio.isPlaying)
+        {
+            StartCoroutine(PlayRandomSound());
+        }
         else
         {
+            StopAllCoroutines();
             Debug.Log("Audio else fallthrough");
         }
     }
@@ -143,6 +148,17 @@ public class AudioScript : MonoBehaviour
                 PlaySoundEffect("Pen Click");
                 break;
         }
+    }
+
+    IEnumerator PlayRandomSound()
+    {
+        while (activeScene.name == "BetaLevel1" && !thisAudio.isPlaying)
+        {
+            PlayClip(randomSounds[Random.Range(0, randomSounds.Count)]);
+            yield return new WaitForSeconds(Random.Range(minWaitBetweenPlays, maxWaitBetweenPlays)); 
+        }
+        
+        yield return null;
     }
 
 }
