@@ -3,9 +3,9 @@ using UnityEngine.SceneManagement;
 
 public class Dumbwaiter : MonoBehaviour
 {
-    void OnTriggerEnter(Collider other)
+    void OnTriggerStay(Collider other)
     {
-        if(IsComplete())
+        if(IsComplete() && Input.GetMouseButton(0))
         {
             SceneManager.LoadScene("CutScene");
         }

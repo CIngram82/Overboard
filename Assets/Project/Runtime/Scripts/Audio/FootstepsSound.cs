@@ -6,37 +6,27 @@ public class FootstepsSound : MonoBehaviour
     public LayerMask woodLayer;
     public LayerMask carpetLayer;
     public LayerMask waterLayer;
-    AudioScript audioScript;
 
-    void Start()
-    {
-        audioScript = FindObjectOfType<AudioScript>();
-    }
 
     public void CheckFloor()
     {
         if (Physics.Raycast(transform.position, Vector3.down, 4, metalLayer))
         {
-            audioScript.PlayMetalFootsteps();
-            return;
+            AudioScript._instance.PlayMetalFootsteps();
         }
         else if (Physics.Raycast(transform.position, Vector3.down, 4, carpetLayer))
         {
-            audioScript.PlayCarpetFootsteps();
-            return;
+            AudioScript._instance.PlayCarpetFootsteps();
         }
         else if (Physics.Raycast(transform.position, Vector3.down, 8, woodLayer))
         {
-            audioScript.PlayWoodFootsteps();
+            AudioScript._instance.PlayWoodFootsteps();
             
         }
         else if (Physics.Raycast(transform.position, Vector3.down, 8, waterLayer))
         {
-            audioScript.PlayWaterFootsteps();
+            AudioScript._instance.PlayWaterFootsteps();
         }
-
     }
-
-
 }
 

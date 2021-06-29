@@ -6,12 +6,12 @@ using TMPro;
 public class CameraTransition : MonoBehaviour
 {
     public Action<GameObject> CameraEntered;
-
     [SerializeField] GameObject camPointer;
     [SerializeField] CinemachineVirtualCamera mainCam;
     [SerializeField] CinemachineVirtualCamera transitionCamera;
     [SerializeField] int startingPriority;
     [SerializeField] TextMeshPro playerPrompt;
+    bool canTransition;
 
     bool isMain;
 
@@ -19,6 +19,14 @@ public class CameraTransition : MonoBehaviour
     {
         startingPriority = transitionCamera.Priority;
         isMain = true;
+        canTransition = false;
+    }
+    private void Update()
+    {
+        if(canTransition && Input.GetKeyUp(KeyCode.E))
+        {
+            SwitchCameras();
+        }
     }
 
     private void OnTriggerEnter(Collider other)
@@ -31,7 +39,8 @@ public class CameraTransition : MonoBehaviour
         
         if (other.gameObject.CompareTag("Player") && Input.GetKey(KeyCode.E))
         {
-            SwitchCameras();
+            canTransition = true;
+           // SwitchCameras();
             CameraEntered?.Invoke(other.gameObject);
         }
     }
@@ -39,6 +48,7 @@ public class CameraTransition : MonoBehaviour
     private void OnTriggerExit(Collider other)
     {
         playerPrompt.text = " ";
+        canTransition = false;
     }
 
     void SwitchCameras()
