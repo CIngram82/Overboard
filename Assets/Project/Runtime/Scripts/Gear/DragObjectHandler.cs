@@ -12,7 +12,7 @@ public class DragObjectHandler : MonoBehaviour
     [Space]
     [SerializeField] float _zCoordOffsetDrag = -3.5f;
     [SerializeField] float _zCoordOffsetDrop = -1.5f;
-    
+
     bool isDragged = false;
     Vector3 startPosMouse;
     Vector3 startPosObject;
@@ -23,8 +23,8 @@ public class DragObjectHandler : MonoBehaviour
     Vector3 GetMouseAsWorldPoint()
     {
         Vector3 mousePoint = Input.mousePosition;
-
-        return main.ScreenToWorldPoint(mousePoint);
+        Vector3 worldPoint = main.ScreenToWorldPoint(new Vector3(mousePoint.x, mousePoint.y, 2f));
+        return worldPoint;
     }
 
     void OnMouseDown()
@@ -47,7 +47,9 @@ public class DragObjectHandler : MonoBehaviour
 
         if (isDragged)
         {
-            transform.localPosition = startPosObject + GetMouseAsWorldPoint() - startPosMouse;
+            Vector3 mouseOffset = GetMouseAsWorldPoint() - startPosMouse;
+            Vector3 modedMouse = new Vector3(mouseOffset.z, mouseOffset.y, mouseOffset.x) * 6.66f;
+            transform.localPosition = startPosObject + modedMouse;
         }
     }
 

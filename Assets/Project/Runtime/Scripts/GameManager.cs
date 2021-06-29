@@ -5,10 +5,10 @@ public class GameManager : MonoBehaviour
 {
     public static GameManager Instance { get; private set; }
 
-    public bool GearPuzzleCompleted;
-    public bool PipePuzzleCompleted;
-    public float WaterLevel;
-
+    public bool GearPuzzleCompleted { get; private set; }
+    private bool gearFirstCompleation = false;
+    public bool PipePuzzleCompleted { get; private set; }
+    private bool pipeFirstCompleation = false;
 
     void SaveData()
     {
@@ -16,19 +16,23 @@ public class GameManager : MonoBehaviour
         {
             IsGearsCompleted = false,
             IsPipesCompleted = false,
-            WaterLevel = 0.0f,
         };
     }
     void LoadData()
     {
         GameData data = SaveDataManager.Save.GameData;
-        GearPuzzleCompleted = data.IsGearsCompleted;
-        PipePuzzleCompleted = data.IsPipesCompleted;
-        WaterLevel = data.WaterLevel;
+        gearFirstCompleation =  GearPuzzleCompleted = data.IsGearsCompleted;
+        pipeFirstCompleation = PipePuzzleCompleted = data.IsPipesCompleted;
+        FindObjectOfType<WaterLevel>().SetWaterLevel(data.WaterLevel);
     }
 
     void On_Gear_Puzzle_Completed(bool isCompleted)
     {
+        if(isCompleted && !gearFirstCompleation)
+        {
+            gearFirstCompleation = true;
+            FindObjectOfType<WaterLevel>().TriggerWaterRise();
+        }
         GearPuzzleCompleted = isCompleted;
         if (isCompleted)
         {
@@ -37,6 +41,11 @@ public class GameManager : MonoBehaviour
     }
     void On_Pipe_Puzzle_Completed(bool isCompleted)
     {
+        if (isCompleted && !pipeFirstCompleation)
+        {
+            pipeFirstCompleation = true;
+            FindObjectOfType<WaterLevel>().TriggerWaterRise();
+        }
         PipePuzzleCompleted = isCompleted;
         if (isCompleted)
         {

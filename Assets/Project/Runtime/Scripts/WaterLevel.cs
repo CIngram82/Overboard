@@ -14,8 +14,9 @@ public class WaterLevel : MonoBehaviour
     }
     void FixedUpdate()
     {
-        if (!isRising) { 
-            return; 
+        if (!isRising)
+        {
+            return;
         }
 
         Vector3 pos = transform.position;
@@ -38,5 +39,10 @@ public class WaterLevel : MonoBehaviour
         isRising = true;
         targetY += 1;
         t = 0;
+    }
+    public void SetWaterLevel(float level)
+    {
+        transform.position = new Vector3(transform.position.x, level, transform.position.z);
+        targetY = transform.position.y;
     }
 }
