@@ -33,13 +33,11 @@ public class InspectObject : MonoBehaviour
             {
                 Debug.Log("2 pressed");
                 Inspect(inventory.UIItems[1].Item.Prefab);
-                //Inspect(ClickPickupObject.collectedItems, 1);
             }
             else if (Input.GetKeyDown(KeyCode.Alpha3))
             {
                 Debug.Log("3 pressed");
                 Inspect(inventory.UIItems[3].Item.Prefab);
-                //Inspect(ClickPickupObject.collectedItems, 2);
             }
             else if (Input.GetKeyDown(KeyCode.Alpha6))
             {
@@ -52,8 +50,6 @@ public class InspectObject : MonoBehaviour
     void Inspect(GameObject itemObject)
     {
         backOutButton.SetActive(true);
-        //inspectedObject = list[index].transform.parent.gameObject;
-        //inspectedObject.SetActive(true);
         inspectedObject = Instantiate(itemObject);
         inspector = inspectedObject.GetComponentInChildren<ItemInspector>();
         inspector.SetItemPosition(IsInspecting = true);

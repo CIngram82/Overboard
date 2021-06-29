@@ -27,7 +27,7 @@ public class CameraController : MonoBehaviour
     {
         mouseX += Input.GetAxis("Mouse X") * rotSpeed;
         mouseY -= Input.GetAxis("Mouse Y") * rotSpeed;
-        gameObject.transform.rotation = Quaternion.Euler(Mathf.Clamp(mouseY * rotSpeed, -30f, 40f), mouseX, 0);
+        gameObject.transform.rotation = Quaternion.Euler(Mathf.Clamp(mouseY * rotSpeed, -40f, 50f), mouseX, 0);
 
         if (Input.GetMouseButtonDown(1))
         {

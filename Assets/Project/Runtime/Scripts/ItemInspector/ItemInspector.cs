@@ -8,7 +8,7 @@ public class ItemInspector : MonoBehaviour
     [SerializeField] Camera InspectCamera;
     [Min(1)] [SerializeField] float rotationSpeed = 1.0f;
     [Min(10)] [SerializeField] float zoomSpeed = 10.0f;
-    [SerializeField] float radius = 3.0f;
+    [SerializeField] float radius = 1.0f;
     [Header("Object")]
     [SerializeField] Transform _parentTransform;
     [SerializeField] bool _isInspecting;
@@ -21,7 +21,7 @@ public class ItemInspector : MonoBehaviour
 
     public void SetItemPosition(bool isInspecting)
     {
-        forward = InspectCamera.transform.forward;
+        forward = InspectCamera.transform.forward * 1.5f;
         objectPos = InspectCamera.transform.position + forward;
         _parentTransform.position = objectPos;
         _isInspecting = isInspecting;

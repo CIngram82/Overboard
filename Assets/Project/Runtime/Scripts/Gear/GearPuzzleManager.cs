@@ -44,7 +44,11 @@ namespace GearPuzzle
             if (player.TryGetComponent(out Inventory.Inventory inventory))
             {
                 if (inventory.Items.Contains(inventory.ItemDatabase.GetInventoryItem("Gear")))
+                {
+                    inventory.RemoveItem(inventory.ItemDatabase.GetInventoryItem("Gear"));
                     _missingGear.SetActive(true);
+                    On_Drag(gameObject);
+                }
             }
         }
 
@@ -72,7 +76,7 @@ namespace GearPuzzle
         }
         void Start()
         {
-            On_Drag(default);
+           // On_Drag(default);
         }
         void Awake()
         {
