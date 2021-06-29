@@ -7,19 +7,6 @@ using UnityEngine.SceneManagement;
 public class AudioScript : MonoBehaviour
 {
     public AudioSource thisAudio;
-    //public static AudioScript Instance
-    //{
-    //    get
-    //    {
-    //        if (_instance == null)
-    //        {
-    //            _instance = GameObject.FindObjectOfType<AudioScript>();
-    //        }
-            
-
-    //        return _instance;
-    //    }
-    //}
 
     public static AudioScript _instance;
     public List<AudioClip> soundEffects = new List<AudioClip>();
@@ -38,16 +25,15 @@ public class AudioScript : MonoBehaviour
 
     private void Awake()
     {
-       if(_instance == null)
-       {
+        if (_instance == null)
+        {
             _instance = this;
             DontDestroyOnLoad(gameObject);
-       }
-       else
-       {
+        }
+        else
+        {
             Destroy(gameObject);
-       }
-        
+        }
     }
 
     private void Start()
@@ -58,13 +44,13 @@ public class AudioScript : MonoBehaviour
 
     public void PlayClip(AudioClip clip)
     {
-        //thisAudio.pitch = Random.Range(pitchMin, pitchMax); // This always changes pitch AND tempo because it is changing by sample rate. Did you mean Volume?
+        Debug.Log(clip);
+        Debug.Log(thisAudio);
         thisAudio.PlayOneShot(clip);
     }
 
     public void PlaySoundEffect(string soundName)
     {
-        //PlayClip(soundEffects[clipIndex]);
         if (sounds.ContainsKey(soundName))
         {
             thisAudio.PlayOneShot(sounds[soundName]);
@@ -87,7 +73,7 @@ public class AudioScript : MonoBehaviour
     public void PlayWoodFootsteps()
     {
         float randomVol = Random.Range(.2f, .6f);
-        PlayClip(woodFootsteps[Random.Range(0, woodFootsteps.Count)]);
+        PlayClip(woodFootsteps[0]);
     }
     public void PlayMetalFootsteps()
     {
@@ -114,7 +100,7 @@ public class AudioScript : MonoBehaviour
             Debug.Log("Playing again " + GetScene().name + " " + thisAudio.isPlaying);
             PlayClip(titleTheme);
         }
-        else if (GetScene().name == "BetaLevel1" && !thisAudio.isPlaying)
+        else if (GetScene().name == "BetaLevel1" )//&& !thisAudio.isPlaying)
         {
             StartCoroutine(PlayRandomSound());
         }
@@ -125,20 +111,19 @@ public class AudioScript : MonoBehaviour
         }
     }
 
-   void CreateKeys()
-   {
-        foreach(AudioClip clip in soundEffects)
+    void CreateKeys()
+    {
+        foreach (AudioClip clip in soundEffects)
         {
             sounds.Add(clip.name, clip);
-            Debug.Log(clip.name);
         }
-   }
-  
+    }
+
     public void PlayItemSound(string itemName)
     {
         switch (itemName)
         {
-            case "Safekey1": 
+            case "Safekey1":
                 PlaySoundEffect("Lighter Click");
                 break;
             case "Safekey2":
@@ -155,9 +140,9 @@ public class AudioScript : MonoBehaviour
         while (activeScene.name == "BetaLevel1" && !thisAudio.isPlaying)
         {
             PlayClip(randomSounds[Random.Range(0, randomSounds.Count)]);
-            yield return new WaitForSeconds(Random.Range(minWaitBetweenPlays, maxWaitBetweenPlays)); 
+            yield return new WaitForSeconds(Random.Range(minWaitBetweenPlays, maxWaitBetweenPlays));
         }
-        
+
         yield return null;
     }
 
