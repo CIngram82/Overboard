@@ -361,6 +361,49 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 594123498}
   m_CullTransparentMesh: 1
+--- !u!1 &681924519
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 681924521}
+  - component: {fileID: 681924520}
+  m_Layer: 0
+  m_Name: Cutscene
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &681924520
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 681924519}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 84fecf13c87fbab4caa5054480a78bf3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!4 &681924521
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 681924519}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.56038535, y: 2.6288362, z: 149.57164}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1467394590
 GameObject:
   m_ObjectHideFlags: 0
@@ -446,13 +489,13 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1467394595}
-        m_TargetAssemblyTypeName: AlphaTesting, Project
-        m_MethodName: OnClickOK
-        m_Mode: 1
+        m_TargetAssemblyTypeName: Controllers.UI.UIController, Project
+        m_MethodName: OnLoadScene
+        m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
+          m_IntArgument: 5
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
@@ -504,7 +547,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1467394590}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7b5f38cbe1a809c4194294d166df09ad, type: 3}
+  m_Script: {fileID: 11500000, guid: 95685ab39917a634ba9c75102de07752, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &1588426312
