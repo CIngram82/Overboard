@@ -37,6 +37,7 @@ public class ClickPickupObject : MonoBehaviour
                 // WorldItem is on root parent containing gameObject of hit collider. 
                 rayHit.transform.gameObject.GetComponentInParent<WorldItem>().PickUpItem(gameObject);
                 collectedItems.Add(rayHit.collider.gameObject);
+                AudioScript._instance.PlaySoundEffect("Grab");
             }
             else
             if (Physics.Raycast(_ray, out rayHit, maxDistance, clues))
