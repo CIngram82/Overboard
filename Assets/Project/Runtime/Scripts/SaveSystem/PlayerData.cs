@@ -7,12 +7,13 @@ namespace SaveSystem.Data
     {
         /**/
         public SerialVector3 Position;
-        public SerialQuaternion Rotation;
+        public SerialVector3 Rotation;
+        //public SerialQuaternion Rotation;
 
         public PlayerData(Transform transform)
         {
             Position = new SerialVector3(transform.position);
-            Rotation = new SerialQuaternion(transform.rotation);
+            Rotation = new SerialVector3(transform.eulerAngles);
         }
         /**/
     }

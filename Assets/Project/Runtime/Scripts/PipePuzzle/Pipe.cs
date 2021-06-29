@@ -6,8 +6,8 @@ namespace PipePuzzle
 {
     public class Pipe : MonoBehaviour
     {
-        public int X { get; set; }
-        public int Y { get; set; }
+        public int X { get;  set; }
+        public int Y { get;  set; }
 
         #region pathfinding
         public int gCost;
@@ -20,6 +20,7 @@ namespace PipePuzzle
         {
             fCost = gCost + hCost;
         }
+
         #endregion
 
 
@@ -33,7 +34,6 @@ namespace PipePuzzle
 
         [SerializeField]
         private bool canTurn = true;
-        private bool isRotating = false;
 
         private PipeGameManager pipeGM;
         [HideInInspector]
@@ -45,26 +45,23 @@ namespace PipePuzzle
 
         private void Update()
         {
-            if (transform.rotation.eulerAngles.z != rotationDirection && isRotating)
+            if (transform.rotation.eulerAngles.z != rotationDirection)
             {
                 transform.rotation = Quaternion.Lerp(transform.rotation, Quaternion.Euler(transform.rotation.x, transform.rotation.y, rotationDirection), rotationSpeed);
-            }
-            else if (isRotating)
-            {
-                isRotating = false;
-                pipeGM.CheckConnections();
             }
         }
 
         private void OnMouseDown()
         {
-            if (isRotating) return;
-            RotatePipe(); 
+            RotatePipe();
+            AudioScript._instance.PlaySoundEffect("Metal Slide");
+            pipeGM.CheckConnections();
         }
         public void RotatePipe()
         {
-            if (!canTurn) return;
+            
 
+            if (!canTurn) return;
             // set the new direction the image will turn to.
             rotationDirection += 90;
             if (rotationDirection == 360)
@@ -78,7 +75,6 @@ namespace PipePuzzle
                 exits[i] = exits[i + 1];
             }
             exits[exits.Length - 1] = temp;
-
         }
         public static void MakeEastWestNeighbors(Pipe east, Pipe west)
         {

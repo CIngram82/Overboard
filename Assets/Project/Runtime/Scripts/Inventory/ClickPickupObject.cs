@@ -20,14 +20,15 @@ public class ClickPickupObject : MonoBehaviour
     {
         _ray = _rayCamera.ScreenPointToRay(Input.mousePosition);
         Debug.DrawRay(_ray.origin, _ray.direction * maxDistance, rayColor);
+        Debug.DrawRay(_ray.origin, _rayCamera.transform.forward * maxDistance, Color.red);
     }
 
-    void Update()
+    void LateUpdate()
     {
 #if UNITY_EDITOR
         if (debuggingOn) DrawRay();
 #endif
-        if (Input.GetMouseButtonDown(0) && !InspectItem.isInspecting)
+        if (Input.GetMouseButtonDown(0) && !InspectObject.IsInspecting)
         {
             RaycastHit rayHit;
             _ray = _rayCamera.ScreenPointToRay(Input.mousePosition);
@@ -36,6 +37,7 @@ public class ClickPickupObject : MonoBehaviour
                 // WorldItem is on root parent containing gameObject of hit collider. 
                 rayHit.transform.gameObject.GetComponentInParent<WorldItem>().PickUpItem(gameObject);
                 collectedItems.Add(rayHit.collider.gameObject);
+                AudioScript._instance.PlaySoundEffect("Grab");
             }
             else
             if (Physics.Raycast(_ray, out rayHit, maxDistance, clues))
@@ -47,6 +49,6 @@ public class ClickPickupObject : MonoBehaviour
     }
     void Awake()
     {
-        _rayCamera = GetComponentInChildren<Camera>();
+        _rayCamera = Camera.main;
     }
 }

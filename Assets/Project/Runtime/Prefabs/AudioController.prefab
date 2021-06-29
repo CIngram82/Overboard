@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &5503163256357117317
+--- !u!1 &1600587784227398437
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,9 +8,9 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 5503163256357117320}
-  - component: {fileID: 5503163256357117319}
-  - component: {fileID: 5503163256357117318}
+  - component: {fileID: 1600587784227398440}
+  - component: {fileID: 1600587784227398439}
+  - component: {fileID: 1600587784227398438}
   m_Layer: 0
   m_Name: AudioController
   m_TagString: Untagged
@@ -18,13 +18,13 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &5503163256357117320
+--- !u!4 &1600587784227398440
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5503163256357117317}
+  m_GameObject: {fileID: 1600587784227398437}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
@@ -32,18 +32,19 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &5503163256357117319
+--- !u!114 &1600587784227398439
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5503163256357117317}
+  m_GameObject: {fileID: 1600587784227398437}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 0465e6d17cd7ccf449d18b7ea707b823, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  thisAudio: {fileID: 1600587784227398438}
   soundEffects:
   - {fileID: 8300000, guid: 278e123e1468d48438ab8de26543232d, type: 3}
   - {fileID: 8300000, guid: 43e19347dd0a4334f83b600bbdf96e27, type: 3}
@@ -54,6 +55,14 @@ MonoBehaviour:
   - {fileID: 8300000, guid: c98ffb39876e11746b2dcd6de9a0e6dc, type: 3}
   - {fileID: 8300000, guid: fb9e089d461c0e84e896be1655534988, type: 3}
   - {fileID: 8300000, guid: fddd85818dcfe4c45b4113724b09629d, type: 3}
+  - {fileID: 8300000, guid: 4746deea9b3008349a8f445d4feef21d, type: 3}
+  - {fileID: 8300000, guid: c98ffb39876e11746b2dcd6de9a0e6dc, type: 3}
+  - {fileID: 8300000, guid: 31499ef94d2335649a5a01e728e54ca1, type: 3}
+  - {fileID: 8300000, guid: 596614c11fc5c364db8bd6bf9c9d7796, type: 3}
+  - {fileID: 8300000, guid: c8c6f7fd19cb1b84eb288a2d43a0893a, type: 3}
+  - {fileID: 8300000, guid: e7279c681ce6f994a92ec1d4fd2a5f55, type: 3}
+  - {fileID: 8300000, guid: 33c4fb6e50ed26c439595063315e29ad, type: 3}
+  - {fileID: 8300000, guid: a8247b4dc7e3de64599da91fcfbcf63f, type: 3}
   woodFootsteps:
   - {fileID: 8300000, guid: 109f8d90684f3834d8b140df900a1f5d, type: 3}
   - {fileID: 8300000, guid: 29f0931476e312144adb5f3ce6b0130a, type: 3}
@@ -73,21 +82,25 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 2ca325e87b90ac14592fdca66c29569e, type: 3}
   pitchMax: 1.2
   pitchMin: 0.8
+  menuButton: {fileID: 8300000, guid: 596614c11fc5c364db8bd6bf9c9d7796, type: 3}
+  titleTheme: {fileID: 8300000, guid: c4f539bf998359745852939ce958ddb4, type: 3}
   randomSounds:
   - {fileID: 8300000, guid: 5ab0d35584cc7cf46ae875ed2be1fb4a, type: 3}
   - {fileID: 8300000, guid: b9f840e1d68b45b4392f6f70b02c2ee5, type: 3}
   - {fileID: 8300000, guid: 9dbd653a81d8d4546a4a790360e4f9c5, type: 3}
   - {fileID: 8300000, guid: 3190330216ae7e047ae8ec57f090cbcf, type: 3}
-  minWaitBetweenPlays: 1
-  maxWaitBetweenPlays: 5
+  minWaitBetweenPlays: 25
+  maxWaitBetweenPlays: 45
   waitTimeCountdown: -1
---- !u!82 &5503163256357117318
+  activeScene:
+    m_Handle: 0
+--- !u!82 &1600587784227398438
 AudioSource:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5503163256357117317}
+  m_GameObject: {fileID: 1600587784227398437}
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}

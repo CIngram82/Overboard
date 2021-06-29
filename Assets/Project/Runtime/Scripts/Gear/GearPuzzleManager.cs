@@ -31,7 +31,7 @@ namespace GearPuzzle
         {
             List<Gear> poweredGears = _startGear.PowerNextGear();
             poweredGears.Add(StartGear);
-            var unPoweredGears = _gears.Where(ps => poweredGears.All(gs => gs != ps));
+            var unPoweredGears = _gears.Where(ps => poweredGears.All(gs => gs != ps)); // searching all gears inside gearsList and checking for unpowered gears and storing them in the Unpowered collection
             foreach (var gear in unPoweredGears)
             {
                 gear.IsPowered = false;
@@ -44,7 +44,11 @@ namespace GearPuzzle
             if (player.TryGetComponent(out Inventory.Inventory inventory))
             {
                 if (inventory.Items.Contains(inventory.ItemDatabase.GetInventoryItem("Gear")))
+                {
+                    inventory.RemoveItem(inventory.ItemDatabase.GetInventoryItem("Gear"));
                     _missingGear.SetActive(true);
+                    On_Drag(gameObject);
+                }
             }
         }
 
@@ -72,7 +76,7 @@ namespace GearPuzzle
         }
         void Start()
         {
-            On_Drag(default);
+           // On_Drag(default);
         }
         void Awake()
         {

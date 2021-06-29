@@ -125,6 +125,7 @@ namespace PipePuzzle
                     pipe.gameObject.GetComponent<SpriteRenderer>().color = Color.red;
                 }
                 isComplete = true;
+                AudioScript._instance.PlaySoundEffect("Steam Release 2");
                 PuzzleCompleted?.Invoke(isComplete);
             }
         }

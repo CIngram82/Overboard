@@ -37,7 +37,7 @@ public class DragObjectHandler : MonoBehaviour
         transform.parent = Parent;
 
         startPosMouse = GetMouseAsWorldPoint();
-        startPosObject = transform.position;
+        startPosObject = transform.localPosition;
         startPosObject.z = _zCoordOffsetDrag;
     }
 
@@ -47,7 +47,7 @@ public class DragObjectHandler : MonoBehaviour
 
         if (isDragged)
         {
-            transform.position = startPosObject + GetMouseAsWorldPoint() - startPosMouse;
+            transform.localPosition = startPosObject + GetMouseAsWorldPoint() - startPosMouse;
         }
     }
 
@@ -56,7 +56,7 @@ public class DragObjectHandler : MonoBehaviour
         if (!Enabled) return;
 
         isDragged = false;
-        transform.position = new Vector3(transform.position.x, transform.position.y, _zCoordOffsetDrop);
+        transform.localPosition = new Vector3(transform.localPosition.x, transform.localPosition.y, _zCoordOffsetDrop);
         DragEnded?.Invoke(gameObject);
     }
 

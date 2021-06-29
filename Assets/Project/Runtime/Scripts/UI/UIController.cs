@@ -10,27 +10,33 @@ namespace Controllers.UI
         bool _isJournalOpen = false;
         bool _isPaused = false;
 
-
+        public void Start()
+        {
+            AudioScript._instance.PlayBackgroundMusic();
+            Debug.Log("Start");
+        }
         public static void OnLoadScene(int index)
         {
-            //SceneManager.LoadScene(index);
-            AudioScript.Instance.PlaySoundButton(index);
+            AudioScript._instance.StopAudio();
+            AudioScript._instance.PlayClip(AudioScript._instance.menuButton);
+            SceneManager.LoadScene(index);
+           // AudioScript._instance.PlayClip(AudioScript._instance.menuButton);            
         }
         public static void OnHelp()
         {
             Debug.LogWarning("Scene_Help");
-            // SceneManager.LoadScene("Scene_Help");
-            OnLoadScene(1);
+            AudioScript._instance.PlayClip(AudioScript._instance.menuButton);
+            SceneManager.LoadScene("Scene_Help");
         }
         public static void OnCredits()
         {
             Debug.LogWarning("Loading Scene_Credits");
-            //SceneManager.LoadScene("Scene_Credits");
-            OnLoadScene(2);
+            SceneManager.LoadScene("Scene_Credits");
         }
         public static void OnMenu()
         {
             Debug.LogWarning("Loading Scene_MainMenu");
+           // AudioScript._instance.PlayClip(AudioScript._instance.menuButton);
             SceneManager.LoadScene("Scene_MainMenu");
         }
         public static void OnReset()
@@ -95,7 +101,7 @@ namespace Controllers.UI
             {
                 OnFullReset();
             }
-            if (Input.GetKeyDown(KeyCode.Escape))
+            if (Input.GetKeyDown(KeyCode.Space))
             {
                 _isPaused = !_isPaused;
                 OnPause(_isPaused);
