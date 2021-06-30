@@ -50,7 +50,7 @@ public class DragObjectHandler : MonoBehaviour
         if (isDragged)
         {
             Vector3 mouseOffset = GetMouseAsWorldPoint() - startPosMouse;
-            Vector3 modedMouse = new Vector3(mouseOffset.z, mouseOffset.y, mouseOffset.x) * 6.66f;
+            Vector3 modedMouse = new Vector3(mouseOffset.z, mouseOffset.y, mouseOffset.x) * (20/3);
             transform.localPosition = startPosObject + modedMouse;
         }
     }

@@ -49,7 +49,7 @@ namespace GearPuzzle
         }
         void Update()
         {
-            if (IsPowered)
+            if (IsPowered && GameManager.Instance.PipePuzzleCompleted)
                 RotateGear();
         }
     }

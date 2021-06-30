@@ -34,6 +34,7 @@ public class GameManager : MonoBehaviour
         {
             gearFirstCompleation = true;
             FindObjectOfType<WaterLevel>().TriggerWaterRise();
+            FindObjectOfType<CameraTransition>().SwitchCameras();
         }
         GearPuzzleCompleted = isCompleted;
         if (isCompleted)
@@ -47,6 +48,7 @@ public class GameManager : MonoBehaviour
         {
             pipeFirstCompleation = true;
             FindObjectOfType<WaterLevel>().TriggerWaterRise();
+            FindObjectOfType<CameraTransition>().SwitchCameras();
         }
         PipePuzzleCompleted = isCompleted;
         if (isCompleted)

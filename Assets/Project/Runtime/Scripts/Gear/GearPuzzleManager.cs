@@ -17,7 +17,6 @@ namespace GearPuzzle
         [SerializeField] List<Gear> _gears;
         [SerializeField] List<GearSocket> _gearSocket;
 
-        //public bool IsSolved { get; private set; }
         public Gear StartGear => _startGear.Gear;
         public Gear EndGear => _startGear.Gear;
 
