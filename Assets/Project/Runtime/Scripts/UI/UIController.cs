@@ -10,6 +10,7 @@ namespace Controllers.UI
         bool _isJournalOpen = false;
         bool _isPaused = false;
 
+
         public void Start()
         {
             AudioScript._instance.PlayBackgroundMusic();
@@ -20,7 +21,7 @@ namespace Controllers.UI
             AudioScript._instance.StopAudio();
             AudioScript._instance.PlayClip(AudioScript._instance.menuButton);
             SceneManager.LoadScene(index);
-           // AudioScript._instance.PlayClip(AudioScript._instance.menuButton);            
+            // AudioScript._instance.PlayClip(AudioScript._instance.menuButton);            
         }
         public static void OnHelp()
         {
@@ -36,7 +37,7 @@ namespace Controllers.UI
         public static void OnMenu()
         {
             Debug.LogWarning("Loading Scene_MainMenu");
-           // AudioScript._instance.PlayClip(AudioScript._instance.menuButton);
+            // AudioScript._instance.PlayClip(AudioScript._instance.menuButton);
             SceneManager.LoadScene("Scene_MainMenu");
         }
         public static void OnReset()
@@ -51,8 +52,8 @@ namespace Controllers.UI
         }
         public static void OnFullReset()
         {
-            SaveDataManager.Instance.ClearAllSaves();
-            Debug.LogWarning($"Deleting all saves");
+            SaveDataManager.Instance.ResetSave();
+            Debug.LogWarning($"Resetting save");
             OnReset();
         }
         public static void OnSave()
@@ -69,11 +70,6 @@ namespace Controllers.UI
             CameraController.SetCursorLockMode(isJournalOpen);
             EventsManager.On_Journal_Opened(isJournalOpen);
         }
-        void OnPause(bool isPaused)
-        {
-            Debug.Log("Paused");
-            EventsManager.On_Game_Paused(isPaused);
-        }
 
         public static void SetAllActive(List<GameObject> objectArray, bool state)
         {
@@ -83,31 +79,25 @@ namespace Controllers.UI
             }
         }
 
-//#if UNITY_EDITOR
         void Update()
         {
+#if UNITY_EDITOR
             if (Input.GetKeyDown(KeyCode.R))
             {
                 OnReset();
-            }
-            else
-            if (Input.GetKeyDown(KeyCode.Alpha0))
-            {
-                _isJournalOpen = !_isJournalOpen;
-                OnJournalOpen(_isJournalOpen);
             }
             else
             if (Input.GetKeyDown(KeyCode.Period))
             {
                 OnFullReset();
             }
-            if (Input.GetKeyDown(KeyCode.Space))
+#endif
+            if (Input.GetKeyDown(KeyCode.Alpha0))
             {
-                _isPaused = !_isPaused;
-                OnPause(_isPaused);
+                _isJournalOpen = !_isJournalOpen;
+                OnJournalOpen(_isJournalOpen);
             }
         }
-//#endif
     }
 }
 
