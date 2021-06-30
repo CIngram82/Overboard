@@ -36,11 +36,9 @@ public class CameraTransition : MonoBehaviour
 
     private void OnTriggerStay(Collider other)
     {
-        
         if (other.gameObject.CompareTag("Player") && Input.GetKey(KeyCode.E))
         {
             canTransition = true;
-           // SwitchCameras();
             CameraEntered?.Invoke(other.gameObject);
         }
     }
@@ -51,7 +49,7 @@ public class CameraTransition : MonoBehaviour
         canTransition = false;
     }
 
-    void SwitchCameras()
+    public void SwitchCameras()
     {
         if (isMain)
         {
@@ -61,6 +59,7 @@ public class CameraTransition : MonoBehaviour
             CameraController.SetCursorLockMode(true);
             camPointer.SetActive(false);
             PlayerMovement.canMove = false;
+            GameManager.Instance.inPuzzleView = true;
         }
         else
         {
@@ -70,6 +69,7 @@ public class CameraTransition : MonoBehaviour
             CameraController.SetCursorLockMode(false);
             camPointer.SetActive(true);
             PlayerMovement.canMove = true;
+            GameManager.Instance.inPuzzleView = false;
         }
     }
 }

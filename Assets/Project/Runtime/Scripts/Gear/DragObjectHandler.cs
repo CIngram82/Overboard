@@ -29,6 +29,7 @@ public class DragObjectHandler : MonoBehaviour
 
     void OnMouseDown()
     {
+        if (!GameManager.Instance.inPuzzleView) return;
         if (!Enabled) return;
 
         ObjectPickedUp?.Invoke(gameObject);
@@ -43,18 +44,20 @@ public class DragObjectHandler : MonoBehaviour
 
     void OnMouseDrag()
     {
+        if (!GameManager.Instance.inPuzzleView) return;
         if (!Enabled) return;
 
         if (isDragged)
         {
             Vector3 mouseOffset = GetMouseAsWorldPoint() - startPosMouse;
-            Vector3 modedMouse = new Vector3(mouseOffset.z, mouseOffset.y, mouseOffset.x) * 6.66f;
+            Vector3 modedMouse = new Vector3(mouseOffset.z, mouseOffset.y, mouseOffset.x) * (20/3);
             transform.localPosition = startPosObject + modedMouse;
         }
     }
 
     void OnMouseUp()
     {
+        if (!GameManager.Instance.inPuzzleView) return;
         if (!Enabled) return;
 
         isDragged = false;
