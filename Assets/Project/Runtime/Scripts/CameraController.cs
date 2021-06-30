@@ -17,17 +17,16 @@ public class CameraController : MonoBehaviour
         {
             CameraControls();
         }
-        else
-        {
-            //Debug.Log(PlayerMovement.canMove);
-        }
+
     }
 
     void CameraControls()
     {
+
         mouseX += Input.GetAxis("Mouse X") * rotSpeed;
         mouseY -= Input.GetAxis("Mouse Y") * rotSpeed;
-        gameObject.transform.rotation = Quaternion.Euler(Mathf.Clamp(mouseY * rotSpeed, -40f, 50f), mouseX, 0);
+        mouseY = Mathf.Clamp(mouseY, -90f, 90f);
+        gameObject.transform.rotation = Quaternion.Euler(mouseY, mouseX, 0);
 
         if (Input.GetMouseButtonDown(1))
         {
