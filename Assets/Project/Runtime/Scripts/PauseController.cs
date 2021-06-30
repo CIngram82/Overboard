@@ -1,46 +1,29 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class PauseController : MonoBehaviour
 {
     [SerializeField] GameObject _pausePanel;
 
+    bool isPaused;
+
 
     public void On_Game_Paused(bool paused)
     {
-        //Time.timeScale = paused ? 0 : 1;
-        PlayerMovement.canMove = !paused;
-
-        _pausePanel.SetActive(!_pausePanel.activeSelf);
-        CameraController.SetCursorLockMode(paused);
+        _pausePanel.SetActive(paused);
     }
 
-    void SubToEvents(bool subscribe)
+    void Update()
     {
-        EventsManager.GamePaused -= On_Game_Paused;
-
-        if (subscribe)
+        if (Input.GetKeyDown(KeyCode.Escape))
         {
-            EventsManager.GamePaused += On_Game_Paused;
+            isPaused = !isPaused;
+            On_Game_Paused(isPaused);
         }
     }
-
-    #region Mono
-    void OnEnable()
-    {
-        SubToEvents(true);
-    }
-    void OnDisable()
-    {
-        SubToEvents(false);
-    }
-
     void Start()
     {
         _pausePanel.SetActive(false);
     }
-    #endregion
 }
 
 
