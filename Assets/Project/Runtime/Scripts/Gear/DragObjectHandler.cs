@@ -29,6 +29,7 @@ public class DragObjectHandler : MonoBehaviour
 
     void OnMouseDown()
     {
+        if (!GameManager.Instance.inPuzzleView) return;
         if (!Enabled) return;
 
         ObjectPickedUp?.Invoke(gameObject);
@@ -43,6 +44,7 @@ public class DragObjectHandler : MonoBehaviour
 
     void OnMouseDrag()
     {
+        if (!GameManager.Instance.inPuzzleView) return;
         if (!Enabled) return;
 
         if (isDragged)
@@ -55,6 +57,7 @@ public class DragObjectHandler : MonoBehaviour
 
     void OnMouseUp()
     {
+        if (!GameManager.Instance.inPuzzleView) return;
         if (!Enabled) return;
 
         isDragged = false;

@@ -61,6 +61,7 @@ public class CameraTransition : MonoBehaviour
             CameraController.SetCursorLockMode(true);
             camPointer.SetActive(false);
             PlayerMovement.canMove = false;
+            GameManager.Instance.inPuzzleView = true;
         }
         else
         {
@@ -70,6 +71,7 @@ public class CameraTransition : MonoBehaviour
             CameraController.SetCursorLockMode(false);
             camPointer.SetActive(true);
             PlayerMovement.canMove = true;
+            GameManager.Instance.inPuzzleView = false;
         }
     }
 }

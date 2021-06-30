@@ -10,6 +10,8 @@ public class GameManager : MonoBehaviour
     public bool PipePuzzleCompleted { get; private set; }
     private bool pipeFirstCompleation = false;
 
+    public bool inPuzzleView = false;
+
     void SaveData()
     {
         SaveDataManager.Save.GameData = new GameData()
