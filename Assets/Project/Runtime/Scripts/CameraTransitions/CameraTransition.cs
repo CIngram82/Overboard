@@ -27,6 +27,7 @@ public class CameraTransition : MonoBehaviour
     }
     void OnTriggerStay(Collider other)
     {
+        if (PauseController.IsPaused) return;
         if (other.gameObject.CompareTag("Player") && Input.GetKeyDown(KeyCode.E))
         {
             SwitchCameras();
@@ -47,7 +48,7 @@ public class CameraTransition : MonoBehaviour
             isMain = false;
 
             GameManager.Instance.inPuzzleView = true;
-            CameraController.ToggleReticle(false);
+            EventsManager.On_Camera_Switched(true);
         }
         else
         {
@@ -56,7 +57,7 @@ public class CameraTransition : MonoBehaviour
             isMain = true;
 
             GameManager.Instance.inPuzzleView = false;
-            CameraController.ToggleReticle(true);
+            EventsManager.On_Camera_Switched(false);
         }
     }
 }

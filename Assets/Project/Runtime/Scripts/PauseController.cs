@@ -2,27 +2,37 @@ using UnityEngine;
 
 public class PauseController : MonoBehaviour
 {
-    [SerializeField] GameObject _pausePanel;
+    static bool isPaused = false;
+    public static bool IsPaused => isPaused;
 
-    bool isPaused;
+    [SerializeField] GameObject _pausePanel;
 
 
     public void On_Game_Paused(bool paused)
     {
+        EventsManager.CameraSwitched(paused);
         _pausePanel.SetActive(paused);
     }
 
     void Update()
     {
+#if UNITY_EDITOR
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            isPaused = !isPaused;
+            On_Game_Paused(isPaused);
+        }
+#else
         if (Input.GetKeyDown(KeyCode.Escape))
         {
             isPaused = !isPaused;
             On_Game_Paused(isPaused);
         }
+#endif
     }
     void Start()
     {
-        _pausePanel.SetActive(false);
+        _pausePanel.SetActive(isPaused);
     }
 }
 
