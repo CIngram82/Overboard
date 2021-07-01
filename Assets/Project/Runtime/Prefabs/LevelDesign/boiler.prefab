@@ -173,6 +173,7 @@ GameObject:
   - component: {fileID: 311923581118333164}
   - component: {fileID: 459909832573352172}
   - component: {fileID: 6165988457649500498}
+  - component: {fileID: 7872656107358694580}
   m_Layer: 0
   m_Name: boiler_Frame
   m_TagString: Untagged
@@ -243,6 +244,19 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &7872656107358694580
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 458868505556971262}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 4.29807, y: 4.054394, z: 1.3561488}
+  m_Center: {x: 2.072599, y: 0.5227418, z: -0.0000009536743}
 --- !u!1 &589833270053090681
 GameObject:
   m_ObjectHideFlags: 0
