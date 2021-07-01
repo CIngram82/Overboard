@@ -299,6 +299,8 @@ GameObject:
   m_Component:
   - component: {fileID: 5847816301636505942}
   - component: {fileID: 5847816301636505943}
+  - component: {fileID: 3403133792629058115}
+  - component: {fileID: 7419160458901367788}
   m_Layer: 0
   m_Name: PipePuzzle
   m_TagString: Untagged
@@ -343,6 +345,33 @@ MonoBehaviour:
   isComplete: 0
   power: {fileID: 6975940540290121708}
   firstOutput: {fileID: 6975940541179188733}
+--- !u!114 &3403133792629058115
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5847816301636505928}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f7ccde07b5ca66a44971230b5e142eb0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerFeedbackText: {fileID: 0}
+  promptMessage: Line broken(Journal Updated)
+--- !u!65 &7419160458901367788
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5847816301636505928}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 6.9182024, y: 6.625163, z: 0.7276764}
+  m_Center: {x: 2.9591012, y: 2.8125815, z: 0.1361618}
 --- !u!1001 &288969425418314581
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3039,6 +3068,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1a09cad8063114a4d86a2b4f96d7e94f, type: 3}
+--- !u!4 &5275397251050561297 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 1734558929738856100, guid: 1a09cad8063114a4d86a2b4f96d7e94f, type: 3}
+  m_PrefabInstance: {fileID: 5847816301403187637}
+  m_PrefabAsset: {fileID: 0}
 --- !u!114 &6975940541179188733 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 3596151820979502152, guid: 1a09cad8063114a4d86a2b4f96d7e94f, type: 3}
@@ -3050,11 +3084,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8d0b4964cb9743047b768c8becf12917, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!4 &5275397251050561297 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 1734558929738856100, guid: 1a09cad8063114a4d86a2b4f96d7e94f, type: 3}
-  m_PrefabInstance: {fileID: 5847816301403187637}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &5847816301418796238
 PrefabInstance:
   m_ObjectHideFlags: 0
