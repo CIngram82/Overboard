@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!114 &664965497
+--- !u!114 &8286856158503795294
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -15,7 +15,7 @@ MonoBehaviour:
   InspectCamera: {fileID: 0}
   rotationSpeed: 1
   zoomSpeed: 10
-  radius: 3
+  radius: 1
   _parentTransform: {fileID: 0}
   _isInspecting: 0
 --- !u!1001 &4018132505366299922
@@ -79,7 +79,7 @@ PrefabInstance:
       objectReference: {fileID: 11400000, guid: 1c3093bb43bbc1549ab9b7e4cba9d29d, type: 2}
     - target: {fileID: 388268536248601366, guid: a576f1fa220bd18459551648ac1f3b35, type: 3}
       propertyPath: m_Name
-      value: DoorKey
+      value: WorldItem_DoorKey
       objectReference: {fileID: 0}
     - target: {fileID: 388268536248601366, guid: a576f1fa220bd18459551648ac1f3b35, type: 3}
       propertyPath: m_Layer
