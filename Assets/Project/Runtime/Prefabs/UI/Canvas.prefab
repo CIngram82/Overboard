@@ -187,7 +187,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1042261165314818385}
+      - m_Target: {fileID: 1042261165314818385, guid: 67db6791577c5e14db461f90443c78af, type: 3}
         m_TargetAssemblyTypeName: InspectItem, Project
         m_MethodName: BackOut
         m_Mode: 1
@@ -333,20 +333,6 @@ MonoBehaviour:
   m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
---- !u!114 &1042261165314818385
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1483396584783796020}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9c574aba2728e2b49bc7df29250d252c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  camPointer: {fileID: 0}
-  backOutButton: {fileID: 903741935882640381}
 --- !u!1 &5913999852193465987
 GameObject:
   m_ObjectHideFlags: 0
@@ -767,11 +753,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 07d66352b9e286745a18346630d1a521, type: 3}
---- !u!1 &1483396584783796020 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 5081374148782694400, guid: 07d66352b9e286745a18346630d1a521, type: 3}
-  m_PrefabInstance: {fileID: 5913999851864684340}
-  m_PrefabAsset: {fileID: 0}
 --- !u!224 &1483396584783796019 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 5081374148782694407, guid: 07d66352b9e286745a18346630d1a521, type: 3}

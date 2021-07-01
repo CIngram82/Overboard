@@ -7,11 +7,7 @@ namespace Controllers.UI
 {
     public class UIController : MonoBehaviour
     {
-        bool _isJournalOpen = false;
-        bool _isPaused = false;
-
-
-        public void Start()
+        protected virtual void Start()
         {
             AudioScript._instance.PlayBackgroundMusic();
             Debug.Log("Start");
@@ -65,12 +61,6 @@ namespace Controllers.UI
             SaveDataManager.Instance.SelectSave(save);
         }
 
-        public void OnJournalOpen(bool isJournalOpen)
-        {
-            CameraController.SetCursorLockMode(isJournalOpen);
-            EventsManager.On_Journal_Opened(isJournalOpen);
-        }
-
         public static void SetAllActive(List<GameObject> objectArray, bool state)
         {
             foreach (GameObject objects in objectArray)
@@ -79,9 +69,9 @@ namespace Controllers.UI
             }
         }
 
+#if UNITY_EDITOR
         void Update()
         {
-#if UNITY_EDITOR
             if (Input.GetKeyDown(KeyCode.R))
             {
                 OnReset();
@@ -91,13 +81,8 @@ namespace Controllers.UI
             {
                 OnFullReset();
             }
-#endif
-            if (Input.GetKeyDown(KeyCode.Alpha0))
-            {
-                _isJournalOpen = !_isJournalOpen;
-                OnJournalOpen(_isJournalOpen);
-            }
         }
+#endif
     }
 }
 
