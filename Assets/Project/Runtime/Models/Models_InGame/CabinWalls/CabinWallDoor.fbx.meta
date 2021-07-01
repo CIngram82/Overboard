@@ -1,9 +1,19 @@
 fileFormatVersion: 2
-guid: 140ff0ba658529244a3a0a851459eac8
+guid: 1bda1e0edf4091149adc7bed29ca9c21
 ModelImporter:
   serializedVersion: 20200
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Wallpaper_Mat
+    second: {fileID: 2100000, guid: 8a510949e83e5b646a44b904dc4626d6, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Woodwork_Mat
+    second: {fileID: 2100000, guid: cccd5aca253ddb64f8fa7a4b33d5983d, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0
