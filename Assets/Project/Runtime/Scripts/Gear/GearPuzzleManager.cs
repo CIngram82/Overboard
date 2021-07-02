@@ -40,6 +40,8 @@ namespace GearPuzzle
 
         void On_Game_Enter(GameObject player)
         {
+            CameraController.Camera.orthographic = !CameraController.Camera.orthographic;
+
             if (player.TryGetComponent(out Inventory.Inventory inventory))
             {
                 if (inventory.Items.Contains(inventory.ItemDatabase.GetInventoryItem("Gear")))
