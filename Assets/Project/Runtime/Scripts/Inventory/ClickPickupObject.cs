@@ -73,7 +73,7 @@ public class ClickPickupObject : MonoBehaviour
 
     void Awake()
     {
-        _rayCamera = Player.Camera;
+        _rayCamera = CameraController.Camera;
         inspect = GetComponent<InspectObject>();
     }
 }

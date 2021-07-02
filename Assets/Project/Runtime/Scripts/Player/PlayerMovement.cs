@@ -4,7 +4,7 @@ using UnityEngine;
 public class PlayerMovement : MonoBehaviour
 {
     public static bool canMove;
-    
+
     [SerializeField] float speedMax;
     [SerializeField] Animator camAnim;
     [SerializeField] CameraController camControl;
@@ -22,8 +22,7 @@ public class PlayerMovement : MonoBehaviour
         speedMax = 400;
         speed = speedMax;
         canMove = true;
-        camControl.SetCameraRotation(Vector3.zero);
-      startY =  gameObject.transform.position.y;
+        startY = gameObject.transform.position.y;
     }
 
     private void FixedUpdate()

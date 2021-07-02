@@ -2,15 +2,18 @@ using UnityEngine;
 
 public class CameraController : MonoBehaviour
 {
+    public static Camera Camera;
+
     [SerializeField] GameObject _camPointer;
 
+    static float mouseX;
+    static float mouseY;
     float rotSpeed = 1;
-    float mouseX;
-    float mouseY;
     bool lastViewState = false;
 
     void Start()
     {
+        Camera = Camera ? Camera : Camera.main;
         SetCursorLockMode(lastViewState);
     }
     void LateUpdate()
@@ -36,9 +39,10 @@ public class CameraController : MonoBehaviour
         gameObject.transform.rotation = Quaternion.Euler(mouseY, mouseX, 0);
     }
 
-    public void SetCameraRotation(Vector3 rotation)
+    public static void SetCameraRotation(Vector3 rotation)
     {
-        transform.localEulerAngles = rotation;
+        mouseX = rotation.y;
+        mouseY = rotation.x;
     }
     public Quaternion RotatePlayer()
     {
