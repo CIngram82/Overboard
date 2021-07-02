@@ -29,7 +29,6 @@ public class CameraTransition : MonoBehaviour
         {
             playerPrompt.text = " ";
             SwitchCameras();
-            hasBeenPrompted = true;
         }
     }
 
@@ -43,6 +42,7 @@ public class CameraTransition : MonoBehaviour
         {
             SwitchCameras();
             CameraEntered?.Invoke(other.gameObject);
+            hasBeenPrompted = true;
         }
     }
     void OnTriggerExit(Collider other)
