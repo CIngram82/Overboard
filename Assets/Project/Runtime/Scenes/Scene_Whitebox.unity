@@ -20,7 +20,7 @@ RenderSettings:
   m_FogDensity: 0.01
   m_LinearFogStart: 0
   m_LinearFogEnd: 300
-  m_AmbientSkyColor: {r: 0.066037714, g: 0.066037714, b: 0.066037714, a: 1}
+  m_AmbientSkyColor: {r: 0.26666668, g: 0.26666668, b: 0.26666668, a: 1}
   m_AmbientEquatorColor: {r: 0.114, g: 0.125, b: 0.133, a: 1}
   m_AmbientGroundColor: {r: 0.047, g: 0.043, b: 0.035, a: 1}
   m_AmbientIntensity: 0.1
@@ -11163,8 +11163,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0746a66c4b6626b44b0598562c860322, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  key: {fileID: 304117993}
-  isComplete: 0
 --- !u!95 &1103792411
 Animator:
   serializedVersion: 3
@@ -12905,6 +12903,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 748ee878209b22647a3dbf8f24253c13, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _camPointer: {fileID: 0}
 --- !u!114 &1354739823
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -15636,8 +15635,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 729760ede09ba9e478646f2a4e3f1fd8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  doorKey: {fileID: 304117993}
-  animKey: {fileID: 7559175954652138732}
 --- !u!95 &1668873673
 Animator:
   serializedVersion: 3
@@ -29121,7 +29118,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9c574aba2728e2b49bc7df29250d252c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  camPointer: {fileID: 1483939416}
   backOutButton: {fileID: 1004359860}
 --- !u!33 &7564849460382732141
 MeshFilter:
