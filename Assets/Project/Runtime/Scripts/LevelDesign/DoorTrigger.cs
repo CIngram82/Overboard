@@ -6,20 +6,18 @@ public class DoorTrigger : MonoBehaviour
 {
     Animator anim;
 
-    private void Start()
+    void Start()
     {
-        anim = this.GetComponent<Animator>();
+        anim = GetComponent<Animator>();
     }
 
     private void OnTriggerEnter(Collider other)
     {
         anim.SetBool("isOpen", true);
-        anim.SetBool("isUnlocked", true);
     }
 
     private void OnTriggerExit(Collider other)
     {
         anim.SetBool("isOpen", false);
-        anim.SetBool("isUnlocked", false);
     }
 }
