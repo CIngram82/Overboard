@@ -10,25 +10,36 @@ public class CameraTransition : MonoBehaviour
     [SerializeField] CinemachineVirtualCamera mainCam;
     [SerializeField] CinemachineVirtualCamera transitionCamera;
     [SerializeField] int startingPriority;
-    [SerializeField] TextMeshPro playerPrompt;
-
+    [SerializeField]  TextMeshProUGUI playerPrompt;
+    bool canTransition;
+    bool hasBeenPrompted;
     bool isMain;
 
 
     void Start()
     {
+        hasBeenPrompted = false;
         startingPriority = transitionCamera.Priority;
         isMain = true;
+        canTransition = false;
+    }
+    private void Update()
+    {
+        if(canTransition && Input.GetKeyUp(KeyCode.E))
+        {
+            playerPrompt.text = " ";
+            SwitchCameras();
+            hasBeenPrompted = true;
+        }
     }
 
-    void OnTriggerEnter(Collider other)
+    private void OnTriggerStay(Collider other)
     {
-        playerPrompt.text = "Press E to toggle Camera.";
-    }
-    void OnTriggerStay(Collider other)
-    {
-        if (PauseController.IsPaused) return;
-        if (other.gameObject.CompareTag("Player") && Input.GetKeyDown(KeyCode.E))
+        if (!hasBeenPrompted)
+        {
+            playerPrompt.text = "Press E to toggle camera";
+        }
+        if (other.gameObject.CompareTag("Player") && Input.GetKey(KeyCode.E))
         {
             SwitchCameras();
             CameraEntered?.Invoke(other.gameObject);
