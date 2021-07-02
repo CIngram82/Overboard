@@ -6,9 +6,10 @@ using UnityEngine.Audio;
 public class SetVolume : MonoBehaviour
 {
     public AudioMixer mixer;
-
-    public void SetLevel(float sliderValue)
+    
+    public void SetMasterVol(float sliderValue)
     {
-        mixer.SetFloat("MusicVol", Mathf.Log10(sliderValue) * 20);
+     mixer.SetFloat("MasterVol", Mathf.Log10(sliderValue) * 20);
     }
+    
 }
