@@ -44,7 +44,7 @@ namespace Inventory
             Items.Remove(item);
             EventsManager.On_Inventory_Item_Removed(item);
             // TODO: add drop item feature if needed.
-            Debug.Log($"Item {item.Name} removed.");
+
         }
         public void RemoveAllItems(List<Item> items)
         {
@@ -58,7 +58,6 @@ namespace Inventory
         {
             _clues.Add(clue);
             EventsManager.On_Inventory_Clue_Added(clue);
-            Debug.Log($"Clue {clue.Name} added.");
         }
         public void AddAllClues(List<Clue> items)
         {
@@ -71,7 +70,6 @@ namespace Inventory
         {
             Clues.Remove(clue);
             EventsManager.On_Inventory_Clue_Removed(clue);
-            Debug.Log($"Clue {clue.Name} removed.");
         }
         public void RemoveAllClues(List<Clue> items)
         {
