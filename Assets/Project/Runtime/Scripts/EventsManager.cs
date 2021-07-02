@@ -13,6 +13,7 @@ public class EventsManager : MonoBehaviour
     public static Action<Item> InventoryItemRemoved;
     public static Action<Clue> InventoryClueAdded;
     public static Action<Clue> InventoryClueRemoved;
+    public static Action<bool> CameraSwitched;
     #endregion
 
     #region Event Calls
@@ -29,9 +30,10 @@ public class EventsManager : MonoBehaviour
     {
         JournalOpened?.Invoke(open);
     }
-    public static void On_Game_Paused(bool paused)
+
+    public static void On_Camera_Switched(bool state)
     {
-        GamePaused?.Invoke(paused);
+        CameraSwitched?.Invoke(state);
     }
 
     public static void On_Inventory_Item_Added(Item item)

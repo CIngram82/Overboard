@@ -32,9 +32,7 @@ public class LockableObject : MonoBehaviour
             {
                 // Unlock object
                 IsUnlocked = true;
-                anim.SetBool("isUnlocked", true);
                 Debug.Log("Object unlocked.");
-
                 inventory.RemoveAllItems(_keys.ConvertAll(key => _database.GetInventoryItem(key)));
                 anim.SetBool("isUnlocked",true);
             }

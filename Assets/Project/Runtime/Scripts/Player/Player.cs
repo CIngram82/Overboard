@@ -3,8 +3,6 @@ using SaveSystem.Data;
 
 public class Player : MonoBehaviour
 {
-    Camera _playerCamera;
-
     public static Camera Camera;
 
 
@@ -48,7 +46,7 @@ public class Player : MonoBehaviour
     {
         if (SaveDataManager.IsDataLoaded)
             On_SaveData_Loaded();
-        Camera = _playerCamera ? _playerCamera : Camera.main;
+        Camera = Camera ? Camera : Camera.main;
     }
 }
 

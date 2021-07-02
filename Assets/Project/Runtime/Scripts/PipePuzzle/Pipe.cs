@@ -53,6 +53,7 @@ namespace PipePuzzle
 
         private void OnMouseDown()
         {
+            if (!GameManager.Instance.inPuzzleView) return;
             RotatePipe();
             AudioScript._instance.PlaySoundEffect("Metal Slide");
             pipeGM.CheckConnections();

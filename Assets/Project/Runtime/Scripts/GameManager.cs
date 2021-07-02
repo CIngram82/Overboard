@@ -10,6 +10,8 @@ public class GameManager : MonoBehaviour
     public bool PipePuzzleCompleted { get; private set; }
     private bool pipeFirstCompleation = false;
 
+    public bool inPuzzleView = false;
+
     void SaveData()
     {
         SaveDataManager.Save.GameData = new GameData()
@@ -32,6 +34,7 @@ public class GameManager : MonoBehaviour
         {
             gearFirstCompleation = true;
             FindObjectOfType<WaterLevel>().TriggerWaterRise();
+            FindObjectOfType<CameraTransition>().SwitchCameras();
         }
         GearPuzzleCompleted = isCompleted;
         if (isCompleted)
@@ -45,6 +48,7 @@ public class GameManager : MonoBehaviour
         {
             pipeFirstCompleation = true;
             FindObjectOfType<WaterLevel>().TriggerWaterRise();
+            FindObjectOfType<CameraTransition>().SwitchCameras();
         }
         PipePuzzleCompleted = isCompleted;
         if (isCompleted)
