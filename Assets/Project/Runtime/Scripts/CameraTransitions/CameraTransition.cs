@@ -54,7 +54,7 @@ public class CameraTransition : MonoBehaviour
     {
         if (isMain)
         {
-            transitionCamera.Priority = 2;
+            transitionCamera.Priority = 3;
             mainCam.Priority = startingPriority;
             isMain = false;
 
@@ -64,7 +64,7 @@ public class CameraTransition : MonoBehaviour
         else
         {
             transitionCamera.Priority = startingPriority;
-            mainCam.Priority = 2;
+            mainCam.Priority = 3;
             isMain = true;
 
             GameManager.Instance.inPuzzleView = false;
