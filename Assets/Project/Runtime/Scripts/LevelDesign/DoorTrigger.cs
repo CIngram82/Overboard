@@ -5,7 +5,7 @@ using UnityEngine;
 public class DoorTrigger : MonoBehaviour
 {
     Animator anim;
-    // Start is called before the first frame update
+
     void Start()
     {
         anim = GetComponent<Animator>();
