@@ -71,7 +71,7 @@ public class ClickPickupObject : MonoBehaviour
             }
     }
 
-    void Awake()
+    void Start()
     {
         _rayCamera = CameraController.Camera;
         inspect = GetComponent<InspectObject>();

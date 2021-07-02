@@ -208,6 +208,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 748ee878209b22647a3dbf8f24253c13, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _camPointer: {fileID: 3190971577279171180}
 --- !u!114 &9179239927517743514
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -344,6 +345,7 @@ GameObject:
   - component: {fileID: 1095113192}
   - component: {fileID: 1095113193}
   - component: {fileID: 8827842336098037144}
+  - component: {fileID: 1740770282}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -459,7 +461,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speedMax: 0
   camAnim: {fileID: 2677481277392419083}
-  camControl: {fileID: 0}
+  camControl: {fileID: 6290321084410037996}
 --- !u!114 &1095113192
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -472,10 +474,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f63cf5612ca78a34788de29603444802, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  items:
+  keyLayer:
+    serializedVersion: 2
+    m_Bits: 4096
+  objectLayer:
+    serializedVersion: 2
+    m_Bits: 2048
+  itemLayer:
     serializedVersion: 2
     m_Bits: 512
-  clues:
+  clueLayer:
     serializedVersion: 2
     m_Bits: 1024
   maxDistance: 10
@@ -507,6 +515,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a37506f8007efd347835eed9da9c153b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1740770282
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4448749213885339780}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9c574aba2728e2b49bc7df29250d252c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  backOutButton: {fileID: 0}
 --- !u!1 &6945114581213670477
 GameObject:
   m_ObjectHideFlags: 0

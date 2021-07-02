@@ -11,7 +11,7 @@ public class CameraController : MonoBehaviour
     float rotSpeed = 1;
     bool lastViewState = false;
 
-    void Start()
+    void Awake()
     {
         Camera = Camera ? Camera : Camera.main;
         SetCursorLockMode(lastViewState);
