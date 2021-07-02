@@ -110,6 +110,10 @@ namespace SaveSystem.Data
             saveCount++;
         }
 
+        public void ResetSave()
+        {
+            Save = new SaveDataState();
+        }
         public void ClearSave()
         {
             SaveLoad.DeleteSave($"{SAVE_PATH}{FileName}");

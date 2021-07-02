@@ -24,8 +24,8 @@ namespace Inventory.Database
     [System.Serializable]
     public abstract class InventoryItem
     {
-        [SerializeField] protected int _id;
         [SerializeField] protected string _name;
+        [SerializeField] protected int _id;
 
         public int ID { get => _id; protected set => _id = value; }
         public string Name { get => _name; protected set => _name = value; }
