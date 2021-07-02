@@ -8,7 +8,7 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] float speedMax;
     [SerializeField] Animator camAnim;
     [SerializeField] CameraController camControl;
-    
+    float startY;
     float speed;
     float moveHorizontal;
     float moveVertical;
@@ -23,6 +23,7 @@ public class PlayerMovement : MonoBehaviour
         speed = speedMax;
         canMove = true;
         camControl.SetCameraRotation(Vector3.zero);
+      startY =  gameObject.transform.position.y;
     }
 
     private void FixedUpdate()
@@ -35,6 +36,8 @@ public class PlayerMovement : MonoBehaviour
         {
             speed = 0;
         }
+
+        CollisionErrorCheck(); // Forces the player back on the starting Y position values incase of collision error causing sinking
         moveHorizontal = Input.GetAxisRaw("Horizontal");
         moveVertical = Input.GetAxisRaw("Vertical");
 
@@ -62,6 +65,15 @@ public class PlayerMovement : MonoBehaviour
         if (other.CompareTag("Water"))
         {
             speedMax = 300;
+        }
+    }
+
+    void CollisionErrorCheck()
+    {
+        if (gameObject.transform.position.y > startY + .2f || gameObject.transform.position.y < startY - .2f)
+        {
+            Debug.Log("Player Y Position Error. Reseting Y Position");
+            gameObject.transform.position = new Vector3(gameObject.transform.position.x, startY, gameObject.transform.position.z);
         }
     }
 
