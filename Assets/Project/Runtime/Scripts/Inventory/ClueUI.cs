@@ -26,7 +26,6 @@ public class ClueUI : MonoBehaviour
         ItemButton.onClick.AddListener(OnClickLoadClue);
 
         _clueNameTMP.text = clue.Name;
-        Debug.Log(Clue.Hint);
     }
 }
 

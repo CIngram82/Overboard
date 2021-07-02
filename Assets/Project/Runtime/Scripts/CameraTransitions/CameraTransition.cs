@@ -29,7 +29,6 @@ public class CameraTransition : MonoBehaviour
         {
             playerPrompt.text = " ";
             SwitchCameras();
-            hasBeenPrompted = true;
         }
     }
 
@@ -39,10 +38,11 @@ public class CameraTransition : MonoBehaviour
         {
             playerPrompt.text = "Press E to toggle camera";
         }
-        if (other.gameObject.CompareTag("Player") && Input.GetKey(KeyCode.E))
+        if (other.gameObject.CompareTag("Player") && Input.GetKeyDown(KeyCode.E))
         {
             SwitchCameras();
             CameraEntered?.Invoke(other.gameObject);
+            hasBeenPrompted = true;
         }
     }
     void OnTriggerExit(Collider other)
