@@ -12,17 +12,19 @@ public class ClickPickupObject : MonoBehaviour
     [Header("Debugging")]
     [SerializeField] bool debuggingOn = true;
     [SerializeField] Color rayColor = Color.green;
-
+    
     InspectObject inspect;
     Camera _rayCamera;
     Ray _ray;
-
-
+   [SerializeField] UIGlow uiGlow;
+    Inventory.Inventory inventory;
     public void DrawRay()
     {
         _ray = _rayCamera.ScreenPointToRay(Input.mousePosition);
         Debug.DrawRay(_ray.origin, _ray.direction * maxDistance, rayColor);
         Debug.DrawRay(_ray.origin, _rayCamera.transform.forward * maxDistance, Color.red);
+        uiGlow = FindObjectOfType<UIGlow>();
+        inventory = FindObjectOfType<Inventory.Inventory>();
     }
 
     void LateUpdate()
@@ -57,8 +59,10 @@ public class ClickPickupObject : MonoBehaviour
                 if (Physics.Raycast(_ray, out rayHit, maxDistance, itemLayer))
                 {
                     // WorldItem is on root parent containing gameObject of hit collider. 
-                    inspect.Inspect(rayHit.transform.parent.gameObject);
+                    inspect.Inspect(rayHit.transform.parent.gameObject);    
                     rayHit.transform.gameObject.GetComponentInParent<WorldItem>().PickUpItem(gameObject);
+                    uiGlow.AddBackdrop(inventory.Items.Count -1);
+                    Debug.Log("InventoryCount: " + inventory.Items.Count);
                     AudioScript._instance.PlaySoundEffect("Grab");
                 }
                 else
