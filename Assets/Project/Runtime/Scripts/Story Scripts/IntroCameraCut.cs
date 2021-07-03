@@ -15,6 +15,7 @@ public class IntroCameraCut : MonoBehaviour
         
         if (!hasPlayed)
         {
+            PlayerMovement.canMove = false;
             camPointer.SetActive(false);
             playerCam.Priority = 2;
             introCamera.Priority = 3;
@@ -34,6 +35,7 @@ public class IntroCameraCut : MonoBehaviour
         introCamera.Priority = 2;
         hasPlayed = true;
         camPointer.SetActive(true);
+        PlayerMovement.canMove = true;
         gameObject.SetActive(false);
    }
 
