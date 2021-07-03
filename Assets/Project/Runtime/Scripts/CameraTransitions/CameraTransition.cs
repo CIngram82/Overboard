@@ -5,49 +5,47 @@ using TMPro;
 
 public class CameraTransition : MonoBehaviour
 {
-    public Action<GameObject> CameraEntered;
+    public Action CameraEntered;
 
     [SerializeField] CinemachineVirtualCamera mainCam;
     [SerializeField] CinemachineVirtualCamera transitionCamera;
     [SerializeField] int startingPriority;
     [SerializeField]  TextMeshProUGUI playerPrompt;
-    bool canTransition;
     bool hasBeenPrompted;
     bool isMain;
+    bool locked;
 
 
     void Start()
     {
+        locked = false;
         hasBeenPrompted = false;
         startingPriority = transitionCamera.Priority;
         isMain = true;
-        canTransition = false;
-    }
-    private void Update()
-    {
-        if(canTransition && Input.GetKeyUp(KeyCode.E))
-        {
-            playerPrompt.text = " ";
-            SwitchCameras();
-        }
     }
 
-    private void OnTriggerStay(Collider other)
+    void OnTriggerStay(Collider other)
     {
         if (!hasBeenPrompted)
         {
-            playerPrompt.text = "Press E to toggle camera";
+            //playerPrompt.text = "Press E to toggle camera";
         }
-        if (other.gameObject.CompareTag("Player") && Input.GetKeyDown(KeyCode.E))
+        if (!locked && Input.GetKeyDown(KeyCode.E))
         {
             SwitchCameras();
-            CameraEntered?.Invoke(other.gameObject);
+            CameraEntered?.Invoke();
             hasBeenPrompted = true;
         }
     }
     void OnTriggerExit(Collider other)
     {
         playerPrompt.text = string.Empty;
+    }
+
+    public void LockCamera(bool locked)
+    {
+        this.locked = locked;
+        SwitchCameras();
     }
 
     public void SwitchCameras()
