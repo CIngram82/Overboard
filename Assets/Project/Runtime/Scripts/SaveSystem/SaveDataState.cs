@@ -14,7 +14,7 @@ namespace SaveSystem.Data
         public SaveDataState()
         {
             GameData = new GameData();
-            //PlayerData = new PlayerData();
+            PlayerData = new PlayerData();
             InventoryData = new InventoryData();
         }
     }

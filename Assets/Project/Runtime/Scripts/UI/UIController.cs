@@ -54,6 +54,7 @@ namespace Controllers.UI
         }
         public void OnSave()
         {
+            Debug.LogWarning($"{gameObject.name}: Saving");
             SaveDataManager.Instance.On_Save_Data();
         }
         public static void OnLoadSave(int save)
