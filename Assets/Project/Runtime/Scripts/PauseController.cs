@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class PauseController : MonoBehaviour
 {
-    static bool isPaused = false;
+    static bool isPaused;
     public static bool IsPaused => isPaused;
 
     [SerializeField] GameObject _pausePanel;
@@ -32,6 +32,8 @@ public class PauseController : MonoBehaviour
     }
     void Start()
     {
+        Debug.LogWarning($"Pausing");
+        isPaused = false;
         _pausePanel.SetActive(isPaused);
     }
 }

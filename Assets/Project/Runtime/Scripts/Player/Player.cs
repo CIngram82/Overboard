@@ -10,10 +10,11 @@ public class Player : MonoBehaviour
     void LoadData()
     {
         PlayerData data = SaveDataManager.Save.PlayerData;
-        if (data == null)
-            return;
-        transform.position = data.Position.Get();
+
         CameraController.SetCameraRotation(data.Rotation.Get());
+        if (data.Position != null)
+            transform.position = data.Position.Get();
+
     }
 
     void On_SaveData_Loaded() => LoadData();
