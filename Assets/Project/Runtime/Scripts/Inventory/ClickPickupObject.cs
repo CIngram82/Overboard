@@ -23,8 +23,6 @@ public class ClickPickupObject : MonoBehaviour
         _ray = _rayCamera.ScreenPointToRay(Input.mousePosition);
         Debug.DrawRay(_ray.origin, _ray.direction * maxDistance, rayColor);
         Debug.DrawRay(_ray.origin, _rayCamera.transform.forward * maxDistance, Color.red);
-        uiGlow = FindObjectOfType<UIGlow>();
-        inventory = FindObjectOfType<Inventory.Inventory>();
     }
 
     void LateUpdate()
@@ -77,6 +75,8 @@ public class ClickPickupObject : MonoBehaviour
 
     void Start()
     {
+        uiGlow = FindObjectOfType<UIGlow>();
+        inventory = FindObjectOfType<Inventory.Inventory>();
         _rayCamera = CameraController.Camera;
         inspect = GetComponent<InspectObject>();
     }
