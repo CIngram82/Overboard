@@ -46,13 +46,13 @@ namespace Controllers.UI
             Debug.LogWarning("Quit");
             Application.Quit();
         }
-        public static void OnFullReset()
+        public void OnFullReset()
         {
             SaveDataManager.Instance.ResetSave();
             Debug.LogWarning($"Resetting save");
             OnReset();
         }
-        public static void OnSave()
+        public void OnSave()
         {
             SaveDataManager.Instance.On_Save_Data();
         }
