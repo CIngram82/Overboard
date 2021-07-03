@@ -13,6 +13,10 @@ public class ClueUI : MonoBehaviour
     public Clue Clue { get; private set; }
     public Button ItemButton { get; private set; }
 
+    public  void highlight()
+    {
+        _clueNameTMP.color = Color.green;
+    }
 
     public void OnClickLoadClue()
     {
