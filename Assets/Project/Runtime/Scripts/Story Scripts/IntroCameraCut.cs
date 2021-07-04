@@ -8,7 +8,8 @@ public class IntroCameraCut : MonoBehaviour
   [SerializeField]  CinemachineVirtualCamera playerCam;
    [SerializeField] CinemachineVirtualCamera introCamera;
     [SerializeField] GameObject camPointer;
-    bool hasPlayed = false;
+   [SerializeField] GameObject blur;
+   bool hasPlayed = false;
 
     private void Awake()
     {
@@ -38,6 +39,7 @@ public class IntroCameraCut : MonoBehaviour
         PlayerMovement.canMove = true;
         gameObject.SetActive(false);
    }
+
 
     
 }

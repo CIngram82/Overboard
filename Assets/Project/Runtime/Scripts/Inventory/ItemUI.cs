@@ -21,6 +21,7 @@ namespace Inventory.UI
 
         public void Setup(Item item)
         {
+            GetComponent<Image>().sprite = item.Sprite;
             Item = item;
             ItemButton = GetComponent<Button>();
 
