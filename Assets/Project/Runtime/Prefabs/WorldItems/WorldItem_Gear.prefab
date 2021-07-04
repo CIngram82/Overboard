@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!114 &1915937124
+--- !u!114 &7897582449345357793
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -15,7 +15,7 @@ MonoBehaviour:
   InspectCamera: {fileID: 0}
   rotationSpeed: 1
   zoomSpeed: 10
-  radius: 3
+  radius: 1
   _parentTransform: {fileID: 0}
   _isInspecting: 0
 --- !u!1001 &5474651055643625695
@@ -89,14 +89,34 @@ PrefabInstance:
       propertyPath: m_Name
       value: WorldItem_Gear
       objectReference: {fileID: 0}
+    - target: {fileID: 599248847449762141, guid: a576f1fa220bd18459551648ac1f3b35, type: 3}
+      propertyPath: m_Height
+      value: 0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 599248847449762141, guid: a576f1fa220bd18459551648ac1f3b35, type: 3}
+      propertyPath: m_Radius
+      value: 0.1
+      objectReference: {fileID: 0}
     - target: {fileID: 3612665451986102246, guid: a576f1fa220bd18459551648ac1f3b35, type: 3}
       propertyPath: m_Mesh
       value: 
-      objectReference: {fileID: -7901242545479900686, guid: 2c2c5c1675ed43d4dab6599203d7fc9d, type: 3}
+      objectReference: {fileID: -8568085214841831823, guid: 2552bcfc2a5805b4097c35523ed54549, type: 3}
+    - target: {fileID: 5994609443636484383, guid: a576f1fa220bd18459551648ac1f3b35, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 5994609443636484383, guid: a576f1fa220bd18459551648ac1f3b35, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 5994609443636484383, guid: a576f1fa220bd18459551648ac1f3b35, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 7714096816321553875, guid: a576f1fa220bd18459551648ac1f3b35, type: 3}
       propertyPath: m_Mesh
       value: 
-      objectReference: {fileID: -7901242545479900686, guid: 2c2c5c1675ed43d4dab6599203d7fc9d, type: 3}
+      objectReference: {fileID: -8568085214841831823, guid: 2552bcfc2a5805b4097c35523ed54549, type: 3}
     - target: {fileID: 7714096816321553875, guid: a576f1fa220bd18459551648ac1f3b35, type: 3}
       propertyPath: m_Convex
       value: 1

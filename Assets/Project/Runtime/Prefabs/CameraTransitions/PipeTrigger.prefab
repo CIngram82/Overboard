@@ -43,8 +43,8 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 4.917702, y: 1, z: 4.6179047}
-  m_Center: {x: -0.4105904, y: 0, z: 0.8286514}
+  m_Size: {x: 4.917702, y: 1.9619133, z: 9.101776}
+  m_Center: {x: -0.4105904, y: 0.48095667, z: -1.4132843}
 --- !u!114 &6026299025301598534
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -60,4 +60,5 @@ MonoBehaviour:
   camPointer: {fileID: 0}
   mainCam: {fileID: 0}
   transitionCamera: {fileID: 0}
-  startingPriority: 0
+  startingPriority: 1
+  playerPrompt: {fileID: 0}

@@ -5,71 +5,68 @@ using TMPro;
 
 public class CameraTransition : MonoBehaviour
 {
-    public Action<GameObject> CameraEntered;
-    [SerializeField] GameObject camPointer;
+    public Action CameraEntered;
+
     [SerializeField] CinemachineVirtualCamera mainCam;
     [SerializeField] CinemachineVirtualCamera transitionCamera;
     [SerializeField] int startingPriority;
-    [SerializeField] TextMeshPro playerPrompt;
-    bool canTransition;
-
+    [SerializeField]  TextMeshProUGUI playerPrompt;
+    bool hasBeenPrompted;
     bool isMain;
+    bool locked;
 
-    private void Start()
+
+    void Start()
     {
+        locked = false;
+        hasBeenPrompted = false;
         startingPriority = transitionCamera.Priority;
         isMain = true;
-        canTransition = false;
     }
-    private void Update()
+
+    void OnTriggerStay(Collider other)
     {
-        if(canTransition && Input.GetKeyUp(KeyCode.E))
+        if (!hasBeenPrompted)
+        {
+            //playerPrompt.text = "Press E to toggle camera";
+        }
+        if (!locked && Input.GetKeyDown(KeyCode.E))
         {
             SwitchCameras();
+            CameraEntered?.Invoke();
+            hasBeenPrompted = true;
         }
     }
-
-    private void OnTriggerEnter(Collider other)
+    void OnTriggerExit(Collider other)
     {
-        playerPrompt.text = "Press E to toggle camera";
+        playerPrompt.text = string.Empty;
     }
 
-    private void OnTriggerStay(Collider other)
+    public void LockCamera(bool locked)
     {
-        
-        if (other.gameObject.CompareTag("Player") && Input.GetKey(KeyCode.E))
-        {
-            canTransition = true;
-           // SwitchCameras();
-            CameraEntered?.Invoke(other.gameObject);
-        }
+        this.locked = locked;
+        SwitchCameras();
     }
 
-    private void OnTriggerExit(Collider other)
-    {
-        playerPrompt.text = " ";
-        canTransition = false;
-    }
-
-    void SwitchCameras()
+    public void SwitchCameras()
     {
         if (isMain)
         {
             transitionCamera.Priority = 2;
             mainCam.Priority = startingPriority;
             isMain = false;
-            CameraController.SetCursorLockMode(true);
-            camPointer.SetActive(false);
-            PlayerMovement.canMove = false;
+
+            GameManager.Instance.inPuzzleView = true;
+            EventsManager.On_Camera_Switched(true);
         }
         else
         {
             transitionCamera.Priority = startingPriority;
             mainCam.Priority = 2;
             isMain = true;
-            CameraController.SetCursorLockMode(false);
-            camPointer.SetActive(true);
-            PlayerMovement.canMove = true;
+
+            GameManager.Instance.inPuzzleView = false;
+            EventsManager.On_Camera_Switched(false);
         }
     }
 }

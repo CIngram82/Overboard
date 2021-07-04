@@ -23,7 +23,7 @@ public class DropObjectHandler : MonoBehaviour
     {
         if (!Slot)  // if slot is empty
         {
-            float distance = Vector3.Distance(dragObject.transform.position, transform.position);
+            float distance = Vector3.Distance(dragObject.transform.localPosition, transform.localPosition);
 
             if (distance <= snapTolerance)
             {

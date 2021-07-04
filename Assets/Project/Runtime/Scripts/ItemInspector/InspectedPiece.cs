@@ -41,7 +41,7 @@ public class InspectedPiece : MonoBehaviour
     }
     void Start()
     {
-        cam = Player.Camera;
+        cam = CameraController.Camera;
         parent = gameObject.GetComponentInParent<Transform>();
     }
 }

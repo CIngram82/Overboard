@@ -29,7 +29,7 @@ public class DragObjectHandler : MonoBehaviour
 
     void OnMouseDown()
     {
-        if (!Enabled) return;
+        if (!Enabled || !GameManager.Instance.inPuzzleView) return;
 
         ObjectPickedUp?.Invoke(gameObject);
         DragStarted?.Invoke(gameObject);
@@ -43,27 +43,27 @@ public class DragObjectHandler : MonoBehaviour
 
     void OnMouseDrag()
     {
-        if (!Enabled) return;
+        if (!Enabled || !GameManager.Instance.inPuzzleView) return;
 
         if (isDragged)
         {
             Vector3 mouseOffset = GetMouseAsWorldPoint() - startPosMouse;
-            Vector3 modedMouse = new Vector3(mouseOffset.z, mouseOffset.y, mouseOffset.x) * 6.66f;
+            Vector3 modedMouse = new Vector3(mouseOffset.z, mouseOffset.y, mouseOffset.x) * (20/3);
             transform.localPosition = startPosObject + modedMouse;
         }
     }
 
     void OnMouseUp()
     {
-        if (!Enabled) return;
+        if (!Enabled || !GameManager.Instance.inPuzzleView) return;
 
         isDragged = false;
         transform.localPosition = new Vector3(transform.localPosition.x, transform.localPosition.y, _zCoordOffsetDrop);
         DragEnded?.Invoke(gameObject);
     }
 
-    void Awake()
+    void Start()
     {
-        main = main == null ? Camera.main : main;
+        main = main ? main : CameraController.Camera;
     }
 }

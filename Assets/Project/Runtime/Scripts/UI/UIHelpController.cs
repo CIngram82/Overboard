@@ -77,7 +77,7 @@ namespace Controllers.UI
             return objects;
         }
 
-        void Start()
+        protected override void Start()
         {
             helpPanels = LoadObjList<GameObject>(panelsRoot);
             helpButtons = LoadObjList<Button>(panelsRoot);

@@ -14,13 +14,15 @@ public class ClueInventoryUI : MonoBehaviour
     [SerializeField] TextMeshProUGUI _clueNameTMP;
     [SerializeField] TextMeshProUGUI _clueHintTMP;
 
+    bool isJournalOpen = false;
+
     public List<ClueUI> UIClues { get => _uiClues; private set => _uiClues = value; }
 
 
     void OpenJournal(bool isOpen)
     {
-        // Hard coded toggle for now, need global bool
-        _journal.SetActive(!_journal.activeSelf);
+        _journal.SetActive(isOpen);
+        EventsManager.CameraSwitched(isOpen);
     }
 
     void LoadClue(Clue clue)
@@ -80,6 +82,15 @@ public class ClueInventoryUI : MonoBehaviour
     void OnDisable()
     {
         SubToEvents(false);
+    }
+    void Update()
+    {
+        if (PauseController.IsPaused) return;
+        if (Input.GetKeyDown(KeyCode.J))
+        {
+            isJournalOpen = !isJournalOpen;
+            OpenJournal(isJournalOpen);
+        }        
     }
     void Start()
     {
