@@ -32,7 +32,6 @@ public class PauseController : MonoBehaviour
     }
     void Start()
     {
-        Debug.LogWarning($"Pausing");
         isPaused = false;
         _pausePanel.SetActive(isPaused);
     }
