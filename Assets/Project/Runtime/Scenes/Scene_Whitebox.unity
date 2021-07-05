@@ -3407,7 +3407,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: -8679921383154817045, guid: b8fb0c506a922524388c101b735c0218, type: 3}
       propertyPath: m_RootOrder
-      value: 6
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: b8fb0c506a922524388c101b735c0218, type: 3}
       propertyPath: m_LocalScale.y
@@ -5118,6 +5118,25 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 521fc339c6d5fa3489a557df89b7df6f, type: 3}
+--- !u!1 &520781587 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 303562061, guid: 0d87ff3cd25964b42a9be573361fbc82, type: 3}
+  m_PrefabInstance: {fileID: 1571227369}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &520781592
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 520781587}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f7ccde07b5ca66a44971230b5e142eb0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerFeedbackText: {fileID: 433463487}
+  promptMessage: Missing Gears(Journal Updated)
 --- !u!1001 &521502451
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -7858,7 +7877,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: -8679921383154817045, guid: 26444958fec5a2148942e208ce8f94a3, type: 3}
       propertyPath: m_RootOrder
-      value: 7
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 26444958fec5a2148942e208ce8f94a3, type: 3}
       propertyPath: m_LocalScale.x
@@ -10750,7 +10769,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: -8679921383154817045, guid: b8fb0c506a922524388c101b735c0218, type: 3}
       propertyPath: m_RootOrder
-      value: 5
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: b8fb0c506a922524388c101b735c0218, type: 3}
       propertyPath: m_LocalScale.x
@@ -12877,23 +12896,23 @@ PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
-    m_TransformParent: {fileID: 1288042529}
+    m_TransformParent: {fileID: 1790588202}
     m_Modifications:
     - target: {fileID: -8679921383154817045, guid: 26444958fec5a2148942e208ce8f94a3, type: 3}
       propertyPath: m_RootOrder
-      value: 4
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 26444958fec5a2148942e208ce8f94a3, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -5.3100414
+      value: -23.33
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 26444958fec5a2148942e208ce8f94a3, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -2.4874284
+      value: 0.49999905
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 26444958fec5a2148942e208ce8f94a3, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 37.433685
+      value: -6.569729
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 26444958fec5a2148942e208ce8f94a3, type: 3}
       propertyPath: m_LocalRotation.w
@@ -13116,7 +13135,6 @@ Transform:
   - {fileID: 1371039816}
   - {fileID: 683958620}
   - {fileID: 724899244}
-  - {fileID: 104005598}
   - {fileID: 57147185}
   - {fileID: 64760631}
   - {fileID: 400350560}
@@ -13135,7 +13153,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f7ccde07b5ca66a44971230b5e142eb0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerFeedbackText: {fileID: 0}
+  playerFeedbackText: {fileID: 433463487}
   promptMessage: No Power(Journal Updated)
 --- !u!65 &1288042531
 BoxCollider:
@@ -13145,7 +13163,7 @@ BoxCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1288042528}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 8.673377, y: 6.3606253, z: 3.4711685}
@@ -13209,7 +13227,7 @@ Transform:
   - {fileID: 2056488972}
   - {fileID: 490030370}
   m_Father: {fileID: 1790588202}
-  m_RootOrder: 5
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &1295680987 stripped
 Transform:
@@ -15593,6 +15611,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 303562062, guid: 0d87ff3cd25964b42a9be573361fbc82, type: 3}
+      propertyPath: m_IsTrigger
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 168406086206319655, guid: 0d87ff3cd25964b42a9be573361fbc82, type: 3}
       propertyPath: m_RootOrder
       value: 5
@@ -15641,6 +15663,10 @@ PrefabInstance:
       propertyPath: mainCam
       value: 
       objectReference: {fileID: 190503433}
+    - target: {fileID: 1062608931960990791, guid: 0d87ff3cd25964b42a9be573361fbc82, type: 3}
+      propertyPath: playerPrompt
+      value: 
+      objectReference: {fileID: 433463487}
     - target: {fileID: 2116809619941825666, guid: 0d87ff3cd25964b42a9be573361fbc82, type: 3}
       propertyPath: m_Name
       value: GearPuzzle
@@ -18238,6 +18264,7 @@ Transform:
   - {fileID: 609255199}
   - {fileID: 1057193437}
   - {fileID: 1270485634}
+  - {fileID: 104005598}
   - {fileID: 1292515817}
   m_Father: {fileID: 1897147535}
   m_RootOrder: 4
