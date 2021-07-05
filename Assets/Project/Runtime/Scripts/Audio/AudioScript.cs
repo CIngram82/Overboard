@@ -2,12 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.Audio;
 
 
 public class AudioScript : MonoBehaviour
 {
     public AudioSource thisAudio;
-
+    
     public static AudioScript _instance;
     public List<AudioClip> soundEffects = new List<AudioClip>();
     [SerializeField] List<AudioClip> woodFootsteps = new List<AudioClip>();
@@ -99,10 +100,12 @@ public class AudioScript : MonoBehaviour
             StopAllCoroutines();
             Debug.Log("Playing again " + GetScene().name + " " + thisAudio.isPlaying);
             PlayClip(titleTheme);
+            thisAudio.loop = true;
         }
         else if (GetScene().name == "BetaLevel1" )//&& !thisAudio.isPlaying)
         {
             StartCoroutine(PlayRandomSound());
+            thisAudio.loop = false;
         }
         else
         {
@@ -145,6 +148,6 @@ public class AudioScript : MonoBehaviour
 
         yield return null;
     }
-
+    
 }
 
