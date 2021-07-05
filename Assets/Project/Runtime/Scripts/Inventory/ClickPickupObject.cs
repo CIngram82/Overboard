@@ -8,6 +8,7 @@ public class ClickPickupObject : MonoBehaviour
     [SerializeField] LayerMask objectLayer;
     [SerializeField] LayerMask itemLayer;
     [SerializeField] LayerMask clueLayer;
+    [SerializeField] LayerMask triggerLayer;
     [SerializeField] float maxDistance = 50.0f;
     [Header("Debugging")]
     [SerializeField] bool debuggingOn = true;
@@ -35,30 +36,34 @@ public class ClickPickupObject : MonoBehaviour
             {
                 _ray = _rayCamera.ScreenPointToRay(Input.mousePosition);
                 RaycastHit rayHit;
-                if (Physics.Raycast(_ray, out rayHit, maxDistance, itemLayer)) return;
+                if (Physics.Raycast(_ray, out rayHit, maxDistance, objectLayer)) return;
                 else
-                if (Physics.Raycast(_ray, out rayHit, maxDistance, keyLayer))
+                if (Physics.Raycast(_ray, out rayHit, maxDistance, triggerLayer))
                 {
+                    rayHit.transform.gameObject.GetComponent<AnimationTrigger>().PlayAnimation();
+
+                    /*
                     // WorldItem is on root parent containing gameObject of hit collider. 
                     rayHit.transform.gameObject.GetComponentInParent<WorldItem>().PickUpItem(gameObject);
                     AudioScript._instance.PlaySoundEffect("Grab");
+                    */
                 }
             }
             else
             {
                 RaycastHit rayHit;
                 _ray = _rayCamera.ScreenPointToRay(Input.mousePosition);
-                if (Physics.Raycast(_ray, out rayHit, maxDistance, objectLayer))
-                {
-                    inspect.Inspect(rayHit.transform.parent.gameObject);
-                    AudioScript._instance.PlaySoundEffect("Grab");
-                }
-                else
                 if (Physics.Raycast(_ray, out rayHit, maxDistance, itemLayer))
                 {
                     // WorldItem is on root parent containing gameObject of hit collider. 
+                    inspect.Inspect(rayHit.transform.gameObject);
+                    rayHit.transform.gameObject.GetComponent<WorldItem>().PickUpItem(gameObject);
+                    AudioScript._instance.PlaySoundEffect("Grab");
+                }
+                else
+                if (Physics.Raycast(_ray, out rayHit, maxDistance, objectLayer))
+                {
                     inspect.Inspect(rayHit.transform.parent.gameObject);
-                    rayHit.transform.gameObject.GetComponentInParent<WorldItem>().PickUpItem(gameObject);
                     AudioScript._instance.PlaySoundEffect("Grab");
                 }
                 else
