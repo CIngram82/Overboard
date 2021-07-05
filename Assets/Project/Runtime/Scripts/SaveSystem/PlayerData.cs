@@ -8,6 +8,7 @@ namespace SaveSystem.Data
         public SerialVector3 Position;
         public SerialVector3 Rotation;
 
+
         public PlayerData()
         {
             Rotation = new SerialVector3(Vector3.down * 90);
