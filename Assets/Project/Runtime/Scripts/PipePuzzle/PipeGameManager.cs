@@ -8,9 +8,10 @@ namespace PipePuzzle
     {
         public static System.Action<bool> PuzzleCompleted;
         
-        public bool isComplete;
-        [SerializeField]private Pipe power;
-        [SerializeField]private Pipe firstOutput;
+        [SerializeField] CameraTransition _cameraTransition;
+        [SerializeField] Pipe power;
+        [SerializeField] Pipe firstOutput;
+        bool isComplete;
 
         public PFGrid<Pipe> puzzle;
         private List<Pipe> allPipes;
@@ -125,8 +126,12 @@ namespace PipePuzzle
                     pipe.gameObject.GetComponent<SpriteRenderer>().color = Color.red;
                 }
                 isComplete = true;
-                AudioScript._instance.PlaySoundEffect("Steam Release 2");
-                PuzzleCompleted?.Invoke(isComplete);
+                if (isComplete)
+                {
+                    AudioScript._instance.PlaySoundEffect("Steam Release 2");
+                    PuzzleCompleted?.Invoke(isComplete);
+                    _cameraTransition.LockCamera(isComplete); 
+                }
             }
         }
     }
