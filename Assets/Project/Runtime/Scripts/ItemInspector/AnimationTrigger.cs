@@ -2,13 +2,19 @@ using UnityEngine;
 
 public class AnimationTrigger : MonoBehaviour
 {
-    [SerializeField] Animation anim;
+    public Animator anim;
 
 
-    public void PlayAnimation()
+    public void PlayOpen()
     {
-        anim.Play();
+        anim.SetBool("open", true);
     }
+
+    public void PlayKey()
+    {
+        anim.SetBool("keyFound", true);
+    }
+
 }
 
 

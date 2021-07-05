@@ -40,8 +40,8 @@ public class ClickPickupObject : MonoBehaviour
                 else
                 if (Physics.Raycast(_ray, out rayHit, maxDistance, triggerLayer))
                 {
-                    rayHit.transform.gameObject.GetComponent<AnimationTrigger>().PlayAnimation();
-
+                    rayHit.transform.gameObject.GetComponent<AnimationTrigger>().PlayOpen();
+                    Debug.Log("TRIGGERED");
                     /*
                     // WorldItem is on root parent containing gameObject of hit collider. 
                     rayHit.transform.gameObject.GetComponentInParent<WorldItem>().PickUpItem(gameObject);
