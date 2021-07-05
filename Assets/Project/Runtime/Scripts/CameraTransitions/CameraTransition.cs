@@ -10,7 +10,7 @@ public class CameraTransition : MonoBehaviour
     [SerializeField] CinemachineVirtualCamera mainCam;
     [SerializeField] CinemachineVirtualCamera transitionCamera;
     [SerializeField] int startingPriority;
-    [SerializeField]  TextMeshProUGUI playerPrompt;
+    [SerializeField] TextMeshProUGUI playerPrompt;
     bool hasBeenPrompted;
     bool isMain;
     bool locked;
