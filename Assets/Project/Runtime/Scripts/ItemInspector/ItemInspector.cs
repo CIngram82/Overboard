@@ -65,10 +65,13 @@ public class ItemInspector : MonoBehaviour
     }
     void Start()
     {
-        InspectCamera = InspectCamera ? InspectCamera : CameraController.Camera;
         _parentTransform = gameObject.transform.parent;
         objectCenter = _parentTransform.position;
+    }
+    private void Awake()
+    {
         _isInspecting = false;
+        InspectCamera = InspectCamera ? InspectCamera : CameraController.Camera;
     }
 }
 
