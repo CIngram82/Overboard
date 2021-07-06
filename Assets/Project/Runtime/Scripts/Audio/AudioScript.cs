@@ -45,8 +45,7 @@ public class AudioScript : MonoBehaviour
 
     public void PlayClip(AudioClip clip)
     {
-        Debug.Log(clip);
-        Debug.Log(thisAudio);
+
         thisAudio.PlayOneShot(clip);
     }
 
@@ -98,11 +97,10 @@ public class AudioScript : MonoBehaviour
         if (GetScene().name == "Scene_MainMenu" && !thisAudio.isPlaying)
         {
             StopAllCoroutines();
-            Debug.Log("Playing again " + GetScene().name + " " + thisAudio.isPlaying);
             PlayClip(titleTheme);
             thisAudio.loop = true;
         }
-        else if (GetScene().name == "BetaLevel1" )//&& !thisAudio.isPlaying)
+        else if (GetScene().name == "Scene_Whitebox" )
         {
             StartCoroutine(PlayRandomSound());
             thisAudio.loop = false;
