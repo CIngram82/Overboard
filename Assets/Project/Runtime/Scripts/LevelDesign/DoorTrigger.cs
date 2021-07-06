@@ -14,6 +14,7 @@ public class DoorTrigger : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
         anim.SetBool("isOpen", true);
+        //AudioScript._instance.PlaySoundEffect("Door Creak");
     }
 
     private void OnTriggerExit(Collider other)

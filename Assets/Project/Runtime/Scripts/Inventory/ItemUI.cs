@@ -14,17 +14,35 @@ namespace Inventory.UI
         public Button ItemButton { get; private set; }
 
 
-        public void OnClickRemove()
+        public void OnClick_Remove()
         {
             EventsManager.On_Inventory_Item_Removed(Item);
         }
-
+        public void GetDropdownOption(int value)
+        {
+            switch (value)
+            {
+                case 0: 
+                    Player.inspect.Inspect(Item.Prefab);
+                    break;
+                case 1:
+                    Player.inventory.DropItem(Item);
+                    break;
+                case 2:
+                    // Use: calls check if in range and use function
+                    break;
+                case 3:
+                    //combine: auto combines with all combinable items in inventory.
+                    break;
+                default: break;
+            }
+        }
         public void Setup(Item item)
         {
+            GetComponent<Image>().sprite = item.Sprite;
             Item = item;
             ItemButton = GetComponent<Button>();
 
-            Debug.Log(Item.Description);
             _itemNameText.text = item.Name;
         }
 

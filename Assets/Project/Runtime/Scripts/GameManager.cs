@@ -1,14 +1,15 @@
 using UnityEngine;
 using SaveSystem.Data;
 
-public class GameManager : MonoBehaviour
+public class GameManager : Singleton<GameManager>
 {
-    public static GameManager Instance { get; private set; }
-
+    [SerializeField] bool pipeFirstCompletion = false;
+    [SerializeField] bool gearFirstCompletion = false;
+    
     public bool GearPuzzleCompleted { get; private set; }
-    private bool gearFirstCompleation = false;
     public bool PipePuzzleCompleted { get; private set; }
-    private bool pipeFirstCompleation = false;
+    public bool inPuzzleView = false;
+
 
     void SaveData()
     {
@@ -21,30 +22,29 @@ public class GameManager : MonoBehaviour
     void LoadData()
     {
         GameData data = SaveDataManager.Save.GameData;
-        gearFirstCompleation =  GearPuzzleCompleted = data.IsGearsCompleted;
-        pipeFirstCompleation = PipePuzzleCompleted = data.IsPipesCompleted;
+        gearFirstCompletion = GearPuzzleCompleted = data.IsGearsCompleted;
+        pipeFirstCompletion = PipePuzzleCompleted = data.IsPipesCompleted;
         FindObjectOfType<WaterLevel>().SetWaterLevel(data.WaterLevel);
     }
 
     void On_Gear_Puzzle_Completed(bool isCompleted)
     {
-        if(isCompleted && !gearFirstCompleation)
+        if (isCompleted && !gearFirstCompletion)
         {
-            gearFirstCompleation = true;
+            gearFirstCompletion = true;
             FindObjectOfType<WaterLevel>().TriggerWaterRise();
-        }
-        GearPuzzleCompleted = isCompleted;
-        if (isCompleted)
-        {
+            FindObjectOfType<CameraTransition>().SwitchCameras();
             SaveDataManager.Instance.On_Save_Data();
+            GearPuzzleCompleted = isCompleted;
         }
     }
     void On_Pipe_Puzzle_Completed(bool isCompleted)
     {
-        if (isCompleted && !pipeFirstCompleation)
+        if (isCompleted && !pipeFirstCompletion)
         {
-            pipeFirstCompleation = true;
+            pipeFirstCompletion = true;
             FindObjectOfType<WaterLevel>().TriggerWaterRise();
+            FindObjectOfType<CameraTransition>().SwitchCameras();
         }
         PipePuzzleCompleted = isCompleted;
         if (isCompleted)
@@ -82,12 +82,6 @@ public class GameManager : MonoBehaviour
 
     void Awake()
     {
-        if (Instance == null)
-            Instance = this;
-        else if (Instance != this)
-        {
-            Debug.LogWarning("Multiple instances of GameManager");
-            Destroy(this);
-        }
+        InitSingleton(this);
     }
 }

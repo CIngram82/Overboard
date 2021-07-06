@@ -1,15 +1,15 @@
 using System;
 using System.IO;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 namespace SaveSystem.Data
 {
-    public class SaveDataManager : MonoBehaviour
+    public class SaveDataManager : Singleton<SaveDataManager>
     {
         public static event Action DataSavedPrepared;
         public static event Action SaveDataLoaded;
 
-        static SaveDataManager _instance;
         static string fileName = "save";
         static int currentSave = 1;
         static SaveFileType fileType = SaveFileType.dat;
@@ -18,20 +18,14 @@ namespace SaveSystem.Data
 
         public static string SAVE_PATH => $"{Application.persistentDataPath}/saves/";
         public static string FileName => $"{fileName}_{currentSave:00}.{fileType}";
-        public static SaveDataManager Instance => _instance;
         public static SaveDataState Save { get; private set; }
         public static bool IsDataLoaded { get; private set; } = false;
 
 
         void Awake()
         {
-            if (_instance == null)
-                _instance = this;
-            else if (_instance != this)
-            {
-                Debug.LogWarning("Multiple instances of SaveDataManager");
-                Destroy(this);
-            }
+            InitSingleton(this);
+            Debug.Log($"{name}: Loading data.");
             LoadData();
         }
 
@@ -91,7 +85,6 @@ namespace SaveSystem.Data
             Debug.Log($"Backed up current save to {backupSavePath}{backupFileName}");
         }
 
-
         public void SelectSave(int saveNumber, bool load = false)
         {
             currentSave = saveNumber;
@@ -110,6 +103,12 @@ namespace SaveSystem.Data
             saveCount++;
         }
 
+        public void ResetSave()
+        {
+            Save = new SaveDataState();
+            SaveLoad.Save(Save, SAVE_PATH, FileName);
+            Debug.Log($"Reset and Saved Data to {SAVE_PATH}{FileName}.");
+        }
         public void ClearSave()
         {
             SaveLoad.DeleteSave($"{SAVE_PATH}{FileName}");

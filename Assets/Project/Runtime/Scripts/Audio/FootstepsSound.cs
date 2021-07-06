@@ -18,15 +18,14 @@ public class FootstepsSound : MonoBehaviour
         {
             AudioScript._instance.PlayCarpetFootsteps();
         }
-        else if (Physics.Raycast(transform.position, Vector3.down, 8, woodLayer))
+        else if (Physics.Raycast(transform.position, Vector3.down, 4, woodLayer))
         {
-            AudioScript._instance.PlayWoodFootsteps();
-            
+            AudioScript._instance.PlayWoodFootsteps();           
         }
-        else if (Physics.Raycast(transform.position, Vector3.down, 8, waterLayer))
-        {
-            AudioScript._instance.PlayWaterFootsteps();
-        }
+        //else if (Physics.Raycast(transform.position, Vector3.down, 8, waterLayer))
+        //{
+        //    AudioScript._instance.PlayWaterFootsteps();
+        //}
     }
 }
 

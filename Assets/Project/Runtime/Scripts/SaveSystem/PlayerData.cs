@@ -5,17 +5,19 @@ namespace SaveSystem.Data
     [System.Serializable]
     public class PlayerData
     {
-        /**/
         public SerialVector3 Position;
         public SerialVector3 Rotation;
-        //public SerialQuaternion Rotation;
 
+
+        public PlayerData()
+        {
+            Rotation = new SerialVector3(Vector3.down * 90);
+        }
         public PlayerData(Transform transform)
         {
             Position = new SerialVector3(transform.position);
             Rotation = new SerialVector3(transform.eulerAngles);
         }
-        /**/
     }
 
     [System.Serializable]
@@ -23,6 +25,12 @@ namespace SaveSystem.Data
     {
         public float x, y, z;
 
+        public SerialVector3()
+        {
+            x = 0;
+            y = 0;
+            z = 0;
+        }
         public SerialVector3(Vector3 vector)
         {
             x = vector.x;

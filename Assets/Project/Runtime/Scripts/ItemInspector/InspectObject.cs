@@ -1,16 +1,11 @@
-using System.Collections;
-using System.Collections.Generic;
+using System;
 using UnityEngine;
-using Inventory.UI;
 
 public class InspectObject : MonoBehaviour
 {
     public static bool IsInspecting;
 
-    [SerializeField] GameObject camPointer;
-    [SerializeField] GameObject backOutButton;
-
-    InventoryUI inventory;
+    Inventory.Inventory inventory;
     ItemInspector inspector;
     GameObject inspectedObject;
 
@@ -18,57 +13,85 @@ public class InspectObject : MonoBehaviour
     void Start()
     {
         IsInspecting = false;
-        inventory = GetComponent<InventoryUI>();
+        inventory = GetComponent<Inventory.Inventory>();
     }
-    void Update()
+    void OnGUI()
     {
+        if (PauseController.IsPaused) return;
         if (!IsInspecting)
         {
-            if (Input.GetKeyDown(KeyCode.Alpha1))
+            Event e = Event.current;
+            if (e.isKey && e.type == EventType.KeyDown)
             {
-                Debug.Log("1 pressed");
-                Inspect(inventory.UIItems[0].Item.Prefab);
-            }
-            else if (Input.GetKeyDown(KeyCode.Alpha2))
-            {
-                Debug.Log("2 pressed");
-                Inspect(inventory.UIItems[1].Item.Prefab);
-            }
-            else if (Input.GetKeyDown(KeyCode.Alpha3))
-            {
-                Debug.Log("3 pressed");
-                Inspect(inventory.UIItems[3].Item.Prefab);
-            }
-            else if (Input.GetKeyDown(KeyCode.Alpha6))
-            {
-                Debug.Log("6 pressed");
-                EventsManager.On_Journal_Opened(true);    // TODO: create a global bool in a controller
+                //Debug.Log("Detected key code: " + e.keyCode);
+                GetKey(e.keyCode);
             }
         }
     }
 
-    void Inspect(GameObject itemObject)
+    void GetKey(KeyCode key)
     {
-        backOutButton.SetActive(true);
+        switch (key)
+        {
+            case KeyCode.Alpha1:
+                InspectInventory(0);
+                break;
+            case KeyCode.Alpha2:
+                InspectInventory(1);
+                break;
+            case KeyCode.Alpha3:
+                InspectInventory(2);
+                break;
+            case KeyCode.Alpha4:
+                InspectInventory(3);
+                break;
+            case KeyCode.Alpha5:
+                InspectInventory(4);
+                break;
+            case KeyCode.Alpha6:
+                InspectInventory(5);
+                break;
+            default: break;
+        }
+    }
+
+    public void Inspect(GameObject itemObject)
+    {
+        IsInspecting = true;
+        EventsManager.On_Item_Inspected(IsInspecting);
+        
         inspectedObject = Instantiate(itemObject);
         inspector = inspectedObject.GetComponentInChildren<ItemInspector>();
-        inspector.SetItemPosition(IsInspecting = true);
-        SwitchCameras();
+        inspector.SetItemPosition(IsInspecting);
+    }
+    public void InspectInventory(int index)
+    {
+        if (index < inventory.Items.Count)
+        {
+            GameObject itemObject = inventory.Items[index].Prefab;
+            Inspect(itemObject);
+        }
+    }
+    public void On_Inspect(bool inspecting)
+    {
+        if (inspectedObject) Destroy(inspectedObject);
+    }
+    void SubToEvents(bool subscribe)
+    {
+        EventsManager.ItemInspected -= On_Inspect;
+
+        if (subscribe)
+        {
+            EventsManager.ItemInspected += On_Inspect;
+        }
     }
 
-    void SwitchCameras()
+    void OnEnable()
     {
-        CameraController.SetCursorLockMode(IsInspecting);
-        camPointer.SetActive(!IsInspecting);
-        PlayerMovement.canMove = !IsInspecting;
+        SubToEvents(true);
     }
-
-    public void BackOut()
+    void OnDisable()
     {
-        Destroy(inspectedObject);
-        //inspectedObject.SetActive(false);
-        IsInspecting = false;
-        SwitchCameras();
-        backOutButton.SetActive(false);
+        SubToEvents(false);
     }
 }

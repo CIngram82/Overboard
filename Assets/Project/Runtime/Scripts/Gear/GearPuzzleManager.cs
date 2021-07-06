@@ -17,21 +17,27 @@ namespace GearPuzzle
         [SerializeField] List<Gear> _gears;
         [SerializeField] List<GearSocket> _gearSocket;
 
-        //public bool IsSolved { get; private set; }
         public Gear StartGear => _startGear.Gear;
-        public Gear EndGear => _startGear.Gear;
+        public Gear EndGear => _endGear.Gear;
 
 
         public void CheckedCompletion()
         {
-            PuzzleCompleted?.Invoke(EndGear.IsPowered);
+            bool isComplete = EndGear.IsPowered;
+            if (isComplete)
+            {
+                PuzzleCompleted?.Invoke(isComplete);
+                On_Camera_Transition();
+                _cameraTransition.LockCamera(isComplete);
+            }
         }
 
         void On_Drag(GameObject dragObject)
         {
             List<Gear> poweredGears = _startGear.PowerNextGear();
             poweredGears.Add(StartGear);
-            var unPoweredGears = _gears.Where(ps => poweredGears.All(gs => gs != ps)); // searching all gears inside gearsList and checking for unpowered gears and storing them in the Unpowered collection
+            // Searches all gears inside _gears list, checks against current list of poweredGears and returns all non-powered gears
+            var unPoweredGears = _gears.Where(ps => poweredGears.All(gs => gs != ps)); 
             foreach (var gear in unPoweredGears)
             {
                 gear.IsPowered = false;
@@ -39,30 +45,22 @@ namespace GearPuzzle
             CheckedCompletion();
         }
 
-        void On_Game_Enter(GameObject player)
+        void On_Camera_Transition()
         {
-            if (player.TryGetComponent(out Inventory.Inventory inventory))
-            {
-                if (inventory.Items.Contains(inventory.ItemDatabase.GetInventoryItem("Gear")))
-                {
-                    inventory.RemoveItem(inventory.ItemDatabase.GetInventoryItem("Gear"));
-                    _missingGear.SetActive(true);
-                    On_Drag(gameObject);
-                }
-            }
+            CameraController.Camera.orthographic = !CameraController.Camera.orthographic;
         }
 
         void SubToEvents(bool subscribe)
         {
             DragObjectHandler.DragStarted -= On_Drag;
             DragObjectHandler.DragEnded -= On_Drag;
-            _cameraTransition.CameraEntered -= On_Game_Enter;
+            _cameraTransition.CameraEntered -= On_Camera_Transition;
 
             if (subscribe)
             {
                 DragObjectHandler.DragStarted += On_Drag;
                 DragObjectHandler.DragEnded += On_Drag;
-                _cameraTransition.CameraEntered += On_Game_Enter;
+                _cameraTransition.CameraEntered += On_Camera_Transition;
             }
         }
 
@@ -73,10 +71,6 @@ namespace GearPuzzle
         void OnDisable()
         {
             SubToEvents(false);
-        }
-        void Start()
-        {
-           // On_Drag(default);
         }
         void Awake()
         {

@@ -26,6 +26,7 @@ namespace Inventory
         public CollectibleItemSet CollectedWorldClues => _collectedWorldClues;
 
 
+        #region Items
         public void AddItem(Item item)
         {
             _items.Add(item);
@@ -53,7 +54,20 @@ namespace Inventory
                 RemoveItem(item);
             }
         }
+        public void DropItem(Item item)
+        {
+            GameObject itemGO = Instantiate(item.Prefab, transform.position, Quaternion.identity);
+            itemGO.transform.Translate(Vector3.down * -2.25f);
+            RemoveItem(item);
+        }
 
+        public void CombineItems(Item item)
+        {
+            //_items.
+        }
+        #endregion
+
+        #region Clues
         public void AddClue(Clue clue)
         {
             _clues.Add(clue);
@@ -66,7 +80,7 @@ namespace Inventory
                 AddClue(clue);
             }
         }
-        public void RemoveItem(Clue clue)
+        public void RemoveClue(Clue clue)
         {
             Clues.Remove(clue);
             EventsManager.On_Inventory_Clue_Removed(clue);
@@ -75,9 +89,11 @@ namespace Inventory
         {
             foreach (Clue clue in items)
             {
-                RemoveItem(clue);
+                RemoveClue(clue);
             }
         }
+        #endregion
+
         public static void RemoveAllUIChildren(Transform parent)
         {
             foreach (Transform item in parent)

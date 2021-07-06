@@ -5,71 +5,98 @@ using TMPro;
 
 public class CameraTransition : MonoBehaviour
 {
-    public Action<GameObject> CameraEntered;
-    [SerializeField] GameObject camPointer;
+    public Action CameraEntered;
+
     [SerializeField] CinemachineVirtualCamera mainCam;
     [SerializeField] CinemachineVirtualCamera transitionCamera;
     [SerializeField] int startingPriority;
-    [SerializeField] TextMeshPro playerPrompt;
+    [SerializeField] TextMeshProUGUI playerPrompt;
+    bool hasBeenPrompted;
     bool canTransition;
-
     bool isMain;
+    bool locked;
 
-    private void Start()
+
+    void Start()
     {
+        canTransition = false;
+        locked = false;
+        hasBeenPrompted = false;
         startingPriority = transitionCamera.Priority;
         isMain = true;
-        canTransition = false;
     }
     private void Update()
     {
-        if(canTransition && Input.GetKeyUp(KeyCode.E))
+        if(canTransition && Input.GetKeyUp(KeyCode.E) && !locked)
         {
+            canTransition = false;
             SwitchCameras();
+            CameraEntered?.Invoke();
+            Invoke("waitForTransition", 2f); // 2 seconds is the time it takes for the camera transition to take place, now the player cannot spam e but must wait until a transition is finished
         }
     }
-
     private void OnTriggerEnter(Collider other)
     {
-        playerPrompt.text = "Press E to toggle camera";
+        canTransition = true;
     }
 
-    private void OnTriggerStay(Collider other)
+    void OnTriggerStay(Collider other)
     {
-        
-        if (other.gameObject.CompareTag("Player") && Input.GetKey(KeyCode.E))
+        if (!hasBeenPrompted)
         {
-            canTransition = true;
+            playerPrompt.text = "Press E to toggle camera";
+        }
+        if (!locked && Input.GetKeyDown(KeyCode.E))
+        {
            // SwitchCameras();
-            CameraEntered?.Invoke(other.gameObject);
+           // CameraEntered?.Invoke();
+            hasBeenPrompted = true;
         }
     }
-
-    private void OnTriggerExit(Collider other)
+    void OnTriggerExit(Collider other)
     {
-        playerPrompt.text = " ";
         canTransition = false;
+        playerPrompt.text = string.Empty;
+        hasBeenPrompted = true;
     }
 
-    void SwitchCameras()
+    public void LockCamera(bool locked)
     {
+        this.locked = locked;
+        SwitchCameras();
+    }
+
+    public void SwitchCameras()
+    {
+
+        hasBeenPrompted = true;
+        playerPrompt.text = string.Empty;
+
         if (isMain)
         {
-            transitionCamera.Priority = 2;
+       
+            transitionCamera.Priority = 3;
             mainCam.Priority = startingPriority;
             isMain = false;
-            CameraController.SetCursorLockMode(true);
-            camPointer.SetActive(false);
-            PlayerMovement.canMove = false;
+
+            GameManager.Instance.inPuzzleView = true;
+            EventsManager.On_Camera_Switched(true);
         }
         else
         {
+           
             transitionCamera.Priority = startingPriority;
-            mainCam.Priority = 2;
+            mainCam.Priority = 3;
             isMain = true;
-            CameraController.SetCursorLockMode(false);
-            camPointer.SetActive(true);
-            PlayerMovement.canMove = true;
+
+            GameManager.Instance.inPuzzleView = false;
+            EventsManager.On_Camera_Switched(false);
         }
+
+    }
+
+    void waitForTransition()
+    {
+        canTransition = true;
     }
 }

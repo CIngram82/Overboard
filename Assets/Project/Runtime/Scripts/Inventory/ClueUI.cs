@@ -13,9 +13,9 @@ public class ClueUI : MonoBehaviour
     public Clue Clue { get; private set; }
     public Button ItemButton { get; private set; }
 
-
     public void OnClickLoadClue()
     {
+        Debug.Log("Loading clue");
         ClueHintLoaded?.Invoke(Clue);
     }
 
@@ -23,9 +23,7 @@ public class ClueUI : MonoBehaviour
     {
         Clue = clue;
         ItemButton = GetComponent<Button>();
-        ItemButton.onClick.AddListener(OnClickLoadClue);
-
-        _clueNameTMP.text = clue.Name;
+       _clueNameTMP.text = clue.Name;
     }
 }
 

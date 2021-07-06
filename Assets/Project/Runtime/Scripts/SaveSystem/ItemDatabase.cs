@@ -14,21 +14,21 @@ namespace Inventory.Database
     public class Item : InventoryItem
     {
         [SerializeField] GameObject _prefab;
-        [SerializeField] Image _image;
+        [SerializeField] Sprite _sprite;
         [TextArea(5, 10)]
         [SerializeField] string _description;
 
         public GameObject Prefab { get => _prefab; private set => _prefab = value; }
-        public Image Image { get => _image; private set => _image = value; }
+        public Sprite Sprite { get => _sprite; private set => _sprite = value; }
         public string Description { get => _description; private set => _description = value; }
 
 
-        public Item(int id, string name, string description, Image image)
+        public Item(int id, string name, string description, Sprite sprite)
         {
             ID = id;
             Name = name;
             Description = description;
-            Image = image;
+            Sprite = sprite;
         }
     } 
 }
