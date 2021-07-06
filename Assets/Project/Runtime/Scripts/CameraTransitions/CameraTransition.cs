@@ -12,16 +12,28 @@ public class CameraTransition : MonoBehaviour
     [SerializeField] int startingPriority;
     [SerializeField] TextMeshProUGUI playerPrompt;
     bool hasBeenPrompted;
+    bool hasTransitioned;
     bool isMain;
     bool locked;
 
 
     void Start()
     {
+        hasTransitioned = false;
         locked = false;
         hasBeenPrompted = false;
         startingPriority = transitionCamera.Priority;
         isMain = true;
+    }
+    private void Update()
+    {
+        if(!hasTransitioned && Input.GetKeyUp(KeyCode.E) && !locked)
+        {
+            SwitchCameras();
+            CameraEntered?.Invoke();
+            hasTransitioned = true;
+            Invoke("waitForTransition", 2f); // 2 seconds is the time it takes for the camera transition to take place, now the player cannot spam e but must wait until a transition is finished
+        }
     }
 
     void OnTriggerStay(Collider other)
@@ -32,8 +44,8 @@ public class CameraTransition : MonoBehaviour
         }
         if (!locked && Input.GetKeyDown(KeyCode.E))
         {
-            SwitchCameras();
-            CameraEntered?.Invoke();
+           // SwitchCameras();
+           // CameraEntered?.Invoke();
             hasBeenPrompted = true;
         }
     }
@@ -51,7 +63,9 @@ public class CameraTransition : MonoBehaviour
 
     public void SwitchCameras()
     {
+
         hasBeenPrompted = true;
+        playerPrompt.text = string.Empty;
 
         if (isMain)
         {
@@ -71,5 +85,11 @@ public class CameraTransition : MonoBehaviour
             GameManager.Instance.inPuzzleView = false;
             EventsManager.On_Camera_Switched(false);
         }
+
+    }
+
+    void waitForTransition()
+    {
+        hasTransitioned = false;
     }
 }
