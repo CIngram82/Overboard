@@ -43,14 +43,14 @@ public class IntroCameraCut : MonoBehaviour
 
     void PlayRumble()
     {
-        AudioScript._instance.PlaySoundEffect("Crash and Rumble");
+        AudioScript._instance.PlaySoundEffect("Rumble");
     }
 
-    //void PlayCrash()
-    //{
-   // AudioScript._instance.PlaySoundEffect("Crash");
-    //}
+    void PlayCrash()
+    {
+        AudioScript._instance.PlaySoundEffect("Crash");
+    }
 
 
-    
+
 }
