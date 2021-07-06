@@ -8,16 +8,17 @@ public class ClickPickupObject : MonoBehaviour
     [SerializeField] LayerMask objectLayer;
     [SerializeField] LayerMask itemLayer;
     [SerializeField] LayerMask clueLayer;
+    [SerializeField] LayerMask triggerLayer;
     [SerializeField] float maxDistance = 50.0f;
     [Header("Debugging")]
     [SerializeField] bool debuggingOn = true;
     [SerializeField] Color rayColor = Color.green;
-    
+
     InspectObject inspect;
     Camera _rayCamera;
     Ray _ray;
-   [SerializeField] UIGlow uiGlow;
-    Inventory.Inventory inventory;
+
+
     public void DrawRay()
     {
         _ray = _rayCamera.ScreenPointToRay(Input.mousePosition);
@@ -35,32 +36,34 @@ public class ClickPickupObject : MonoBehaviour
             {
                 _ray = _rayCamera.ScreenPointToRay(Input.mousePosition);
                 RaycastHit rayHit;
-                if (Physics.Raycast(_ray, out rayHit, maxDistance, itemLayer)) return;
+                if (Physics.Raycast(_ray, out rayHit, maxDistance, objectLayer)) return;
                 else
-                if (Physics.Raycast(_ray, out rayHit, maxDistance, keyLayer))
+                if (Physics.Raycast(_ray, out rayHit, maxDistance, triggerLayer))
                 {
+                    rayHit.transform.gameObject.GetComponent<AnimationTrigger>().PlayOpen();
+                    Debug.Log("TRIGGERED");
+                    /*
                     // WorldItem is on root parent containing gameObject of hit collider. 
                     rayHit.transform.gameObject.GetComponentInParent<WorldItem>().PickUpItem(gameObject);
                     AudioScript._instance.PlaySoundEffect("Grab");
+                    */
                 }
             }
             else
             {
                 RaycastHit rayHit;
                 _ray = _rayCamera.ScreenPointToRay(Input.mousePosition);
-                if (Physics.Raycast(_ray, out rayHit, maxDistance, objectLayer))
-                {
-                    inspect.Inspect(rayHit.transform.parent.gameObject);
-                    AudioScript._instance.PlaySoundEffect("Grab");
-                }
-                else
                 if (Physics.Raycast(_ray, out rayHit, maxDistance, itemLayer))
                 {
                     // WorldItem is on root parent containing gameObject of hit collider. 
-                    inspect.Inspect(rayHit.transform.parent.gameObject);    
-                    rayHit.transform.gameObject.GetComponentInParent<WorldItem>().PickUpItem(gameObject);
-                    uiGlow.AddBackdrop(inventory.Items.Count -1);
-                    Debug.Log("InventoryCount: " + inventory.Items.Count);
+                    inspect.Inspect(rayHit.transform.gameObject);
+                    rayHit.transform.gameObject.GetComponent<WorldItem>().PickUpItem(gameObject);
+                    AudioScript._instance.PlaySoundEffect("Grab");
+                }
+                else
+                if (Physics.Raycast(_ray, out rayHit, maxDistance, objectLayer))
+                {
+                    inspect.Inspect(rayHit.transform.parent.gameObject);
                     AudioScript._instance.PlaySoundEffect("Grab");
                 }
                 else
@@ -68,7 +71,6 @@ public class ClickPickupObject : MonoBehaviour
                 {
                     // WorldClue is on root parent containing gameObject of hit collider. 
                     rayHit.transform.gameObject.GetComponentInParent<WorldClue>().PickUpClue(gameObject);
-                    uiGlow.AddBackdrop(6);
                     //AudioScript._instance.PlaySoundEffect("Grab"); // paper sound
                 }
             }
@@ -76,8 +78,6 @@ public class ClickPickupObject : MonoBehaviour
 
     void Start()
     {
-        uiGlow = FindObjectOfType<UIGlow>();
-        inventory = FindObjectOfType<Inventory.Inventory>();
         _rayCamera = CameraController.Camera;
         inspect = GetComponent<InspectObject>();
     }

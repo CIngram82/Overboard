@@ -3,6 +3,11 @@ using SaveSystem.Data;
 
 public class Player : MonoBehaviour
 {
+    public static Player player; 
+    public static Inventory.Inventory inventory; 
+    public static InspectObject inspect; 
+
+
     void SaveData()
     {
         SaveDataManager.Save.PlayerData = new PlayerData(transform);
@@ -14,7 +19,6 @@ public class Player : MonoBehaviour
         CameraController.SetCameraRotation(data.Rotation.Get());
         if (data.Position != null)
             transform.position = data.Position.Get();
-
     }
 
     void On_SaveData_Loaded() => LoadData();
@@ -42,6 +46,10 @@ public class Player : MonoBehaviour
     }
     void Awake()
     {
+        player = this;
+        inventory = GetComponent<Inventory.Inventory>();
+        inspect = GetComponent<InspectObject>();
+
         if (SaveDataManager.IsDataLoaded)
             On_SaveData_Loaded();
     }
