@@ -45,11 +45,11 @@ public class ItemInspector : MonoBehaviour
         Vector3 offset = zoom - objectCenter;
         _parentTransform.position = objectCenter + Vector3.ClampMagnitude(offset, radius);
     }
-    public void OnMouseDown()
+    void OnMouseDown()
     {
         position = Input.mousePosition;
     }
-    public void OnMouseDrag()
+    void OnMouseDrag()
     {
         var deltaPosition = Input.mousePosition - position;
 
@@ -72,7 +72,7 @@ public class ItemInspector : MonoBehaviour
     void Awake()
     {
         _isInspecting = false;
-        InspectCamera = InspectCamera ? InspectCamera : Player.inspectCam;
+        InspectCamera = InspectCamera ? InspectCamera : CameraController.Camera;
     }
 }
 
