@@ -10,7 +10,7 @@ public class CameraTransition : MonoBehaviour
     [SerializeField] CinemachineVirtualCamera mainCam;
     [SerializeField] CinemachineVirtualCamera transitionCamera;
     [SerializeField] int startingPriority;
-    [SerializeField] TextMeshPro playerPrompt;
+    [SerializeField] TextMeshProUGUI playerPrompt;
     bool hasBeenPrompted;
     bool isMain;
     bool locked;
@@ -28,7 +28,7 @@ public class CameraTransition : MonoBehaviour
     {
         if (!hasBeenPrompted)
         {
-            //playerPrompt.text = "Press E to toggle camera";
+            playerPrompt.text = "Press E to toggle camera";
         }
         if (!locked && Input.GetKeyDown(KeyCode.E))
         {
@@ -40,6 +40,7 @@ public class CameraTransition : MonoBehaviour
     void OnTriggerExit(Collider other)
     {
         playerPrompt.text = string.Empty;
+        hasBeenPrompted = true;
     }
 
     public void LockCamera(bool locked)
@@ -50,6 +51,8 @@ public class CameraTransition : MonoBehaviour
 
     public void SwitchCameras()
     {
+        hasBeenPrompted = true;
+
         if (isMain)
         {
             transitionCamera.Priority = 3;

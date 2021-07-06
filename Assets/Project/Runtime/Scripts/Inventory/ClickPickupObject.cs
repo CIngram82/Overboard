@@ -13,7 +13,8 @@ public class ClickPickupObject : MonoBehaviour
     [Header("Debugging")]
     [SerializeField] bool debuggingOn = true;
     [SerializeField] Color rayColor = Color.green;
-
+    [SerializeField] UIGlow uiGlow;
+    Inventory.Inventory inventory;
     InspectObject inspect;
     Camera _rayCamera;
     Ray _ray;
@@ -58,6 +59,8 @@ public class ClickPickupObject : MonoBehaviour
                     // WorldItem is on root parent containing gameObject of hit collider. 
                     inspect.Inspect(rayHit.transform.gameObject);
                     rayHit.transform.gameObject.GetComponent<WorldItem>().PickUpItem(gameObject);
+                    uiGlow.AddBackdrop(inventory.Items.Count - 1);
+                    Debug.Log("InventoryCount: " + inventory.Items.Count);
                     AudioScript._instance.PlaySoundEffect("Grab");
                 }
                 else
@@ -71,6 +74,7 @@ public class ClickPickupObject : MonoBehaviour
                 {
                     // WorldClue is on root parent containing gameObject of hit collider. 
                     rayHit.transform.gameObject.GetComponentInParent<WorldClue>().PickUpClue(gameObject);
+                    uiGlow.AddBackdrop(6);
                     //AudioScript._instance.PlaySoundEffect("Grab"); // paper sound
                 }
             }
@@ -78,6 +82,8 @@ public class ClickPickupObject : MonoBehaviour
 
     void Start()
     {
+        uiGlow = FindObjectOfType<UIGlow>();
+        inventory = FindObjectOfType<Inventory.Inventory>();
         _rayCamera = CameraController.Camera;
         inspect = GetComponent<InspectObject>();
     }
