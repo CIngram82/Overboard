@@ -33,7 +33,7 @@ public class CameraTransition : MonoBehaviour
             SwitchCameras();
             CameraEntered?.Invoke();
             Debug.LogError($"{name}, {transitionCamera.name}: triggered");
-            Invoke("waitForTransition", 2f); // 2 seconds is the time it takes for the camera transition to take place, now the player cannot spam e but must wait until a transition is finished
+     
         }
     }
     private void OnTriggerEnter(Collider other)
@@ -82,6 +82,7 @@ public class CameraTransition : MonoBehaviour
 
             GameManager.Instance.inPuzzleView = true;
             EventsManager.On_Camera_Switched(true);
+            canTransition = true;
         }
         else
         {
@@ -92,6 +93,7 @@ public class CameraTransition : MonoBehaviour
 
             GameManager.Instance.inPuzzleView = false;
             EventsManager.On_Camera_Switched(false);
+            canTransition = true;
         }
 
     }
