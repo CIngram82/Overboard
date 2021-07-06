@@ -51,7 +51,6 @@ public class ItemInspector : MonoBehaviour
     }
     void OnMouseDrag()
     {
-        Debug.Log($"{name}: Drag");
         var deltaPosition = Input.mousePosition - position;
 
         var axis = Quaternion.AngleAxis(-90.0f, Vector3.forward) * deltaPosition;

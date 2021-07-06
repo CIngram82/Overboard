@@ -91,7 +91,8 @@ GameObject:
   m_Component:
   - component: {fileID: 750103267877249083}
   - component: {fileID: 2953856396078922545}
-  m_Layer: 0
+  - component: {fileID: 8820222906095520618}
+  m_Layer: 11
   m_Name: spoon
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -126,3 +127,21 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.5152858, y: 0.03499266, z: 0.086857356}
   m_Center: {x: 0.0058156876, y: 0.008243186, z: -0.0000066753737}
+--- !u!114 &8820222906095520618
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4870191480571421250}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 514123c383e3f9c43b070231d42aa83b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  InspectCamera: {fileID: 0}
+  rotationSpeed: 1
+  zoomSpeed: 10
+  radius: 1
+  _parentTransform: {fileID: 0}
+  _isInspecting: 0

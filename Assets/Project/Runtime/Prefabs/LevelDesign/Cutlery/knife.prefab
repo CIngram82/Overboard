@@ -91,7 +91,8 @@ GameObject:
   m_Component:
   - component: {fileID: 5802382284448414314}
   - component: {fileID: 2646411309184488514}
-  m_Layer: 0
+  - component: {fileID: 2645947628194656512}
+  m_Layer: 11
   m_Name: knife
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -126,3 +127,21 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.5011084, y: 0.014987073, z: 0.066279985}
   m_Center: {x: 0.060641058, y: 0.0062552607, z: 0.00150182}
+--- !u!114 &2645947628194656512
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2292598989179928736}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 514123c383e3f9c43b070231d42aa83b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  InspectCamera: {fileID: 0}
+  rotationSpeed: 1
+  zoomSpeed: 10
+  radius: 1
+  _parentTransform: {fileID: 0}
+  _isInspecting: 0
