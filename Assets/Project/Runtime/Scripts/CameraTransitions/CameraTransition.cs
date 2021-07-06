@@ -12,14 +12,14 @@ public class CameraTransition : MonoBehaviour
     [SerializeField] int startingPriority;
     [SerializeField] TextMeshProUGUI playerPrompt;
     bool hasBeenPrompted;
-    bool hasTransitioned;
+    bool canTransition;
     bool isMain;
     bool locked;
 
 
     void Start()
     {
-        hasTransitioned = false;
+        canTransition = false;
         locked = false;
         hasBeenPrompted = false;
         startingPriority = transitionCamera.Priority;
@@ -27,13 +27,17 @@ public class CameraTransition : MonoBehaviour
     }
     private void Update()
     {
-        if(!hasTransitioned && Input.GetKeyUp(KeyCode.E) && !locked)
+        if(canTransition && Input.GetKeyUp(KeyCode.E) && !locked)
         {
+            canTransition = false;
             SwitchCameras();
             CameraEntered?.Invoke();
-            hasTransitioned = true;
             Invoke("waitForTransition", 2f); // 2 seconds is the time it takes for the camera transition to take place, now the player cannot spam e but must wait until a transition is finished
         }
+    }
+    private void OnTriggerEnter(Collider other)
+    {
+        canTransition = true;
     }
 
     void OnTriggerStay(Collider other)
@@ -51,6 +55,7 @@ public class CameraTransition : MonoBehaviour
     }
     void OnTriggerExit(Collider other)
     {
+        canTransition = false;
         playerPrompt.text = string.Empty;
         hasBeenPrompted = true;
     }
@@ -69,6 +74,7 @@ public class CameraTransition : MonoBehaviour
 
         if (isMain)
         {
+       
             transitionCamera.Priority = 3;
             mainCam.Priority = startingPriority;
             isMain = false;
@@ -78,6 +84,7 @@ public class CameraTransition : MonoBehaviour
         }
         else
         {
+           
             transitionCamera.Priority = startingPriority;
             mainCam.Priority = 3;
             isMain = true;
@@ -90,6 +97,6 @@ public class CameraTransition : MonoBehaviour
 
     void waitForTransition()
     {
-        hasTransitioned = false;
+        canTransition = true;
     }
 }
