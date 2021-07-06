@@ -32,6 +32,7 @@ public class CameraTransition : MonoBehaviour
             canTransition = false;
             SwitchCameras();
             CameraEntered?.Invoke();
+            Debug.LogError($"{name}, {transitionCamera.name}: triggered");
             Invoke("waitForTransition", 2f); // 2 seconds is the time it takes for the camera transition to take place, now the player cannot spam e but must wait until a transition is finished
         }
     }
