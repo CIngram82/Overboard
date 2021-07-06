@@ -32,7 +32,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerFeedbackText: {fileID: 0}
-  promptMessage: Locked(Journal Updated)
+  promptMessage: Locked (Journal Updated)
+--- !u!114 &1748238635
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1978809560656171846}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3fa8be352d2f8f74bb362b2f18c92a1e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  key: {fileID: 0}
 --- !u!1001 &3174860773187457170
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -183,27 +196,27 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: -6437158739730484392, guid: 0a7ce2f7f347c024a8df4c5723637541, type: 3}
       propertyPath: m_Size.x
-      value: 1.7957582
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: -6437158739730484392, guid: 0a7ce2f7f347c024a8df4c5723637541, type: 3}
       propertyPath: m_Size.y
-      value: 1.483277
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: -6437158739730484392, guid: 0a7ce2f7f347c024a8df4c5723637541, type: 3}
       propertyPath: m_Size.z
-      value: 2.8077042
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: -6437158739730484392, guid: 0a7ce2f7f347c024a8df4c5723637541, type: 3}
       propertyPath: m_Center.x
-      value: -0.21811324
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -6437158739730484392, guid: 0a7ce2f7f347c024a8df4c5723637541, type: 3}
       propertyPath: m_Center.y
-      value: 0.24163833
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: -6437158739730484392, guid: 0a7ce2f7f347c024a8df4c5723637541, type: 3}
       propertyPath: m_Center.z
-      value: 0.90384513
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1754681280374339951, guid: 0a7ce2f7f347c024a8df4c5723637541, type: 3}
       propertyPath: m_RootOrder
@@ -211,15 +224,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1754681280374339951, guid: 0a7ce2f7f347c024a8df4c5723637541, type: 3}
       propertyPath: m_LocalScale.x
-      value: 1.9332666
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 1754681280374339951, guid: 0a7ce2f7f347c024a8df4c5723637541, type: 3}
       propertyPath: m_LocalScale.y
-      value: 2.0974133
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 1754681280374339951, guid: 0a7ce2f7f347c024a8df4c5723637541, type: 3}
       propertyPath: m_LocalScale.z
-      value: 1.8760793
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 1754681280374339951, guid: 0a7ce2f7f347c024a8df4c5723637541, type: 3}
       propertyPath: m_LocalPosition.x
