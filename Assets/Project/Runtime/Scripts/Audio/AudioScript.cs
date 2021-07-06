@@ -97,8 +97,11 @@ public class AudioScript : MonoBehaviour
         if (GetScene().name == "Scene_MainMenu" && !thisAudio.isPlaying)
         {
             StopAllCoroutines();
-            PlayClip(titleTheme);
             thisAudio.loop = true;
+            thisAudio.clip = titleTheme;
+            thisAudio.Play();
+
+
         }
         else if (GetScene().name == "Scene_Whitebox" )
         {
