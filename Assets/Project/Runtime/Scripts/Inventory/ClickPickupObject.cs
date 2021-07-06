@@ -83,8 +83,8 @@ public class ClickPickupObject : MonoBehaviour
     void Start()
     {
         uiGlow = FindObjectOfType<UIGlow>();
-        inventory = FindObjectOfType<Inventory.Inventory>();
+        inventory = Player.inventory;
         _rayCamera = CameraController.Camera;
-        inspect = GetComponent<InspectObject>();
+        inspect = Player.inspect;
     }
 }

@@ -6,7 +6,9 @@ public class Player : MonoBehaviour
     public static Player player; 
     public static Inventory.Inventory inventory; 
     public static InspectObject inspect; 
+    public static Camera inspectCam; 
 
+    [SerializeField] Camera _inspectCam;
 
     void SaveData()
     {
@@ -49,7 +51,7 @@ public class Player : MonoBehaviour
         player = this;
         inventory = GetComponent<Inventory.Inventory>();
         inspect = GetComponent<InspectObject>();
-
+        inspectCam = _inspectCam;
         if (SaveDataManager.IsDataLoaded)
             On_SaveData_Loaded();
     }
