@@ -97,7 +97,7 @@ LightmapSettings:
     m_ExportTrainingData: 0
     m_TrainingDataDestination: TrainingData
     m_LightProbeSampleCountMultiplier: 4
-  m_LightingDataAsset: {fileID: 112000000, guid: 741b03605d7a4d74ab2367624c275ae2, type: 2}
+  m_LightingDataAsset: {fileID: 112000000, guid: 55cf5142384687040a4c04c2b3b600bb, type: 2}
   m_LightingSettings: {fileID: 4890085278179872738, guid: 006fd2829d739d34c9bc5ad224e14be8, type: 2}
 --- !u!196 &4
 NavMeshSettings:
@@ -25733,6 +25733,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: MainCamera
       objectReference: {fileID: 0}
+    - target: {fileID: 6543382153992324490, guid: 09ffb25b7afbd834c9b36510ab25b7b4, type: 3}
+      propertyPath: sharedProfile
+      value: 
+      objectReference: {fileID: 11400000, guid: 9034c9d3d9da76e41a74431155a8cfc8, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 09ffb25b7afbd834c9b36510ab25b7b4, type: 3}
 --- !u!4 &828982662 stripped
@@ -70939,7 +70943,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7153433694501426029, guid: 0d87ff3cd25964b42a9be573361fbc82, type: 3}
       propertyPath: m_LocalRotation.x
-      value: 2.0511604e-15
+      value: -2.0511604e-15
       objectReference: {fileID: 0}
     - target: {fileID: 7153433694501426029, guid: 0d87ff3cd25964b42a9be573361fbc82, type: 3}
       propertyPath: m_LocalRotation.z
