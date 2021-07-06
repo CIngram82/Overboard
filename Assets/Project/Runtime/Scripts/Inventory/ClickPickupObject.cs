@@ -68,6 +68,7 @@ public class ClickPickupObject : MonoBehaviour
                 {
                     // WorldClue is on root parent containing gameObject of hit collider. 
                     rayHit.transform.gameObject.GetComponentInParent<WorldClue>().PickUpClue(gameObject);
+                    uiGlow.AddBackdrop(6);
                     //AudioScript._instance.PlaySoundEffect("Grab"); // paper sound
                 }
             }

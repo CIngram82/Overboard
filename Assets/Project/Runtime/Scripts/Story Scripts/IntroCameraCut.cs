@@ -16,6 +16,7 @@ public class IntroCameraCut : MonoBehaviour
         
         if (!hasPlayed)
         {
+            PlayRumble();
             PlayerMovement.canMove = false;
             camPointer.SetActive(false);
             playerCam.Priority = 2;
@@ -39,6 +40,16 @@ public class IntroCameraCut : MonoBehaviour
         PlayerMovement.canMove = true;
         gameObject.SetActive(false);
    }
+
+    void PlayRumble()
+    {
+        AudioScript._instance.PlaySoundEffect("Crash and Rumble");
+    }
+
+    //void PlayCrash()
+    //{
+   // AudioScript._instance.PlaySoundEffect("Crash");
+    //}
 
 
     
