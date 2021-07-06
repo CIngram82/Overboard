@@ -94,7 +94,7 @@ public class AudioScript : MonoBehaviour
 
     public void PlayBackgroundMusic()
     {
-        if (GetScene().name == "Scene_MainMenu" && !thisAudio.isPlaying)
+        if (GetScene().buildIndex == 1 && !thisAudio.isPlaying)
         {
             StopAllCoroutines();
             thisAudio.loop = true;
@@ -103,7 +103,7 @@ public class AudioScript : MonoBehaviour
 
 
         }
-        else if (GetScene().name == "Scene_Whitebox" )
+        else if (GetScene().buildIndex == 3 )
         {
             StartCoroutine(PlayRandomSound());
             thisAudio.loop = false;
