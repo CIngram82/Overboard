@@ -486,9 +486,13 @@ MonoBehaviour:
   clueLayer:
     serializedVersion: 2
     m_Bits: 1024
+  triggerLayer:
+    serializedVersion: 2
+    m_Bits: 8192
   maxDistance: 10
   debuggingOn: 1
   rayColor: {r: 0, g: 1, b: 0, a: 1}
+  uiGlow: {fileID: 0}
 --- !u!114 &1095113193
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -527,7 +531,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9c574aba2728e2b49bc7df29250d252c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  backOutButton: {fileID: 0}
 --- !u!1 &6945114581213670477
 GameObject:
   m_ObjectHideFlags: 0
