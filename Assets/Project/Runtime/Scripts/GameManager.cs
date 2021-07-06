@@ -3,7 +3,7 @@ using SaveSystem.Data;
 
 public class GameManager : Singleton<GameManager>
 {
-    [SerializeField] bool pipeFirstompletion = false;
+    [SerializeField] bool pipeFirstCompletion = false;
     [SerializeField] bool gearFirstCompletion = false;
     
     public bool GearPuzzleCompleted { get; private set; }
@@ -23,7 +23,7 @@ public class GameManager : Singleton<GameManager>
     {
         GameData data = SaveDataManager.Save.GameData;
         gearFirstCompletion = GearPuzzleCompleted = data.IsGearsCompleted;
-        pipeFirstompletion = PipePuzzleCompleted = data.IsPipesCompleted;
+        pipeFirstCompletion = PipePuzzleCompleted = data.IsPipesCompleted;
         FindObjectOfType<WaterLevel>().SetWaterLevel(data.WaterLevel);
     }
 
@@ -40,9 +40,9 @@ public class GameManager : Singleton<GameManager>
     }
     void On_Pipe_Puzzle_Completed(bool isCompleted)
     {
-        if (isCompleted && !pipeFirstompletion)
+        if (isCompleted && !pipeFirstCompletion)
         {
-            pipeFirstompletion = true;
+            pipeFirstCompletion = true;
             FindObjectOfType<WaterLevel>().TriggerWaterRise();
             FindObjectOfType<CameraTransition>().SwitchCameras();
         }

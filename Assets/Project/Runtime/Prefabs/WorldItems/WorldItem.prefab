@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 388268536248601360}
   - component: {fileID: 388268536248601361}
+  - component: {fileID: 5785529951546464527}
   m_Layer: 9
   m_Name: WorldItem
   m_TagString: Untagged
@@ -46,6 +47,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _itemName: SafeCollectable2
   _database: {fileID: 11400000, guid: 1c3093bb43bbc1549ab9b7e4cba9d29d, type: 2}
+--- !u!65 &5785529951546464527
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 388268536248601366}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.25, y: 0.25, z: 0.25}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &7664541312035993033
 GameObject:
   m_ObjectHideFlags: 0

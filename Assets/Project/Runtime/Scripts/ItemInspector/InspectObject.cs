@@ -1,10 +1,9 @@
+using System;
 using UnityEngine;
 
 public class InspectObject : MonoBehaviour
 {
     public static bool IsInspecting;
-
-    [SerializeField] GameObject backOutButton;
 
     Inventory.Inventory inventory;
     ItemInspector inspector;
@@ -58,34 +57,41 @@ public class InspectObject : MonoBehaviour
 
     public void Inspect(GameObject itemObject)
     {
-        backOutButton.SetActive(true);
+        IsInspecting = true;
+        EventsManager.On_Item_Inspected(IsInspecting);
+        
         inspectedObject = Instantiate(itemObject);
         inspector = inspectedObject.GetComponentInChildren<ItemInspector>();
-
-        IsInspecting = true;
         inspector.SetItemPosition(IsInspecting);
-        EventsManager.On_Camera_Switched(IsInspecting);
     }
     public void InspectInventory(int index)
     {
-        if (IsInspecting)
-        {
-            BackOut();
-            return;
-        }
-
         if (index < inventory.Items.Count)
         {
             GameObject itemObject = inventory.Items[index].Prefab;
             Inspect(itemObject);
         }
     }
-
-    public void BackOut()
+    public void On_Inspect(bool inspecting)
     {
-        Destroy(inspectedObject);
-        IsInspecting = false;
-        EventsManager.On_Camera_Switched(IsInspecting);
-        backOutButton.SetActive(false);
+        if (inspectedObject) Destroy(inspectedObject);
+    }
+    void SubToEvents(bool subscribe)
+    {
+        EventsManager.ItemInspected -= On_Inspect;
+
+        if (subscribe)
+        {
+            EventsManager.ItemInspected += On_Inspect;
+        }
+    }
+
+    void OnEnable()
+    {
+        SubToEvents(true);
+    }
+    void OnDisable()
+    {
+        SubToEvents(false);
     }
 }
