@@ -26,7 +26,7 @@ RenderSettings:
   m_AmbientIntensity: 0.1
   m_AmbientMode: 3
   m_SubtractiveShadowColor: {r: 0.42, g: 0.478, b: 0.627, a: 1}
-  m_SkyboxMaterial: {fileID: 10304, guid: 0000000000000000f000000000000000, type: 0}
+  m_SkyboxMaterial: {fileID: 0}
   m_HaloStrength: 0.5
   m_FlareStrength: 1
   m_FlareFadeSpeed: 3
@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 0.196
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.024954228, g: 0.026292924, b: 0.023731425, a: 0.196}
+  m_IndirectSpecularColor: {r: 0, g: 0, b: 0, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -15649,8 +15649,8 @@ Transform:
   - {fileID: 360998834}
   - {fileID: 1161963431}
   - {fileID: 799343832}
-  - {fileID: 1077619055}
   - {fileID: 662259605}
+  - {fileID: 1077619055}
   - {fileID: 558735003}
   - {fileID: 839881153}
   - {fileID: 1678162637}
@@ -16351,7 +16351,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &525860582
 Transform:
   m_ObjectHideFlags: 0
@@ -19216,7 +19216,7 @@ Transform:
   - {fileID: 930921818}
   - {fileID: 984636511}
   m_Father: {fileID: 1381514926}
-  m_RootOrder: 7
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &611437240
 PrefabInstance:
@@ -20744,7 +20744,7 @@ Transform:
   - {fileID: 1455593655}
   - {fileID: 742245553}
   m_Father: {fileID: 514496474}
-  m_RootOrder: 4
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &663432133
 PrefabInstance:
@@ -42900,10 +42900,10 @@ Transform:
   - {fileID: 589282777}
   - {fileID: 1045507710}
   - {fileID: 906245149}
+  - {fileID: 611058141}
   - {fileID: 471538334}
   - {fileID: 1817003611}
   - {fileID: 1811828192}
-  - {fileID: 611058141}
   - {fileID: 51533525}
   - {fileID: 1066650883}
   - {fileID: 313381329}
@@ -58543,8 +58543,8 @@ Transform:
   - {fileID: 530954153}
   - {fileID: 123172279}
   - {fileID: 1842622736}
-  - {fileID: 1122176570}
   - {fileID: 2059358624}
+  - {fileID: 1122176570}
   - {fileID: 481365387}
   - {fileID: 1584828197}
   - {fileID: 1029917052}
@@ -62052,7 +62052,7 @@ Transform:
   - {fileID: 2034623062}
   - {fileID: 1237553975}
   m_Father: {fileID: 1948407018}
-  m_RootOrder: 5
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2063825501
 GameObject:
@@ -70999,7 +70999,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7153433694501426029, guid: 0d87ff3cd25964b42a9be573361fbc82, type: 3}
       propertyPath: m_LocalRotation.x
-      value: -2.0511604e-15
+      value: 2.0511604e-15
       objectReference: {fileID: 0}
     - target: {fileID: 7153433694501426029, guid: 0d87ff3cd25964b42a9be573361fbc82, type: 3}
       propertyPath: m_LocalRotation.z
@@ -71848,6 +71848,10 @@ PrefabInstance:
       propertyPath: playerFeedbackText
       value: 
       objectReference: {fileID: 433463487}
+    - target: {fileID: 5275397249490662656, guid: d1e4aee9390781f408c444c2bca14239, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 4
+      objectReference: {fileID: 0}
     - target: {fileID: 5847816301636505928, guid: d1e4aee9390781f408c444c2bca14239, type: 3}
       propertyPath: m_Name
       value: PipePuzzle
