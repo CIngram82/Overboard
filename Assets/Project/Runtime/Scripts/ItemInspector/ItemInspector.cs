@@ -2,6 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+//Eric Edit
+using Inventory.Collectable;
+
 public class ItemInspector : MonoBehaviour
 {
     [Header("Camera Settings")]
@@ -12,6 +15,13 @@ public class ItemInspector : MonoBehaviour
     [Header("Object")]
     [SerializeField] Transform _parentTransform;
     [SerializeField] bool _isInspecting;
+
+    //Eric Edits
+    [SerializeField] LayerMask keysLayer;
+    [SerializeField] GameObject player;
+    Ray _ray;
+
+
 
     Vector3 position;
     Vector3 objectCenter;
@@ -48,6 +58,17 @@ public class ItemInspector : MonoBehaviour
     public void OnMouseDown()
     {
         position = Input.mousePosition;
+
+        //Eric Edits
+        _ray = InspectCamera.ScreenPointToRay(Input.mousePosition);
+        RaycastHit rayHit;
+        if (Physics.Raycast(_ray, out rayHit, 50.0f, keysLayer)) {
+
+            InspectForKey(rayHit.transform.gameObject);
+
+            return;
+        }
+
     }
     public void OnMouseDrag()
     {
@@ -57,6 +78,54 @@ public class ItemInspector : MonoBehaviour
         gameObject.transform.rotation = Quaternion.AngleAxis(deltaPosition.magnitude * rotationSpeed, axis) * gameObject.transform.rotation;
         position = Input.mousePosition;
     }
+
+    //Eric Edits
+    void InspectForKey(GameObject objToInspect)
+    {
+        if (objToInspect.name.Contains("face"))
+        {
+            if (objToInspect.name.Contains("b_"))        //f_ corrosponds to front animations and f_ to back animations
+            {
+                //Animator hitAnimator = rayHit.transform.gameObject.GetComponentInParent<Animator>();
+                objToInspect.GetComponentInParent<Animator>().SetBool("frontOpen", !objToInspect.GetComponentInParent<Animator>().GetBool("frontOpen"));      //toggle Value in animator of parent
+            }
+            else if (objToInspect.name.Contains("f_"))
+            {
+                objToInspect.GetComponentInParent<Animator>().SetBool("backOpen", !objToInspect.GetComponentInParent<Animator>().GetBool("backOpen"));
+            }
+        }
+        else if (objToInspect.name.Contains("cap"))
+        {
+            objToInspect.GetComponentInParent<Animator>().SetBool("lighterOpen", !objToInspect.GetComponentInParent<Animator>().GetBool("lighterOpen"));      //toggle Value in animator of parent
+
+            if (objToInspect.GetComponentInParent<Animator>().GetBool("lighterOpen") == false) //if the lighter lid was just closed
+            {
+                objToInspect.GetComponentInParent<Animator>().SetBool("lighterFlick", false);
+            }
+        }
+        else if (objToInspect.name.Contains("striker"))
+        {
+            objToInspect.GetComponentInParent<Animator>().SetBool("lighterFlick", true);
+        }
+        else if (objToInspect.name.Contains("key"))
+        {
+            objToInspect.GetComponentInParent<Animator>().SetBool("keyFound", true);      //set keyFound value in parent's animator to true
+            StartCoroutine(waitAndPickUp(objToInspect));
+        }
+    }
+
+
+    //Eric Added
+    public IEnumerator waitAndPickUp(GameObject objToInspect)     //Allows FindKeyAnimation to play
+    {
+        print("wait");
+        yield return new WaitForSeconds(2);
+        print("pickup");
+        objToInspect.GetComponentInParent<WorldItem>().PickUpItem(player);
+    }
+
+
+
     void Update()
     {
         if (_isInspecting)

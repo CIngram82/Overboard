@@ -35,6 +35,7 @@ namespace Inventory.Collectable
 
         public void PickUpItem(GameObject player)
         {
+            Debug.Log("PickUpItem");
             if (player.TryGetComponent(out Inventory inventory))
             {
                 if (inventory.Items.Count >= inventory.Capacity)
@@ -42,11 +43,12 @@ namespace Inventory.Collectable
                     Debug.Log("Inventory is full.");
                     return;
                 }
-
+                Debug.Log("start Pickup");
                 inventory.CollectedWorldItems.CollectedItems.Add(uniqueID.ID);
                 inventory.AddItem(Item);
                 // Destroy(gameObject);
                 gameObject.SetActive(false);
+                Debug.Log("end PickUp");
             }
         }
 

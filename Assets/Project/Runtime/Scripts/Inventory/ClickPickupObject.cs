@@ -16,7 +16,7 @@ public class ClickPickupObject : MonoBehaviour
     [SerializeField] UIGlow uiGlow;
     Inventory.Inventory inventory;
     InspectObject inspect;
-    Camera _rayCamera;
+    [SerializeField] Camera _rayCamera;
     Ray _ray;
 
 
@@ -35,12 +35,15 @@ public class ClickPickupObject : MonoBehaviour
         if (Input.GetMouseButtonDown(0))
             if (InspectObject.IsInspecting)
             {
+                //Debug.Log("click while inspecting");
                 _ray = _rayCamera.ScreenPointToRay(Input.mousePosition);
                 RaycastHit rayHit;
-                if (Physics.Raycast(_ray, out rayHit, maxDistance, objectLayer)) return;
+                if (Physics.Raycast(_ray, out rayHit, maxDistance, objectLayer)) { return; }
+
                 else
                 if (Physics.Raycast(_ray, out rayHit, maxDistance, triggerLayer))
                 {
+
                     rayHit.transform.gameObject.GetComponent<AnimationTrigger>().PlayOpen();
                     Debug.Log("TRIGGERED");
                     /*
