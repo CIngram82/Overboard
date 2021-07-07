@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 785431581630940517}
-  m_Layer: 0
+  m_Layer: 14
   m_Name: Door
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -43,7 +43,7 @@ GameObject:
   - component: {fileID: 8517704420447804642}
   - component: {fileID: 2679562603219472545}
   - component: {fileID: 1007387647295837705}
-  m_Layer: 0
+  m_Layer: 14
   m_Name: polySurface53
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -140,7 +140,8 @@ GameObject:
   - component: {fileID: 5179677721279100489}
   - component: {fileID: 8005540323556095582}
   - component: {fileID: 6959790834035609437}
-  m_Layer: 0
+  - component: {fileID: 5497557362255726855}
+  m_Layer: 14
   m_Name: DoorFrame
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -255,6 +256,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ef8515f632afeff4cb064c6e6f2350fc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  reach: 5
+  playerEntered: 0
+  showMessage: 0
+  messageGUI: {fileID: 0}
+--- !u!114 &5497557362255726855
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1064643034954926507}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e7b3b95de0d20ec44871f94d8141dbd5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  objectNumber: 1
 --- !u!1 &6272866378924327201
 GameObject:
   m_ObjectHideFlags: 0
@@ -264,7 +282,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6272866378924327214}
-  m_Layer: 0
+  m_Layer: 14
   m_Name: doorwayWallSlide
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -300,7 +318,7 @@ GameObject:
   - component: {fileID: 4669149921327027852}
   - component: {fileID: 6272866379425057335}
   - component: {fileID: 6272866379425057332}
-  m_Layer: 0
+  m_Layer: 14
   m_Name: CabinWallDoor
   m_TagString: Untagged
   m_Icon: {fileID: 0}

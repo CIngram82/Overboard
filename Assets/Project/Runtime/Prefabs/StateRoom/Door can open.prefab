@@ -463,7 +463,7 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 500, y: 500, z: 400}
+  m_Size: {x: 750, y: 500, z: 600}
   m_Center: {x: 0, y: 250, z: 0}
 --- !u!95 &1598508959176982974
 Animator:
@@ -496,7 +496,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ef8515f632afeff4cb064c6e6f2350fc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  reach: 1.5
+  reach: 5
   playerEntered: 0
   showMessage: 0
   messageGUI: {fileID: 0}
