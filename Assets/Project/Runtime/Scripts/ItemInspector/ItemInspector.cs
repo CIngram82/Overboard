@@ -82,15 +82,21 @@ public class ItemInspector : MonoBehaviour
     //Eric Edits
     void InspectForKey(GameObject objToInspect)
     {
+        //print("Item clicked: " + objToInspect.name);
         if (objToInspect.name.Contains("face"))
         {
+            //print("has \"face\"");
             if (objToInspect.name.Contains("b_"))        //f_ corrosponds to front animations and f_ to back animations
             {
+                //print("has \"b_\"");
                 objToInspect.GetComponentInParent<Animator>().SetBool("frontOpen", !objToInspect.GetComponentInParent<Animator>().GetBool("frontOpen"));      //toggle Value in animator of parent
+                //print("Value changed");
             }
             else if (objToInspect.name.Contains("f_"))
             {
+                //print("has \"f_\"");
                 objToInspect.GetComponentInParent<Animator>().SetBool("backOpen", !objToInspect.GetComponentInParent<Animator>().GetBool("backOpen"));
+                //print("Value changed");
             }
         }
         else if (objToInspect.name.Contains("cap"))
