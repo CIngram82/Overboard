@@ -18,7 +18,7 @@ public class ItemInspector : MonoBehaviour
 
     //Eric Edits
     [SerializeField] LayerMask keysLayer;
-    [SerializeField] GameObject player;
+    GameObject player;
     Ray _ray;
 
 
@@ -86,7 +86,6 @@ public class ItemInspector : MonoBehaviour
         {
             if (objToInspect.name.Contains("b_"))        //f_ corrosponds to front animations and f_ to back animations
             {
-                //Animator hitAnimator = rayHit.transform.gameObject.GetComponentInParent<Animator>();
                 objToInspect.GetComponentInParent<Animator>().SetBool("frontOpen", !objToInspect.GetComponentInParent<Animator>().GetBool("frontOpen"));      //toggle Value in animator of parent
             }
             else if (objToInspect.name.Contains("f_"))
@@ -137,6 +136,7 @@ public class ItemInspector : MonoBehaviour
     {
         _parentTransform = gameObject.transform.parent;
         objectCenter = _parentTransform.position;
+        player = GameObject.FindGameObjectWithTag("Player");
     }
     void Awake()
     {

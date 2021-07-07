@@ -34,6 +34,7 @@ public class DoorTrigger : MonoBehaviour
     {
         if (other.gameObject == player)
         {
+            print("entered door trigger");
             playerEntered = true;
         }
     }
