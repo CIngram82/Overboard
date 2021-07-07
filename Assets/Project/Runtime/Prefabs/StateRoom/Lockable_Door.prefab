@@ -1,5 +1,22 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!114 &615399188
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7757941501993649604}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: adac705175e72364a8fc1b840f503e67, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _keys:
+  - DoorKey
+  _database: {fileID: 11400000, guid: 1c3093bb43bbc1549ab9b7e4cba9d29d, type: 2}
+  _isUnlocked: 0
+  anim: {fileID: 753936223032244785}
 --- !u!95 &1103792411
 Animator:
   serializedVersion: 3
@@ -33,23 +50,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerFeedbackText: {fileID: 0}
   promptMessage: Locked(Journal Updated)
---- !u!114 &615399188
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7757941501993649604}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: adac705175e72364a8fc1b840f503e67, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _keys:
-  - DoorKey
-  _database: {fileID: 11400000, guid: 1c3093bb43bbc1549ab9b7e4cba9d29d, type: 2}
-  _isUnlocked: 0
-  anim: {fileID: 753936223032244785}
 --- !u!1001 &5271130393512780589
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -61,29 +61,9 @@ PrefabInstance:
       propertyPath: m_Name
       value: Door (7)
       objectReference: {fileID: 0}
-    - target: {fileID: 1117236388907764048, guid: 3c422d9dcd39fbd4a8ba2fdaf63c7623, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1117236388907764050, guid: 3c422d9dcd39fbd4a8ba2fdaf63c7623, type: 3}
-      propertyPath: m_IsTrigger
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 1117236388907764051, guid: 3c422d9dcd39fbd4a8ba2fdaf63c7623, type: 3}
       propertyPath: m_RootOrder
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1117236388907764051, guid: 3c422d9dcd39fbd4a8ba2fdaf63c7623, type: 3}
-      propertyPath: m_LocalScale.x
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1117236388907764051, guid: 3c422d9dcd39fbd4a8ba2fdaf63c7623, type: 3}
-      propertyPath: m_LocalScale.y
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1117236388907764051, guid: 3c422d9dcd39fbd4a8ba2fdaf63c7623, type: 3}
-      propertyPath: m_LocalScale.z
-      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1117236388907764051, guid: 3c422d9dcd39fbd4a8ba2fdaf63c7623, type: 3}
       propertyPath: m_LocalPosition.x
@@ -125,8 +105,7 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents:
-    - {fileID: 1117236388907764055, guid: 3c422d9dcd39fbd4a8ba2fdaf63c7623, type: 3}
+    m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3c422d9dcd39fbd4a8ba2fdaf63c7623, type: 3}
 --- !u!1001 &5739362450361284862
 PrefabInstance:
