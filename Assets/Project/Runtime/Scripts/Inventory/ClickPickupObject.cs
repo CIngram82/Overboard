@@ -14,6 +14,11 @@ public class ClickPickupObject : MonoBehaviour
     [SerializeField] bool debuggingOn = true;
     [SerializeField] Color rayColor = Color.green;
     [SerializeField] UIGlow uiGlow;
+
+    //Eric Code
+    [SerializeField] ClueInventoryUI uiJournal;
+    [SerializeField] GameObject flashlight;
+
     Inventory.Inventory inventory;
     InspectObject inspect;
     Camera _rayCamera;
@@ -66,6 +71,22 @@ public class ClickPickupObject : MonoBehaviour
                 else
                 if (Physics.Raycast(_ray, out rayHit, maxDistance, objectLayer))
                 {
+                    //Eric Code
+                    if (rayHit.transform.gameObject.CompareTag("Journal"))
+                    {
+                        print("found journal");
+                        rayHit.transform.gameObject.SetActive(false);
+                        uiJournal.ActivateJournal();
+                        return;
+                    }
+                    if (rayHit.transform.gameObject.CompareTag("Flashlight"))
+                    {
+                        print("found flashlight");
+                        rayHit.transform.parent.gameObject.SetActive(false);
+                        flashlight.SetActive(true);
+                        return;
+                    }
+
                     inspect.Inspect(rayHit.transform.parent.gameObject);
                     AudioScript._instance.PlaySoundEffect("Grab");
                 }

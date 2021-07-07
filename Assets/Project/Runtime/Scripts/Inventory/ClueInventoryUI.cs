@@ -16,7 +16,20 @@ public class ClueInventoryUI : MonoBehaviour
 
     bool isJournalOpen = false;
 
+    //Eric Code
+    [SerializeField] GameObject _journalBack;
+    bool isJournalActive = false;
+
     public List<ClueUI> UIClues { get => _uiClues; private set => _uiClues = value; }
+
+    //Eric Code
+    public void ActivateJournal()
+    {
+        isJournalActive = true;
+        _journalBack.SetActive(true);
+        OpenJournal(true);
+        isJournalOpen = true;
+    }
 
 
     void OpenJournal(bool isOpen)
@@ -86,7 +99,7 @@ public class ClueInventoryUI : MonoBehaviour
     void Update()
     {
         if (PauseController.IsPaused) return;
-        if (Input.GetKeyDown(KeyCode.J))
+        if (Input.GetKeyDown(KeyCode.J) && isJournalActive)
         {
             isJournalOpen = !isJournalOpen;
             OpenJournal(isJournalOpen);
