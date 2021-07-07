@@ -44,15 +44,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 388268536248601360, guid: a576f1fa220bd18459551648ac1f3b35, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -19.446
+      value: -26.322
       objectReference: {fileID: 0}
     - target: {fileID: 388268536248601360, guid: a576f1fa220bd18459551648ac1f3b35, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -1.772
+      value: 0.584
       objectReference: {fileID: 0}
     - target: {fileID: 388268536248601360, guid: a576f1fa220bd18459551648ac1f3b35, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -61.584
+      value: -1.644
       objectReference: {fileID: 0}
     - target: {fileID: 388268536248601360, guid: a576f1fa220bd18459551648ac1f3b35, type: 3}
       propertyPath: m_LocalRotation.w
@@ -92,7 +92,7 @@ PrefabInstance:
       objectReference: {fileID: 11400000, guid: 1c3093bb43bbc1549ab9b7e4cba9d29d, type: 2}
     - target: {fileID: 388268536248601366, guid: a576f1fa220bd18459551648ac1f3b35, type: 3}
       propertyPath: m_Name
-      value: WorldItem_DoorKey
+      value: DoorKey
       objectReference: {fileID: 0}
     - target: {fileID: 388268536248601366, guid: a576f1fa220bd18459551648ac1f3b35, type: 3}
       propertyPath: m_Layer
@@ -100,19 +100,23 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 388268536248601366, guid: a576f1fa220bd18459551648ac1f3b35, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5785529951546464527, guid: a576f1fa220bd18459551648ac1f3b35, type: 3}
       propertyPath: m_Size.x
-      value: 1.5407081
+      value: 1.9317868
+      objectReference: {fileID: 0}
+    - target: {fileID: 5785529951546464527, guid: a576f1fa220bd18459551648ac1f3b35, type: 3}
+      propertyPath: m_Size.z
+      value: 0.60216063
       objectReference: {fileID: 0}
     - target: {fileID: 5785529951546464527, guid: a576f1fa220bd18459551648ac1f3b35, type: 3}
       propertyPath: m_Center.x
-      value: 0.09473737
+      value: -0.032833867
       objectReference: {fileID: 0}
     - target: {fileID: 5785529951546464527, guid: a576f1fa220bd18459551648ac1f3b35, type: 3}
       propertyPath: m_Center.z
-      value: 6.7684136e-10
+      value: -0.0007712184
       objectReference: {fileID: 0}
     - target: {fileID: 7664541312035993033, guid: a576f1fa220bd18459551648ac1f3b35, type: 3}
       propertyPath: m_Layer
@@ -183,6 +187,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: addbb2432d5e9f7458e72b9b4e723630, type: 3}
       propertyPath: m_Name
       value: BoilerKey
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: addbb2432d5e9f7458e72b9b4e723630, type: 3}
+      propertyPath: m_Layer
+      value: 11
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: addbb2432d5e9f7458e72b9b4e723630, type: 3}
