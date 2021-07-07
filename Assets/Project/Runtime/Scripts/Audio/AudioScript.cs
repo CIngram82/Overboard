@@ -94,7 +94,7 @@ public class AudioScript : MonoBehaviour
 
     public void PlayBackgroundMusic()
     {
-        if (GetScene().buildIndex == 1 && !thisAudio.isPlaying)
+        if (GetScene().buildIndex == 0 && !thisAudio.isPlaying)
         {
             StopAllCoroutines();
             thisAudio.loop = true;

@@ -9,6 +9,8 @@ public class GoldmasterLevel2 : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
+        Cursor.visible = true;
+        CameraController.SetCursorLockMode(true);
         SceneManager.LoadScene("Scene_Credits");
     }
 }
