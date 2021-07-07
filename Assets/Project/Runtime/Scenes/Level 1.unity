@@ -1192,6 +1192,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   reach: 1.5
+  playerEntered: 0
+  showMessage: 0
   messageGUI: {fileID: 0}
 --- !u!65 &41364567
 BoxCollider:
@@ -2962,6 +2964,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   reach: 1.5
+  playerEntered: 0
+  showMessage: 0
   messageGUI: {fileID: 0}
 --- !u!65 &139207029
 BoxCollider:
@@ -18823,6 +18827,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   reach: 1.5
+  playerEntered: 0
+  showMessage: 0
   messageGUI: {fileID: 0}
 --- !u!1001 &861325971
 PrefabInstance:
@@ -33281,6 +33287,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   reach: 1.5
+  playerEntered: 0
+  showMessage: 0
   messageGUI: {fileID: 0}
 --- !u!65 &1598084384
 BoxCollider:
@@ -42992,21 +43000,9 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1530981142}
     m_Modifications:
-    - target: {fileID: 546065563689957075, guid: d35dc1655c2253e479bb273aff6a67e6, type: 3}
-      propertyPath: m_Layer
-      value: 14
-      objectReference: {fileID: 0}
-    - target: {fileID: 1598508959726698162, guid: d35dc1655c2253e479bb273aff6a67e6, type: 3}
-      propertyPath: m_Layer
-      value: 14
-      objectReference: {fileID: 0}
     - target: {fileID: 3534066312054614177, guid: d35dc1655c2253e479bb273aff6a67e6, type: 3}
       propertyPath: m_Name
       value: doorwayWallClosed (1)
-      objectReference: {fileID: 0}
-    - target: {fileID: 3534066312054614177, guid: d35dc1655c2253e479bb273aff6a67e6, type: 3}
-      propertyPath: m_Layer
-      value: 14
       objectReference: {fileID: 0}
     - target: {fileID: 3534066312054614190, guid: d35dc1655c2253e479bb273aff6a67e6, type: 3}
       propertyPath: m_RootOrder
@@ -43051,18 +43047,6 @@ PrefabInstance:
     - target: {fileID: 3534066312054614190, guid: d35dc1655c2253e479bb273aff6a67e6, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4452634273603919577, guid: d35dc1655c2253e479bb273aff6a67e6, type: 3}
-      propertyPath: m_Layer
-      value: 14
-      objectReference: {fileID: 0}
-    - target: {fileID: 7470219826778748511, guid: d35dc1655c2253e479bb273aff6a67e6, type: 3}
-      propertyPath: m_Layer
-      value: 14
-      objectReference: {fileID: 0}
-    - target: {fileID: 7548150733793861675, guid: d35dc1655c2253e479bb273aff6a67e6, type: 3}
-      propertyPath: m_Layer
-      value: 14
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d35dc1655c2253e479bb273aff6a67e6, type: 3}
@@ -43374,7 +43358,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7153433694501426029, guid: 0d87ff3cd25964b42a9be573361fbc82, type: 3}
       propertyPath: m_LocalRotation.x
-      value: -2.0511604e-15
+      value: 2.0511604e-15
       objectReference: {fileID: 0}
     - target: {fileID: 7153433694501426029, guid: 0d87ff3cd25964b42a9be573361fbc82, type: 3}
       propertyPath: m_LocalRotation.z
