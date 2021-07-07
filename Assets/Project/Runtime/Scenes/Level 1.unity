@@ -11479,7 +11479,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 46ac23c598654ad4ea4fe6b96cf5b150, type: 2}
+  - {fileID: 2100000, guid: d6571fe3e598e894e80e00332db1fb4c, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -25589,7 +25589,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 46ac23c598654ad4ea4fe6b96cf5b150, type: 2}
+  - {fileID: 2100000, guid: d6571fe3e598e894e80e00332db1fb4c, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -35453,7 +35453,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 46ac23c598654ad4ea4fe6b96cf5b150, type: 2}
+  - {fileID: 2100000, guid: d6571fe3e598e894e80e00332db1fb4c, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -42597,6 +42597,10 @@ PrefabInstance:
       propertyPath: m_LocalPosition.y
       value: 0.7981
       objectReference: {fileID: 0}
+    - target: {fileID: 3530553450008192837, guid: 949981307333a424b98831b857566afb, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: d6571fe3e598e894e80e00332db1fb4c, type: 2}
     - target: {fileID: 3530553450735198840, guid: 949981307333a424b98831b857566afb, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
@@ -42649,6 +42653,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: toTexture Pipes
       objectReference: {fileID: 0}
+    - target: {fileID: 4560826083086549786, guid: 949981307333a424b98831b857566afb, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: d6571fe3e598e894e80e00332db1fb4c, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 949981307333a424b98831b857566afb, type: 3}
 --- !u!4 &2088044882 stripped
@@ -43731,6 +43739,18 @@ PrefabInstance:
     - target: {fileID: 4409876718906924082, guid: 10fe09bc982abf343a4ef8d57f92f5c5, type: 3}
       propertyPath: m_Name
       value: broken_plank (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 5622574207139139206, guid: 10fe09bc982abf343a4ef8d57f92f5c5, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -0.1113
+      objectReference: {fileID: 0}
+    - target: {fileID: 6071650508852745102, guid: 10fe09bc982abf343a4ef8d57f92f5c5, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -0.0385
+      objectReference: {fileID: 0}
+    - target: {fileID: 6071650508852745102, guid: 10fe09bc982abf343a4ef8d57f92f5c5, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -0.2305
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 10fe09bc982abf343a4ef8d57f92f5c5, type: 3}
