@@ -32,8 +32,6 @@ public class CameraTransition : MonoBehaviour
             canTransition = false;
             SwitchCameras();
             CameraEntered?.Invoke();
-            Debug.LogError($"{name}, {transitionCamera.name}: triggered");
-     
         }
     }
     private void OnTriggerEnter(Collider other)

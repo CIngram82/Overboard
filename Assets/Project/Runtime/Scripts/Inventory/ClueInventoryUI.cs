@@ -14,7 +14,7 @@ public class ClueInventoryUI : MonoBehaviour
     [SerializeField] TextMeshProUGUI _clueNameTMP;
     [SerializeField] TextMeshProUGUI _clueHintTMP;
     UIGlow uiGlow;
-    bool isJournalOpen = false;
+    public bool isJournalOpen = false;
 
     //Eric Code
     [SerializeField] GameObject _journalBack;
@@ -102,11 +102,27 @@ public class ClueInventoryUI : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.J) && isJournalActive)
         {
             uiGlow.disableJournalFeedback();
-            Debug.Log("Deactivating journal");
             isJournalOpen = !isJournalOpen;
             OpenJournal(isJournalOpen);
-        }        
+        }
+#if UNITY_EDITOR
+        if (isJournalOpen && Input.GetKeyDown(KeyCode.Space))
+        {
+            uiGlow.disableJournalFeedback();
+            isJournalOpen = !isJournalOpen;
+            OpenJournal(isJournalOpen);
+        }
+#else
+        if (isJournalOpen && Input.GetKeyDown(KeyCode.Escape))
+        {
+            uiGlow.disableJournalFeedback();
+            isJournalOpen = !isJournalOpen;
+            OpenJournal(isJournalOpen);
+        }
+#endif
+
     }
+
     void Start()
     {
         Inventory.Inventory.RemoveAllUIChildren(_uiCluesParent);

@@ -17,13 +17,13 @@ public class PauseController : MonoBehaviour
     void Update()
     {
 #if UNITY_EDITOR
-        if (Input.GetKeyDown(KeyCode.Space))
+        if (Input.GetKeyDown(KeyCode.Space) && !FindObjectOfType<ClueInventoryUI>().isJournalOpen)
         {
             isPaused = !isPaused;
             On_Game_Paused(isPaused);
         }
 #else
-        if (Input.GetKeyDown(KeyCode.Escape))
+        if (Input.GetKeyDown(KeyCode.Escape) && !FindObjectOfType<ClueInventoryUI>().isJournalOpen)
         {
             isPaused = !isPaused;
             On_Game_Paused(isPaused);
