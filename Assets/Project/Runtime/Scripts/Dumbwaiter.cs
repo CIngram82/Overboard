@@ -11,10 +11,9 @@ public class Dumbwaiter : MonoBehaviour
     {
         if(IsComplete() && Input.GetMouseButton(0))
         {
-            //camPointer.SetActive(false);
-            //waiterCam.Priority = 4;
-            //Invoke("PlayNextLevel", 2);
-            SceneManager.LoadScene("CutScene");
+            waiterCam.Priority = 4;
+            camPointer.SetActive(false);
+            Invoke("PlayNextLevel", 2);
         }
         else
         {
@@ -31,6 +30,7 @@ public class Dumbwaiter : MonoBehaviour
 
     public void PlayNextLevel()
     {
-
+        SaveSystem.Data.SaveDataManager.Instance.ResetSave();
+        SceneManager.LoadScene(5);
     }
 }

@@ -51,7 +51,7 @@ public class DoorTrigger : MonoBehaviour
     }
     void Update()
     {
-        if (playerEntered)
+        if (playerEntered && !PauseController.IsPaused && !FindObjectOfType<ClueInventoryUI>().isJournalOpen && !InspectObject.IsInspecting)
         {
             Vector3 rayStart = cam.ViewportToWorldPoint(new Vector3(0.5f, 0.5f, 0.0f));
             RaycastHit hit;

@@ -42,7 +42,7 @@ public class PlayerMovement : MonoBehaviour
         movement = (moveHorizontal * transform.right + moveVertical * transform.forward).normalized;
         rig.velocity = movement * speed * Time.deltaTime;
         transform.rotation = camControl.RotatePlayer();
-        if (canMove )
+        if (canMove)
         {
             camAnim.SetBool("isWalking", moveHorizontal != 0 || moveVertical != 0);
         }
