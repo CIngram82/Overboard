@@ -23,10 +23,10 @@ public class DoorTrigger : MonoBehaviour
         // anim.enabled = false;
         anim.SetBool(animBoolName, false);
 
-        //cam = CameraController.Camera;
+        cam = CameraController.Camera;
         //get the layer for the interact and invert the masking
-        //LayerMask iRayLM = LayerMask.NameToLayer("Interact");
-        //rayLayerMask = 1 << iRayLM.value;
+        LayerMask iRayLM = LayerMask.NameToLayer("Interact");
+        rayLayerMask = 1 << iRayLM.value;
     }
 
     void OnTriggerEnter(Collider other)
@@ -52,50 +52,31 @@ public class DoorTrigger : MonoBehaviour
     void Update()
     {
         if (playerEntered)
-            if (Input.GetKeyUp(KeyCode.E) || Input.GetButtonDown("Fire1"))
+        {
+            Vector3 rayStart = cam.ViewportToWorldPoint(new Vector3(0.5f, 0.5f, 0.0f));
+            RaycastHit hit;
+            if (Physics.Raycast(rayStart, cam.transform.forward, out hit, reach, rayLayerMask))
             {
-                bool isOpen = anim.GetBool(animBoolName);
-                anim.enabled = true;
-                anim.SetBool(animBoolName, !isOpen);
-                AudioScript._instance.PlaySoundEffect("Door Creak");
+                InteractableObject interactObj = isEqualToParent(hit.collider);
+                 //is the player looking at this object or a child of it?
+                 
+                if (interactObj == null)
+                {
+                   // Not looking at us
+                    return;
+                }
+                else
+                {
+                    bool isOpen = anim.GetBool(animBoolName);
+                    if (Input.GetKeyUp(KeyCode.E) || Input.GetButtonDown("Fire1"))
+                    {
+                        anim.enabled = true;
+                        anim.SetBool(animBoolName, !isOpen);
+                        AudioScript._instance.PlaySoundEffect("Door Creak");
+                    }
+                }
             }
-        #region
-        //if (playerEntered)
-        //{
-        //    Vector3 rayStart = cam.ViewportToWorldPoint(new Vector3(0.5f, 0.5f, 0.0f));
-        //    RaycastHit hit;
-        //    if(Physics.Raycast(rayStart, cam.transform.forward, out hit, reach, rayLayerMask))
-        //    {
-        //        InteractableObject interactObj = isEqualToParent(hit.collider);
-        //        // is the player looking at this object or a child of it?
-
-        //        if(interactObj == null)
-        //        {
-        //            // Not looking at us
-        //            return;
-        //        }
-        //        else
-        //        {
-        //            Debug.Log(interactObj.gameObject.name);
-        //            showMessage = true;
-        //            bool isOpen = anim.GetBool(animBoolName);
-        //            if(Input.GetKeyUp(KeyCode.E) || Input.GetButtonDown("Fire1"))
-        //            {
-        //                anim.enabled = true;
-        //                anim.SetBool(animBoolName, !isOpen);
-        //                AudioScript._instance.PlaySoundEffect("Door Creak");
-
-        //            }
-
-        //        }
-
-        //    }
-        //    else
-        //    {
-        //        showMessage = false;
-        //    }
-        //}
-        #endregion
+        }
     }
 
     IEnumerator PromptDoorMessage()
@@ -106,7 +87,7 @@ public class DoorTrigger : MonoBehaviour
         Player.playerPromptText.text = string.Empty;
         yield return null;
     }
-    /*/
+
     //look up the family tree of the object hit and see if one of them has the InteractableObject component
     private InteractableObject isEqualToParent(Collider other)
     {
@@ -139,5 +120,4 @@ public class DoorTrigger : MonoBehaviour
         }
         return interactObj;
     }
-    /**/
 }

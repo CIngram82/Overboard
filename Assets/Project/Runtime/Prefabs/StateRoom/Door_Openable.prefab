@@ -380,6 +380,7 @@ GameObject:
   - component: {fileID: 1598508959176982975}
   - component: {fileID: 1598508959176982974}
   - component: {fileID: 1598508959176982973}
+  - component: {fileID: 9201813389180646876}
   m_Layer: 14
   m_Name: DoorFrame
   m_TagString: Untagged
@@ -498,6 +499,19 @@ MonoBehaviour:
   message: 
   timeShowen: 3
   animBoolName: isOpen
+--- !u!114 &9201813389180646876
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7548150733793861675}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e7b3b95de0d20ec44871f94d8141dbd5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  objectNumber: 1
 --- !u!1 &7774836618691736006
 GameObject:
   m_ObjectHideFlags: 0
