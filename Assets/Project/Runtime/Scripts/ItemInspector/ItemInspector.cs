@@ -1,14 +1,13 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class ItemInspector : MonoBehaviour
 {
     [Header("Camera Settings")]
-    [SerializeField] Camera InspectCamera;
-    [Min(1)] [SerializeField] float rotationSpeed = 1.0f;
-    [Min(10)] [SerializeField] float zoomSpeed = 10.0f;
-    [SerializeField] float radius = 1.0f;
+    [SerializeField] Camera _inspectCamera;
+    [Min(1)] [SerializeField] float _rotationSpeed = 1.0f;
+    [Min(10)] [SerializeField] float _zoomSpeed = 10.0f;
+    [SerializeField] float _distanceFromCamera = 1.5f;
+    [SerializeField] float _radius = 1.0f;
     [Header("Object")]
     [SerializeField] Transform _parentTransform;
     [SerializeField] bool _isInspecting;
@@ -22,9 +21,10 @@ public class ItemInspector : MonoBehaviour
     public void SetItemPosition(bool isInspecting)
     {
         _parentTransform = gameObject.transform.parent;
-        forward = InspectCamera.transform.forward * 1.5f;
-        objectPos = InspectCamera.transform.position + forward;
+        forward = _inspectCamera.transform.forward * _distanceFromCamera;
+        objectPos = _inspectCamera.transform.position + forward;
         _parentTransform.position = objectPos;
+        _parentTransform.rotation = Quaternion.identity;
         _isInspecting = isInspecting;
     }
 
@@ -35,15 +35,15 @@ public class ItemInspector : MonoBehaviour
 
         if (zoomAmount > 0.0f)
         {
-            zoom += forward * (zoomSpeed * Time.deltaTime);
+            zoom += forward * (_zoomSpeed * Time.deltaTime);
         }
         else if (zoomAmount < 0.0f)
         {
-            zoom -= forward * (zoomSpeed * Time.deltaTime);
+            zoom -= forward * (_zoomSpeed * Time.deltaTime);
         }
 
         Vector3 offset = zoom - objectCenter;
-        _parentTransform.position = objectCenter + Vector3.ClampMagnitude(offset, radius);
+        _parentTransform.position = objectCenter + Vector3.ClampMagnitude(offset, _radius);
     }
     public void OnMouseDown()
     {
@@ -54,7 +54,7 @@ public class ItemInspector : MonoBehaviour
         var deltaPosition = Input.mousePosition - position;
 
         var axis = Quaternion.AngleAxis(-90.0f, Vector3.forward) * deltaPosition;
-        gameObject.transform.rotation = Quaternion.AngleAxis(deltaPosition.magnitude * rotationSpeed, axis) * gameObject.transform.rotation;
+        gameObject.transform.rotation = Quaternion.AngleAxis(deltaPosition.magnitude * _rotationSpeed, axis) * gameObject.transform.rotation;
         position = Input.mousePosition;
     }
     void Update()
@@ -72,7 +72,7 @@ public class ItemInspector : MonoBehaviour
     void Awake()
     {
         _isInspecting = false;
-        InspectCamera = InspectCamera ? InspectCamera : Player.inspectCam;
+        _inspectCamera = _inspectCamera ? _inspectCamera : Player.inspectCam;
     }
 }
 
