@@ -15401,6 +15401,10 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3725745354295093908, guid: 67db6791577c5e14db461f90443c78af, type: 3}
+      propertyPath: m_Name
+      value: Cursor
+      objectReference: {fileID: 0}
     - target: {fileID: 5913999852193465987, guid: 67db6791577c5e14db461f90443c78af, type: 3}
       propertyPath: m_Name
       value: Canvas
@@ -17941,6 +17945,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e068d2548673d7e4e93cdcdb2ed2e7f5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  waiterCam: {fileID: 0}
+  playerCam: {fileID: 0}
+  camPointer: {fileID: 0}
 --- !u!1 &813298355
 GameObject:
   m_ObjectHideFlags: 0
@@ -23207,6 +23214,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
+    - target: {fileID: 6290321084410037996, guid: 60fd4002636c38e44a2ed3fa46590125, type: 3}
+      propertyPath: _camPointer
+      value: 
+      objectReference: {fileID: 1911476271}
     - target: {fileID: 8827842336098037144, guid: 60fd4002636c38e44a2ed3fa46590125, type: 3}
       propertyPath: _inspectCam
       value: 
@@ -23220,11 +23231,6 @@ PrefabInstance:
 --- !u!4 &1075425978 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4448749213885339779, guid: 60fd4002636c38e44a2ed3fa46590125, type: 3}
-  m_PrefabInstance: {fileID: 1075425977}
-  m_PrefabAsset: {fileID: 0}
---- !u!1 &1075425980 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 3190971577279171180, guid: 60fd4002636c38e44a2ed3fa46590125, type: 3}
   m_PrefabInstance: {fileID: 1075425977}
   m_PrefabAsset: {fileID: 0}
 --- !u!114 &1075425982 stripped
@@ -23572,7 +23578,7 @@ PrefabInstance:
     - target: {fileID: 4528008666976339946, guid: 64a09f1849bc7d842abb68d37ca45d3a, type: 3}
       propertyPath: camPointer
       value: 
-      objectReference: {fileID: 1075425980}
+      objectReference: {fileID: 1911476271}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 64a09f1849bc7d842abb68d37ca45d3a, type: 3}
 --- !u!1001 &1089540077
@@ -38998,6 +39004,11 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 6179494672252912760, guid: 639c39ba17d935741997a63898d3b9ee, type: 3}
   m_PrefabInstance: {fileID: 1901025029}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1911476271 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3725745354295093908, guid: 67db6791577c5e14db461f90443c78af, type: 3}
+  m_PrefabInstance: {fileID: 697666222}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1911543164
 GameObject:
   m_ObjectHideFlags: 0
@@ -40559,7 +40570,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1598508959176982973, guid: d35dc1655c2253e479bb273aff6a67e6, type: 3}
       propertyPath: message
-      value: Press E or Right Click to open Door.
+      value: Press E or Left Click to open Door.
       objectReference: {fileID: 0}
     - target: {fileID: 1598508959176982973, guid: d35dc1655c2253e479bb273aff6a67e6, type: 3}
       propertyPath: messageGUI
