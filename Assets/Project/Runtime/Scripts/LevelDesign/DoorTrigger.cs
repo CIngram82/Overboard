@@ -12,9 +12,9 @@ public class DoorTrigger : MonoBehaviour
     public float reach = 10f; // How far can the player reach
     private string animBoolName = "isOpen";
     [SerializeField] private bool playerEntered;
-    [SerializeField] private bool showMessage;
-    private string message;
-    public TMP_Text messageGUI;
+    [SerializeField] private bool showMessage = true;
+    [SerializeField] string message;
+    [SerializeField] public TextMeshProUGUI messageGUI;
 
     private int rayLayerMask;
 
@@ -34,8 +34,11 @@ public class DoorTrigger : MonoBehaviour
     {
         if (other.gameObject == player)
         {
-            Debug.Log("Player Enter");
             playerEntered = true;
+            if (showMessage)
+            {
+                messageGUI.text = message;
+            }
         }
     }
 
@@ -43,8 +46,8 @@ public class DoorTrigger : MonoBehaviour
     {
         if (other.gameObject == player)
         {
-            Debug.Log("Player Exit");
             playerEntered = false;
+            messageGUI.text = "";
             showMessage = false;
         }
     }
@@ -56,7 +59,6 @@ public class DoorTrigger : MonoBehaviour
             RaycastHit hit;
             if(Physics.Raycast(rayStart, cam.transform.forward, out hit, reach, rayLayerMask))
             {
-                Debug.Log("Pew?");
                 InteractableObject interactObj = isEqualToParent(hit.collider);
                 // is the player looking at this object or a child of it?
 
@@ -82,7 +84,6 @@ public class DoorTrigger : MonoBehaviour
             }
             else
             {
-                Debug.Log("Missed?");
                 showMessage = false;
             }
         }
