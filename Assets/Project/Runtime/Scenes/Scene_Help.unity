@@ -158,7 +158,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 9.999971}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &34421245
@@ -884,7 +884,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 10}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &508643977
@@ -1455,7 +1455,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 99.999985, y: -2}
+  m_AnchoredPosition: {x: 99.999985, y: 0}
   m_SizeDelta: {x: -299.99997, y: -200}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &910521148
@@ -1693,7 +1693,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 9.999971}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1019049202
@@ -1944,7 +1944,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -118, y: 53}
+  m_AnchoredPosition: {x: -118, y: 53.3}
   m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1591269387
@@ -1967,8 +1967,14 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "Search the boat for clues to make your escape. \n\nRemember to check your
-    journal to look again at any clues you find."
+  m_text: 'You are a crewmate on a cruiseliner in the mid 1900''s. When you wake
+    up after a long shift, the ship is empty and is starting to sink. You must find
+    a way to esape.
+
+
+    The Journal is your guide to escaping the sinking ship.
+    Use the tools and clues you find in the ship to make your way off. Don''t forget
+    to check it routinely. '
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: ef55b95a2f272264ab0ef64b469f3198, type: 2}
   m_sharedMaterial: {fileID: -1214608533579013806, guid: ef55b95a2f272264ab0ef64b469f3198, type: 2}
@@ -1995,8 +2001,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 36
-  m_fontSizeBase: 36
+  m_fontSize: 24
+  m_fontSizeBase: 24
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -2083,7 +2089,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -390, y: 3.9}
+  m_AnchoredPosition: {x: -401, y: 3.9}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1612805157
@@ -2118,7 +2124,7 @@ MonoBehaviour:
     m_Top: 0
     m_Bottom: 0
   m_ChildAlignment: 0
-  m_Spacing: 0
+  m_Spacing: 7
   m_ChildForceExpandWidth: 1
   m_ChildForceExpandHeight: 1
   m_ChildControlWidth: 0
@@ -2362,7 +2368,7 @@ MonoBehaviour:
       m_Calls: []
   m_text: "WASD to move. Mouse to look around. \nJ to open your journal.\nLeft click
     to pick up items. \n1 - 6 to inspect the items in your inventory.\nSpace Bar
-    to bring up the menu.\nE to change camera at puzzles."
+    to bring up the menu.\nE to change camera at puzzles and open doors."
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: ef55b95a2f272264ab0ef64b469f3198, type: 2}
   m_sharedMaterial: {fileID: -1214608533579013806, guid: ef55b95a2f272264ab0ef64b469f3198, type: 2}
