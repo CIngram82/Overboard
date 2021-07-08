@@ -13,7 +13,7 @@ public class Dumbwaiter : MonoBehaviour
         {
             waiterCam.Priority = 4;
             camPointer.SetActive(false);
-            Invoke("PlayNextLevel", 2);
+            Invoke("PlayNextLevel", 1);
         }
         else
         {
