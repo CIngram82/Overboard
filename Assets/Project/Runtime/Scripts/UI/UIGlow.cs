@@ -5,20 +5,23 @@ using UnityEngine.UI;
 
 public class UIGlow : MonoBehaviour
 {
-   public List<GameObject> glowBackList = new List<GameObject>();
-   public static bool journalInteracted;
-    public  void AddBackdrop(int inventoryIndex)
-    {     
+    public List<GameObject> glowBackList = new List<GameObject>();
+    public static bool journalInteracted;
+    public static UIGlow Instance;
+
+
+    public void AddBackdrop(int inventoryIndex)
+    {
         StartCoroutine(disableBackdrop(inventoryIndex));
     }
-
 
     public IEnumerator disableBackdrop(int index)
     {
         glowBackList[index].SetActive(true);
-        Image image =  glowBackList[index].GetComponent<Image>();
+        Image image = glowBackList[index].GetComponent<Image>();
         Color color = image.color;
         color.a = .0f;
+
         for (float i = 0; i < .5f; i += .1f)
         {
             color.a += i;
@@ -51,16 +54,20 @@ public class UIGlow : MonoBehaviour
 
     public void DisplayJournalFeedback()
     {
-        disableJournalFeedback(); // not an accident, no touchey
+        DisableJournalFeedback(); // not an accident, no touchey
         journalInteracted = false;
         StartCoroutine(JournalFeedback());
     }
 
-   public void disableJournalFeedback()
-   {
+    public void DisableJournalFeedback()
+    {
         journalInteracted = true;
         glowBackList[6].SetActive(false);
         StopAllCoroutines();
-   }
+    }
 
+    void Awake()
+    {
+        Instance = this;
+    }
 }
