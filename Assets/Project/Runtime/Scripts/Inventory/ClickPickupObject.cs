@@ -59,6 +59,7 @@ public class ClickPickupObject : MonoBehaviour
                 _ray = _rayCamera.ScreenPointToRay(Input.mousePosition);
                 if (Physics.Raycast(_ray, out rayHit, maxDistance, itemLayer))          //Looking for World Items
                 {
+                    print("on itemLayer Layer");
                     // WorldItem is on root parent containing gameObject of hit collider. 
                     _inspect.Inspect(rayHit.transform.gameObject);
                     rayHit.transform.gameObject.GetComponent<WorldItem>().PickUpItem(gameObject);
@@ -68,29 +69,22 @@ public class ClickPickupObject : MonoBehaviour
                 }
                 else
                 if (Physics.Raycast(_ray, out rayHit, maxDistance, objectLayer))        //Looking for inspectable items
-                { 
+                {
+                    print("on objectLayer Layer");
+
                     _inspect.Inspect(rayHit.transform.parent.gameObject);
                     AudioScript._instance.PlaySoundEffect("Grab");
+
+                    //Eric Code
+                    if (rayHit.transform.gameObject.GetComponent<WorldItem>())
+                    {
+                        rayHit.transform.gameObject.GetComponent<WorldItem>().PickUpItem(gameObject);
+                        uiGlow.AddBackdrop(_inventory.Items.Count - 1);
+                        Debug.Log($"InventoryCount: {_inventory.Items.Count}");
+                    }
                 }
                 else
-                if (Physics.Raycast(_ray, out rayHit, maxDistance, startLayer))        //Looking for inspectable start items
-                {
-                    //Eric Code
-                    if (rayHit.transform.gameObject.CompareTag("Journal"))
-                    {
-                        print("Found Journal");
-                        rayHit.transform.parent.gameObject.SetActive(false);
-                        uiJournal.ActivateJournal();
-                        return;
-                    }
-                    else
-                    if (rayHit.transform.gameObject.CompareTag("Flashlight"))
-                    {
-                        print("Found Flashlight");
-                        rayHit.transform.parent.gameObject.SetActive(false);
-                        flashlight.SetActive(true);
-                    }
-                }
+                
                 if (Physics.Raycast(_ray, out rayHit, maxDistance, clueLayer))          //Looking for World Clues
                 {
                     // WorldClue is on root parent containing gameObject of hit collider. 
