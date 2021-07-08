@@ -1,6 +1,6 @@
 using System;
 using UnityEngine;
-using Inventory.Database;
+using InventorySystem.Database;
 
 public class EventsManager : MonoBehaviour
 {

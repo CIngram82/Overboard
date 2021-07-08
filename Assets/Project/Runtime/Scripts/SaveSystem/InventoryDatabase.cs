@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace Inventory.Database
+namespace InventorySystem.Database
 {
     [System.Serializable]
     public class InventoryDatabase<T> : ScriptableObject where T : InventoryItem

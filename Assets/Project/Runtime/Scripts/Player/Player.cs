@@ -1,16 +1,18 @@
 using UnityEngine;
 using SaveSystem.Data;
 using TMPro;
+using InventorySystem;
 
 public class Player : MonoBehaviour
 {
     public static Player player; 
-    public static Inventory.Inventory inventory; 
+    public static Inventory inventory; 
     public static InspectObject inspect; 
     public static Camera inspectCam;
-    [SerializeField] TextMeshProUGUI _playerPromptText;
     public static TextMeshProUGUI playerPromptText;
     [SerializeField] Camera _inspectCam;
+    [SerializeField] TextMeshProUGUI _playerPromptText;
+
 
     void SaveData()
     {
@@ -50,11 +52,12 @@ public class Player : MonoBehaviour
     }
     void Awake()
     {
-        playerPromptText = _playerPromptText;
         player = this;
-        inventory = GetComponent<Inventory.Inventory>();
+        inventory = GetComponent<Inventory>();
         inspect = GetComponent<InspectObject>();
         inspectCam = _inspectCam;
+        playerPromptText = _playerPromptText;
+
         if (SaveDataManager.IsDataLoaded)
             On_SaveData_Loaded();
     }

@@ -2,9 +2,9 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 using TMPro;
-using Inventory.Database;
+using InventorySystem.Database;
 
-namespace Inventory.UI
+namespace InventorySystem.UI
 {
     public class ItemUI : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
     {

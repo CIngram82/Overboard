@@ -1,6 +1,6 @@
 using System.Collections.Generic;
-using Inventory.Collectable;
-using Inventory.Database;
+using InventorySystem.Collectable;
+using InventorySystem.Database;
 
 namespace SaveSystem.Data
 {

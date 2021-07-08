@@ -1,5 +1,6 @@
 using UnityEngine;
-using Inventory.Collectable;
+using InventorySystem;
+using InventorySystem.Collectable;
 
 public class ClickPickupObject : MonoBehaviour
 {
@@ -9,6 +10,7 @@ public class ClickPickupObject : MonoBehaviour
     [SerializeField] LayerMask itemLayer;
     [SerializeField] LayerMask clueLayer;
     [SerializeField] LayerMask triggerLayer;
+    [SerializeField] LayerMask startLayer;
     [SerializeField] float maxDistance = 50.0f;
     [Header("Debugging")]
     [SerializeField] bool debuggingOn = true;
@@ -19,8 +21,8 @@ public class ClickPickupObject : MonoBehaviour
     [SerializeField] ClueInventoryUI uiJournal;
     [SerializeField] GameObject flashlight;
 
-    Inventory.Inventory inventory;
-    InspectObject inspect;
+    Inventory _inventory;
+    InspectObject _inspect;
     Camera _rayCamera;
     Ray _ray;
 
@@ -48,51 +50,47 @@ public class ClickPickupObject : MonoBehaviour
                 if (Physics.Raycast(_ray, out rayHit, maxDistance, triggerLayer))
                 {
                     rayHit.transform.gameObject.GetComponent<AnimationTrigger>().PlayOpen();
-                    Debug.Log("TRIGGERED");
-                    /*
-                    // WorldItem is on root parent containing gameObject of hit collider. 
-                    rayHit.transform.gameObject.GetComponentInParent<WorldItem>().PickUpItem(gameObject);
-                    AudioScript._instance.PlaySoundEffect("Grab");
-                    */
+                    Debug.Log($"{rayHit.transform.gameObject}: Animation Trigger");
                 }
             }
             else
             {
                 RaycastHit rayHit;
                 _ray = _rayCamera.ScreenPointToRay(Input.mousePosition);
-                if (Physics.Raycast(_ray, out rayHit, maxDistance, itemLayer))
+                if (Physics.Raycast(_ray, out rayHit, maxDistance, itemLayer))          //Looking for World Items
                 {
                     // WorldItem is on root parent containing gameObject of hit collider. 
-                    inspect.Inspect(rayHit.transform.gameObject);
+                    _inspect.Inspect(rayHit.transform.gameObject);
                     rayHit.transform.gameObject.GetComponent<WorldItem>().PickUpItem(gameObject);
-                    uiGlow.AddBackdrop(inventory.Items.Count - 1);
-                    Debug.Log("InventoryCount: " + inventory.Items.Count);
+                    uiGlow.AddBackdrop(_inventory.Items.Count - 1);
+                    Debug.Log($"InventoryCount: {_inventory.Items.Count}");
                     AudioScript._instance.PlaySoundEffect("Grab");
                 }
                 else
-                if (Physics.Raycast(_ray, out rayHit, maxDistance, objectLayer))
+                if (Physics.Raycast(_ray, out rayHit, maxDistance, objectLayer))        //Looking for inspectable items
+                { 
+                    _inspect.Inspect(rayHit.transform.parent.gameObject);
+                    AudioScript._instance.PlaySoundEffect("Grab");
+                }
+                else
+                if (Physics.Raycast(_ray, out rayHit, maxDistance, startLayer))        //Looking for inspectable start items
                 {
                     //Eric Code
                     if (rayHit.transform.gameObject.CompareTag("Journal"))
                     {
-                        print("found journal");
-                        rayHit.transform.gameObject.SetActive(false);
+                        print("Found Journal");
+                        rayHit.transform.parent.gameObject.SetActive(false);
                         uiJournal.ActivateJournal();
-                        return;
                     }
+                    else
                     if (rayHit.transform.gameObject.CompareTag("Flashlight"))
                     {
-                        print("found flashlight");
+                        print("Found Flashlight");
                         rayHit.transform.parent.gameObject.SetActive(false);
                         flashlight.SetActive(true);
-                        return;
                     }
-
-                    inspect.Inspect(rayHit.transform.parent.gameObject);
-                    AudioScript._instance.PlaySoundEffect("Grab");
                 }
-                else
-                if (Physics.Raycast(_ray, out rayHit, maxDistance, clueLayer))
+                if (Physics.Raycast(_ray, out rayHit, maxDistance, clueLayer))          //Looking for World Clues
                 {
                     // WorldClue is on root parent containing gameObject of hit collider. 
                     rayHit.transform.gameObject.GetComponentInParent<WorldClue>().PickUpClue(gameObject);
@@ -100,23 +98,13 @@ public class ClickPickupObject : MonoBehaviour
                 }
             }
         }
-        if (!InspectObject.IsInspecting)
-        {
-            RaycastHit rayHit;
-            if (Physics.Raycast(_ray, out rayHit, maxDistance, clueLayer))
-            {
-                // WorldClue is on root parent containing gameObject of hit collider. 
-                rayHit.transform.gameObject.GetComponentInParent<WorldClue>().PickUpClue(gameObject);
-                uiGlow.DisplayJournalFeedback();
-            }
-        }
     }
 
     void Start()
     {
-        uiGlow = FindObjectOfType<UIGlow>();
-        inventory = Player.inventory;
+        uiGlow = UIGlow.Instance;
+        _inventory = Player.inventory;
         _rayCamera = CameraController.Camera;
-        inspect = Player.inspect;
+        _inspect = Player.inspect;
     }
 }

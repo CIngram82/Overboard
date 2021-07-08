@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
-using Inventory.Database;
+using InventorySystem.Database;
 
-namespace Inventory.Collectable
+namespace InventorySystem.Collectable
 {
     public class WorldItem : MonoBehaviour
     {
