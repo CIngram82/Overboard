@@ -76,6 +76,7 @@ public class DoorTrigger : MonoBehaviour
                     {
                         anim.enabled = true;
                         anim.SetBool(animBoolName, !isOpen);
+                        AudioScript._instance.PlaySoundEffect("Door Creak");
 
                     }
 
