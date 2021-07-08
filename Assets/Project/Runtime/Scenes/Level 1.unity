@@ -6317,7 +6317,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3266283472838305300, guid: fe355303bb4cbe447b585721c6f15296, type: 3}
       propertyPath: _clueName
-      value: Open the Safe
+      value: Skeleton Key
       objectReference: {fileID: 0}
     - target: {fileID: 3768218453289691618, guid: fe355303bb4cbe447b585721c6f15296, type: 3}
       propertyPath: m_Enabled
@@ -20261,9 +20261,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2157110048636573745, guid: 67db6791577c5e14db461f90443c78af, type: 3}
       propertyPath: m_text
-      value: The Captain wanted me to guard the boiler room from tresspassers. There
-        is 1 skeleton key which should open a safe. Inside is an important tool.
-        The key is split into 3 parts in room A65, A60, and in my room.
+      value: 
       objectReference: {fileID: 0}
     - target: {fileID: 2157110048636573745, guid: 67db6791577c5e14db461f90443c78af, type: 3}
       propertyPath: m_enableAutoSizing
@@ -20271,7 +20269,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2157110049069111922, guid: 67db6791577c5e14db461f90443c78af, type: 3}
       propertyPath: m_text
-      value: Skeleton Key
+      value: 
       objectReference: {fileID: 0}
     - target: {fileID: 2157110049069111922, guid: 67db6791577c5e14db461f90443c78af, type: 3}
       propertyPath: m_fontSizeMax
@@ -86263,6 +86261,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 532706560}
     m_Modifications:
+    - target: {fileID: 5695640225482867090, guid: 59e4c9e7f9c6b6947a866a095eb38581, type: 3}
+      propertyPath: _clueName
+      value: Skeleton Key
+      objectReference: {fileID: 0}
     - target: {fileID: 6203066024128138852, guid: 59e4c9e7f9c6b6947a866a095eb38581, type: 3}
       propertyPath: m_Enabled
       value: 0
@@ -86270,6 +86272,10 @@ PrefabInstance:
     - target: {fileID: 8423089492613284664, guid: 59e4c9e7f9c6b6947a866a095eb38581, type: 3}
       propertyPath: m_Name
       value: JournalClue
+      objectReference: {fileID: 0}
+    - target: {fileID: 8423089492613284664, guid: 59e4c9e7f9c6b6947a866a095eb38581, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8423089492613284670, guid: 59e4c9e7f9c6b6947a866a095eb38581, type: 3}
       propertyPath: m_RootOrder
@@ -93907,6 +93913,10 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 15
       objectReference: {fileID: 0}
+    - target: {fileID: 5087005169443951040, guid: 4a8eedbb2896ea743aaeeee171dc7798, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5357530858695245537, guid: 4a8eedbb2896ea743aaeeee171dc7798, type: 3}
       propertyPath: m_RootOrder
       value: 7
@@ -93958,6 +93968,10 @@ PrefabInstance:
     - target: {fileID: 5357530858695245539, guid: 4a8eedbb2896ea743aaeeee171dc7798, type: 3}
       propertyPath: m_Layer
       value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 5357530858695245539, guid: 4a8eedbb2896ea743aaeeee171dc7798, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4a8eedbb2896ea743aaeeee171dc7798, type: 3}
