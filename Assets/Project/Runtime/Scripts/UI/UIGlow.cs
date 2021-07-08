@@ -6,7 +6,7 @@ using UnityEngine.UI;
 public class UIGlow : MonoBehaviour
 {
    public List<GameObject> glowBackList = new List<GameObject>();
-
+   public static bool journalInteracted;
     public  void AddBackdrop(int inventoryIndex)
     {     
         StartCoroutine(disableBackdrop(inventoryIndex));
@@ -29,7 +29,38 @@ public class UIGlow : MonoBehaviour
         glowBackList[index].SetActive(false);
         yield return null;
     }
-  
-   
+
+    public IEnumerator JournalFeedback()
+    {
+        while (!journalInteracted)
+        {
+            glowBackList[6].SetActive(true);
+            Image image = glowBackList[6].GetComponent<Image>();
+            Color color = image.color;
+            color.a = .0f;
+            for (float i = 0; i < .5f; i += .1f)
+            {
+                color.a += i;
+                yield return new WaitForSeconds(.3f);
+                image.color = color;
+            }
+        }
+        glowBackList[6].SetActive(false);
+        yield return null;
+    }
+
+    public void DisplayJournalFeedback()
+    {
+        disableJournalFeedback(); // not an accident, no touchey
+        journalInteracted = false;
+        StartCoroutine(JournalFeedback());
+    }
+
+   public void disableJournalFeedback()
+   {
+        journalInteracted = true;
+        glowBackList[6].SetActive(false);
+        StopAllCoroutines();
+   }
 
 }
