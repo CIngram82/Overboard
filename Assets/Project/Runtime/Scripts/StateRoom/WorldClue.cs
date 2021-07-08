@@ -29,7 +29,6 @@ namespace InventorySystem.Collectable
         void CheckCollection()
         {
             if (CollectibleClues.CollectedItems.Contains(uniqueID.ID))
-                //Destroy(gameObject);
                 gameObject.SetActive(false);
         }
 
@@ -37,12 +36,6 @@ namespace InventorySystem.Collectable
         {
             if (player.TryGetComponent(out Inventory inventory))
             {
-                //if (inventory.Items.Count >= inventory.Capacity)
-                //{
-                //    Debug.Log("Inventory is full.");
-                //    return;
-                //}
-
                 inventory.CollectedWorldItems.CollectedItems.Add(uniqueID.ID);
                 inventory.AddClue(Clue);
                 // Destroy(gameObject);

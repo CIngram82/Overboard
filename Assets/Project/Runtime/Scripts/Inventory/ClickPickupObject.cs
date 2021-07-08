@@ -57,6 +57,12 @@ public class ClickPickupObject : MonoBehaviour
             {
                 RaycastHit rayHit;
                 _ray = _rayCamera.ScreenPointToRay(Input.mousePosition);
+                if (Physics.Raycast(_ray, out rayHit, maxDistance, clueLayer))          //Looking for World Clues
+                {
+                    // WorldClue is on root parent containing gameObject of hit collider. 
+                    rayHit.transform.gameObject.GetComponentInParent<WorldClue>().PickUpClue(gameObject);
+                    uiGlow.DisplayJournalFeedback();
+                }
                 if (Physics.Raycast(_ray, out rayHit, maxDistance, itemLayer))          //Looking for World Items
                 {
                     // WorldItem is on root parent containing gameObject of hit collider. 
@@ -91,12 +97,7 @@ public class ClickPickupObject : MonoBehaviour
                         flashlight.SetActive(true);
                     }
                 }
-                if (Physics.Raycast(_ray, out rayHit, maxDistance, clueLayer))          //Looking for World Clues
-                {
-                    // WorldClue is on root parent containing gameObject of hit collider. 
-                    rayHit.transform.gameObject.GetComponentInParent<WorldClue>().PickUpClue(gameObject);
-                    uiGlow.DisplayJournalFeedback();
-                }
+
             }
         }
     }
