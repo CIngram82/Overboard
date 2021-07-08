@@ -9,6 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4877641013582977528}
+  - component: {fileID: 7545348005522109765}
   m_Layer: 0
   m_Name: rails
   m_TagString: Untagged
@@ -35,6 +36,19 @@ Transform:
   m_Father: {fileID: 6952338412154269441}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &7545348005522109765
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 73178769457798589}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.6629976, y: 1.8654522, z: 2.3249512}
+  m_Center: {x: -0.16850123, y: 0.7500364, z: -0.75354517}
 --- !u!1 &2939904146844020972
 GameObject:
   m_ObjectHideFlags: 0
@@ -401,7 +415,6 @@ GameObject:
   - component: {fileID: 8282666241857507180}
   - component: {fileID: 3081196536790519158}
   - component: {fileID: 2239442699229808612}
-  - component: {fileID: 8722957078675705739}
   m_Layer: 0
   m_Name: top_rail_bend5
   m_TagString: Untagged
@@ -472,16 +485,3 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!65 &8722957078675705739
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8724042161773887835}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 0.3626246, y: 1.493495, z: 1.9520669}
-  m_Center: {x: -0.08632362, y: 0.7472126, z: -0.8955486}
