@@ -23,7 +23,6 @@ public class InspectObject : MonoBehaviour
             Event e = Event.current;
             if (e.isKey && e.type == EventType.KeyDown)
             {
-                //Debug.Log("Detected key code: " + e.keyCode);
                 GetKey(e.keyCode);
             }
         }
