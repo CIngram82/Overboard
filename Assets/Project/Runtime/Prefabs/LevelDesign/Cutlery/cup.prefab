@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3980140526675204670}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: cup
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -42,6 +42,8 @@ GameObject:
   - component: {fileID: 1370756578976409510}
   - component: {fileID: 1898814455392951215}
   - component: {fileID: 4044563148738497542}
+  - component: {fileID: 6511893747218304318}
+  - component: {fileID: 2433872243507812752}
   m_Layer: 0
   m_Name: Cup
   m_TagString: Untagged
@@ -112,3 +114,34 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!114 &6511893747218304318
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8434045230030798210}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 514123c383e3f9c43b070231d42aa83b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  InspectCamera: {fileID: 0}
+  rotationSpeed: 1
+  zoomSpeed: 10
+  radius: 1
+  _parentTransform: {fileID: 0}
+  _isInspecting: 0
+--- !u!65 &2433872243507812752
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8434045230030798210}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.2439858, y: 0.19266784, z: 0.20545426}
+  m_Center: {x: 0.019266043, y: 0.09557831, z: 0}

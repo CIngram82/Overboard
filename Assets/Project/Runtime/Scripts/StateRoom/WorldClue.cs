@@ -57,23 +57,5 @@ namespace Inventory.Collectable
             uniqueID = new UID(name, transform.position.sqrMagnitude.ToString(), transform.GetSiblingIndex().ToString());
             CheckCollection();
         }
-        /*
-        [TextArea]
-        [SerializeField] string Message;
-        [SerializeField] TextMeshProUGUI clueText;
-        [SerializeField] GameObject paperPanel;
-
-
-        void OnMouseEnter()
-        {
-            clueText.text = Message;
-            paperPanel.SetActive(true);
-        }
-
-        void OnMouseExit()
-        {
-            paperPanel.SetActive(false);
-        }
-        */
     } 
 }

@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class PauseController : MonoBehaviour
 {
-    static bool isPaused = false;
+    static bool isPaused;
     public static bool IsPaused => isPaused;
 
     [SerializeField] GameObject _pausePanel;
@@ -17,13 +17,13 @@ public class PauseController : MonoBehaviour
     void Update()
     {
 #if UNITY_EDITOR
-        if (Input.GetKeyDown(KeyCode.Space))
+        if (Input.GetKeyDown(KeyCode.Space) && !FindObjectOfType<ClueInventoryUI>().isJournalOpen)
         {
             isPaused = !isPaused;
             On_Game_Paused(isPaused);
         }
 #else
-        if (Input.GetKeyDown(KeyCode.Escape))
+        if (Input.GetKeyDown(KeyCode.Escape) && !FindObjectOfType<ClueInventoryUI>().isJournalOpen)
         {
             isPaused = !isPaused;
             On_Game_Paused(isPaused);
@@ -32,6 +32,7 @@ public class PauseController : MonoBehaviour
     }
     void Start()
     {
+        isPaused = false;
         _pausePanel.SetActive(isPaused);
     }
 }

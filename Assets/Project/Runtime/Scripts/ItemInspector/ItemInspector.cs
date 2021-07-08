@@ -21,6 +21,7 @@ public class ItemInspector : MonoBehaviour
 
     public void SetItemPosition(bool isInspecting)
     {
+        _parentTransform = gameObject.transform.parent;
         forward = InspectCamera.transform.forward * 1.5f;
         objectPos = InspectCamera.transform.position + forward;
         _parentTransform.position = objectPos;
@@ -44,11 +45,11 @@ public class ItemInspector : MonoBehaviour
         Vector3 offset = zoom - objectCenter;
         _parentTransform.position = objectCenter + Vector3.ClampMagnitude(offset, radius);
     }
-    void OnMouseDown()
+    public void OnMouseDown()
     {
         position = Input.mousePosition;
     }
-    void OnMouseDrag()
+    public void OnMouseDrag()
     {
         var deltaPosition = Input.mousePosition - position;
 
@@ -65,13 +66,13 @@ public class ItemInspector : MonoBehaviour
     }
     void Start()
     {
+        _parentTransform = gameObject.transform.parent;
         objectCenter = _parentTransform.position;
     }
     void Awake()
     {
-        InspectCamera = InspectCamera ? InspectCamera : Camera.main;
-        _parentTransform = gameObject.transform.parent;
         _isInspecting = false;
+        InspectCamera = InspectCamera ? InspectCamera : Player.inspectCam;
     }
 }
 

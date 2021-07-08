@@ -3,7 +3,7 @@ using UnityEngine;
 [RequireComponent(typeof(Rigidbody))]
 public class PlayerMovement : MonoBehaviour
 {
-    public static bool canMove;
+    public static bool canMove = true;
 
     [SerializeField] float speedMax;
     [SerializeField] Animator camAnim;
@@ -21,7 +21,6 @@ public class PlayerMovement : MonoBehaviour
         rig = GetComponent<Rigidbody>();
         speedMax = 400;
         speed = speedMax;
-        canMove = true;
         startY = gameObject.transform.position.y;
     }
 

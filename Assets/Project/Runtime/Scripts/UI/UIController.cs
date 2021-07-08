@@ -10,7 +10,6 @@ namespace Controllers.UI
         protected virtual void Start()
         {
             AudioScript._instance.PlayBackgroundMusic();
-            Debug.Log("Start");
         }
         public static void OnLoadScene(int index)
         {
@@ -19,41 +18,42 @@ namespace Controllers.UI
             SceneManager.LoadScene(index);
             // AudioScript._instance.PlayClip(AudioScript._instance.menuButton);            
         }
+       public void OnStart(int index)
+       {
+            SaveDataManager.Instance.ResetSave();
+            OnLoadScene(index);
+       }
         public static void OnHelp()
         {
-            Debug.LogWarning("Scene_Help");
             AudioScript._instance.PlayClip(AudioScript._instance.menuButton);
             SceneManager.LoadScene("Scene_Help");
         }
         public static void OnCredits()
         {
-            Debug.LogWarning("Loading Scene_Credits");
             SceneManager.LoadScene("Scene_Credits");
         }
         public static void OnMenu()
         {
-            Debug.LogWarning("Loading Scene_MainMenu");
             // AudioScript._instance.PlayClip(AudioScript._instance.menuButton);
             SceneManager.LoadScene("Scene_MainMenu");
         }
         public static void OnReset()
         {
-            Debug.LogWarning("Reset");
             SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
         }
         public static void OnQuit()
         {
-            Debug.LogWarning("Quit");
             Application.Quit();
         }
-        public static void OnFullReset()
+        public void OnFullReset()
         {
             SaveDataManager.Instance.ResetSave();
             Debug.LogWarning($"Resetting save");
             OnReset();
         }
-        public static void OnSave()
+        public void OnSave()
         {
+            Debug.LogWarning($"{gameObject.name}: Saving");
             SaveDataManager.Instance.On_Save_Data();
         }
         public static void OnLoadSave(int save)

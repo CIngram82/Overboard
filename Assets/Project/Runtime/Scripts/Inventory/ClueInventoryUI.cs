@@ -13,10 +13,23 @@ public class ClueInventoryUI : MonoBehaviour
     [Header("Current Clue")]
     [SerializeField] TextMeshProUGUI _clueNameTMP;
     [SerializeField] TextMeshProUGUI _clueHintTMP;
+    UIGlow uiGlow;
+    public bool isJournalOpen = false;
 
-    bool isJournalOpen = false;
+    //Eric Code
+    [SerializeField] GameObject _journalBack;
+    bool isJournalActive = false;
 
     public List<ClueUI> UIClues { get => _uiClues; private set => _uiClues = value; }
+
+    //Eric Code
+    public void ActivateJournal()
+    {
+        isJournalActive = true;
+        _journalBack.SetActive(true);
+        OpenJournal(true);
+        isJournalOpen = true;
+    }
 
 
     void OpenJournal(bool isOpen)
@@ -86,14 +99,33 @@ public class ClueInventoryUI : MonoBehaviour
     void Update()
     {
         if (PauseController.IsPaused) return;
-        if (Input.GetKeyDown(KeyCode.J))
+        if (Input.GetKeyDown(KeyCode.J) && isJournalActive)
         {
+            uiGlow.disableJournalFeedback();
             isJournalOpen = !isJournalOpen;
             OpenJournal(isJournalOpen);
-        }        
+        }
+#if UNITY_EDITOR
+        if (isJournalOpen && Input.GetKeyDown(KeyCode.Space))
+        {
+            uiGlow.disableJournalFeedback();
+            isJournalOpen = !isJournalOpen;
+            OpenJournal(isJournalOpen);
+        }
+#else
+        if (isJournalOpen && Input.GetKeyDown(KeyCode.Escape))
+        {
+            uiGlow.disableJournalFeedback();
+            isJournalOpen = !isJournalOpen;
+            OpenJournal(isJournalOpen);
+        }
+#endif
+
     }
+
     void Start()
     {
         Inventory.Inventory.RemoveAllUIChildren(_uiCluesParent);
+        uiGlow = FindObjectOfType<UIGlow>();
     }
 }
