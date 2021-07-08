@@ -18,6 +18,11 @@ namespace Controllers.UI
             SceneManager.LoadScene(index);
             // AudioScript._instance.PlayClip(AudioScript._instance.menuButton);            
         }
+       public void OnStart(int index)
+       {
+            SaveDataManager.Instance.ResetSave();
+            OnLoadScene(index);
+       }
         public static void OnHelp()
         {
             AudioScript._instance.PlayClip(AudioScript._instance.menuButton);
