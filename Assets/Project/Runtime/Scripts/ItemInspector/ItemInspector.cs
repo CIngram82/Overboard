@@ -62,7 +62,7 @@ public class ItemInspector : MonoBehaviour
         //Eric Edits
         _ray = InspectCamera.ScreenPointToRay(Input.mousePosition);
         RaycastHit rayHit;
-        if (Physics.Raycast(_ray, out rayHit, 50.0f, keysLayer)) {
+        if (Physics.Raycast(_ray, out rayHit, 50.0f, keysLayer) && _isInspecting) {
 
             InspectForKey(rayHit.transform.gameObject);
 
