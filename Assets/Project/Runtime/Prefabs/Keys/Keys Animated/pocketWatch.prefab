@@ -1,5 +1,19 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!114 &1501068132
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 666489523018852162}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 44b57b826c2ac10419dce0452e0488be, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _itemName: SafeCollectable2
+  _database: {fileID: 11400000, guid: 1c3093bb43bbc1549ab9b7e4cba9d29d, type: 2}
 --- !u!65 &4414845427119136244
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -25,7 +39,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 44b57b826c2ac10419dce0452e0488be, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _itemName: SafeCollectable2
+  _itemName: KeyHolderPocketWatch
   _database: {fileID: 11400000, guid: 1c3093bb43bbc1549ab9b7e4cba9d29d, type: 2}
 --- !u!1 &4414845426511039976
 GameObject:
@@ -127,6 +141,11 @@ GameObject:
 --- !u!4 &1972682481452014588 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2748549020583161152, guid: d18f46acda046874d8c3872815154c62, type: 3}
+  m_PrefabInstance: {fileID: 4414845427192313532}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &666489523018852162 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3781746289897689598, guid: d18f46acda046874d8c3872815154c62, type: 3}
   m_PrefabInstance: {fileID: 4414845427192313532}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &1080383907849479284 stripped
