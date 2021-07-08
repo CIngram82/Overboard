@@ -14,7 +14,7 @@ namespace SaveSystem.Data
             GameData = new GameData();
             PlayerData = new PlayerData();
             InventoryData = new InventoryData();
-            TutorialData = new TutorialData();
+            TutorialData = new TutorialData(false);
         }
     }
 }
