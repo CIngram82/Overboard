@@ -52,7 +52,7 @@ public class DoorTrigger : MonoBehaviour
     void Update()
     {
 
-        if (Input.GetKeyUp(KeyCode.E) || Input.GetButtonDown("Fire1") && playerEntered)
+        if ((Input.GetKeyUp(KeyCode.E) || Input.GetButtonDown("Fire1")) && playerEntered)
         {
             bool isOpen = anim.GetBool(animBoolName);
             anim.enabled = true;
