@@ -6236,7 +6236,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3266283472838305300, guid: fe355303bb4cbe447b585721c6f15296, type: 3}
       propertyPath: _clueName
-      value: Locked Safe
+      value: Open the Safe
       objectReference: {fileID: 0}
     - target: {fileID: 3768218453289691618, guid: fe355303bb4cbe447b585721c6f15296, type: 3}
       propertyPath: m_Enabled
@@ -9987,7 +9987,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2639248574237062878, guid: 219b65f91a0747847986659a7ff38152, type: 3}
       propertyPath: _clueName
-      value: Pipes
+      value: Get the Pipes in Working Order
       objectReference: {fileID: 0}
     - target: {fileID: 4449331774777850152, guid: 219b65f91a0747847986659a7ff38152, type: 3}
       propertyPath: m_Enabled
@@ -12248,7 +12248,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4811148465858525974, guid: 8e2e2a8062bdf124daccdd6e668300a6, type: 3}
       propertyPath: _clueName
-      value: Dumbwaiter
+      value: Power the Dumbwaiter and Escape
       objectReference: {fileID: 0}
     - target: {fileID: 6619147130056439008, guid: 8e2e2a8062bdf124daccdd6e668300a6, type: 3}
       propertyPath: m_Enabled
@@ -26216,7 +26216,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7801431548105985534, guid: 2a9f4092603e09c47b891a55773ca228, type: 3}
       propertyPath: _clueName
-      value: Gears
+      value: Get the Gears Running and In the Right Order
       objectReference: {fileID: 0}
     - target: {fileID: 8456367691035623944, guid: 2a9f4092603e09c47b891a55773ca228, type: 3}
       propertyPath: m_Enabled
@@ -36927,6 +36927,10 @@ PrefabInstance:
       propertyPath: m_LocalPosition.x
       value: 1.022
       objectReference: {fileID: 0}
+    - target: {fileID: 6170859777483347958, guid: a97bdfcc3c7f3a6468c7934e075fceb5, type: 3}
+      propertyPath: m_Priority
+      value: -2
+      objectReference: {fileID: 0}
     - target: {fileID: 6170859777896141492, guid: a97bdfcc3c7f3a6468c7934e075fceb5, type: 3}
       propertyPath: m_RootOrder
       value: 2
@@ -36977,7 +36981,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6170859777896141493, guid: a97bdfcc3c7f3a6468c7934e075fceb5, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a97bdfcc3c7f3a6468c7934e075fceb5, type: 3}
@@ -41694,6 +41698,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: DoorClue
       objectReference: {fileID: 0}
+    - target: {fileID: 477480423936112965, guid: d36aa7b05f417f04eae4d67d4671dfc8, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2616939934981010457, guid: d36aa7b05f417f04eae4d67d4671dfc8, type: 3}
       propertyPath: m_Enabled
       value: 0
@@ -41724,7 +41732,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4417591660808338415, guid: d36aa7b05f417f04eae4d67d4671dfc8, type: 3}
       propertyPath: _clueName
-      value: Locked Door
+      value: Unlock the Boiler Room
       objectReference: {fileID: 0}
     - target: {fileID: 5832742336278473548, guid: d36aa7b05f417f04eae4d67d4671dfc8, type: 3}
       propertyPath: m_LocalPosition.x
@@ -44967,7 +44975,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7153433694501426029, guid: 0d87ff3cd25964b42a9be573361fbc82, type: 3}
       propertyPath: m_LocalRotation.x
-      value: -2.0511604e-15
+      value: 2.0511604e-15
       objectReference: {fileID: 0}
     - target: {fileID: 7153433694501426029, guid: 0d87ff3cd25964b42a9be573361fbc82, type: 3}
       propertyPath: m_LocalRotation.z
