@@ -81,6 +81,7 @@ public class ClickPickupObject : MonoBehaviour
                         print("Found Journal");
                         rayHit.transform.parent.gameObject.SetActive(false);
                         uiJournal.ActivateJournal();
+                        return;
                     }
                     else
                     if (rayHit.transform.gameObject.CompareTag("Flashlight"))
