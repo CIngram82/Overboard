@@ -9,14 +9,13 @@ public class IntroCameraCut : MonoBehaviour
    [SerializeField] CinemachineVirtualCamera introCamera;
     [SerializeField] GameObject camPointer;
   // [SerializeField] GameObject blur;
-   bool hasPlayed = false;
+   public static  bool hasPlayed = false;
 
     private void Awake()
     {
         
         if (!hasPlayed)
         {
-            //PlayRumble();
             PlayerMovement.canMove = false;
             camPointer.SetActive(false);
             playerCam.Priority = 2;
@@ -24,6 +23,7 @@ public class IntroCameraCut : MonoBehaviour
         }
         else
         {
+            PlayerMovement.canMove = true;
             playerCam.Priority = 3;
             introCamera.Priority = 2;
             gameObject.SetActive(false);
@@ -40,11 +40,6 @@ public class IntroCameraCut : MonoBehaviour
         PlayerMovement.canMove = true;
         gameObject.SetActive(false);
    }
-
-    //void PlayRumble()
-    //{
-    //    AudioScript._instance.PlaySoundEffect("Rumble");
-    //}
 
     void PlayCrash()
     {
