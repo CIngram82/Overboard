@@ -38,6 +38,7 @@ public class ClickPickupObject : MonoBehaviour
         if (debuggingOn) DrawRay();
 #endif
         if (Input.GetMouseButtonDown(0))
+        {
             if (InspectObject.IsInspecting)
             {
                 _ray = _rayCamera.ScreenPointToRay(Input.mousePosition);
@@ -98,6 +99,17 @@ public class ClickPickupObject : MonoBehaviour
                     uiGlow.DisplayJournalFeedback();
                 }
             }
+        }
+        if (!InspectObject.IsInspecting)
+        {
+            RaycastHit rayHit;
+            if (Physics.Raycast(_ray, out rayHit, maxDistance, clueLayer))
+            {
+                // WorldClue is on root parent containing gameObject of hit collider. 
+                rayHit.transform.gameObject.GetComponentInParent<WorldClue>().PickUpClue(gameObject);
+                uiGlow.DisplayJournalFeedback();
+            }
+        }
     }
 
     void Start()
