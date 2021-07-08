@@ -1,5 +1,5 @@
 using UnityEngine;
-using Inventory.Collectable;
+using InventorySystem.Collectable;
 
 public class InspectedPiece : MonoBehaviour
 {

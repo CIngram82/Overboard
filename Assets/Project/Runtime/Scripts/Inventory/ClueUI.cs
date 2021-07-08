@@ -2,7 +2,7 @@ using UnityEngine;
 using System;
 using UnityEngine.UI;
 using TMPro;
-using Inventory.Database;
+using InventorySystem.Database;
 
 public class ClueUI : MonoBehaviour
 {

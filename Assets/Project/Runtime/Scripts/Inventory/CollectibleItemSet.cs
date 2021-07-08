@@ -1,6 +1,6 @@
 using System.Collections.Generic;
 
-namespace Inventory.Collectable
+namespace InventorySystem.Collectable
 {
     [System.Serializable]
     public class CollectibleItemSet

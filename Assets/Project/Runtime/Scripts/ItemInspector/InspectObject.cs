@@ -5,7 +5,7 @@ public class InspectObject : MonoBehaviour
 {
     public static bool IsInspecting;
 
-    Inventory.Inventory inventory;
+    InventorySystem.Inventory inventory;
     ItemInspector inspector;
     GameObject inspectedObject;
 
@@ -13,7 +13,7 @@ public class InspectObject : MonoBehaviour
     void Start()
     {
         IsInspecting = false;
-        inventory = GetComponent<Inventory.Inventory>();
+        inventory = GetComponent<InventorySystem.Inventory>();
     }
     void OnGUI()
     {

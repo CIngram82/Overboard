@@ -2,10 +2,10 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 using SaveSystem.Data;
-using Inventory.Collectable;
-using Inventory.Database;
+using InventorySystem.Collectable;
+using InventorySystem.Database;
 
-namespace Inventory
+namespace InventorySystem
 {
     public class Inventory : MonoBehaviour
     {
@@ -16,7 +16,6 @@ namespace Inventory
         CollectibleItemSet _collectedWorldItems;
         List<Clue> _clues;
         CollectibleItemSet _collectedWorldClues;
-
 
         public ItemDatabase ItemDatabase => _itemDatabase;
         public int Capacity { get; } = 6;

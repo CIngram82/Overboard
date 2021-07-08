@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace Inventory.Database
+namespace InventorySystem.Database
 {
     [CreateAssetMenu(fileName = "ClueDatabase", menuName = "Create Database/Clue Database")]
     [System.Serializable]

@@ -1,8 +1,8 @@
 using System.Collections.Generic;
 using UnityEngine;
-using Inventory.Database;
+using InventorySystem.Database;
 
-namespace Inventory.UI
+namespace InventorySystem.UI
 {
     public class InventoryUI : MonoBehaviour
     {
