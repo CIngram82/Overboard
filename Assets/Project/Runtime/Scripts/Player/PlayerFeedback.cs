@@ -24,7 +24,7 @@ public class PlayerFeedback : MonoBehaviour
     private void OnMouseExit()
     {
         StopAllCoroutines();
-        playerFeedbackText.text = "";
+        playerFeedbackText.text = string.Empty;
     }
 
 
@@ -32,7 +32,7 @@ public class PlayerFeedback : MonoBehaviour
     {
         playerFeedbackText.text = promptMessage;
         yield return new WaitForSeconds(5);
-        playerFeedbackText.text = "";
+        playerFeedbackText.text = string.Empty;
     }
 
 }

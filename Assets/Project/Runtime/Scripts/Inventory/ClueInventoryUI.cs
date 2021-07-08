@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using UnityEngine;
-using Inventory.Database;
+using InventorySystem;
+using InventorySystem.Database;
 using TMPro;
 
 public class ClueInventoryUI : MonoBehaviour
@@ -13,24 +14,22 @@ public class ClueInventoryUI : MonoBehaviour
     [Header("Current Clue")]
     [SerializeField] TextMeshProUGUI _clueNameTMP;
     [SerializeField] TextMeshProUGUI _clueHintTMP;
-    UIGlow uiGlow;
-    public bool isJournalOpen = false;
-
-    //Eric Code
     [SerializeField] GameObject _journalBack;
+    
+    UIGlow uiGlow;
     bool isJournalActive = false;
-
+    
+    public bool isJournalOpen = false;
     public List<ClueUI> UIClues { get => _uiClues; private set => _uiClues = value; }
 
-    //Eric Code
+
     public void ActivateJournal()
     {
         isJournalActive = true;
-        _journalBack.SetActive(true);
-        OpenJournal(true);
+        _journalBack.SetActive(isJournalActive);
         isJournalOpen = true;
+        OpenJournal(isJournalOpen);
     }
-
 
     void OpenJournal(bool isOpen)
     {
@@ -75,7 +74,6 @@ public class ClueInventoryUI : MonoBehaviour
 
     void SubToEvents(bool subscribe)
     {
-
         EventsManager.InventoryClueAdded -= On_Add_Clue;
         EventsManager.InventoryClueRemoved -= On_Remove_Clue;
         EventsManager.JournalOpened -= On_Open_Journal;
@@ -101,14 +99,14 @@ public class ClueInventoryUI : MonoBehaviour
         if (PauseController.IsPaused) return;
         if (Input.GetKeyDown(KeyCode.J) && isJournalActive)
         {
-            uiGlow.disableJournalFeedback();
+            uiGlow.DisableJournalFeedback();
             isJournalOpen = !isJournalOpen;
             OpenJournal(isJournalOpen);
         }
 #if UNITY_EDITOR
         if (isJournalOpen && Input.GetKeyDown(KeyCode.Space))
         {
-            uiGlow.disableJournalFeedback();
+            uiGlow.DisableJournalFeedback();
             isJournalOpen = !isJournalOpen;
             OpenJournal(isJournalOpen);
         }
@@ -120,12 +118,11 @@ public class ClueInventoryUI : MonoBehaviour
             OpenJournal(isJournalOpen);
         }
 #endif
-
     }
-
     void Start()
     {
-        Inventory.Inventory.RemoveAllUIChildren(_uiCluesParent);
-        uiGlow = FindObjectOfType<UIGlow>();
+        Inventory.RemoveAllUIChildren(_uiCluesParent);
+        _uiClues.Clear();
+        uiGlow = UIGlow.Instance;
     }
 }
