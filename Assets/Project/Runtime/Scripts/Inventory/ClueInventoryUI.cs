@@ -13,7 +13,7 @@ public class ClueInventoryUI : MonoBehaviour
     [Header("Current Clue")]
     [SerializeField] TextMeshProUGUI _clueNameTMP;
     [SerializeField] TextMeshProUGUI _clueHintTMP;
-
+    UIGlow uiGlow;
     bool isJournalOpen = false;
 
     //Eric Code
@@ -101,6 +101,8 @@ public class ClueInventoryUI : MonoBehaviour
         if (PauseController.IsPaused) return;
         if (Input.GetKeyDown(KeyCode.J) && isJournalActive)
         {
+            uiGlow.disableJournalFeedback();
+            Debug.Log("Deactivating journal");
             isJournalOpen = !isJournalOpen;
             OpenJournal(isJournalOpen);
         }        
@@ -108,5 +110,6 @@ public class ClueInventoryUI : MonoBehaviour
     void Start()
     {
         Inventory.Inventory.RemoveAllUIChildren(_uiCluesParent);
+        uiGlow = FindObjectOfType<UIGlow>();
     }
 }
