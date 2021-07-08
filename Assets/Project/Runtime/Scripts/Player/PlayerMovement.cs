@@ -68,7 +68,7 @@ public class PlayerMovement : MonoBehaviour
 
     void CollisionErrorCheck()
     {
-        if (gameObject.transform.position.y > startY + .2f || gameObject.transform.position.y < startY - .4f)
+        if (gameObject.transform.position.y > startY + .2f || gameObject.transform.position.y < startY - .2f)
         {
             Debug.Log("Player Y Position Error. Reseting Y Position");
             gameObject.transform.position = new Vector3(gameObject.transform.position.x, startY, gameObject.transform.position.z);
