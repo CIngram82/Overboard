@@ -16,7 +16,7 @@ namespace Controllers.UI
             AudioScript._instance.StopAudio();
             AudioScript._instance.PlayClip(AudioScript._instance.menuButton);
             SceneManager.LoadScene(index);
-            // AudioScript._instance.PlayClip(AudioScript._instance.menuButton);            
+                       
         }
        public void OnStart(int index)
        {
