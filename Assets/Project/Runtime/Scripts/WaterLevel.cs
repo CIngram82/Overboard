@@ -37,7 +37,7 @@ public class WaterLevel : MonoBehaviour
     public void TriggerWaterRise()
     {
         isRising = true;
-        targetY += 1;
+        targetY += 0.66f;
         t = 0;
     }
     public void SetWaterLevel(float level)
