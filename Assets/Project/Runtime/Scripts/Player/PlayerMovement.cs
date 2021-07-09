@@ -46,6 +46,14 @@ public class PlayerMovement : MonoBehaviour
         {
             camAnim.SetBool("isWalking", moveHorizontal != 0 || moveVertical != 0);
         }
+        if(FootstepsSound.isInWater)
+        {
+            speedMax = 250;
+        }
+        else
+        {
+            speedMax = 300;
+        }
         if (PauseController.IsPaused)
         {
             camAnim.SetBool("isWalking", false);
@@ -53,21 +61,21 @@ public class PlayerMovement : MonoBehaviour
 
     }
 
-    private void OnTriggerEnter(Collider other)
-    {
-        if (other.CompareTag("Water"))
-        {
-            speedMax = 200;
-        }
-    }
+    //private void OnTriggerEnter(Collider other)
+    //{
+    //    if (other.CompareTag("Water"))
+    //    {
+    //        speedMax = 200;
+    //    }
+    //}
 
-    private void OnTriggerExit(Collider other)
-    {
-        if (other.CompareTag("Water"))
-        {
-            speedMax = 300;
-        }
-    }
+    //private void OnTriggerExit(Collider other)
+    //{
+    //    if (other.CompareTag("Water"))
+    //    {
+    //        speedMax = 300;
+    //    }
+    //}
 
     void CollisionErrorCheck()
     {
