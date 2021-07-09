@@ -52,6 +52,7 @@ namespace InventorySystem.Collectable
         }
         private void OnTriggerEnter(Collider other)
         {
+            Debug.Log($"trigger: {other.name}");
             if (other.CompareTag("Player"))
             {
                 PickUpClue(other.gameObject);
