@@ -7,7 +7,7 @@ public class tentacleAnimRandomizer : StateMachineBehaviour
     //OnStateEnter is called when a transition starts and the state machine starts to evaluate this state
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-        animator.SetInteger("AnimToPlay", Random.Range(1, 6));
+        animator.SetInteger("AnimToPlay", Random.Range(0, 3));
         animator.SetFloat("AnimWait", Random.Range(0.2f, 1));
     }
 
