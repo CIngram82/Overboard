@@ -7070,6 +7070,102 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 98627962}
   m_Mesh: {fileID: -1399520947138248815, guid: 3a6d3d3374231b04f8bcf2386786ae09, type: 3}
+<<<<<<< Updated upstream
+=======
+--- !u!1 &100043034
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 100043035}
+  - component: {fileID: 100043036}
+  m_Layer: 0
+  m_Name: Spot Light
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!4 &100043035
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 100043034}
+  m_LocalRotation: {x: 0.11639167, y: -0.6974619, z: 0.6974619, w: 0.11639167}
+  m_LocalPosition: {x: 9.626, y: 3.169, z: -4.074}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1530981142}
+  m_RootOrder: 13
+  m_LocalEulerAnglesHint: {x: 90, y: 0, z: 161.052}
+--- !u!108 &100043036
+Light:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 100043034}
+  m_Enabled: 1
+  serializedVersion: 10
+  m_Type: 0
+  m_Shape: 0
+  m_Color: {r: 1, g: 0.95686275, b: 0.8392157, a: 1}
+  m_Intensity: 0.1
+  m_Range: 1.4
+  m_SpotAngle: 101.33476
+  m_InnerSpotAngle: 37.68421
+  m_CookieSize: 10
+  m_Shadows:
+    m_Type: 2
+    m_Resolution: -1
+    m_CustomResolution: -1
+    m_Strength: 1
+    m_Bias: 0.02
+    m_NormalBias: 0.1
+    m_NearPlane: 0.1
+    m_CullingMatrixOverride:
+      e00: 1
+      e01: 0
+      e02: 0
+      e03: 0
+      e10: 0
+      e11: 1
+      e12: 0
+      e13: 0
+      e20: 0
+      e21: 0
+      e22: 1
+      e23: 0
+      e30: 0
+      e31: 0
+      e32: 0
+      e33: 1
+    m_UseCullingMatrixOverride: 0
+  m_Cookie: {fileID: 0}
+  m_DrawHalo: 0
+  m_Flare: {fileID: 0}
+  m_RenderMode: 0
+  m_CullingMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_RenderingLayerMask: 1
+  m_Lightmapping: 4
+  m_LightShadowCasterMode: 0
+  m_AreaSize: {x: 1, y: 1}
+  m_BounceIntensity: 1
+  m_ColorTemperature: 6570
+  m_UseColorTemperature: 0
+  m_BoundingSphereOverride: {x: 0, y: 0, z: 0, w: 0}
+  m_UseBoundingSphereOverride: 0
+  m_UseViewFrustumForShadowCasterCull: 1
+  m_ShadowRadius: 0
+  m_ShadowAngle: 0
+>>>>>>> Stashed changes
 --- !u!1 &106842434
 GameObject:
   m_ObjectHideFlags: 0
@@ -22013,6 +22109,7 @@ Transform:
   - {fileID: 481490704}
   - {fileID: 320513517}
   - {fileID: 2066571597}
+  - {fileID: 8879950404549536812}
   m_Father: {fileID: 1921381454}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -95331,7 +95428,7 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 3.9485245, y: 3.4110537, z: 1}
+  m_Size: {x: 5.12, y: 3.5, z: 6.52}
   m_Center: {x: -0.1313057, y: -0.22227687, z: 0}
 --- !u!1 &1973800498
 GameObject:
@@ -97746,6 +97843,10 @@ PrefabInstance:
     - target: {fileID: 8423089492613284664, guid: 59e4c9e7f9c6b6947a866a095eb38581, type: 3}
       propertyPath: m_Name
       value: JournalClue
+      objectReference: {fileID: 0}
+    - target: {fileID: 8423089492613284664, guid: 59e4c9e7f9c6b6947a866a095eb38581, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8423089492613284670, guid: 59e4c9e7f9c6b6947a866a095eb38581, type: 3}
       propertyPath: m_RootOrder
@@ -104594,6 +104695,19 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
   m_IsActive: 1
+--- !u!65 &1143695073449056097
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8879950404549536810}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 2, y: 2, z: 2}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &1401729523640004652
 GameObject:
   m_ObjectHideFlags: 0
@@ -105919,6 +106033,7 @@ Transform:
   m_Father: {fileID: 1633161369256763653}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+<<<<<<< Updated upstream
 --- !u!1001 &8199451949755224209
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -105988,6 +106103,55 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2f5e0eb30c6358044916732cb547b838, type: 3}
+=======
+--- !u!1 &8879950404549536810
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8879950404549536812}
+  - component: {fileID: 1143695073449056097}
+  - component: {fileID: 8879950404549536811}
+  m_Layer: 10
+  m_Name: Starting Clues
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &8879950404549536811
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8879950404549536810}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 57058d8e9ad34d1449e7e7e3608026cb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _database: {fileID: 11400000, guid: a5fd4d54de94a1c4e8e4702f12a2cf01, type: 2}
+  clueNames:
+  - 'Heading home '
+--- !u!4 &8879950404549536812
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8879950404549536810}
+  m_LocalRotation: {x: -0, y: 0.98480785, z: -0, w: -0.17364813}
+  m_LocalPosition: {x: -6.582, y: 2.2334824, z: 22.429}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 532706560}
+  m_RootOrder: 6
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+>>>>>>> Stashed changes
 --- !u!1001 &9080024916796622752
 PrefabInstance:
   m_ObjectHideFlags: 0
