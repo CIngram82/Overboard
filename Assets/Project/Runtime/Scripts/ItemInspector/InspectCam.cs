@@ -16,9 +16,12 @@ public class InspectCam : MonoBehaviour
     ItemInspector currentInspector;
     WaitForSeconds waitForSeconds = new WaitForSeconds(3.0f);
     Inventory _inventory;
+    bool isAnimating = false;
+
 
     public IEnumerator WaitAndPickUp(GameObject objToPickup)     //Allows FindKeyAnimation to play
     {
+        isAnimating = true;
         Debug.Log($"{objToPickup.name}: Wait");
         yield return waitForSeconds;
         Debug.Log($"{objToPickup.name}: Pickup");
@@ -26,6 +29,7 @@ public class InspectCam : MonoBehaviour
         objToPickup.GetComponent<WorldItem>().PickUpItem(_inventory.gameObject);
         UIGlow.Instance.AddBackdrop(_inventory.Items.Count - 2);
         AudioScript._instance.PlaySoundEffect("Grab");
+        isAnimating = false;
         // Gets item from root parent
         _inventory.RemoveItem(objToPickup.transform.root.GetComponent<WorldItem>().Item);
     }
@@ -51,7 +55,7 @@ public class InspectCam : MonoBehaviour
             if (!currentInspector) return;
             if (Input.GetMouseButtonDown(0))
                 currentInspector.OnMouseDown();
-            if (Input.GetMouseButtonUp(0) &&
+            if (Input.GetMouseButtonUp(0) && !isAnimating &&
                 Physics.Raycast(_ray, out rayHit, maxDistance, objectLayer))
             {
                 if (triggerLayer == (triggerLayer | (1 << rayHit.transform.gameObject.layer)))
