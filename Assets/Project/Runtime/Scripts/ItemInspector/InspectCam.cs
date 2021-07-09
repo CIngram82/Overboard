@@ -49,23 +49,21 @@ public class InspectCam : MonoBehaviour
             }
             if (!currentInspector) return;
             if (Input.GetMouseButtonDown(0))
-            {
                 currentInspector.OnMouseDown();
-                //return;
-                if (Physics.Raycast(_ray, out rayHit, maxDistance, objectLayer))
+            if (Input.GetMouseButtonUp(0) &&
+                Physics.Raycast(_ray, out rayHit, maxDistance, objectLayer))
+            {
+                if (triggerLayer == (triggerLayer | (1 << rayHit.transform.gameObject.layer)))
                 {
-                    if (triggerLayer == (triggerLayer | (1 << rayHit.transform.gameObject.layer)))
-                    {
-                        rayHit.transform.gameObject.GetComponent<AnimationTrigger>().Play();
-                        Debug.Log($"{rayHit.transform.gameObject}: Animation Trigger");
-                    }
-                    else
-                    if (keyLayer == (keyLayer | (1 << rayHit.transform.gameObject.layer)))
-                    {
-                        rayHit.transform.gameObject.GetComponent<AnimationTrigger>().PlayKey();
-                        Debug.Log($"{rayHit.transform.gameObject}: Animation Trigger");
-                        StartCoroutine(WaitAndPickUp(rayHit.transform.gameObject));
-                    }
+                    rayHit.transform.gameObject.GetComponent<AnimationTrigger>().Play();
+                    Debug.Log($"{rayHit.transform.gameObject}: Animation Trigger");
+                }
+                else
+                if (keyLayer == (keyLayer | (1 << rayHit.transform.gameObject.layer)))
+                {
+                    rayHit.transform.gameObject.GetComponent<AnimationTrigger>().PlayKey();
+                    Debug.Log($"{rayHit.transform.gameObject}: Animation Trigger");
+                    StartCoroutine(WaitAndPickUp(rayHit.transform.gameObject));
                 }
             }
             if (Input.GetMouseButton(0))

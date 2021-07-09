@@ -1,4 +1,3 @@
-using System;
 using UnityEngine;
 
 public class InspectObject : MonoBehaviour
@@ -13,7 +12,7 @@ public class InspectObject : MonoBehaviour
     void Start()
     {
         IsInspecting = false;
-        inventory = GetComponent<InventorySystem.Inventory>();
+        inventory = Player.inventory;
     }
     void OnGUI()
     {
