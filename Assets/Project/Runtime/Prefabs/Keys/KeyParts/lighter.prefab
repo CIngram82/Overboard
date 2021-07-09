@@ -9,10 +9,10 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7110598179591466761}
-  - component: {fileID: 4090504631277389477}
   - component: {fileID: 3046667649522319777}
+  - component: {fileID: 4090504631277389477}
   - component: {fileID: 3046667649522319776}
-  m_Layer: 11
+  m_Layer: 0
   m_Name: lighter
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -44,6 +44,19 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &3046667649522319777
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1057715905524160716}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.08632153, y: 0.11881697, z: 0.045838915}
+  m_Center: {x: -0.024303393, y: 0.0052595385, z: -0.00050222874}
 --- !u!95 &4090504631277389477
 Animator:
   serializedVersion: 3
@@ -63,19 +76,6 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
---- !u!65 &3046667649522319777
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1057715905524160716}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 0.08632153, y: 0.11881697, z: 0.045838915}
-  m_Center: {x: -0.024303393, y: 0.0052595385, z: -0.00050222874}
 --- !u!114 &3046667649522319776
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -95,9 +95,6 @@ MonoBehaviour:
   _radius: 1
   _parentTransform: {fileID: 0}
   _isInspecting: 0
-  keysLayer:
-    serializedVersion: 2
-    m_Bits: 4096
 --- !u!1 &1456053302110150596
 GameObject:
   m_ObjectHideFlags: 0

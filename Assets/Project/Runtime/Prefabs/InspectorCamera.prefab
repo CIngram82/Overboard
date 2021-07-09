@@ -68,7 +68,7 @@ Camera:
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
-    m_Bits: 6656
+    m_Bits: 14848
   m_RenderingPath: -1
   m_TargetTexture: {fileID: 0}
   m_TargetDisplay: 0
@@ -124,6 +124,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c923ea918c69ce04084e423270f37945, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  itemLayer:
+    serializedVersion: 2
+    m_Bits: 512
+  objectLayer:
+    serializedVersion: 2
+    m_Bits: 14336
+  keyLayer:
+    serializedVersion: 2
+    m_Bits: 4096
+  triggerLayer:
+    serializedVersion: 2
+    m_Bits: 8192
   maxDistance: 50
 --- !u!1 &4175705317277450138
 GameObject:
@@ -168,8 +180,8 @@ Light:
   m_Type: 2
   m_Shape: 0
   m_Color: {r: 1, g: 0.95686275, b: 0.8392157, a: 1}
-  m_Intensity: 50
-  m_Range: 5
+  m_Intensity: 1
+  m_Range: 2
   m_SpotAngle: 30
   m_InnerSpotAngle: 21.80208
   m_CookieSize: 10
@@ -261,8 +273,8 @@ Light:
   m_Type: 2
   m_Shape: 0
   m_Color: {r: 1, g: 0.95686275, b: 0.8392157, a: 1}
-  m_Intensity: 50
-  m_Range: 5
+  m_Intensity: 1
+  m_Range: 2
   m_SpotAngle: 30
   m_InnerSpotAngle: 21.80208
   m_CookieSize: 10
@@ -447,8 +459,8 @@ Light:
   m_Type: 2
   m_Shape: 0
   m_Color: {r: 1, g: 0.95686275, b: 0.8392157, a: 1}
-  m_Intensity: 100
-  m_Range: 5
+  m_Intensity: 1
+  m_Range: 2
   m_SpotAngle: 30
   m_InnerSpotAngle: 21.80208
   m_CookieSize: 10

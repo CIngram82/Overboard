@@ -92,7 +92,8 @@ GameObject:
   - component: {fileID: 2064192859688179288}
   - component: {fileID: 102867050}
   - component: {fileID: 1700089028864506781}
-  m_Layer: 11
+  - component: {fileID: 1602968047926308417}
+  m_Layer: 0
   m_Name: fountain_pen
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -129,8 +130,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.02, y: 0.3, z: 0.03}
-  m_Center: {x: 0, y: -0.03, z: -0.005}
+  m_Size: {x: 0.06, y: 0.3, z: 0.06}
+  m_Center: {x: 0, y: -0.03, z: 0}
 --- !u!95 &1700089028864506781
 Animator:
   serializedVersion: 3
@@ -150,6 +151,25 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &1602968047926308417
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1496082547147961214}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 514123c383e3f9c43b070231d42aa83b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _inspectCamera: {fileID: 0}
+  _rotationSpeed: 1
+  _zoomSpeed: 10
+  _distanceFromCamera: 1.5
+  _radius: 1
+  _parentTransform: {fileID: 0}
+  _isInspecting: 0
 --- !u!1 &5013687665841480499
 GameObject:
   m_ObjectHideFlags: 0
@@ -364,9 +384,6 @@ MonoBehaviour:
   _radius: 1
   _parentTransform: {fileID: 0}
   _isInspecting: 0
-  keysLayer:
-    serializedVersion: 2
-    m_Bits: 0
 --- !u!65 &7647616654915760059
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -393,6 +410,7 @@ GameObject:
   - component: {fileID: 5266412797517278039}
   - component: {fileID: 3931728338462390807}
   - component: {fileID: 3468797971498394351}
+  - component: {fileID: 5741196364225899316}
   m_Layer: 12
   m_Name: clip
   m_TagString: Untagged
@@ -492,6 +510,19 @@ MonoBehaviour:
   animBoolName: 
   anim: {fileID: 1700089028864506781}
   isTrigger: 0
+--- !u!65 &5741196364225899316
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9117228406344474094}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.02, y: 0.1, z: 0.02}
+  m_Center: {x: -0.0000000012383912, y: -0.031394724, z: 0.002084382}
 --- !u!1001 &516537167186852962
 PrefabInstance:
   m_ObjectHideFlags: 0
