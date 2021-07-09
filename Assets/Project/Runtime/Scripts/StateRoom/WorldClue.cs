@@ -50,5 +50,14 @@ namespace InventorySystem.Collectable
             uniqueID = new UID(name, transform.position.sqrMagnitude.ToString(), transform.GetSiblingIndex().ToString());
             CheckCollection();
         }
-    } 
+        private void OnTriggerEnter(Collider other)
+        {
+            if (other.CompareTag("Player"))
+            {
+                PickUpClue(other.gameObject);
+            }
+        }
+    }
+
+
 }

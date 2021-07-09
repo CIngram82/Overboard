@@ -46,15 +46,15 @@ public class ClickPickupObject : MonoBehaviour
         {
             RaycastHit rayHit;
             _ray = _rayCamera.ScreenPointToRay(Input.mousePosition);
+            if (Physics.Raycast(_ray, out rayHit, maxDistance, clueLayer))
+            {
+                // WorldClue is on root parent containing gameObject of hit collider. 
+                rayHit.transform.gameObject.GetComponentInParent<WorldClue>().PickUpClue(gameObject);
+                uiGlow.DisplayJournalFeedback();
+            }
             if (Physics.Raycast(_ray, out rayHit, maxDistance, layerMask))
             {
                 int hitLayer = rayHit.transform.gameObject.layer;
-                if (clueLayer == (clueLayer | (1 << hitLayer)))
-                {
-                    // WorldClue is on root parent containing gameObject of hit collider. 
-                    rayHit.transform.gameObject.GetComponentInParent<WorldClue>().PickUpClue(gameObject);
-                    uiGlow.DisplayJournalFeedback();
-                }
                 if (itemLayer == (itemLayer | (1 << hitLayer)))        //Looking for World Items
                 {
                     // WorldItem is on root parent containing gameObject of hit collider. 
@@ -80,7 +80,6 @@ public class ClickPickupObject : MonoBehaviour
                         print("Found Journal");
                         rayHit.transform.parent.gameObject.SetActive(false);
                         uiJournal.ActivateJournal();
-                        return;
                     }
                     else
                     if (rayHit.transform.gameObject.CompareTag("Flashlight"))
