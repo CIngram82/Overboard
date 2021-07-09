@@ -24,6 +24,7 @@ public class InspectCam : MonoBehaviour
         Debug.Log($"{objToPickup.name}: Pickup");
 
         objToPickup.GetComponent<WorldItem>().PickUpItem(_inventory.gameObject);
+        UIGlow.Instance.AddBackdrop(_inventory.Items.Count - 2);
         AudioScript._instance.PlaySoundEffect("Grab");
         // Gets item from root parent
         _inventory.RemoveItem(objToPickup.transform.root.GetComponent<WorldItem>().Item);

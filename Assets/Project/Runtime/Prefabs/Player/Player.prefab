@@ -232,6 +232,9 @@ MonoBehaviour:
   waterLayer:
     serializedVersion: 2
     m_Bits: 16
+  materialsLayer:
+    serializedVersion: 2
+    m_Bits: 0
 --- !u!1 &4448749213885339780
 GameObject:
   m_ObjectHideFlags: 0
@@ -378,24 +381,24 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f63cf5612ca78a34788de29603444802, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  keyLayer:
-    serializedVersion: 2
-    m_Bits: 4096
-  objectLayer:
-    serializedVersion: 2
-    m_Bits: 2048
-  itemLayer:
-    serializedVersion: 2
-    m_Bits: 512
   clueLayer:
     serializedVersion: 2
     m_Bits: 1024
+  itemLayer:
+    serializedVersion: 2
+    m_Bits: 512
+  inspectableLayer:
+    serializedVersion: 2
+    m_Bits: 2048
+  keyLayer:
+    serializedVersion: 2
+    m_Bits: 4096
   triggerLayer:
     serializedVersion: 2
     m_Bits: 8192
   startLayer:
     serializedVersion: 2
-    m_Bits: 32768
+    m_Bits: 16384
   maxDistance: 10
   debuggingOn: 1
   rayColor: {r: 0, g: 1, b: 0, a: 1}

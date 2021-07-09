@@ -304,7 +304,7 @@ GameObject:
   - component: {fileID: 2155616923706735087}
   - component: {fileID: 5909738770081130177}
   m_Layer: 11
-  m_Name: b_hinge
+  m_Name: front_hinge
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -385,7 +385,7 @@ GameObject:
   - component: {fileID: 2795761975325342241}
   - component: {fileID: 6474252320758459708}
   m_Layer: 11
-  m_Name: f_hinge
+  m_Name: back_hinge
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -710,7 +710,7 @@ GameObject:
   - component: {fileID: 2587924617356973743}
   - component: {fileID: 1694980125171202613}
   - component: {fileID: 2240914100875744422}
-  m_Layer: 11
+  m_Layer: 0
   m_Name: PocketWatch
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -754,8 +754,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.27, y: 0.38, z: 0.12}
-  m_Center: {x: 0, y: 0.06, z: 0}
+  m_Size: {x: 0.3, y: 0.3, z: 0.25}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!95 &1694980125171202613
 Animator:
   serializedVersion: 3
@@ -973,7 +973,7 @@ BoxCollider:
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 0.02, y: 0.032, z: 0.01}
-  m_Center: {x: -0.009, y: -0.014999999, z: 0.002}
+  m_Center: {x: 0, y: 0, z: 0.004}
 --- !u!114 &6205223686929349273
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1000,7 +1000,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a164c08a069d34c48927a9ff8b749b0c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  animBoolName: keyFound
+  animBoolName: 
   anim: {fileID: 1694980125171202613}
   isTrigger: 0
 --- !u!1 &3326005868590041520
@@ -1056,7 +1056,7 @@ GameObject:
   - component: {fileID: 8676769842281879292}
   - component: {fileID: 4952904203213076796}
   m_Layer: 13
-  m_Name: f_face
+  m_Name: back_face
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1750,7 +1750,7 @@ GameObject:
   - component: {fileID: 2462289691930788852}
   - component: {fileID: 882358869549464633}
   m_Layer: 13
-  m_Name: b_face
+  m_Name: front_face
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

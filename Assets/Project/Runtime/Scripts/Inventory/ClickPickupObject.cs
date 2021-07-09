@@ -6,10 +6,11 @@ using InventorySystem.Collectable;
 public class ClickPickupObject : MonoBehaviour
 {
     [Header("RayCasting")]
-    [SerializeField] LayerMask keyLayer;
-    [SerializeField] LayerMask objectLayer;
-    [SerializeField] LayerMask itemLayer;
+    [SerializeField] LayerMask layerMask;
     [SerializeField] LayerMask clueLayer;
+    [SerializeField] LayerMask itemLayer;
+    [SerializeField] LayerMask inspectableLayer;
+    [SerializeField] LayerMask keyLayer;
     [SerializeField] LayerMask triggerLayer;
     [SerializeField] LayerMask startLayer;
     [SerializeField] float maxDistance = 50.0f;
@@ -40,19 +41,21 @@ public class ClickPickupObject : MonoBehaviour
 #if UNITY_EDITOR
         if (debuggingOn) DrawRay();
 #endif
-        if (Input.GetMouseButtonDown(0))
+        if (!InspectObject.IsInspecting &&
+            Input.GetMouseButtonDown(0))
         {
-            if (!InspectObject.IsInspecting)
+            RaycastHit rayHit;
+            _ray = _rayCamera.ScreenPointToRay(Input.mousePosition);
+            if (Physics.Raycast(_ray, out rayHit, maxDistance, layerMask))
             {
-                RaycastHit rayHit;
-                _ray = _rayCamera.ScreenPointToRay(Input.mousePosition);
-                if (Physics.Raycast(_ray, out rayHit, maxDistance, clueLayer))          //Looking for World Clues
+                int hitLayer = rayHit.transform.gameObject.layer;
+                if (clueLayer == (clueLayer | (1 << hitLayer)))
                 {
                     // WorldClue is on root parent containing gameObject of hit collider. 
                     rayHit.transform.gameObject.GetComponentInParent<WorldClue>().PickUpClue(gameObject);
                     uiGlow.DisplayJournalFeedback();
                 }
-                if (Physics.Raycast(_ray, out rayHit, maxDistance, itemLayer))          //Looking for World Items
+                if (itemLayer == (itemLayer | (1 << hitLayer)))        //Looking for World Items
                 {
                     // WorldItem is on root parent containing gameObject of hit collider. 
                     _inspect.Inspect(rayHit.transform.gameObject);
@@ -63,13 +66,13 @@ public class ClickPickupObject : MonoBehaviour
                     AudioScript._instance.PlaySoundEffect("Grab");
                 }
                 else
-                if (Physics.Raycast(_ray, out rayHit, maxDistance, objectLayer))        //Looking for inspectable items
+                if (inspectableLayer == (inspectableLayer | (1 << hitLayer)))    //Looking for inspectable items
                 {
                     _inspect.Inspect(rayHit.transform.parent.gameObject);
                     AudioScript._instance.PlaySoundEffect("Grab");
                 }
                 else
-                if (Physics.Raycast(_ray, out rayHit, maxDistance, startLayer))        //Looking for inspectable start items
+                if (startLayer == (startLayer | (1 << hitLayer)))        //Looking for inspectable start items
                 {
                     //Eric Code
                     if (rayHit.transform.gameObject.CompareTag("Journal"))
