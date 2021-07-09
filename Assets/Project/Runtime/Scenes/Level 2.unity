@@ -13270,6 +13270,7 @@ GameObject:
   - component: {fileID: 859071833}
   - component: {fileID: 859071832}
   - component: {fileID: 859071831}
+  - component: {fileID: 859071834}
   m_Layer: 0
   m_Name: EndCutcheneCamera
   m_TagString: Untagged
@@ -13293,7 +13294,7 @@ MonoBehaviour:
   - m_Script
   m_LockStageInInspector: 
   m_StreamingVersion: 20170927
-  m_Priority: -2
+  m_Priority: 5
   m_StandbyUpdate: 2
   m_LookAt: {fileID: 0}
   m_Follow: {fileID: 0}
@@ -13421,6 +13422,18 @@ Camera:
   m_OcclusionCulling: 1
   m_StereoConvergence: 10
   m_StereoSeparation: 0.022
+--- !u!114 &859071834
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 859071828}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e13768bb43fdba948b051350ee937617, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &870084172
 GameObject:
   m_ObjectHideFlags: 0
@@ -28735,9 +28748,17 @@ PrefabInstance:
       propertyPath: m_IsTrigger
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6290321084410037996, guid: 60fd4002636c38e44a2ed3fa46590125, type: 3}
+      propertyPath: _camPointer
+      value: 
+      objectReference: {fileID: 1658130113}
     - target: {fileID: 6945114581213670477, guid: 60fd4002636c38e44a2ed3fa46590125, type: 3}
       propertyPath: m_StaticEditorFlags
       value: 4294967295
+      objectReference: {fileID: 0}
+    - target: {fileID: 9179239927517743514, guid: 60fd4002636c38e44a2ed3fa46590125, type: 3}
+      propertyPath: materialsLayer.m_Bits
+      value: 64
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 7844914200091181664, guid: 60fd4002636c38e44a2ed3fa46590125, type: 3}
@@ -28747,7 +28768,7 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 6290321084410037996, guid: 60fd4002636c38e44a2ed3fa46590125, type: 3}
   m_PrefabInstance: {fileID: 1227673452}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 1658130113}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 748ee878209b22647a3dbf8f24253c13, type: 3}
@@ -38119,26 +38140,13 @@ GameObject:
   m_Component:
   - component: {fileID: 1503475706}
   - component: {fileID: 1503475705}
-  - component: {fileID: 1503475704}
   m_Layer: 0
   m_Name: End Trigger
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &1503475704
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1503475703}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e13768bb43fdba948b051350ee937617, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+  m_IsActive: 0
 --- !u!65 &1503475705
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -45150,6 +45158,11 @@ Transform:
 Transform:
   m_CorrespondingSourceObject: {fileID: 9022009080546284055, guid: 106dcb19819d5b34cbfebf73e70a9e82, type: 3}
   m_PrefabInstance: {fileID: 1098495149}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &1658130113 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 301215882491960927, guid: 60fd4002636c38e44a2ed3fa46590125, type: 3}
+  m_PrefabInstance: {fileID: 1227673452}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &1658176010
 GameObject:
@@ -54282,8 +54295,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1952788001}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 4.68, y: 4.71, z: 31}
+  m_LocalRotation: {x: 0, y: 0.7231593, z: 0, w: 0.69068134}
+  m_LocalPosition: {x: 8.04, y: 3.79, z: 62.47}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}

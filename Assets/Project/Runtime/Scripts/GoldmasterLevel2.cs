@@ -7,7 +7,7 @@ public class GoldmasterLevel2 : MonoBehaviour
 {
 
 
-    private void OnTriggerEnter(Collider other)
+    private void EndToCredits()
     {
         Cursor.visible = true;
         CameraController.SetCursorLockMode(true);
