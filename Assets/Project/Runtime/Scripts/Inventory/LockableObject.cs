@@ -39,7 +39,8 @@ public class LockableObject : MonoBehaviour
             }
             else
             {
-               // AudioScript._instance.PlaySoundEffect("Locked Sound"); this needs to be replaced
+               AudioScript._instance.PlaySoundEffect("Locked Door");
+
                 Debug.LogWarning("You don't have all key objects.");
             }
         }
