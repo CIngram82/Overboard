@@ -26,7 +26,6 @@ public class AnimationTrigger : MonoBehaviour
     {
         anim.SetBool("keyFound", true);
     }
-
 }
 
 
