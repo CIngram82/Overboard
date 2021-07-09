@@ -17,7 +17,7 @@ public class ItemInspector : MonoBehaviour
     [SerializeField] bool _isInspecting;
 
     //Eric Edits
-    [SerializeField] LayerMask keysLayer;
+    //[SerializeField] LayerMask keysLayer;
     GameObject player;
     Ray _ray;
 
@@ -26,6 +26,7 @@ public class ItemInspector : MonoBehaviour
     Vector3 objectPos;
     Vector3 zoom;
     Vector3 forward;
+
 
     public void SetItemPosition(bool isInspecting)
     {
@@ -57,7 +58,7 @@ public class ItemInspector : MonoBehaviour
     public void OnMouseDown()
     {
         position = Input.mousePosition;
-
+        /*/
         //Eric Edits
         _ray = _inspectCamera.ScreenPointToRay(Input.mousePosition);
         RaycastHit rayHit;
@@ -68,6 +69,7 @@ public class ItemInspector : MonoBehaviour
 
             return;
         }
+        /**/
     }
     public void OnMouseDrag()
     {
@@ -77,7 +79,7 @@ public class ItemInspector : MonoBehaviour
         gameObject.transform.rotation = Quaternion.AngleAxis(deltaPosition.magnitude * _rotationSpeed, axis) * gameObject.transform.rotation;
         position = Input.mousePosition;
     }
-
+    /*/
     //Eric Edits
     void InspectForKey(GameObject objToInspect)
     {
@@ -114,19 +116,19 @@ public class ItemInspector : MonoBehaviour
         else if (objToInspect.name.Contains("key"))
         {
             objToInspect.GetComponentInParent<Animator>().SetBool("keyFound", true);      //set keyFound value in parent's animator to true
-            StartCoroutine(waitAndPickUp(objToInspect));
+            StartCoroutine(WaitAndPickUp(objToInspect));
         }
     }
 
     //Eric Added
-    public IEnumerator waitAndPickUp(GameObject objToInspect)     //Allows FindKeyAnimation to play
+    public IEnumerator WaitAndPickUp(GameObject objToInspect)     //Allows FindKeyAnimation to play
     {
         print("wait");
         yield return new WaitForSeconds(2);
         print("pickup");
         objToInspect.GetComponentInParent<WorldItem>().PickUpItem(player);
     }
-
+    /**/
     void Update()
     {
         if (_isInspecting)

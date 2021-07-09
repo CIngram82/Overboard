@@ -2,14 +2,26 @@ using UnityEngine;
 
 public class AnimationTrigger : MonoBehaviour
 {
-    public Animator anim;
+    [SerializeField] string animBoolName = "isOpen";
+    [SerializeField] Animator anim;
+    [SerializeField] bool isTrigger;
 
 
-    public void PlayOpen()
+    public void Play()
     {
-        anim.SetBool("open", true);
+        if (!isTrigger)
+        {
+            anim.SetBool(animBoolName, !anim.GetBool(animBoolName));
+        }
+        else
+        {
+            PlayTrigger();
+        }
     }
-
+    public void PlayTrigger()
+    {
+        anim.SetTrigger(animBoolName);
+    }
     public void PlayKey()
     {
         anim.SetBool("keyFound", true);

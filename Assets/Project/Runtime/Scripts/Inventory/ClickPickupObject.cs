@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 using InventorySystem;
 using InventorySystem.Collectable;
@@ -25,7 +26,20 @@ public class ClickPickupObject : MonoBehaviour
     InspectObject _inspect;
     Camera _rayCamera;
     Ray _ray;
+    WaitForSeconds waitForSeconds = new WaitForSeconds(2.0f);
 
+
+    public IEnumerator WaitAndPickUp(GameObject objToPickup)     //Allows FindKeyAnimation to play
+    {
+        Debug.Log($"{objToPickup.name}: Wait");
+        yield return waitForSeconds;
+        Debug.Log($"{objToPickup.name}: Pickup");
+
+        objToPickup.GetComponent<WorldItem>().PickUpItem(_inventory.gameObject);
+        AudioScript._instance.PlaySoundEffect("Grab");
+        // Gets item from root parent
+        _inventory.RemoveItem(objToPickup.transform.root.GetComponent<WorldItem>().Item);
+    }
 
     public void DrawRay()
     {
@@ -49,8 +63,14 @@ public class ClickPickupObject : MonoBehaviour
                 else
                 if (Physics.Raycast(_ray, out rayHit, maxDistance, triggerLayer))
                 {
-                    rayHit.transform.gameObject.GetComponent<AnimationTrigger>().PlayOpen();
+                    rayHit.transform.gameObject.GetComponent<AnimationTrigger>().Play();
                     Debug.Log($"{rayHit.transform.gameObject}: Animation Trigger");
+                }
+                if (Physics.Raycast(_ray, out rayHit, maxDistance, keyLayer))
+                {
+                    rayHit.transform.gameObject.GetComponent<AnimationTrigger>().PlayKey();
+                    Debug.Log($"{rayHit.transform.gameObject}: Animation Trigger");
+                    StartCoroutine(WaitAndPickUp(rayHit.transform.gameObject));
                 }
             }
             else
@@ -68,13 +88,14 @@ public class ClickPickupObject : MonoBehaviour
                     // WorldItem is on root parent containing gameObject of hit collider. 
                     _inspect.Inspect(rayHit.transform.gameObject);
                     rayHit.transform.gameObject.GetComponent<WorldItem>().PickUpItem(gameObject);
+                   
                     uiGlow.AddBackdrop(_inventory.Items.Count - 1);
                     Debug.Log($"InventoryCount: {_inventory.Items.Count}");
                     AudioScript._instance.PlaySoundEffect("Grab");
                 }
                 else
                 if (Physics.Raycast(_ray, out rayHit, maxDistance, objectLayer))        //Looking for inspectable items
-                { 
+                {
                     _inspect.Inspect(rayHit.transform.parent.gameObject);
                     AudioScript._instance.PlaySoundEffect("Grab");
                 }
@@ -97,7 +118,6 @@ public class ClickPickupObject : MonoBehaviour
                         flashlight.SetActive(true);
                     }
                 }
-
             }
         }
     }
