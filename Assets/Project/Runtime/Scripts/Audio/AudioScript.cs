@@ -47,6 +47,7 @@ public class AudioScript : MonoBehaviour
     {
 
         thisAudio.PlayOneShot(clip);
+       // Debug.Log(clip.name);
     }
 
     public void PlaySoundEffect(string soundName)
@@ -105,6 +106,7 @@ public class AudioScript : MonoBehaviour
         }
         else if (GetScene().buildIndex == 3 )
         {
+            Debug.Log("Level 1");
             StartCoroutine(PlayRandomSound());
             thisAudio.loop = false;
         }
@@ -141,9 +143,12 @@ public class AudioScript : MonoBehaviour
 
     IEnumerator PlayRandomSound()
     {
-        while (activeScene.name == "Level 1" && !thisAudio.isPlaying)
+        Debug.Log("running");
+
+        while (GetScene().buildIndex == 3)
         {
             PlayClip(randomSounds[Random.Range(0, randomSounds.Count)]);
+            Debug.Log("running");
             yield return new WaitForSeconds(Random.Range(minWaitBetweenPlays, maxWaitBetweenPlays));
         }
 
