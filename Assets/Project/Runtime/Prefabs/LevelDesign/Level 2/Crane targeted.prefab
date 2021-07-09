@@ -2347,6 +2347,7 @@ GameObject:
   - component: {fileID: 4637736612548460194}
   - component: {fileID: 5169748913989105317}
   - component: {fileID: 8018993339484638049}
+  - component: {fileID: 1126590759647255689}
   m_Layer: 0
   m_Name: cranePivot
   m_TagString: Untagged
@@ -2418,6 +2419,20 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!136 &1126590759647255689
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4809839950065357913}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: 1.1742227
+  m_Height: 6.4973297
+  m_Direction: 1
+  m_Center: {x: -0.000000013552315, y: 2.5307455, z: -0.3871847}
 --- !u!1 &5411320242846394169
 GameObject:
   m_ObjectHideFlags: 0

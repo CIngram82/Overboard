@@ -205,6 +205,7 @@ GameObject:
   - component: {fileID: 7746403542501842602}
   - component: {fileID: 6918845346316977458}
   - component: {fileID: 1001902986821892580}
+  - component: {fileID: 4003837868777809804}
   m_Layer: 0
   m_Name: hull
   m_TagString: Untagged
@@ -275,6 +276,20 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!64 &4003837868777809804
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2244834100302228647}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 1
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 6911245435811023445, guid: b43637fa2e93ec0409d2fb1b49975b59, type: 3}
 --- !u!1 &2312742207042464043
 GameObject:
   m_ObjectHideFlags: 0
