@@ -29250,6 +29250,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Crane targeted (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 3508221695036628840, guid: bfe636644e66a3f4f922307b27d65ac2, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: bfe636644e66a3f4f922307b27d65ac2, type: 3}
 --- !u!4 &1278085710 stripped
@@ -56869,7 +56873,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 176026423236585693, guid: d9303e6e9e563444b971dfed9a31e598, type: 3}
+  - {fileID: 2100000, guid: 7601aa44a57f7f54d9953f812660d6eb, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -57798,6 +57802,14 @@ PrefabInstance:
     - target: {fileID: 2434959701086992317, guid: 7c2c5c4317c72904eb53a7867b578c05, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2841443807190597449, guid: 7c2c5c4317c72904eb53a7867b578c05, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2841443807190597449, guid: 7c2c5c4317c72904eb53a7867b578c05, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 4984679490111119349, guid: 7c2c5c4317c72904eb53a7867b578c05, type: 3}
       propertyPath: target
