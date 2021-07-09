@@ -1,5 +1,19 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!136 &6477770723295113578
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6135244058385386534}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: 0.6
+  m_Height: 3.38
+  m_Direction: 0
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &6477770721547220556
 GameObject:
   m_ObjectHideFlags: 0
@@ -10,7 +24,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6477770721547220557}
   - component: {fileID: 6477770721547220558}
-  m_Layer: 11
+  m_Layer: 14
   m_Name: Spot Light
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -102,7 +116,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6477770723127244096}
-  m_Layer: 11
+  m_Layer: 14
   m_Name: Flashlight
   m_TagString: Flashlight
   m_Icon: {fileID: 0}
@@ -125,20 +139,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: -110, z: 5}
---- !u!136 &6477770723295113578
-CapsuleCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6135244058385386534}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  m_Radius: 0.6
-  m_Height: 3.38
-  m_Direction: 0
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1001 &6477770723295113591
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -204,11 +204,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -6056641103977530432, guid: 59bc3ecf750962b4faa3af518307f8bf, type: 3}
       propertyPath: m_Layer
-      value: 11
+      value: 14
+      objectReference: {fileID: 0}
+    - target: {fileID: -6056641103977530432, guid: 59bc3ecf750962b4faa3af518307f8bf, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: -5341327506262200276, guid: 59bc3ecf750962b4faa3af518307f8bf, type: 3}
       propertyPath: m_Layer
-      value: 11
+      value: 14
+      objectReference: {fileID: 0}
+    - target: {fileID: -5341327506262200276, guid: 59bc3ecf750962b4faa3af518307f8bf, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 59bc3ecf750962b4faa3af518307f8bf, type: 3}
       propertyPath: m_Name
@@ -216,7 +224,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 59bc3ecf750962b4faa3af518307f8bf, type: 3}
       propertyPath: m_Layer
-      value: 11
+      value: 14
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 59bc3ecf750962b4faa3af518307f8bf, type: 3}
       propertyPath: m_TagString
@@ -224,7 +232,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1147048640786991974, guid: 59bc3ecf750962b4faa3af518307f8bf, type: 3}
       propertyPath: m_Layer
-      value: 11
+      value: 14
+      objectReference: {fileID: 0}
+    - target: {fileID: 1147048640786991974, guid: 59bc3ecf750962b4faa3af518307f8bf, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 59bc3ecf750962b4faa3af518307f8bf, type: 3}
