@@ -544,7 +544,7 @@ AnimatorState:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: A_WatchKey 1
+  m_Name: A_WatchKeyFound
   m_Speed: 1
   m_CycleOffset: 0
   m_Transitions: []
@@ -627,25 +627,25 @@ AnimatorController:
     m_DefaultFloat: 0
     m_DefaultInt: 0
     m_DefaultBool: 0
-    m_Controller: {fileID: 0}
+    m_Controller: {fileID: 9100000}
   - m_Name: frontOpen
     m_Type: 4
     m_DefaultFloat: 0
     m_DefaultInt: 0
     m_DefaultBool: 0
-    m_Controller: {fileID: 0}
+    m_Controller: {fileID: 9100000}
   - m_Name: backOpen
     m_Type: 4
     m_DefaultFloat: 0
     m_DefaultInt: 0
     m_DefaultBool: 0
-    m_Controller: {fileID: 0}
+    m_Controller: {fileID: 9100000}
   - m_Name: twistTop
     m_Type: 4
     m_DefaultFloat: 0
     m_DefaultInt: 0
     m_DefaultBool: 0
-    m_Controller: {fileID: 0}
+    m_Controller: {fileID: 9100000}
   m_AnimatorLayers:
   - serializedVersion: 5
     m_Name: Base Layer
@@ -725,7 +725,7 @@ AnimatorState:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: A_WatchBack 1
+  m_Name: A_WatchBack 0
   m_Speed: 1
   m_CycleOffset: 0
   m_Transitions:
@@ -949,7 +949,7 @@ AnimatorState:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: A_WatchFront close
+  m_Name: A_WatchFrontClose
   m_Speed: -1
   m_CycleOffset: 0
   m_Transitions:
@@ -1106,7 +1106,7 @@ AnimatorState:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: A_WatchFront close 0
+  m_Name: A_WatchFrontClose 0
   m_Speed: -1
   m_CycleOffset: 0
   m_Transitions:
@@ -1238,43 +1238,43 @@ AnimatorStateMachine:
   m_ChildStates:
   - serializedVersion: 1
     m_State: {fileID: -6603033977446506962}
-    m_Position: {x: -40, y: 310, z: 0}
+    m_Position: {x: -190, y: 250, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 4673672168259665717}
-    m_Position: {x: 510, y: 310, z: 0}
+    m_Position: {x: 650, y: 250, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 5853283195517813752}
-    m_Position: {x: -490, y: 480, z: 0}
+    m_Position: {x: 500, y: 140, z: 0}
   - serializedVersion: 1
     m_State: {fileID: -974174226156671472}
-    m_Position: {x: 230, y: 490, z: 0}
+    m_Position: {x: 230, y: 470, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 261599137076008106}
     m_Position: {x: 230, y: 250, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 3074986598556012588}
-    m_Position: {x: -150, y: 490, z: 0}
+    m_Position: {x: -190, y: 470, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 8905218803738885626}
-    m_Position: {x: 590, y: 500, z: 0}
+    m_Position: {x: 650, y: 470, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 46504500943773654}
-    m_Position: {x: 430, y: 720, z: 0}
+    m_Position: {x: 410, y: 720, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 282550134846454834}
-    m_Position: {x: 40, y: 720, z: 0}
+    m_Position: {x: 50, y: 720, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 6155134093290187081}
-    m_Position: {x: 740, y: 720, z: 0}
+    m_Position: {x: 650, y: 720, z: 0}
   - serializedVersion: 1
     m_State: {fileID: -6623855773285271082}
-    m_Position: {x: -260, y: 720, z: 0}
+    m_Position: {x: -190, y: 720, z: 0}
   m_ChildStateMachines: []
   m_AnyStateTransitions: []
   m_EntryTransitions: []
   m_StateMachineTransitions: {}
   m_StateMachineBehaviours: []
-  m_AnyStatePosition: {x: -400, y: 400, z: 0}
+  m_AnyStatePosition: {x: 70, y: 140, z: 0}
   m_EntryPosition: {x: 250, y: 140, z: 0}
   m_ExitPosition: {x: 430, y: -200, z: 0}
   m_ParentStateMachinePosition: {x: 800, y: 20, z: 0}
@@ -1336,7 +1336,7 @@ AnimatorState:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: A_WatchBack close
+  m_Name: A_WatchBackClose
   m_Speed: -1
   m_CycleOffset: 0
   m_Transitions:
