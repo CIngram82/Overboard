@@ -30,34 +30,40 @@ namespace Controllers.UI
         }
         public static void OnCredits()
         {
+            AudioScript._instance.PlayClip(AudioScript._instance.menuButton);
             SceneManager.LoadScene("Scene_Credits");
         }
         public static void OnMenu()
         {
-            // AudioScript._instance.PlayClip(AudioScript._instance.menuButton);
+            AudioScript._instance.PlayClip(AudioScript._instance.menuButton);
             SceneManager.LoadScene("Scene_MainMenu");
         }
         public static void OnReset()
         {
+            AudioScript._instance.PlayClip(AudioScript._instance.menuButton);
             SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
         }
         public static void OnQuit()
         {
+            AudioScript._instance.PlayClip(AudioScript._instance.menuButton);
             Application.Quit();
         }
         public void OnFullReset()
         {
+            AudioScript._instance.PlayClip(AudioScript._instance.menuButton);
             SaveDataManager.Instance.ResetSave();
             Debug.LogWarning($"Resetting save");
             OnReset();
         }
         public void OnSave()
         {
+            AudioScript._instance.PlayClip(AudioScript._instance.menuButton);
             Debug.LogWarning($"{gameObject.name}: Saving");
             SaveDataManager.Instance.On_Save_Data();
         }
         public static void OnLoadSave(int save)
         {
+            AudioScript._instance.PlayClip(AudioScript._instance.menuButton);
             SaveDataManager.Instance.SelectSave(save);
         }
 

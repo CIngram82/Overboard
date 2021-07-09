@@ -141,7 +141,7 @@ public class AudioScript : MonoBehaviour
 
     IEnumerator PlayRandomSound()
     {
-        while (activeScene.name == "BetaLevel1" && !thisAudio.isPlaying)
+        while (activeScene.name == "Level 1" && !thisAudio.isPlaying)
         {
             PlayClip(randomSounds[Random.Range(0, randomSounds.Count)]);
             yield return new WaitForSeconds(Random.Range(minWaitBetweenPlays, maxWaitBetweenPlays));
