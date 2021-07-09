@@ -2367,8 +2367,10 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_text: "WASD to move. Mouse to look around. \nJ to open your journal.\nLeft click
-    to pick up items. \n1 - 6 to inspect the items in your inventory.\nSpace Bar
-    to bring up the menu.\nE to change camera at puzzles and open doors."
+    to pick up items. \n1 - 6 to inspect the items in your inventory.\nWhile inspecting,
+    you can click and drag to rotate and click on parts of the object to inspect
+    further.\nSpace Bar to bring up the menu.\nE to change camera at puzzles and
+    open doors."
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: ef55b95a2f272264ab0ef64b469f3198, type: 2}
   m_sharedMaterial: {fileID: -1214608533579013806, guid: ef55b95a2f272264ab0ef64b469f3198, type: 2}
@@ -2395,10 +2397,10 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 24
+  m_fontSize: 19.1
   m_fontSizeBase: 24
   m_fontWeight: 400
-  m_enableAutoSizing: 0
+  m_enableAutoSizing: 1
   m_fontSizeMin: 18
   m_fontSizeMax: 72
   m_fontStyle: 0
