@@ -1,12 +1,14 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using Cinemachine;
+using TMPro;
 
 public class Dumbwaiter : MonoBehaviour
 {
     [SerializeField] CinemachineVirtualCamera waiterCam;
     [SerializeField] CinemachineVirtualCamera playerCam;
-    [SerializeField] GameObject camPointer; 
+    [SerializeField] GameObject camPointer;
+    [SerializeField] TextMeshProUGUI feedbacktext;
     void OnTriggerStay(Collider other)
     {
         if(IsComplete() && Input.GetMouseButton(0))
@@ -19,6 +21,15 @@ public class Dumbwaiter : MonoBehaviour
         else
         {
             Debug.Log("Puzzles Not Complete");
+        }
+
+        if (IsComplete())
+        {
+            feedbacktext.text = " Powered \n Click to enter";
+        }
+        else
+        {
+            feedbacktext.text = "No power to the dumbwaiter";
         }
     }
 
@@ -33,5 +44,13 @@ public class Dumbwaiter : MonoBehaviour
     {
         SaveSystem.Data.SaveDataManager.Instance.ResetSave();
         SceneManager.LoadScene(5);
+    }
+
+
+ 
+
+    private void OnTriggerExit(Collider other)
+    {
+        feedbacktext.text = string.Empty;
     }
 }
