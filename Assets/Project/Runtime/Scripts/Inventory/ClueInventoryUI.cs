@@ -113,7 +113,7 @@ public class ClueInventoryUI : MonoBehaviour
 #else
         if (isJournalOpen && Input.GetKeyDown(KeyCode.Escape))
         {
-            uiGlow.disableJournalFeedback();
+            uiGlow.DisableJournalFeedback();
             isJournalOpen = !isJournalOpen;
             OpenJournal(isJournalOpen);
         }
