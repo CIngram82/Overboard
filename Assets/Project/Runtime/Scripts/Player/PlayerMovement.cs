@@ -46,6 +46,10 @@ public class PlayerMovement : MonoBehaviour
         {
             camAnim.SetBool("isWalking", moveHorizontal != 0 || moveVertical != 0);
         }
+        else
+        {
+            camAnim.SetBool("isWalking", false);
+        }
         if(FootstepsSound.isInWater)
         {
             speedMax = 250;
