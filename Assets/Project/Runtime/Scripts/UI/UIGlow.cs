@@ -44,7 +44,7 @@ public class UIGlow : MonoBehaviour
             for (float i = 0; i < .5f; i += .1f)
             {
                 color.a += i;
-                yield return new WaitForSeconds(.3f);
+                yield return new WaitForSeconds(.2f);
                 image.color = color;
             }
         }
