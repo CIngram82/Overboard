@@ -83,7 +83,6 @@ public class InspectCam : MonoBehaviour
                                 break;
                             }
                         }
-                        Debug.LogError($"hasKeys: {hasKeys}");
                         if (hasKeys)
                         {
                             rayHit.transform.gameObject.GetComponent<AnimationTrigger>().PlayMasterKey();
