@@ -29,6 +29,7 @@ namespace GearPuzzle
                 PuzzleCompleted?.Invoke(isComplete);
                 On_Camera_Transition();
                 _cameraTransition.LockCamera(isComplete);
+                AudioScript._instance.PlaySoundEffect("Gear Spin");
             }
         }
 
