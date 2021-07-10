@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.18028378, g: 0.22571412, b: 0.30692285, a: 1}
+  m_IndirectSpecularColor: {r: 0, g: 0.99999905, b: 0.99999905, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -1525,6 +1525,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bc7dad26cf2fb2b49829a182436d2bd2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  slider: {fileID: 0}
   mixer: {fileID: 24100000, guid: 7049f846285f45249ad37d1c1d94b26e, type: 2}
 --- !u!4 &968424467
 Transform:
@@ -2369,8 +2370,7 @@ MonoBehaviour:
   m_text: "WASD to move. Mouse to look around. \nJ to open your journal.\nLeft click
     to pick up items. \n1 - 6 to inspect the items in your inventory.\nWhile inspecting,
     you can click and drag to rotate and click on parts of the object to inspect
-    further.\nSpace Bar to bring up the menu.\nE to change camera at puzzles and
-    open doors."
+    further.\nEsc to bring up the menu.\nE to change camera at puzzles and open doors."
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: ef55b95a2f272264ab0ef64b469f3198, type: 2}
   m_sharedMaterial: {fileID: -1214608533579013806, guid: ef55b95a2f272264ab0ef64b469f3198, type: 2}
