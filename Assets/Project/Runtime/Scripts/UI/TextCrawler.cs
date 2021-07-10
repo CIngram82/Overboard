@@ -24,8 +24,6 @@ namespace Controllers.UI
 
             while (scrollPos < (height))
             {
-            Debug.LogWarning($"{scrollPos} < {height}");
-            Debug.LogWarning($"Position: {textCrawler.transform.position}");
                 scrollPos += scrollSpeed * Time.deltaTime;
                 textCrawler.transform.position = new Vector3(startPos.x, scrollPos, startPos.z);
                 yield return null;
