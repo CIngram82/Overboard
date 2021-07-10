@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class WaterLevel : MonoBehaviour
 {
-    private float targetY;
+    float targetY;
     private bool isRising = false;
     static float t = 0.0f;
 

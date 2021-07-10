@@ -24,7 +24,7 @@ public class GameManager : Singleton<GameManager>
         GameData data = SaveDataManager.Save.GameData;
         gearFirstCompletion = GearPuzzleCompleted = data.IsGearsCompleted;
         pipeFirstCompletion = PipePuzzleCompleted = data.IsPipesCompleted;
-        FindObjectOfType<WaterLevel>().SetWaterLevel(data.WaterLevel);
+       // FindObjectOfType<WaterLevel>().SetWaterLevel(data.WaterLevel);
     }
 
     void On_Gear_Puzzle_Completed(bool isCompleted)
