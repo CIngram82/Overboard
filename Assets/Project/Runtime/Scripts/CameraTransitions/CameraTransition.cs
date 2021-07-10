@@ -59,9 +59,9 @@ public class CameraTransition : MonoBehaviour
         hasBeenPrompted = true;
     }
 
-    public void LockPuzzle(bool locked)
+    public void UnlockPuzzle(bool locked)
     {
-        this.locked = locked;
+        this.locked = !locked;
     }
     public void LockCamera(bool locked)
     {
@@ -103,11 +103,11 @@ public class CameraTransition : MonoBehaviour
 
     void SubToEvents(bool subscribe)
     {
-        EventsManager.PuzzleUnlocked -= LockPuzzle;
+        EventsManager.PuzzleUnlocked -= UnlockPuzzle;
 
         if (subscribe)
         {
-            EventsManager.PuzzleUnlocked += LockPuzzle;
+            EventsManager.PuzzleUnlocked += UnlockPuzzle;
         }
     }
 
