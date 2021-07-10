@@ -41,7 +41,7 @@ public class CameraTransition : MonoBehaviour
 
     void OnTriggerStay(Collider other)
     {
-        if (!hasBeenPrompted)
+        if (!hasBeenPrompted && !locked)
         {
             playerPrompt.text = "Press E to toggle camera";
         }
@@ -71,13 +71,11 @@ public class CameraTransition : MonoBehaviour
 
     public void SwitchCameras()
     {
-
         hasBeenPrompted = true;
         playerPrompt.text = string.Empty;
 
         if (isMain)
         {
-
             transitionCamera.Priority = 3;
             mainCam.Priority = startingPriority;
             isMain = false;
@@ -88,7 +86,6 @@ public class CameraTransition : MonoBehaviour
         }
         else
         {
-
             transitionCamera.Priority = startingPriority;
             mainCam.Priority = 3;
             isMain = true;
