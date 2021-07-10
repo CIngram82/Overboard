@@ -26,6 +26,16 @@ public class AnimationTrigger : MonoBehaviour
     {
         anim.SetBool("keyFound", true);
     }
+    public void PlayMasterKey()
+    {
+        anim.SetBool(animBoolName, !anim.GetBool(animBoolName));
+        InventorySystem.Inventory inventory = Player.inventory;
+        for (int i = 1; i <= 3; i++)
+        {
+            inventory.RemoveItem(inventory.ItemDatabase.GetInventoryItem($"SafeCollectable{i}"));
+        }
+        inventory.RemoveItem(inventory.ItemDatabase.GetInventoryItem($"KeyHandle"));
+    }
 }
 
 
