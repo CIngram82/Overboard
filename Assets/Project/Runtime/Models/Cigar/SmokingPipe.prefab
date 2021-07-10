@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &7555934045810914291
+--- !u!1 &2859084013879452173
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,47 +8,78 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 7703665100460451421}
-  - component: {fileID: 7275795235762295948}
-  - component: {fileID: 227269213125600705}
-  - component: {fileID: 628093216}
-  - component: {fileID: 628093217}
-  m_Layer: 11
-  m_Name: toiletPaper
+  - component: {fileID: 4525016411578197434}
+  m_Layer: 0
+  m_Name: SmokingPipe
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &7703665100460451421
+--- !u!4 &4525016411578197434
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7555934045810914291}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -0}
+  m_GameObject: {fileID: 2859084013879452173}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 6165918504797166111}
+  m_Children:
+  - {fileID: 3060185925386654891}
+  m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!33 &7275795235762295948
+--- !u!1 &3060185925386654888
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3060185925386654891}
+  - component: {fileID: 3060185925386654890}
+  - component: {fileID: 3060185925386654889}
+  - component: {fileID: 7856049327912453274}
+  - component: {fileID: 5083128440498723004}
+  m_Layer: 11
+  m_Name: placeholderSmokingPipe
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &3060185925386654891
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3060185925386654888}
+  m_LocalRotation: {x: 0.30207205, y: -0.69383943, z: -0.57471704, w: -0.31151196}
+  m_LocalPosition: {x: -42.994007, y: 2.242, z: -57.225014}
+  m_LocalScale: {x: -1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 4525016411578197434}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: -80.306, y: -59.657, z: 21.281}
+--- !u!33 &3060185925386654890
 MeshFilter:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7555934045810914291}
-  m_Mesh: {fileID: 3801692360186078017, guid: 0f8ab0a3fa9e5ea47b1ef9f164efdb18, type: 3}
---- !u!23 &227269213125600705
+  m_GameObject: {fileID: 3060185925386654888}
+  m_Mesh: {fileID: -6790755474097059716, guid: 41c67bc703f83474a8183a798bc4c431, type: 3}
+--- !u!23 &3060185925386654889
 MeshRenderer:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7555934045810914291}
+  m_GameObject: {fileID: 3060185925386654888}
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
@@ -61,7 +92,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: b77d0d5768682c644bc35f1090c660e8, type: 2}
+  - {fileID: 2100000, guid: a59c871ad3019c0498a0363144f1de1b, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -83,26 +114,26 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!65 &628093216
+--- !u!65 &7856049327912453274
 BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7555934045810914291}
+  m_GameObject: {fileID: 3060185925386654888}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.18773614, y: 0.22722942, z: 0.1935561}
-  m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &628093217
+  m_Size: {x: 0.49639845, y: 0.18400145, z: 0.1491899}
+  m_Center: {x: -0.04912947, y: 0.028409451, z: -0.0001362255}
+--- !u!114 &5083128440498723004
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7555934045810914291}
+  m_GameObject: {fileID: 3060185925386654888}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 514123c383e3f9c43b070231d42aa83b, type: 3}
@@ -115,34 +146,3 @@ MonoBehaviour:
   _radius: 1
   _parentTransform: {fileID: 0}
   _isInspecting: 0
---- !u!1 &8038491370231162319
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 6165918504797166111}
-  m_Layer: 11
-  m_Name: toiletpaper
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &6165918504797166111
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8038491370231162319}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1.5, y: 1.5, z: 1.5}
-  m_Children:
-  - {fileID: 7703665100460451421}
-  m_Father: {fileID: 0}
-  m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
