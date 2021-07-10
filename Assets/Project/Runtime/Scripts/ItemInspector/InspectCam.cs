@@ -22,7 +22,7 @@ public class InspectCam : MonoBehaviour
     public IEnumerator WaitAndPickUp(GameObject objToPickup)     //Allows FindKeyAnimation to play
     {
         isAnimating = true;
-        EventsManager.CameraSwitched(false);
+        CameraController.SetCursorLockMode(false); 
         Debug.Log($"{objToPickup.name}: Wait");
         yield return waitForSeconds;
         Debug.Log($"{objToPickup.name}: Pickup");
@@ -30,7 +30,8 @@ public class InspectCam : MonoBehaviour
         objToPickup.GetComponent<WorldItem>().PickUpItem(_inventory.gameObject);
         AudioScript._instance.PlaySoundEffect("Grab");
         isAnimating = false;
-        EventsManager.CameraSwitched(true);
+        CameraController.SetCursorLockMode(true);
+
         _inventory.RemoveItem(objToPickup.transform.root.GetComponent<WorldItem>().Item);
         UIGlow.Instance.AddBackdrop(_inventory.Items.Count - 1);
     }
