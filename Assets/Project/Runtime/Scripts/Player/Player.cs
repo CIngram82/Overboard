@@ -16,10 +16,16 @@ public class Player : MonoBehaviour
 
     void SaveData()
     {
+        TutorialData data = SaveDataManager.Save.TutorialData;
+        data.IntroPlayed = IntroCameraCut.hasPlayed;
+
         SaveDataManager.Save.PlayerData = new PlayerData(transform);
     }
     void LoadData()
     {
+        TutorialData TutData = SaveDataManager.Save.TutorialData;
+        IntroCameraCut.hasPlayed = TutData.IntroPlayed;
+
         PlayerData data = SaveDataManager.Save.PlayerData;
 
         CameraController.SetCameraRotation(data.Rotation.Get());

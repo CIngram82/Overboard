@@ -8,7 +8,7 @@ public class IntroCameraCut : MonoBehaviour
     [SerializeField] CinemachineVirtualCamera introCamera;
     [SerializeField] GameObject camPointer;
     // [SerializeField] GameObject blur;
-    public bool hasPlayed = false;
+    public static bool hasPlayed = false;
 
 
     void Start()

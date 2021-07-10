@@ -8,6 +8,12 @@ public class PauseController : MonoBehaviour
     [SerializeField] GameObject _pausePanel;
 
 
+    public void PauseGame()
+    {
+        isPaused = !isPaused;
+        On_Game_Paused(isPaused);
+    }
+
     public void On_Game_Paused(bool paused)
     {
         EventsManager.CameraSwitched(paused);
@@ -19,8 +25,7 @@ public class PauseController : MonoBehaviour
 #if UNITY_EDITOR
         if (Input.GetKeyDown(KeyCode.Space) && !FindObjectOfType<ClueInventoryUI>().isJournalOpen)
         {
-            isPaused = !isPaused;
-            On_Game_Paused(isPaused);
+            PauseGame();
         }
 #else
         if (Input.GetKeyDown(KeyCode.Escape) && !FindObjectOfType<ClueInventoryUI>().isJournalOpen)
@@ -30,6 +35,7 @@ public class PauseController : MonoBehaviour
         }
 #endif
     }
+
     void Start()
     {
         isPaused = false;
