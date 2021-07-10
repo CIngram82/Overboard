@@ -11,6 +11,7 @@ public class Dumbwaiter : MonoBehaviour
     {
         if(IsComplete() && Input.GetMouseButton(0))
         {
+            waiterCam.gameObject.SetActive(true);
             waiterCam.Priority = 4;
             camPointer.SetActive(false);
             Invoke("PlayNextLevel", 1);
