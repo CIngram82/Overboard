@@ -50,17 +50,23 @@ namespace GearPuzzle
         {
             CameraController.Camera.orthographic = !CameraController.Camera.orthographic;
         }
+        void On_Play_Sound(GameObject gameObject)
+        {
+
+        }
 
         void SubToEvents(bool subscribe)
         {
             DragObjectHandler.DragStarted -= On_Drag;
             DragObjectHandler.DragEnded -= On_Drag;
+            DragObjectHandler.DragEnded -= On_Play_Sound;
             _cameraTransition.CameraEntered -= On_Camera_Transition;
 
             if (subscribe)
             {
                 DragObjectHandler.DragStarted += On_Drag;
                 DragObjectHandler.DragEnded += On_Drag;
+                DragObjectHandler.DragEnded += On_Play_Sound;
                 _cameraTransition.CameraEntered += On_Camera_Transition;
             }
         }
