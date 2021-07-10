@@ -11,23 +11,23 @@ public class CameraTransition : MonoBehaviour
     [SerializeField] CinemachineVirtualCamera transitionCamera;
     [SerializeField] int startingPriority;
     [SerializeField] TextMeshProUGUI playerPrompt;
+    [SerializeField] bool locked;
     bool hasBeenPrompted;
     bool canTransition;
     bool isMain;
-    bool locked;
+
 
 
     void Start()
     {
         canTransition = false;
-        locked = false;
         hasBeenPrompted = false;
         startingPriority = transitionCamera.Priority;
         isMain = true;
     }
     private void Update()
     {
-        if(canTransition && Input.GetKeyUp(KeyCode.E) && !locked)
+        if (canTransition && Input.GetKeyUp(KeyCode.E) && !locked)
         {
             canTransition = false;
             SwitchCameras();
@@ -47,8 +47,8 @@ public class CameraTransition : MonoBehaviour
         }
         if (!locked && Input.GetKeyDown(KeyCode.E))
         {
-           // SwitchCameras();
-           // CameraEntered?.Invoke();
+            // SwitchCameras();
+            // CameraEntered?.Invoke();
             hasBeenPrompted = true;
         }
     }
@@ -59,6 +59,10 @@ public class CameraTransition : MonoBehaviour
         hasBeenPrompted = true;
     }
 
+    public void LockPuzzle(bool locked)
+    {
+        this.locked = locked;
+    }
     public void LockCamera(bool locked)
     {
         this.locked = locked;
@@ -73,7 +77,7 @@ public class CameraTransition : MonoBehaviour
 
         if (isMain)
         {
-       
+
             transitionCamera.Priority = 3;
             mainCam.Priority = startingPriority;
             isMain = false;
@@ -84,7 +88,7 @@ public class CameraTransition : MonoBehaviour
         }
         else
         {
-           
+
             transitionCamera.Priority = startingPriority;
             mainCam.Priority = 3;
             isMain = true;
@@ -93,11 +97,29 @@ public class CameraTransition : MonoBehaviour
             EventsManager.On_Camera_Switched(false);
             canTransition = true;
         }
-
     }
 
     void waitForTransition()
     {
         canTransition = true;
+    }
+
+    void SubToEvents(bool subscribe)
+    {
+        EventsManager.PuzzleUnlocked -= LockPuzzle;
+
+        if (subscribe)
+        {
+            EventsManager.PuzzleUnlocked += LockPuzzle;
+        }
+    }
+
+    void OnEnable()
+    {
+        SubToEvents(true);
+    }
+    void OnDisable()
+    {
+        SubToEvents(false);
     }
 }

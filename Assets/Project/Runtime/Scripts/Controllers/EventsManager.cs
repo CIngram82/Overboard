@@ -15,9 +15,15 @@ public class EventsManager : MonoBehaviour
     public static Action<Clue> InventoryClueRemoved;
     public static Action<bool> CameraSwitched;
     public static Action<bool> ItemInspected;
+    public static Action<bool> PuzzleUnlocked;
     #endregion
 
     #region Event Calls
+    public static void On_Puzzle_Unlocked(bool isLock)
+    {
+        PuzzleUnlocked?.Invoke(isLock);
+    }
+
     public static void On_Tool_Tip_Activated(string text)
     {
         ToolTipActivated?.Invoke(text);

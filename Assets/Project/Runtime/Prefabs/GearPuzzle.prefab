@@ -234,7 +234,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &4751752218897667529
 RectTransform:
   m_ObjectHideFlags: 0
@@ -252,7 +252,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: -0, y: 0.652}
-  m_SizeDelta: {x: 14.792, y: 0}
+  m_SizeDelta: {x: 14.792, y: 2.46}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!23 &431384114686180663
 MeshRenderer:
@@ -860,6 +860,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3579662724327624874, guid: fa9430e664dc1c842a2f8457f9f20020, type: 3}
+      propertyPath: locked
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3579662724327624874, guid: fa9430e664dc1c842a2f8457f9f20020, type: 3}
       propertyPath: mainCam
       value: 
       objectReference: {fileID: 0}
@@ -889,7 +893,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6653148651371704192, guid: fa9430e664dc1c842a2f8457f9f20020, type: 3}
       propertyPath: m_LocalRotation.x
-      value: -0
+      value: -3e-45
       objectReference: {fileID: 0}
     - target: {fileID: 6653148651371704192, guid: fa9430e664dc1c842a2f8457f9f20020, type: 3}
       propertyPath: m_LocalRotation.y

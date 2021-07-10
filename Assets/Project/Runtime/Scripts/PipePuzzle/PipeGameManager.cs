@@ -130,7 +130,8 @@ namespace PipePuzzle
                 {
                     AudioScript._instance.PlaySoundEffect("Steam Release 2");
                     PuzzleCompleted?.Invoke(isComplete);
-                    _cameraTransition.LockCamera(isComplete); 
+                    _cameraTransition.LockCamera(isComplete);
+                    EventsManager.On_Puzzle_Unlocked(true);
                 }
             }
         }
