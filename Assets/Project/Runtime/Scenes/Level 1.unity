@@ -26987,6 +26987,10 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1246229381504278334, guid: 67db6791577c5e14db461f90443c78af, type: 3}
+      propertyPath: m_RootOrder
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 2157110048521743649, guid: 67db6791577c5e14db461f90443c78af, type: 3}
       propertyPath: m_IsActive
       value: 0
@@ -27101,6 +27105,26 @@ PrefabInstance:
     - target: {fileID: 2157110050522334625, guid: 67db6791577c5e14db461f90443c78af, type: 3}
       propertyPath: m_SizeDelta.y
       value: 400
+      objectReference: {fileID: 0}
+    - target: {fileID: 3194748926317407728, guid: 67db6791577c5e14db461f90443c78af, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3194748926317407729, guid: 67db6791577c5e14db461f90443c78af, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 58.0156
+      objectReference: {fileID: 0}
+    - target: {fileID: 3194748926317407729, guid: 67db6791577c5e14db461f90443c78af, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 49.5415
+      objectReference: {fileID: 0}
+    - target: {fileID: 3194748926317407729, guid: 67db6791577c5e14db461f90443c78af, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 1.2776
+      objectReference: {fileID: 0}
+    - target: {fileID: 3194748926317407729, guid: 67db6791577c5e14db461f90443c78af, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0.40919876
       objectReference: {fileID: 0}
     - target: {fileID: 3194748926332727551, guid: 67db6791577c5e14db461f90443c78af, type: 3}
       propertyPath: m_IsActive
@@ -49727,7 +49751,8 @@ PrefabInstance:
       propertyPath: _playerPromptText
       value: 
       objectReference: {fileID: 433463487}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 9179239927517743514, guid: 60fd4002636c38e44a2ed3fa46590125, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 60fd4002636c38e44a2ed3fa46590125, type: 3}
 --- !u!4 &1075425978 stripped
 Transform:
