@@ -11,7 +11,7 @@ public class EndCutSounds : MonoBehaviour
 
     public void CrankSpin()
     {
-        AudioScript._instance.PlaySoundEffect("Crank Single");
+        AudioScript._instance.PlaySoundEffect("Crank Fast");
     }
 
     public void TentacleSmash1()
@@ -26,7 +26,12 @@ public class EndCutSounds : MonoBehaviour
 
     public void TentacleSquish()
     {
-        //AudioScript._instance.PlaySoundEffect("Squish");
+        AudioScript._instance.PlaySoundEffect("Kraken_Slimy_Whoosh_01");
+    }
+
+    public void OtherTentacleSquish()
+    {
+        AudioScript._instance.PlaySoundEffect("Kraken_Slimy_Whoosh_02 1");
     }
 
     public void TentacleWaterMovement()
@@ -36,7 +41,21 @@ public class EndCutSounds : MonoBehaviour
 
     public void TentacleWoosh()
     {
-        //AudioScript._instance.PlaySoundEffect("TentacleWoosh");
+        AudioScript._instance.PlaySoundEffect("Kraken_Whoosh");
+    }
+    public void OtherTentacleWoosh()
+    {
+        AudioScript._instance.PlaySoundEffect("Kraken_Whoosh_01");
+    }
+
+    public void KrakenRoar()
+    {
+        AudioScript._instance.PlaySoundEffect("Kraken_Roar");
+    }
+    
+    public void HeavyBreathing()
+    {
+        AudioScript._instance.PlaySoundEffect("Heavy Breathing");
     }
 
     public void Run()
