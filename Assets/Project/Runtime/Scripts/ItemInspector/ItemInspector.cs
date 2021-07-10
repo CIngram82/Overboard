@@ -48,15 +48,21 @@ public class ItemInspector : MonoBehaviour
     }
     public void OnMouseDown()
     {
-        position = Input.mousePosition;
+        if (_isInspecting)
+        {
+            position = Input.mousePosition; 
+        }
     }
     public void OnMouseDrag()
     {
-        var deltaPosition = Input.mousePosition - position;
+        if (_isInspecting)
+        {
+            var deltaPosition = Input.mousePosition - position;
 
-        var axis = Quaternion.AngleAxis(-90.0f, Vector3.forward) * deltaPosition;
-        gameObject.transform.rotation = Quaternion.AngleAxis(deltaPosition.magnitude * _rotationSpeed, axis) * gameObject.transform.rotation;
-        position = Input.mousePosition;
+            var axis = Quaternion.AngleAxis(-90.0f, Vector3.forward) * deltaPosition;
+            gameObject.transform.rotation = Quaternion.AngleAxis(deltaPosition.magnitude * _rotationSpeed, axis) * gameObject.transform.rotation;
+            position = Input.mousePosition; 
+        }
     }
 
     void Update()

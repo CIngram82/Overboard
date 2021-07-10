@@ -6620,18 +6620,6 @@ PrefabInstance:
       value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 1390426794887416245, guid: f563afbb2bfe1224e8619d24d32316e2, type: 3}
-      propertyPath: m_LocalScale.x
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1390426794887416245, guid: f563afbb2bfe1224e8619d24d32316e2, type: 3}
-      propertyPath: m_LocalScale.y
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1390426794887416245, guid: f563afbb2bfe1224e8619d24d32316e2, type: 3}
-      propertyPath: m_LocalScale.z
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1390426794887416245, guid: f563afbb2bfe1224e8619d24d32316e2, type: 3}
       propertyPath: m_LocalPosition.x
       value: -26.6207
       objectReference: {fileID: 0}
@@ -34314,8 +34302,8 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 8.673377, y: 6.3606253, z: 3.4711685}
-  m_Center: {x: 3.8366885, y: -0.39148045, z: -0.5062218}
+  m_Size: {x: 9.061221, y: 6.3606253, z: 3.3259676}
+  m_Center: {x: 4.0306106, y: -0.39148045, z: -0.57882226}
 --- !u!114 &810634208
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -35725,10 +35713,6 @@ PrefabInstance:
     - target: {fileID: 163885728064194279, guid: 0de6da901fc7cf14ea1b19c135fe297f, type: 3}
       propertyPath: m_Name
       value: plate (2)
-      objectReference: {fileID: 0}
-    - target: {fileID: 3195344784189023451, guid: 0de6da901fc7cf14ea1b19c135fe297f, type: 3}
-      propertyPath: m_StaticEditorFlags
-      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0de6da901fc7cf14ea1b19c135fe297f, type: 3}
@@ -75246,10 +75230,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1009395088}
     m_Modifications:
-    - target: {fileID: 664965497, guid: cabcc53ed5a07274e8aae95e1e2d23a2, type: 3}
-      propertyPath: InspectCamera
-      value: 
-      objectReference: {fileID: 0}
     - target: {fileID: 3647966364661976578, guid: cabcc53ed5a07274e8aae95e1e2d23a2, type: 3}
       propertyPath: m_RootOrder
       value: 1
@@ -75301,26 +75281,6 @@ PrefabInstance:
     - target: {fileID: 3647966364661976580, guid: cabcc53ed5a07274e8aae95e1e2d23a2, type: 3}
       propertyPath: m_IsActive
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5059527017645675760, guid: cabcc53ed5a07274e8aae95e1e2d23a2, type: 3}
-      propertyPath: m_Layer
-      value: 11
-      objectReference: {fileID: 0}
-    - target: {fileID: 7460515079675468829, guid: cabcc53ed5a07274e8aae95e1e2d23a2, type: 3}
-      propertyPath: m_Size.x
-      value: 1.9317868
-      objectReference: {fileID: 0}
-    - target: {fileID: 7460515079675468829, guid: cabcc53ed5a07274e8aae95e1e2d23a2, type: 3}
-      propertyPath: m_Size.z
-      value: 0.60216063
-      objectReference: {fileID: 0}
-    - target: {fileID: 7460515079675468829, guid: cabcc53ed5a07274e8aae95e1e2d23a2, type: 3}
-      propertyPath: m_Center.x
-      value: -0.032833867
-      objectReference: {fileID: 0}
-    - target: {fileID: 7460515079675468829, guid: cabcc53ed5a07274e8aae95e1e2d23a2, type: 3}
-      propertyPath: m_Center.z
-      value: -0.0007712184
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: cabcc53ed5a07274e8aae95e1e2d23a2, type: 3}
@@ -86045,8 +86005,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 252.5, y: 542.74, z: 297.56}
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Size: {x: 252.49998, y: 747.49884, z: 297.56}
+  m_Center: {x: -0.00004718707, y: 102.38035, z: 0.0000074093728}
 --- !u!1001 &1647720747
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -108107,7 +108067,8 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 7138679673342274485, guid: a60a1dd243815c142b6327033f00f947, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: a60a1dd243815c142b6327033f00f947, type: 3}
 --- !u!1 &7138679673746993283 stripped
 GameObject:

@@ -17,14 +17,13 @@ public class InspectObject : MonoBehaviour
     void OnGUI()
     {
         if (PauseController.IsPaused) return;
-        if (!IsInspecting)
-        {
+    
             Event e = Event.current;
             if (e.isKey && e.type == EventType.KeyDown)
             {
                 GetKey(e.keyCode);
             }
-        }
+        
     }
 
     void GetKey(KeyCode key)
