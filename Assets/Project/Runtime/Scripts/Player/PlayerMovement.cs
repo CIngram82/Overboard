@@ -42,7 +42,7 @@ public class PlayerMovement : MonoBehaviour
         movement = (moveHorizontal * transform.right + moveVertical * transform.forward).normalized;
         rig.velocity = movement * speed * Time.deltaTime;
         transform.rotation = camControl.RotatePlayer();
-        if (canMove)
+        if (canMove && !InspectObject.IsInspecting)
         {
             camAnim.SetBool("isWalking", moveHorizontal != 0 || moveVertical != 0);
         }
@@ -60,22 +60,6 @@ public class PlayerMovement : MonoBehaviour
         }
 
     }
-
-    //private void OnTriggerEnter(Collider other)
-    //{
-    //    if (other.CompareTag("Water"))
-    //    {
-    //        speedMax = 200;
-    //    }
-    //}
-
-    //private void OnTriggerExit(Collider other)
-    //{
-    //    if (other.CompareTag("Water"))
-    //    {
-    //        speedMax = 300;
-    //    }
-    //}
 
     void CollisionErrorCheck()
     {

@@ -39,10 +39,15 @@ public class LockableObject : MonoBehaviour
             }
             else
             {
-               AudioScript._instance.PlaySoundEffect("Locked Door");
-
+              // AudioScript._instance.PlaySoundEffect("Locked Door");
                 Debug.LogWarning("You don't have all key objects.");
             }
+
+            
+        }
+        if(Input.GetMouseButtonDown(0) && !IsUnlocked)
+        {
+            AudioScript._instance.PlaySoundEffect("Locked Door");
         }
     }
 }

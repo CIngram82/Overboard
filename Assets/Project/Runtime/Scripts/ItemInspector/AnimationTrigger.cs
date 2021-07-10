@@ -34,7 +34,7 @@ public class AnimationTrigger : MonoBehaviour
         {
             inventory.RemoveItem(inventory.ItemDatabase.GetInventoryItem($"SafeCollectable{i}"));
         }
-        inventory.RemoveItem(inventory.ItemDatabase.GetInventoryItem($"KeyHandle"));
+       // inventory.RemoveItem(inventory.ItemDatabase.GetInventoryItem($"KeyHandle"));
     }
 }
 
