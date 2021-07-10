@@ -521,8 +521,8 @@ GameObject:
   m_Component:
   - component: {fileID: 375308267757374773}
   - component: {fileID: 3046667648434301406}
-  - component: {fileID: 893166231773927596}
   - component: {fileID: 5325073274485589939}
+  - component: {fileID: 893166231773927596}
   m_Layer: 12
   m_Name: KeyHolder
   m_TagString: Untagged
@@ -558,6 +558,20 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.008, y: 0.03, z: 0.018}
   m_Center: {x: 0, y: 0.004, z: 0}
+--- !u!114 &5325073274485589939
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4191242179316178197}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 44b57b826c2ac10419dce0452e0488be, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _itemName: SafeCollectable1
+  _database: {fileID: 11400000, guid: 1c3093bb43bbc1549ab9b7e4cba9d29d, type: 2}
 --- !u!114 &893166231773927596
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -573,20 +587,6 @@ MonoBehaviour:
   animBoolName: 
   anim: {fileID: 4090504631277389477}
   isTrigger: 0
---- !u!114 &5325073274485589939
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4191242179316178197}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 44b57b826c2ac10419dce0452e0488be, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _itemName: SafeCollectable1
-  _database: {fileID: 11400000, guid: 1c3093bb43bbc1549ab9b7e4cba9d29d, type: 2}
 --- !u!1 &5830006153327000397
 GameObject:
   m_ObjectHideFlags: 0

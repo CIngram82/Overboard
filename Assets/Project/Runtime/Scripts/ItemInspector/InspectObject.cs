@@ -67,21 +67,6 @@ public class InspectObject : MonoBehaviour
         if (index < inventory.Items.Count)
         {
             GameObject itemObject = inventory.Items[index].Prefab;
-            if (inventory.Items[index].Name == "KeyHandle")
-            {
-                //check if have all keys
-                bool hasKeys = true;
-                for (int i = 1; i <= 3; i++)
-                {
-                    if (!inventory.Items.Contains(inventory.ItemDatabase.GetInventoryItem($"SafeCollectable{i}")))
-                    {
-                        hasKeys = false;
-                        break;
-                    }
-                }
-                if (hasKeys)
-                    itemObject.GetComponentInChildren<AnimationTrigger>().Play(); 
-            }
             Inspect(itemObject);
         }
     }

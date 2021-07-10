@@ -24,4 +24,23 @@ public class EndCutSounds : MonoBehaviour
         AudioScript._instance.PlaySoundEffect("Tentacle Smash 2");
     }
 
+    public void TentacleSquish()
+    {
+        //AudioScript._instance.PlaySoundEffect("Squish");
+    }
+
+    public void TentacleWaterMovement()
+    {
+       // AudioScript._instance.PlaySoundEffect("TentacleWater");
+    }
+
+    public void TentacleWoosh()
+    {
+        //AudioScript._instance.PlaySoundEffect("TentacleWoosh");
+    }
+
+    public void Run()
+    {
+        AudioScript._instance.PlayWoodFootsteps();
+    }
 }
