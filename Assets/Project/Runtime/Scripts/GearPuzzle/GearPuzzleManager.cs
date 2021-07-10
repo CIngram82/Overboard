@@ -52,7 +52,7 @@ namespace GearPuzzle
         }
         void On_Play_Sound(GameObject gameObject)
         {
-
+            AudioScript._instance.PlaySoundEffect("Gears");
         }
 
         void SubToEvents(bool subscribe)
