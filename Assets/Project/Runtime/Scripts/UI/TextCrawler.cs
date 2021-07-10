@@ -33,7 +33,7 @@ namespace Controllers.UI
         void Awake()
         {
             textCrawler = GetComponent<RectTransform>();
-            textCrawler.position = new Vector3(textCrawler.position.x, 0.0f, textCrawler.position.z);
+            //textCrawler.position = new Vector3(textCrawler.position.x, 0.0f, textCrawler.position.z);
             transitionDelay = new WaitForSeconds(transitionDelayTime);
         }
 
