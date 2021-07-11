@@ -110,6 +110,15 @@ public class AudioScript : MonoBehaviour
             StartCoroutine(PlayRandomSound());
             thisAudio.loop = false;
         }
+        else if (GetScene().buildIndex == 2 && !thisAudio.isPlaying)
+        {
+            StopAllCoroutines();
+            thisAudio.loop = true;
+            thisAudio.clip = titleTheme;
+            thisAudio.Play();
+
+
+        }
         else
         {
             StopAllCoroutines();
