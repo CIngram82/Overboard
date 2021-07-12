@@ -10,29 +10,45 @@ namespace Controllers.UI
         [SerializeField] TextMeshProUGUI text;
         [SerializeField] float scrollSpeed;
         [SerializeField] float transitionDelayTime;
+        [SerializeField] Vector3 startPos;
+        [SerializeField] Image fadeImage;
+        [SerializeField] float fadeSpeed;
 
         WaitForSeconds transitionDelay;
         RectTransform textCrawler;
+        float targetAlpha = 1;
 
-        IEnumerator TextCrawlerVert()
+
+        IEnumerator Fade()
         {
-            float scrollPos = 0.0f;
-            Vector3 startPos = textCrawler.position;
-            float height = textCrawler.GetComponent<VerticalLayoutGroup>().preferredHeight + Screen.height ;
-            while (scrollPos < height)
+            Color tempColor = fadeImage.color;
+            while (fadeImage.color.a < targetAlpha)
             {
-                scrollPos += scrollSpeed * Time.deltaTime;
-                textCrawler.transform.position = new Vector3(startPos.x, scrollPos, startPos.z);
+                tempColor.a = Mathf.MoveTowards(fadeImage.color.a, targetAlpha, fadeSpeed * Time.deltaTime);
+                fadeImage.color = tempColor;
                 yield return null;
             }
-            yield return transitionDelay;
+            //yield return transitionDelay;
             UIController.OnMenu();
+        }
+
+        void Update()
+        {
+            if (textCrawler.anchoredPosition.y < 0)
+            {
+                //Debug.Log($"{textCrawler.anchoredPosition.y} < {height} + {Screen.height + (Screen.height * (1 - canvasScale))}");
+                textCrawler.Translate(Vector3.up * scrollSpeed * Time.deltaTime);
+            }
+            else
+            {
+                StartCoroutine(Fade());
+            }
         }
 
         void Awake()
         {
             textCrawler = GetComponent<RectTransform>();
-            textCrawler.position = new Vector3(textCrawler.position.x, 0.0f, textCrawler.position.z);
+            textCrawler.anchoredPosition = startPos;
             transitionDelay = new WaitForSeconds(transitionDelayTime);
         }
 
@@ -41,7 +57,7 @@ namespace Controllers.UI
         {
             yield return new WaitForFixedUpdate();
             LayoutRebuilder.ForceRebuildLayoutImmediate(textCrawler);
-            StartCoroutine(TextCrawlerVert());
+            //height = textCrawler.GetComponent<VerticalLayoutGroup>().preferredHeight;
         }
     }
 }
