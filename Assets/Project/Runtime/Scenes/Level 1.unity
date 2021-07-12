@@ -6611,6 +6611,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1009395088}
     m_Modifications:
+    - target: {fileID: 373566345961110676, guid: f563afbb2bfe1224e8619d24d32316e2, type: 3}
+      propertyPath: _zoomSpeed
+      value: 10.11
+      objectReference: {fileID: 0}
     - target: {fileID: 1390426794887416243, guid: f563afbb2bfe1224e8619d24d32316e2, type: 3}
       propertyPath: m_Name
       value: WorldItem_KeyHandle
@@ -26884,6 +26888,22 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1848805355, guid: 67db6791577c5e14db461f90443c78af, type: 3}
+      propertyPath: m_text
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 1848805355, guid: 67db6791577c5e14db461f90443c78af, type: 3}
+      propertyPath: m_fontSize
+      value: 36
+      objectReference: {fileID: 0}
+    - target: {fileID: 1848805355, guid: 67db6791577c5e14db461f90443c78af, type: 3}
+      propertyPath: m_fontAsset
+      value: 
+      objectReference: {fileID: 11400000, guid: 31e0eb886dedc5f4d8fe4bbafaa10b27, type: 2}
+    - target: {fileID: 1848805355, guid: 67db6791577c5e14db461f90443c78af, type: 3}
+      propertyPath: m_sharedMaterial
+      value: 
+      objectReference: {fileID: -1914950393745733533, guid: 31e0eb886dedc5f4d8fe4bbafaa10b27, type: 2}
     - target: {fileID: 653882570534217272, guid: 67db6791577c5e14db461f90443c78af, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
@@ -34434,7 +34454,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerFeedbackText: {fileID: 433463487}
-  promptMessage: No Power(Journal Updated)
+  promptMessage: No Power (Journal Updated)
 --- !u!65 &810634207
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -75408,7 +75428,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3647966364661976578, guid: cabcc53ed5a07274e8aae95e1e2d23a2, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.584
+      value: 0.365
       objectReference: {fileID: 0}
     - target: {fileID: 3647966364661976578, guid: cabcc53ed5a07274e8aae95e1e2d23a2, type: 3}
       propertyPath: m_LocalPosition.z
@@ -75450,6 +75470,42 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5583581353820245578, guid: cabcc53ed5a07274e8aae95e1e2d23a2, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -0.00014259416
+      objectReference: {fileID: 0}
+    - target: {fileID: 5583581353820245578, guid: cabcc53ed5a07274e8aae95e1e2d23a2, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -0.0022499796
+      objectReference: {fileID: 0}
+    - target: {fileID: 5583581353820245578, guid: cabcc53ed5a07274e8aae95e1e2d23a2, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0.0016355519
+      objectReference: {fileID: 0}
+    - target: {fileID: 5583581353820245578, guid: cabcc53ed5a07274e8aae95e1e2d23a2, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: 5583581353820245578, guid: cabcc53ed5a07274e8aae95e1e2d23a2, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: 5583581353820245578, guid: cabcc53ed5a07274e8aae95e1e2d23a2, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5583581353820245578, guid: cabcc53ed5a07274e8aae95e1e2d23a2, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5583581353820245578, guid: cabcc53ed5a07274e8aae95e1e2d23a2, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 90
+      objectReference: {fileID: 0}
+    - target: {fileID: 6717102850518594853, guid: cabcc53ed5a07274e8aae95e1e2d23a2, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 00fcd4ca482e46942ae0d0f6bc79c469, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: cabcc53ed5a07274e8aae95e1e2d23a2, type: 3}
 --- !u!1001 &1559561928
@@ -97899,7 +97955,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1598508959176982973, guid: d35dc1655c2253e479bb273aff6a67e6, type: 3}
       propertyPath: message
-      value: Press E or Left Click to open Door.
+      value: E to open door
       objectReference: {fileID: 0}
     - target: {fileID: 1598508959176982973, guid: d35dc1655c2253e479bb273aff6a67e6, type: 3}
       propertyPath: messageGUI
