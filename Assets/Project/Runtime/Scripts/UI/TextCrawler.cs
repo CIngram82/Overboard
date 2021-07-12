@@ -17,12 +17,9 @@ namespace Controllers.UI
         IEnumerator TextCrawlerVert()
         {
             float scrollPos = 0.0f;
-            //float height = LayoutUtility.GetPreferredHeight(textCrawler);
-            float height = textCrawler.sizeDelta.y;
             Vector3 startPos = textCrawler.position;
-
-
-            while (scrollPos < (height))
+            float height = textCrawler.GetComponent<VerticalLayoutGroup>().preferredHeight + Screen.height ;
+            while (scrollPos < height)
             {
                 scrollPos += scrollSpeed * Time.deltaTime;
                 textCrawler.transform.position = new Vector3(startPos.x, scrollPos, startPos.z);
@@ -39,11 +36,11 @@ namespace Controllers.UI
             transitionDelay = new WaitForSeconds(transitionDelayTime);
         }
 
+
         IEnumerator Start()
         {
             yield return new WaitForFixedUpdate();
             LayoutRebuilder.ForceRebuildLayoutImmediate(textCrawler);
-
             StartCoroutine(TextCrawlerVert());
         }
     }
