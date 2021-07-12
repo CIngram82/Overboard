@@ -6,13 +6,13 @@ namespace Controllers.UI
 {
     public class UIHelpController : UIController
     {
-        [SerializeField] GameObject panelsRoot;
-        [SerializeField] GameObject buttonsRoot;
+        [SerializeField] Transform panelsRoot;
+        [SerializeField] Transform buttonsRoot;
         //[SerializeField] Button nextButton;
         //[SerializeField] Button backButton;
 
-        List<Button> helpButtons;
         List<GameObject> helpPanels;
+        List<Button> helpButtons;
         int panelIndex = 0;
 
 
@@ -50,13 +50,13 @@ namespace Controllers.UI
         /// <param name="index"></param>
         public void OnButtonSelect(int index)
         {
-            if (helpPanels.Count != helpButtons.Count) throw new System.MissingMemberException("Number of buttons and panels must be equal."); 
-
-            SwitchPanel();
+            if (helpPanels.Count != helpButtons.Count) throw new System.MissingMemberException("Number of buttons and panels must be equal.");
 
             helpButtons[panelIndex].interactable = true;
             helpButtons[index].interactable = false;
             panelIndex = index;
+
+            SwitchPanel();
         }
         /// <summary>
         /// Sets panel at index as the only active panel.
@@ -67,20 +67,23 @@ namespace Controllers.UI
             helpPanels[panelIndex].SetActive(true);
         }
 
-        List<T> LoadObjList<T>(GameObject root)
+        List<T> LoadObjList<T>(Transform root) where T : Component
         {
-            List<T> objects = new List<T>();
-            foreach (Transform child in root.transform)
+            List<T> components = new List<T>();
+            foreach (Transform child in root)
             {
-                objects.Add(child.GetComponent<T>());
+                if (child.TryGetComponent(out T component))
+                {
+                    components.Add(component);
+                }
             }
-            return objects;
+            return components;
         }
 
-        protected override void Start()
+        void Start()
         {
-            helpPanels = LoadObjList<GameObject>(panelsRoot);
-            helpButtons = LoadObjList<Button>(panelsRoot);
+            helpPanels = LoadObjList<CanvasRenderer>(panelsRoot).ConvertAll(t => t.gameObject);
+            helpButtons = LoadObjList<Button>(buttonsRoot);
             SwitchPanel();
             helpButtons[0].interactable = false;
         }
