@@ -6659,6 +6659,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: -36.234
       objectReference: {fileID: 0}
+    - target: {fileID: 7817168025971726382, guid: f563afbb2bfe1224e8619d24d32316e2, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 23c7b5b8e723c5843acd4ffe1b272f4f, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f563afbb2bfe1224e8619d24d32316e2, type: 3}
 --- !u!1 &84057485
@@ -27458,6 +27462,50 @@ PrefabInstance:
       propertyPath: m_StaticEditorFlags
       value: 4294967295
       objectReference: {fileID: 0}
+    - target: {fileID: 5622574207139139206, guid: 10fe09bc982abf343a4ef8d57f92f5c5, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 4.19129
+      objectReference: {fileID: 0}
+    - target: {fileID: 5622574207139139206, guid: 10fe09bc982abf343a4ef8d57f92f5c5, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -0.143
+      objectReference: {fileID: 0}
+    - target: {fileID: 5622574207139139206, guid: 10fe09bc982abf343a4ef8d57f92f5c5, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.0171
+      objectReference: {fileID: 0}
+    - target: {fileID: 5622574207139139206, guid: 10fe09bc982abf343a4ef8d57f92f5c5, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -0.1002
+      objectReference: {fileID: 0}
+    - target: {fileID: 5622574207139139206, guid: 10fe09bc982abf343a4ef8d57f92f5c5, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5622574207139139206, guid: 10fe09bc982abf343a4ef8d57f92f5c5, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5622574207139139206, guid: 10fe09bc982abf343a4ef8d57f92f5c5, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5622574207139139206, guid: 10fe09bc982abf343a4ef8d57f92f5c5, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5622574207139139206, guid: 10fe09bc982abf343a4ef8d57f92f5c5, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5622574207139139206, guid: 10fe09bc982abf343a4ef8d57f92f5c5, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5622574207139139206, guid: 10fe09bc982abf343a4ef8d57f92f5c5, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5853805967810244156, guid: 10fe09bc982abf343a4ef8d57f92f5c5, type: 3}
       propertyPath: m_StaticEditorFlags
       value: 4294967295
@@ -27536,6 +27584,22 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1848805355, guid: 67db6791577c5e14db461f90443c78af, type: 3}
+      propertyPath: m_text
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 1848805355, guid: 67db6791577c5e14db461f90443c78af, type: 3}
+      propertyPath: m_fontSize
+      value: 36
+      objectReference: {fileID: 0}
+    - target: {fileID: 1848805355, guid: 67db6791577c5e14db461f90443c78af, type: 3}
+      propertyPath: m_fontAsset
+      value: 
+      objectReference: {fileID: 11400000, guid: 31e0eb886dedc5f4d8fe4bbafaa10b27, type: 2}
+    - target: {fileID: 1848805355, guid: 67db6791577c5e14db461f90443c78af, type: 3}
+      propertyPath: m_sharedMaterial
+      value: 
+      objectReference: {fileID: -1914950393745733533, guid: 31e0eb886dedc5f4d8fe4bbafaa10b27, type: 2}
     - target: {fileID: 653882570534217272, guid: 67db6791577c5e14db461f90443c78af, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
@@ -72315,13 +72379,13 @@ Transform:
   - {fileID: 611058141}
   - {fileID: 471538334}
   - {fileID: 1817003611}
-  - {fileID: 51533525}
   - {fileID: 1066650883}
+  - {fileID: 51533525}
   - {fileID: 313381329}
   - {fileID: 1001331333}
   - {fileID: 1450416189}
-  - {fileID: 612353117}
   - {fileID: 1888817432}
+  - {fileID: 612353117}
   m_Father: {fileID: 704715011}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -76245,7 +76309,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3647966364661976578, guid: cabcc53ed5a07274e8aae95e1e2d23a2, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.584
+      value: 0.36
       objectReference: {fileID: 0}
     - target: {fileID: 3647966364661976578, guid: cabcc53ed5a07274e8aae95e1e2d23a2, type: 3}
       propertyPath: m_LocalPosition.z
@@ -76287,6 +76351,22 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5583581353820245578, guid: cabcc53ed5a07274e8aae95e1e2d23a2, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: 5583581353820245578, guid: cabcc53ed5a07274e8aae95e1e2d23a2, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: 5583581353820245578, guid: cabcc53ed5a07274e8aae95e1e2d23a2, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 90
+      objectReference: {fileID: 0}
+    - target: {fileID: 6717102850518594853, guid: cabcc53ed5a07274e8aae95e1e2d23a2, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 00fcd4ca482e46942ae0d0f6bc79c469, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: cabcc53ed5a07274e8aae95e1e2d23a2, type: 3}
 --- !u!1001 &1559561928
@@ -99005,7 +99085,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1598508959176982973, guid: d35dc1655c2253e479bb273aff6a67e6, type: 3}
       propertyPath: message
-      value: Press E or Left Click to open Door.
+      value: E to open Door
       objectReference: {fileID: 0}
     - target: {fileID: 1598508959176982973, guid: d35dc1655c2253e479bb273aff6a67e6, type: 3}
       propertyPath: messageGUI
