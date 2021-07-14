@@ -7,7 +7,6 @@ namespace Controllers.UI
 {
     public class TextCrawler : MonoBehaviour
     {
-        [SerializeField] TextMeshProUGUI text;
         [SerializeField] float scrollSpeed;
         [SerializeField] float transitionDelayTime;
         [SerializeField] Vector3 startPos;
