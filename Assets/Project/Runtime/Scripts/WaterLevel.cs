@@ -14,10 +14,13 @@ public class WaterLevel : MonoBehaviour
     }
     void FixedUpdate()
     {
+        RiseWaterByButton();
         if (!isRising)
         {
             return;
         }
+
+      
 
         Vector3 pos = transform.position;
         pos.y = Mathf.Lerp(transform.position.y, targetY, t);
@@ -34,15 +37,24 @@ public class WaterLevel : MonoBehaviour
         }
     }
 
-    public void TriggerWaterRise()
+    public void TriggerWaterRise(float riseAmount)
     {
         isRising = true;
-        targetY += 0.66f;
+        targetY += riseAmount;  //0.66f
         t = 0;
     }
     public void SetWaterLevel(float level)
     {
         transform.position = new Vector3(transform.position.x, level, transform.position.z);
         targetY = transform.position.y;
+    }
+
+    void RiseWaterByButton()
+    {
+        if(Input.GetKey(KeyCode.P))
+        {
+            Debug.Log("P pressed");
+            TriggerWaterRise(1);
+        }
     }
 }

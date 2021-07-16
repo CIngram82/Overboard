@@ -32,7 +32,7 @@ public class GameManager : Singleton<GameManager>
         if (isCompleted && !gearFirstCompletion)
         {
             gearFirstCompletion = true;
-            FindObjectOfType<WaterLevel>().TriggerWaterRise();
+            FindObjectOfType<WaterLevel>().TriggerWaterRise(0.66f);
             //FindObjectOfType<CameraTransition>().SwitchCameras();
             SaveDataManager.Instance.On_Save_Data();
             GearPuzzleCompleted = isCompleted;
@@ -43,7 +43,7 @@ public class GameManager : Singleton<GameManager>
         if (isCompleted && !pipeFirstCompletion)
         {
             pipeFirstCompletion = true;
-            FindObjectOfType<WaterLevel>().TriggerWaterRise();
+            FindObjectOfType<WaterLevel>().TriggerWaterRise(0.66f);
             //FindObjectOfType<CameraTransition>().SwitchCameras();
         }
         PipePuzzleCompleted = isCompleted;
